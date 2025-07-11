@@ -1,0 +1,80 @@
+{
+  "user_id": "demo_user",
+  "display_name": "데모사용자",
+  "created_date": "2025-07-11T20:57:06.114811",
+  "last_updated": "2025-07-11T20:57:06.114843",
+  "biometric_baseline": {
+    "avg_heart_rate": 75.0,
+    "avg_ear": 0.3,
+    "avg_attention_focus": 0.8,
+    "normal_head_pose_range": {
+      "yaw": 15.0,
+      "pitch": 10.0,
+      "roll": 8.0
+    }
+  },
+  "driving_behavior": {
+    "driving_style": "normal",
+    "skill_level": "intermediate",
+    "steering_smoothness": 0.7,
+    "attention_consistency": 0.8,
+    "reaction_time": 0.5,
+    "preferred_settings": {
+      "coaching_frequency": "normal",
+      "alert_sensitivity": "medium",
+      "ui_complexity": "standard"
+    }
+  },
+  "health_profile": {
+    "age_range": "adult",
+    "medical_conditions": [],
+    "medications": [],
+    "emergency_contacts": [],
+    "health_monitoring_consent": true,
+    "share_with_doctor": false
+  },
+  "personalization_data": {
+    "calibration_completed": false,
+    "calibration_date": "",
+    "session_count": 0,
+    "total_drive_time": 0.0,
+    "personalized_thresholds": {
+      "fatigue_threshold": 0.6,
+      "distraction_threshold": 0.5,
+      "stress_threshold": 0.7
+    },
+    "learned_patterns": {
+      "daily_fatigue_pattern": {},
+      "attention_zones": {},
+      "common_distractions": []
+    }
+  },
+  "performance_metrics": {
+    "last_session_date": "",
+    "avg_fatigue_score": 0.0,
+    "avg_distraction_score": 0.0,
+    "improvement_trend": "stable",
+    "ai_coach_metrics": {
+      "coaching_score": 0.0,
+      "improvement_areas": [],
+      "achievements": []
+    },
+    "healthcare_metrics": {
+      "avg_heart_rate": 0.0,
+      "stress_episodes": 0,
+      "health_alerts": 0
+    },
+    "emotional_care_metrics": {
+      "dominant_emotions": [],
+      "care_sessions": 0,
+      "effectiveness_score": 0.0
+    }
+  },
+  "preferred_edition": "RESEARCH",
+  "privacy_settings": {
+    "save_biometric_data": true,
+    "save_session_recordings": false,
+    "share_analytics": false,
+    "emergency_monitoring": true
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "test_timestamp": 1752267358.4950614,
+  "total_tests": 9,
+  "passed_tests": 1,
+  "failed_tests": 8,
+  "success_rate": 11.11111111111111,
+  "results": [
+    {
+      "name": "기본 모듈 가져오기",
+      "success": false,
+      "message": "모듈 가져오기 실패: 필수 모듈 가져오기 실패",
+      "duration": 4.76837158203125e-06,
+      "details": {}
+    },
+    {
+      "name": "파일 구조 검증",
+      "success": true,
+      "message": "모든 필수 파일 및 디렉토리 존재 확인",
+      "duration": 0.00020265579223632812,
+      "details": {
+        "checked_files": 7,
+        "checked_dirs": 6
+      }
+    },
+    {
+      "name": "설정 시스템",
+      "success": false,
+      "message": "설정 시스템 오류: name 'get_config' is not defined",
+      "duration": 4.291534423828125e-06,
+      "details": {}
+    },
+    {
+      "name": "환경별 설정",
+      "success": false,
+      "message": "환경 설정 오류: name 'get_environment_config' is not defined",
+      "duration": 2.1457672119140625e-06,
+      "details": {}
+    },
+    {
+      "name": "프로필 관리 시스템",
+      "success": false,
+      "message": "프로필 관리 오류: name 'get_profile_manager' is not defined",
+      "duration": 1.6689300537109375e-06,
+      "details": {}
+    },
+    {
+      "name": "S-Class 시스템 초기화",
+      "success": false,
+      "message": "시스템 초기화 실패: name 'SClassDMSv19' is not defined",
+      "duration": 1.1920928955078125e-06,
+      "details": {}
+    },
+    {
+      "name": "5대 혁신 시스템",
+      "success": false,
+      "message": "혁신 시스템 테스트 오류: No module named 'numpy'",
+      "duration": 0.0035550594329833984,
+      "details": {}
+    },
+    {
+      "name": "실행 시스템",
+      "success": false,
+      "message": "런처 시스템 부족: 1/4",
+      "duration": 0.009789228439331055,
+      "details": {
+        "working_launchers": [
+          "메인 런처"
+        ]
+      }
+    },
+    {
+      "name": "시스템 성능",
+      "success": false,
+      "message": "성능 테스트 오류: No module named 'psutil'",
+      "duration": 8.034706115722656e-05,
+      "details": {}
+    }
+  ]
+}
