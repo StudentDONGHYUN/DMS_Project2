@@ -50,6 +50,100 @@ class PoseDataProcessor(IPoseDataProcessor):
         return ["pose_landmarks", "pose_world_landmarks"]
     
     async def process_data(self, result, timestamp):
+        """
+        자세 데이터 종합 처리 (S-Class 디지털 생체역학 전문가)
+        
+        Input (입력):
+            result: MediaPipe PoseLandmarker 결과 객체
+                - pose_landmarks: List[NormalizedLandmark] - 33개 2D 자세 랜드마크
+                - pose_world_landmarks: List[Landmark] - 33개 3D 월드 좌표 랜드마크
+            timestamp: float - 현재 프레임 타임스탬프 (초)
+        
+        Process (처리):
+            1. 3D 척추 정렬 분석 (거북목, 척추 곡률)
+            2. 자세 불안정성 측정 (Postural Sway Area, Velocity)
+            3. 구부정한 자세 감지 (Slouching Detection)
+            4. 어깨 기울기 및 좌우 대칭성 분석
+            5. 생체역학적 건강 점수 계산
+            6. 자세 변화 추세 분석 및 예측
+            7. 운전 자세 적합성 평가
+            8. 피로/주의산만 지표 추출
+        
+        Output (출력):
+            Dict[str, Any] 다음 구조로 반환:
+            {
+                'pose_2d': {
+                    'available': bool,
+                    'shoulder_analysis': {
+                        'angle_degrees': float,  # 어깨 기울기 각도
+                        'tilt_severity': float   # 기울기 심각도 0.0-1.0
+                    },
+                    'symmetry_analysis': {
+                        'symmetry_score': float  # 좌우 대칭성 0.0-1.0
+                    }
+                },
+                'pose_3d': {
+                    'available': bool,
+                    'spinal_analysis': {
+                        'forward_head_posture_angle': float,  # 거북목 각도 (도)
+                        'spine_curvature_angle': float,       # 척추 곡률 각도 (도)
+                        'neck_health_score': float,           # 목 건강도 0.0-1.0
+                        'spine_health_score': float,          # 척추 건강도 0.0-1.0
+                        'cervical_risk_level': str            # 'low', 'medium', 'high'
+                    },
+                    'postural_sway': {
+                        'sway_area_cm2': float,      # 자세 흔들림 면적 (cm²)
+                        'sway_velocity_cm_s': float, # 흔들림 속도 (cm/s)
+                        'stability_score': float,    # 안정성 점수 0.0-1.0
+                        'sway_pattern': str          # 'lateral_dominant', 'anterior_posterior_dominant', 'circular_pattern'
+                    },
+                    'slouch_detection': {
+                        'slouch_angle': float,    # 구부정함 각도 (도)
+                        'slouch_factor': float,   # 구부정함 정도 0.0-1.0
+                        'is_slouching': bool,     # 구부정한 자세 여부
+                        'severity': str           # 'mild', 'moderate', 'severe'
+                    },
+                    'balance': {
+                        'balance_score': float    # 몸의 균형 점수 0.0-1.0
+                    },
+                    'complexity': {
+                        'overall_complexity': float  # 자세 복잡도 0.0-1.0
+                    }
+                },
+                'pose_analysis': {
+                    'driving_suitability': float,         # 운전 자세 적합성 0.0-1.0
+                    'identified_issues': List[str],       # 발견된 문제점들
+                    'recommendation': str,                # 자세 개선 권장사항
+                    'fatigue_indicators': {
+                        'slouching': float,      # 구부정함으로 인한 피로 0.0-1.0
+                        'instability': float     # 불안정성으로 인한 피로 0.0-1.0
+                    },
+                    'distraction_indicators': {
+                        'unusual_positioning': float  # 비정상적 자세로 인한 주의산만 0.0-1.0
+                    },
+                    'trend_analysis': {
+                        'trend_available': bool,
+                        'stability_trend': str,          # 'stable', 'improving', 'deteriorating'
+                        'deterioration_rate': float,     # 악화 속도
+                        'health_trend': str,             # 건강 추세
+                        'prediction': str                # 미래 예측 메시지
+                    },
+                    'biomechanical_health': {
+                        'overall_score': float,          # 종합 생체역학적 건강도 0.0-1.0
+                        'spinal_health': float,          # 척추 건강도
+                        'neck_health': float,            # 목 건강도
+                        'stability': float,              # 자세 안정성
+                        'posture_quality': float,        # 자세 품질
+                        'risk_factors': List[str],       # 위험 요인들
+                        'recommendations': List[str]     # 개선 권장사항들
+                    },
+                    'data_quality': {
+                        'pose_2d': bool,  # 2D 데이터 가용성
+                        'pose_3d': bool   # 3D 데이터 가용성
+                    }
+                }
+            }
+        """
         logger.debug(f"[pose_processor_s_class] process_data input: {result}")
         if hasattr(result, 'pose_landmarks'):
             logger.debug(f"[pose_processor_s_class] pose_landmarks: {getattr(result, 'pose_landmarks', None)}")

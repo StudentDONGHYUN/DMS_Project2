@@ -273,6 +273,108 @@ class MultiModalConfig:
 
 
 @dataclass
+class FeatureFlagConfig:
+    """기능 플래그 설정 (상용화 전략)"""
+    # 시스템 에디션 (상용화 버전 제어)
+    system_edition: str = "RESEARCH"  # COMMUNITY, PRO, ENTERPRISE, RESEARCH
+    
+    # 기본 Expert Systems (모든 에디션)
+    enable_face_processor: bool = True
+    enable_pose_processor: bool = True
+    enable_hand_processor: bool = True
+    enable_object_processor: bool = True
+    
+    # S-Class Advanced Features (PRO 이상)
+    enable_rppg_heart_rate: bool = True
+    enable_saccade_analysis: bool = True
+    enable_spinal_alignment: bool = True
+    enable_fft_tremor_analysis: bool = True
+    enable_bayesian_prediction: bool = True
+    
+    # Neural AI Features (ENTERPRISE/RESEARCH)
+    enable_emotion_ai: bool = True
+    enable_predictive_safety: bool = True
+    enable_biometric_fusion: bool = True
+    enable_uncertainty_quantification: bool = True
+    
+    # Research Features (RESEARCH 전용)
+    enable_digital_twin_simulation: bool = True
+    enable_advanced_cognitive_modeling: bool = True
+    enable_experimental_algorithms: bool = True
+    enable_detailed_logging: bool = True
+    
+    # 혁신 기능들 (제안서 기반)
+    enable_mental_wellness_monitoring: bool = True
+    enable_edge_vision_transformer: bool = True
+    enable_multimodal_sensor_fusion: bool = True
+    enable_adaptive_ui_modes: bool = True
+    enable_context_aware_ar_hud: bool = False  # 하드웨어 의존
+    enable_v2d_healthcare_platform: bool = True
+    
+    def __post_init__(self):
+        """에디션별 기능 제한 적용"""
+        if self.system_edition == "COMMUNITY":
+            # 커뮤니티 에디션: 기본 기능만
+            self._disable_advanced_features()
+            self._disable_neural_ai_features()
+            self._disable_research_features()
+            self._disable_innovation_features()
+        
+        elif self.system_edition == "PRO":
+            # 프로 에디션: S-Class 고급 기능 포함
+            self._disable_neural_ai_features()
+            self._disable_research_features()
+            self._disable_innovation_features()
+        
+        elif self.system_edition == "ENTERPRISE":
+            # 엔터프라이즈 에디션: Neural AI 포함, 연구 기능 제외
+            self._disable_research_features()
+    
+    def _disable_advanced_features(self):
+        """고급 기능 비활성화"""
+        self.enable_rppg_heart_rate = False
+        self.enable_saccade_analysis = False
+        self.enable_spinal_alignment = False
+        self.enable_fft_tremor_analysis = False
+        self.enable_bayesian_prediction = False
+    
+    def _disable_neural_ai_features(self):
+        """Neural AI 기능 비활성화"""
+        self.enable_emotion_ai = False
+        self.enable_predictive_safety = False
+        self.enable_biometric_fusion = False
+        self.enable_uncertainty_quantification = False
+    
+    def _disable_research_features(self):
+        """연구 기능 비활성화"""
+        self.enable_digital_twin_simulation = False
+        self.enable_advanced_cognitive_modeling = False
+        self.enable_experimental_algorithms = False
+        self.enable_detailed_logging = False
+    
+    def _disable_innovation_features(self):
+        """혁신 기능 비활성화"""
+        self.enable_mental_wellness_monitoring = False
+        self.enable_edge_vision_transformer = False
+        self.enable_multimodal_sensor_fusion = False
+        self.enable_adaptive_ui_modes = False
+        self.enable_v2d_healthcare_platform = False
+    
+    def is_feature_enabled(self, feature_name: str) -> bool:
+        """특정 기능의 활성화 상태 확인"""
+        return getattr(self, f'enable_{feature_name}', False)
+    
+    def get_edition_features(self) -> dict:
+        """현재 에디션에서 사용 가능한 기능 목록 반환"""
+        features = {}
+        for attr_name in dir(self):
+            if attr_name.startswith('enable_') and isinstance(getattr(self, attr_name), bool):
+                feature_name = attr_name.replace('enable_', '')
+                features[feature_name] = getattr(self, attr_name)
+        return features
+
+
+@dataclass
 class SystemConfig:
     """전체 시스템 설정을 통합하는 메인 설정 클래스"""
     
@@ -287,6 +389,7 @@ class SystemConfig:
     prediction: PredictionConfig = None
     distraction: DistractionConfig = None
     multimodal: MultiModalConfig = None
+    feature_flags: FeatureFlagConfig = None
     
     # 전역 설정
     debug_mode: bool = False
@@ -323,6 +426,8 @@ class SystemConfig:
             self.distraction = DistractionConfig()
         if self.multimodal is None:
             self.multimodal = MultiModalConfig()
+        if self.feature_flags is None:
+            self.feature_flags = FeatureFlagConfig()
         
         # MediaPipe 임계값 기본값 설정
         if self.mediapipe_confidence_thresholds is None:

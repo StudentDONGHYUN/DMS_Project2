@@ -167,6 +167,75 @@ class FaceDataProcessor(IFaceDataProcessor):
     # =============================================================================
 
     async def process_data(self, data: Any, image: np.ndarray, timestamp: float) -> Dict[str, Any]:
+        """
+        얼굴 데이터 종합 처리 (S-Class 디지털 심리학자)
+        
+        Input (입력):
+            data: MediaPipe FaceLandmarker 결과 객체
+                - face_landmarks: List[NormalizedLandmark] - 468개 얼굴 랜드마크 좌표
+                - face_blendshapes: List[ClassificationResult] - 52개 표정 블렌드셰이프
+                - facial_transformation_matrixes: List[Matrix] - 4x4 3D 변환 행렬
+            image: np.ndarray - 원본 이미지 (rPPG 신호 추출용)
+                - shape: (height, width, 3) - BGR 컬러 이미지
+            timestamp: float - 현재 프레임 타임스탬프 (초)
+        
+        Process (처리):
+            1. rPPG 심박수 분석 (이마 영역 혈류 변화)
+            2. 졸음 감지 (PERCLOS, EAR, 마이크로슬립)
+            3. 감정 인식 (7가지 기본 감정 + 스트레스 분석)
+            4. 사카드 안구 운동 분석 (시선 고정, 도약 운동)
+            5. 동공 역학 분석 (인지 부하, 각성 수준)
+            6. 머리 자세 안정화 (EMA 필터링)
+            7. 시선 구역 분류 및 추적
+            8. 운전자 신원 확인
+        
+        Output (출력):
+            Dict[str, Any] 다음 구조로 반환:
+            {
+                'face_detected': bool,
+                'drowsiness': {
+                    'status': str,  # 'awake', 'drowsy', 'microsleep'
+                    'confidence': float,  # 0.0-1.0
+                    'enhanced_ear': float,  # 향상된 EAR 값
+                    'perclos': float,  # 눈 감김 시간 비율
+                    'temporal_attention': float  # 시간적 주의 점수
+                },
+                'emotion': {
+                    'state': str,  # 'neutral', 'happy', 'stressed', etc.
+                    'confidence': float,  # 0.0-1.0
+                    'arousal_level': float  # 각성 수준
+                },
+                'gaze': {
+                    'head_yaw': float,  # 머리 좌우 회전 (도)
+                    'head_pitch': float,  # 머리 상하 회전 (도)
+                    'head_roll': float,  # 머리 기울기 (도)
+                    'current_zone': GazeZone,  # 현재 시선 구역
+                    'zone_duration': float,  # 구역 지속 시간 (초)
+                    'stability': float,  # 시선 안정성 0.0-1.0
+                    'attention_focus': float,  # 주의집중도 0.0-1.0
+                    'deviation_score': float  # 시선 편차 위험도 0.0-1.0
+                },
+                'saccade': {
+                    'saccade_velocity_norm': float,  # 정규화된 사카드 속도
+                    'saccade_count_per_s': float,  # 초당 사카드 횟수
+                    'gaze_fixation_stability': float  # 시선 고정 안정성
+                },
+                'pupil': {
+                    'estimated_pupil_diameter': float,  # 추정 동공 크기
+                    'pupil_variability': float,  # 동공 변화율
+                    'cognitive_load_indicator': float  # 인지 부하 지표
+                },
+                'rppg': {  # 주기적으로 생성 (rPPG 버퍼가 찼을 때)
+                    'estimated_hr_bpm': float,  # 추정 심박수 (BPM)
+                    'estimated_hrv_ms': float,  # 심박 변이도 (ms)
+                    'signal_quality': float  # 신호 품질 0.0-1.0
+                },
+                'driver': {
+                    'identity': str,  # 운전자 ID 또는 'unknown'
+                    'confidence': float  # 신원 확인 신뢰도 0.0-1.0
+                }
+            }
+        """
         logger.debug(f"[face_processor_s_class] process_data input: {data}")
         if hasattr(data, 'face_landmarks'):
             logger.debug(f"[face_processor_s_class] face_landmarks: {getattr(data, 'face_landmarks', None)}")
