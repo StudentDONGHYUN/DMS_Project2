@@ -2,31 +2,41 @@ import cv2
 import numpy as np
 import math
 import time
+import json
+from pathlib import Path
 from mediapipe.python.solutions import drawing_utils as mp_drawing, face_mesh as mp_face_mesh, pose as mp_pose
 from mediapipe import solutions
 from mediapipe.framework.formats import landmark_pb2
 from core.definitions import DriverState
+from models.data_structures import UIMode, UIState
 
 class SClassAdvancedUIManager:
     """S-Class DMS v18+ 고급 UI 매니저 - 차세대 시각적 인터페이스"""
 
     def __init__(self):
-        # S-Class 전용 색상 팔레트 (미래지향적 사이버펑크 테마)
-        self.colors = {
-            "primary_blue": (255, 144, 30),      # 네온 블루
-            "accent_cyan": (255, 255, 0),        # 시아니즘
-            "warning_amber": (0, 191, 255),      # 호박색
-            "danger_red": (0, 69, 255),          # 위험 빨간색
-            "critical_magenta": (255, 0, 255),   # 임계 마젠타
-            "success_green": (0, 255, 127),      # 성공 녹색
-            "text_white": (255, 255, 255),       # 화이트
-            "text_silver": (192, 192, 192),      # 실버
-            "bg_dark": (20, 20, 40),             # 다크 배경
-            "bg_panel": (40, 40, 80),            # 패널 배경
-            "border_glow": (100, 200, 255),      # 글로우 테두리
-            "chart_line": (0, 255, 200),         # 차트 라인
-            "pulse_effect": (255, 100, 100),     # 펄스 효과
-        }
+        # 적응형 UI 모드 설정
+        self.current_ui_mode = UIMode.STANDARD
+        self.manual_mode_override = False  # 'M' 키로 수동 모드 전환 시 True
+        
+        # UI 테마 로드
+        self._load_ui_theme()
+        
+        # S-Class 전용 색상 팔레트 (config에서 로드 또는 기본값)
+        self.colors = getattr(self, 'theme_colors', {
+            "primary_blue": (255, 191, 0),       # #00BFFF -> BGR
+            "accent_cyan": (255, 255, 0),        # #00FFFF -> BGR
+            "warning_amber": (7, 193, 255),      # #FFC107 -> BGR
+            "danger_red": (0, 69, 255),          # #FF4500 -> BGR
+            "critical_magenta": (255, 0, 255),   # #FF00FF -> BGR
+            "success_green": (127, 255, 0),      # #00FF7F -> BGR
+            "text_white": (255, 255, 255),       # #FFFFFF -> BGR
+            "text_silver": (138, 138, 138),      # #8A8A8A -> BGR
+            "bg_dark": (46, 26, 26),             # #1a1a2e -> BGR
+            "bg_panel": (62, 33, 22),            # #16213e -> BGR
+            "border_glow": (255, 191, 0),        # 글로우 테두리
+            "chart_line": (255, 255, 0),         # 차트 라인
+            "pulse_effect": (255, 0, 255),       # 펄스 효과
+        })
         
         # S-Class 시스템 상태별 색상
         self.status_colors = {
@@ -62,6 +72,391 @@ class SClassAdvancedUIManager:
         self.pulse_phase = 0
         self.glow_intensity = 0
         
+    def _load_ui_theme(self):
+        """UI 테마 설정 로드"""
+        try:
+            theme_path = Path("config/ui_theme.json")
+            if theme_path.exists():
+                with open(theme_path, 'r', encoding='utf-8') as f:
+                    theme_data = json.load(f)
+                    
+                # 색상 변환 (HEX -> BGR)
+                self.theme_colors = {}
+                colors = theme_data.get('colors', {})
+                for name, hex_color in colors.items():
+                    # HEX -> RGB -> BGR 변환
+                    hex_color = hex_color.lstrip('#')
+                    rgb = tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
+                    bgr = (rgb[2], rgb[1], rgb[0])  # RGB -> BGR
+                    self.theme_colors[name.replace('_', '_')] = bgr
+                
+                # UI 모드별 설정
+                self.ui_mode_settings = theme_data.get('ui_modes', {})
+                
+        except Exception as e:
+            print(f"테마 로드 실패: {e}, 기본 테마 사용")
+            
+    def update_ui_mode(self, ui_state: UIState):
+        """UIState에 따라 UI 모드 업데이트"""
+        if not self.manual_mode_override:
+            # 자동 모드: risk_score에 따라 UI 모드 결정
+            ui_state.update_ui_mode_from_risk()
+            self.current_ui_mode = ui_state.ui_mode
+    
+    def handle_key_input(self, key):
+        """키 입력 처리 (적응형 UI 모드 순환)"""
+        if key == ord('m') or key == ord('M'):
+            # 'M' 키: UI 모드 순환
+            self.manual_mode_override = True
+            
+            if self.current_ui_mode == UIMode.MINIMAL:
+                self.current_ui_mode = UIMode.STANDARD
+            elif self.current_ui_mode == UIMode.STANDARD:
+                self.current_ui_mode = UIMode.ALERT
+            else:  # ALERT
+                self.current_ui_mode = UIMode.MINIMAL
+                
+            print(f"UI Mode changed to: {self.current_ui_mode.value}")
+        
+        elif key == ord('a') or key == ord('A'):
+            # 'A' 키: 자동 모드로 복귀
+            self.manual_mode_override = False
+            print("UI Mode: AUTO (based on risk score)")
+            
+        return key  # 다른 키는 그대로 반환
+    
+    def render_ui_state(self, frame, ui_state: UIState):
+        """UIState 기반 통합 렌더링 (지침서 요구사항)"""
+        # UI 모드 업데이트
+        self.update_ui_mode(ui_state)
+        
+        # 모드별 렌더링
+        if self.current_ui_mode == UIMode.MINIMAL:
+            return self._render_minimal_mode(frame, ui_state)
+        elif self.current_ui_mode == UIMode.ALERT:
+            return self._render_alert_mode(frame, ui_state)
+        else:  # STANDARD
+            return self._render_standard_mode(frame, ui_state)
+    
+    def _render_minimal_mode(self, frame, ui_state: UIState):
+        """MINIMAL 모드: 핵심 정보만 표시"""
+        h, w = frame.shape[:2]
+        
+        # 최소한의 상태 표시 (우측 상단)
+        status_text = f"SAFE" if ui_state.risk_score < 0.3 else f"RISK: {ui_state.risk_score:.1f}"
+        status_color = self.colors["success_green"] if ui_state.risk_score < 0.3 else self.colors["warning_amber"]
+        
+        cv2.putText(frame, status_text, (w - 150, 30), 
+                   cv2.FONT_HERSHEY_SIMPLEX, 0.7, status_color, 2)
+        
+        # 필수 경고만 표시
+        if ui_state.active_alert_type.value != "none":
+            self._draw_minimal_alert(frame, ui_state)
+        
+        # 모드 표시
+        cv2.putText(frame, "MINIMAL", (10, h - 20), 
+                   cv2.FONT_HERSHEY_SIMPLEX, 0.5, self.colors["text_silver"], 1)
+        
+        return frame
+    
+    def _render_standard_mode(self, frame, ui_state: UIState):
+        """STANDARD 모드: 주요 분석 정보 표시"""
+        # 기존 draw_enhanced_results와 유사하지만 UIState 기반
+        annotated_frame = frame.copy()
+        self._update_animation_state()
+        
+        # 메인 패널들
+        self._draw_main_status_panel_uistate(annotated_frame, ui_state)
+        self._draw_biometric_panel_uistate(annotated_frame, ui_state)
+        self._draw_system_health_panel(annotated_frame, ui_state)
+        
+        # 고급 시각화 (축소)
+        if ui_state.gaze.attention_score < 0.7:
+            self._draw_attention_warning(annotated_frame, ui_state)
+        
+        # 모드 표시
+        h = frame.shape[0]
+        cv2.putText(annotated_frame, "STANDARD", (10, h - 20), 
+                   cv2.FONT_HERSHEY_SIMPLEX, 0.5, self.colors["text_silver"], 1)
+        
+        return annotated_frame
+    
+    def _render_alert_mode(self, frame, ui_state: UIState):
+        """ALERT 모드: 위험 요소 강조, 시각적 경고 활성화"""
+        annotated_frame = frame.copy()
+        self._update_animation_state()
+        
+        # 강화된 배경 효과
+        self._apply_alert_background_effects(annotated_frame, ui_state)
+        
+        # 중앙 경고 (확대)
+        self._draw_critical_warning_center(annotated_frame, ui_state)
+        
+        # 핵심 위험 지표만 표시 (큰 글씨)
+        self._draw_critical_metrics(annotated_frame, ui_state)
+        
+        # 가장자리 펄스 효과
+        self._apply_edge_pulse_effect(annotated_frame, ui_state.risk_score)
+        
+        # 모드 표시
+        h = frame.shape[0]
+        cv2.putText(annotated_frame, "ALERT MODE", (10, h - 20), 
+                   cv2.FONT_HERSHEY_SIMPLEX, 0.5, self.colors["critical_magenta"], 2)
+        
+        return annotated_frame
+    
+    def _draw_minimal_alert(self, frame, ui_state: UIState):
+        """최소 모드용 간단한 경고"""
+        h, w = frame.shape[:2]
+        alert_text = ui_state.get_primary_concern()
+        
+        # 중앙 하단에 간단한 경고
+        text_size = cv2.getTextSize(alert_text, cv2.FONT_HERSHEY_SIMPLEX, 0.6, 2)[0]
+        x = (w - text_size[0]) // 2
+        y = h - 60
+        
+        cv2.putText(frame, alert_text, (x, y), 
+                   cv2.FONT_HERSHEY_SIMPLEX, 0.6, self.colors["danger_red"], 2)
+    
+    def _draw_main_status_panel_uistate(self, frame, ui_state: UIState):
+        """UIState 기반 메인 상태 패널"""
+        h, w = frame.shape[:2]
+        panel_w, panel_h = 400, 280
+        
+        # 패널 배경
+        overlay = frame.copy()
+        panel_points = np.array([[10, 10], [panel_w, 10], [panel_w, panel_h], [10, panel_h]], np.int32)
+        cv2.fillPoly(overlay, [panel_points], self.colors["bg_panel"])
+        cv2.addWeighted(overlay, 0.7, frame, 0.3, 0, frame)
+        cv2.polylines(frame, [panel_points], True, self.colors["border_glow"], 2)
+        
+        # 헤더
+        cv2.putText(frame, "S-CLASS DMS v18+", (20, 35), 
+                   cv2.FONT_HERSHEY_DUPLEX, 0.8, self.colors["primary_blue"], 2)
+        
+        y_current = 70
+        line_height = 22
+        
+        # 위험 점수
+        risk_color = self._get_risk_score_color(ui_state.risk_score)
+        cv2.putText(frame, f"RISK SCORE: {ui_state.risk_score:.2f}", (20, y_current), 
+                   cv2.FONT_HERSHEY_SIMPLEX, 0.6, risk_color, 2)
+        y_current += line_height
+        
+        # 안전 상태
+        cv2.putText(frame, f"STATUS: {ui_state.overall_safety_status.upper()}", (20, y_current), 
+                   cv2.FONT_HERSHEY_SIMPLEX, 0.6, risk_color, 2)
+        y_current += line_height
+        
+        # 주요 우려사항
+        concern = ui_state.get_primary_concern()
+        cv2.putText(frame, f"PRIMARY: {concern}", (20, y_current), 
+                   cv2.FONT_HERSHEY_SIMPLEX, 0.5, self.colors["accent_cyan"], 1)
+        y_current += line_height
+        
+        # 생체 정보
+        if ui_state.biometrics.heart_rate:
+            hr_color = self._get_pulse_color(ui_state.biometrics.heart_rate)
+            cv2.putText(frame, f"♥ HR: {ui_state.biometrics.heart_rate:.0f} BPM", 
+                       (20, y_current), cv2.FONT_HERSHEY_SIMPLEX, 0.5, hr_color, 1)
+            y_current += line_height
+        
+        # 주의집중도
+        cv2.putText(frame, f"👁 ATTENTION: {ui_state.gaze.attention_score:.2f}", 
+                   (20, y_current), cv2.FONT_HERSHEY_SIMPLEX, 0.5, 
+                   self.colors["success_green"] if ui_state.gaze.attention_score > 0.7 else self.colors["warning_amber"], 1)
+    
+    def _draw_biometric_panel_uistate(self, frame, ui_state: UIState):
+        """UIState 기반 생체측정 패널"""
+        h, w = frame.shape[:2]
+        panel_x, panel_y = w - 280, 10
+        panel_w, panel_h = 270, 200
+        
+        # 패널 배경
+        overlay = frame.copy()
+        cv2.rectangle(overlay, (panel_x, panel_y), (panel_x + panel_w, panel_y + panel_h), 
+                     self.colors["bg_panel"], -1)
+        cv2.addWeighted(overlay, 0.7, frame, 0.3, 0, frame)
+        cv2.rectangle(frame, (panel_x, panel_y), (panel_x + panel_w, panel_y + panel_h), 
+                     self.colors["border_glow"], 2)
+        
+        # 헤더
+        cv2.putText(frame, "BIOMETRICS", (panel_x + 10, panel_y + 25), 
+                   cv2.FONT_HERSHEY_DUPLEX, 0.6, self.colors["primary_blue"], 2)
+        
+        y_current = panel_y + 50
+        line_height = 20
+        
+        # 심박수
+        if ui_state.biometrics.heart_rate:
+            pulse_color = self._get_pulse_color(ui_state.biometrics.heart_rate)
+            cv2.putText(frame, f"♥ {ui_state.biometrics.heart_rate:.0f} BPM", 
+                       (panel_x + 10, y_current), cv2.FONT_HERSHEY_SIMPLEX, 0.6, pulse_color, 2)
+            y_current += line_height
+        
+        # 스트레스 레벨
+        if ui_state.biometrics.stress_level is not None:
+            stress_color = self._get_stress_color(ui_state.biometrics.stress_level)
+            cv2.putText(frame, f"📊 STRESS: {ui_state.biometrics.stress_level:.2f}", 
+                       (panel_x + 10, y_current), cv2.FONT_HERSHEY_SIMPLEX, 0.5, stress_color, 1)
+            y_current += line_height
+        
+        # 감정 상태
+        emotion_color = self._get_emotion_state_color(ui_state.face.emotion_state)
+        cv2.putText(frame, f"😐 {ui_state.face.emotion_state.value.upper()}", 
+                   (panel_x + 10, y_current), cv2.FONT_HERSHEY_SIMPLEX, 0.5, emotion_color, 1)
+    
+    def _draw_system_health_panel(self, frame, ui_state: UIState):
+        """시스템 건강도 패널"""
+        h, w = frame.shape[:2]
+        panel_x, panel_y = 10, h - 120
+        panel_w, panel_h = 300, 110
+        
+        # 패널 배경
+        overlay = frame.copy()
+        cv2.rectangle(overlay, (panel_x, panel_y), (panel_x + panel_w, panel_y + panel_h), 
+                     self.colors["bg_panel"], -1)
+        cv2.addWeighted(overlay, 0.7, frame, 0.3, 0, frame)
+        cv2.rectangle(frame, (panel_x, panel_y), (panel_x + panel_w, panel_y + panel_h), 
+                     self.colors["border_glow"], 2)
+        
+        # 헤더
+        cv2.putText(frame, "SYSTEM HEALTH", (panel_x + 10, panel_y + 20), 
+                   cv2.FONT_HERSHEY_DUPLEX, 0.6, self.colors["primary_blue"], 2)
+        
+        y_current = panel_y + 45
+        
+        # FPS
+        fps_color = self.colors["success_green"] if ui_state.system_health.processing_fps > 15 else self.colors["warning_amber"]
+        cv2.putText(frame, f"FPS: {ui_state.system_health.processing_fps:.1f}", 
+                   (panel_x + 10, y_current), cv2.FONT_HERSHEY_SIMPLEX, 0.5, fps_color, 1)
+        
+        # 전체 상태
+        status_color = self.status_colors.get(ui_state.system_health.overall_status.upper(), self.colors["text_white"])
+        cv2.putText(frame, f"STATUS: {ui_state.system_health.overall_status.upper()}", 
+                   (panel_x + 10, y_current + 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, status_color, 1)
+    
+    def _draw_critical_warning_center(self, frame, ui_state: UIState):
+        """ALERT 모드용 중앙 경고"""
+        h, w = frame.shape[:2]
+        
+        # 주요 위험 요소 강조
+        warning_text = ui_state.get_primary_concern()
+        font_scale = 2.0
+        thickness = 6
+        
+        text_size = cv2.getTextSize(warning_text, cv2.FONT_HERSHEY_DUPLEX, font_scale, thickness)[0]
+        x = (w - text_size[0]) // 2
+        y = h // 2
+        
+        # 펄스 효과가 있는 텍스트
+        pulse_intensity = 0.6 + 0.4 * math.sin(self.pulse_phase * 6)
+        warning_color = tuple(int(c * pulse_intensity) for c in self.colors["critical_magenta"])
+        
+        cv2.putText(frame, warning_text, (x, y), cv2.FONT_HERSHEY_DUPLEX, 
+                   font_scale, warning_color, thickness)
+        
+        # 위험 점수 표시
+        risk_text = f"RISK: {ui_state.risk_score:.1f}"
+        cv2.putText(frame, risk_text, (x, y + 60), cv2.FONT_HERSHEY_DUPLEX, 
+                   1.2, warning_color, 4)
+    
+    def _draw_critical_metrics(self, frame, ui_state: UIState):
+        """ALERT 모드용 핵심 지표"""
+        h, w = frame.shape[:2]
+        
+        # 좌측에 핵심 지표들
+        x, y = 20, h // 2 + 100
+        line_height = 30
+        
+        if ui_state.biometrics.heart_rate:
+            cv2.putText(frame, f"♥ {ui_state.biometrics.heart_rate:.0f}", 
+                       (x, y), cv2.FONT_HERSHEY_DUPLEX, 1.0, self.colors["danger_red"], 3)
+            y += line_height
+        
+        cv2.putText(frame, f"👁 {ui_state.gaze.attention_score:.2f}", 
+                   (x, y), cv2.FONT_HERSHEY_DUPLEX, 1.0, self.colors["warning_amber"], 3)
+    
+    def _apply_alert_background_effects(self, frame, ui_state: UIState):
+        """ALERT 모드 배경 효과"""
+        # 가장자리 빨간색 테두리
+        h, w = frame.shape[:2]
+        border_thickness = 10
+        
+        # 펄스 효과
+        pulse_intensity = 0.3 + 0.7 * math.sin(self.pulse_phase * 4)
+        border_color = tuple(int(c * pulse_intensity) for c in self.colors["critical_magenta"])
+        
+        # 상하좌우 테두리
+        cv2.rectangle(frame, (0, 0), (w, border_thickness), border_color, -1)
+        cv2.rectangle(frame, (0, h-border_thickness), (w, h), border_color, -1)
+        cv2.rectangle(frame, (0, 0), (border_thickness, h), border_color, -1)
+        cv2.rectangle(frame, (w-border_thickness, 0), (w, h), border_color, -1)
+    
+    def _apply_edge_pulse_effect(self, frame, risk_score):
+        """가장자리 펄스 효과"""
+        # 위험도에 따른 펄스 강도
+        pulse_rate = 2 + risk_score * 4  # 위험할수록 빠른 펄스
+        pulse_intensity = 0.2 + 0.8 * math.sin(self.pulse_phase * pulse_rate)
+        
+        # 오버레이로 가장자리 효과
+        overlay = frame.copy()
+        h, w = frame.shape[:2]
+        
+        # 그라데이션 효과
+        for i in range(20):
+            alpha = pulse_intensity * (20 - i) / 20 * 0.1
+            color = tuple(int(c * alpha) for c in self.colors["critical_magenta"])
+            cv2.rectangle(overlay, (i, i), (w-i, h-i), color, 1)
+        
+        cv2.addWeighted(overlay, 0.3, frame, 0.7, 0, frame)
+    
+    def _get_risk_score_color(self, risk_score):
+        """위험 점수에 따른 색상"""
+        if risk_score < 0.3:
+            return self.colors["success_green"]
+        elif risk_score < 0.7:
+            return self.colors["warning_amber"]
+        else:
+            return self.colors["danger_red"]
+    
+    def _get_stress_color(self, stress_level):
+        """스트레스 레벨에 따른 색상"""
+        if stress_level < 0.3:
+            return self.colors["success_green"]
+        elif stress_level < 0.7:
+            return self.colors["warning_amber"]
+        else:
+            return self.colors["danger_red"]
+    
+    def _get_emotion_state_color(self, emotion_state):
+        """감정 상태에 따른 색상"""
+        from models.data_structures import EmotionState
+        
+        color_map = {
+            EmotionState.NEUTRAL: self.colors["text_white"],
+            EmotionState.HAPPY: self.colors["success_green"],
+            EmotionState.STRESSED: self.colors["danger_red"],
+            EmotionState.ANGRY: self.colors["critical_magenta"],
+            EmotionState.FATIGUE: self.colors["warning_amber"],
+            EmotionState.DROWSY: self.colors["danger_red"],
+        }
+                 return color_map.get(emotion_state, self.colors["text_white"])
+    
+    def _draw_attention_warning(self, frame, ui_state: UIState):
+        """주의집중도 경고"""
+        if ui_state.gaze.attention_score < 0.7:
+            h, w = frame.shape[:2]
+            warning_text = "ATTENTION WARNING"
+            
+            # 중앙 상단에 경고
+            text_size = cv2.getTextSize(warning_text, cv2.FONT_HERSHEY_SIMPLEX, 0.8, 2)[0]
+            x = (w - text_size[0]) // 2
+            y = 60
+            
+            cv2.putText(frame, warning_text, (x, y), 
+                       cv2.FONT_HERSHEY_SIMPLEX, 0.8, self.colors["warning_amber"], 2)
+         
     def draw_enhanced_results(self, frame, metrics, state, results, gaze_classifier, dynamic_analyzer, sensor_backup, perf_stats, playback_info, driver_identifier, predictive_safety, emotion_recognizer):
         """S-Class 메인 렌더링 함수"""
         annotated_frame = frame.copy()

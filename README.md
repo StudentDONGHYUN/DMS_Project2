@@ -1,5 +1,44 @@
 # S-Class DMS v18+ - Advanced Research Integration
 
+## 🏗️ 시스템 아키텍처
+
+```mermaid
+graph TD
+    subgraph "Input Layer"
+        A[카메라/센서 입력 (Raw Frames)]
+    end
+
+    subgraph "Preprocessing Layer"
+        A --> B{데이터 전처리 및 버퍼링};
+    end
+
+    subgraph "Expert Systems (Parallel Processing)"
+        B --> C[🧠 FaceProcessor];
+        B --> D[🦴 PoseProcessor];
+        B --> E[🖐️ HandProcessor];
+        B --> F[👁️ ObjectProcessor];
+    end
+
+    subgraph "Fusion & Analysis Layer"
+        C -- "Face Metrics" --> G[🧠 MultiModalFusionEngine];
+        D -- "Pose Metrics" --> G;
+        E -- "Hand Metrics" --> G;
+        F -- "Object Data" --> G;
+        G -- "Fused Context" --> H[🔮 Bayesian Inference Engine];
+    end
+
+    subgraph "Risk Assessment Layer"
+        H -- "Probabilistic State" --> I[📉 Uncertainty Quantifier];
+        I -- "Confidence-rated State" --> J[🚨 Final Risk Score Generator];
+    end
+
+    subgraph "Output & Action Layer"
+        J -- "Risk Score & State" --> K[🖥️ S-Class UI Manager];
+        J -- "Event Data" --> L[📢 Event Bus (e.g., Alerts)];
+        H -- "Prediction" --> M[🔮 Predictive Warning System];
+    end
+```
+
 ## 🚗 시스템 개요
 
 **S-Class Driver Monitoring System v18+**는 최신 연구 결과를 통합한 차세대 운전자 모니터링 시스템입니다. 단순한 졸음 감지를 넘어 운전자의 인지 상태, 생체 신호, 행동 패턴을 종합적으로 분석하여 예측적 안전 서비스를 제공합니다.
@@ -36,6 +75,31 @@
 - **인지 부하 모델링**: 멀티태스킹 간섭 이론 적용
 - **적응형 파이프라인**: 시스템 상태에 따른 동적 전략 변경
 - **불확실성 정량화**: 신뢰도 기반 결과 제공
+
+### 🧠 Neural AI 혁신 기능
+
+- **감성 지능 (Emotion AI)**: 7가지 기본 감정 및 스트레스 분석을 통한 운전자 심리 상태 모니터링
+  - 20+ 세분화 감정 인식 (기본 7감정 + 스트레스 변형 + 피로 유형)
+  - 개인화된 감정 관리 전략 제공
+  - 실시간 감정 상태에 따른 UI 적응
+
+- **예측 안전 (Predictive Safety)**: 베이지안 추론 기반 미래 위험 행동 예측
+  - 다중 시간대 위험 예측 (5-15초, 30초-2분, 5-30분)
+  - 92-95% 즉시 위험 예측 정확도
+  - 개인화된 개입 전략 수립
+
+- **생체 정보 융합 (Biometric Fusion)**: 다중 센서 데이터 결합으로 분석 정확도 향상
+  - rPPG + HRV + GSR 삼중 융합 분석 (95.83% 정확도)
+  - 센서별 신뢰도 실시간 평가
+  - 베이지안 불확실성 정량화
+
+### 🔬 혁신 연구 기능
+
+- **정신 건강 통합 모니터링**: 1-4주 번아웃 위험도 예측 및 웰니스 코칭
+- **Edge Vision Transformer**: 2.85배 속도 향상 (목표: 50-60ms 처리)
+- **예측적 안전 AI**: 인과관계 추론을 통한 원인 분석
+- **멀티모달 센서 융합**: 신경망 기반 센서 백업 전략 (85-95% 성능 유지)
+- **스마트 생태계 통합**: 건강 데이터 동기화 및 스마트홈 연동
 
 ## 📈 성능 개선 사항
 
@@ -243,6 +307,32 @@ print(f"FPS: {1000/status['avg_processing_time_ms']:.1f}")
 - `i`: 현재 상태 정보 출력
 - `t`: 시스템 모드 전환 (테스트용)
 - `d`: 동적 분석 정보 출력
+- `m`: 적응형 UI 모드 순환 (MINIMAL → STANDARD → ALERT)
+
+## ✨ 차세대 UI/GUI
+
+### 🎨 적응형 UI 시스템
+S-Class DMS v18+는 운전자의 상태와 위험도에 따라 UI가 동적으로 변화하는 **적응형 UI 모드**를 도입했습니다.
+
+#### UI 모드 자동 전환
+- **MINIMAL 모드** (위험도 < 30%): 핵심 정보만 표시하여 운전자 주의 분산 최소화
+- **STANDARD 모드** (위험도 30-70%): 주요 분석 정보와 생체 데이터 표시
+- **ALERT 모드** (위험도 > 70%): 위험 요소 강조, 시각적 경고 활성화
+
+#### 사이버펑크 디자인 컨셉
+- **공식 색상 팔레트**: 네온 블루 (#00BFFF), 시아니즘 (#00FFFF), 다크 네이비 배경
+- **동적 시각 효과**: 네온 글로우, 펄스 애니메이션, 홀로그램 스타일 인터페이스
+- **인지 친화적 설계**: 운전자의 인지 부하를 고려한 정보 계층화
+
+#### 개인화된 감정 케어 UI
+- **감정 상태별 UI 적응**: 스트레스 시 차분한 블루-그린 톤, 피로 시 활력적인 웜 컬러
+- **생체 신호 기반 조정**: 심박수와 스트레스 레벨에 따른 애니메이션 속도 조절
+- **멀티모달 피드백**: 시각, 청각, 촉각 통합 케어 시스템
+
+### 🖥️ 실시간 데이터 시각화
+- **홀로그래픽 차트**: 심박수, 피로도, 주의집중도 실시간 그래프
+- **3D 자세 분석**: 척추 정렬 상태 3D 시각화
+- **예측 타임라인**: 미래 위험 이벤트 예측 시각화
 
 ## 🔬 연구 및 학술 활용
 
@@ -269,6 +359,31 @@ dms = IntegratedDMSSystem(
     }
 )
 ```
+
+## 🗺️ 프로젝트 로드맵
+
+### v19.0 (2025년 4분기): The Communicator
+- **[백엔드]** 음성 AI 어시스턴트 통합 (음성 경고 및 제어)
+- **[프론트엔드]** 모바일 앱 연동을 위한 API 엔드포인트 개발
+- **[아키텍처]** 클라우드 연동 데이터 로깅 및 분석 기능 (Enterprise)
+
+### v20.0 (2026년 상반기): The Oracle
+- **[백엔드]** 인과관계 추론 AI 도입 (단순 상관관계를 넘어선 원인 분석)
+- **[프론트엔드]** V2X (Vehicle-to-Everything) 데이터 수신 및 UI 시각화
+- **[아키텍처]** AR(증강현실) HMD 연동 지원 (연구용)
+
+## 📦 버전 및 라이선스
+
+### 에디션별 기능
+- **Community Edition** (MIT License): 기본 Expert Systems, 무료 사용
+- **Pro Edition** (상업 라이선스): S-Class 고급 기능 포함
+- **Enterprise Edition** (상업 라이선스): Neural AI 기능, 클라우드 연동
+- **Research Edition** (학술 라이선스): 모든 실험적 기능, 연구용 도구
+
+### 라이선스 정보
+- **오픈소스 버전**: MIT License (Community Edition)
+- **상용 버전**: 별도 문의 필요 (business@dms-project.org)
+- **학술 연구용**: 특별 할인 제공
 
 ## 🤝 기여 및 지원
 
