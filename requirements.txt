@@ -1,21 +1,25 @@
-opencv-python>=4.9.0
-numpy>=1.24.0
-mediapipe>=0.10.9
-scipy>=1.11.0
-scikit-learn>=1.3.0
-cachetools>=5.3.0
-psutil>=5.9.0
-# MediaPipe Tasks 의존성
-flatbuffers>=23.5.26
-protobuf>=4.25.0
-# 추가 AI/ML 라이브러리
-tensorflow>=2.15.0
-torch>=2.1.0
-# 성능 최적화
-numba>=0.58.0
-# GUI 및 시각화
-matplotlib>=3.7.0
-Pillow>=10.0.0
-# 기타 유틸리티
-attrs>=23.1.0
-absl-py>=2.0.0
+# S-Class DMS v19.0 Dependencies
+mediapipe==0.10.11
+opencv-python==4.9.0.80
+numpy==1.24.3
+scipy==1.11.4
+scikit-learn==1.3.2
+pandas==2.0.3
+Pillow==10.1.0
+requests==2.31.0
+aiofiles==23.2.1
+asyncio-mqtt==0.16.2
+psutil==5.9.6
+pydantic==2.5.3
+tqdm==4.66.1
+matplotlib==3.8.2
+seaborn==0.13.0
+plotly==5.17.0
+onnx==1.15.0
+onnxruntime==1.16.3
+pyaudio==0.2.11
+soundfile==0.12.1
+
+# Web Dashboard Dependencies
+Flask==3.0.0
+Werkzeug==3.0.1
