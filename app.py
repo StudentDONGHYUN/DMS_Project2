@@ -25,6 +25,10 @@ from systems.backup import SensorBackupManager
 
 # io_handler 모듈
 from io_handler.video_input import VideoInputManager, MultiVideoCalibrationManager
+from io_handler.ui import EnhancedUIManager
+
+# utils 모듈 - 랜드마크 그리기 함수들
+from utils.drawing import draw_face_landmarks_on_image, draw_pose_landmarks_on_image, draw_hand_landmarks_on_image
 
 logger = logging.getLogger(__name__)
 
@@ -196,6 +200,9 @@ class DMSApp:
             if not self.video_input_manager.initialize():
                 raise RuntimeError("입력 소스 초기화 실패")
             
+            # 7. UI 관리자 초기화 (랜드마크 시각화를 위해 추가)
+            self.ui_manager = EnhancedUIManager()
+            
             logger.info("[수정] S-Class DMS 시스템 v18+ (통합 수정) 초기화 완료")
             self.initialization_completed = True
             return True
@@ -230,14 +237,14 @@ class DMSApp:
                     integrated_results, # metrics
                     self.state_manager.get_current_state(), # state
                     mediapipe_results, # results (for landmarks)
-                    self.integrated_system.analysis_engine.gaze_classifier, # gaze_classifier
-                    self.integrated_system.analysis_engine.dynamic_analyzer, # dynamic_analyzer
-                    self.integrated_system.analysis_engine.sensor_backup, # sensor_backup
-                    self.performance_monitor.get_performance_metrics(), # perf_stats
+                    None, # gaze_classifier (simplified)
+                    None, # dynamic_analyzer (simplified)
+                    None, # sensor_backup (simplified)
+                    {"fps": getattr(self.mediapipe_manager, 'current_fps', 0.0), "system_health": 1.0}, # perf_stats
                     {"mode": "webcam"}, # playback_info (간소화)
-                    self.integrated_system.analysis_engine.driver_identifier, # driver_identifier
-                    self.integrated_system.analysis_engine.predictive_safety, # predictive_safety
-                    self.integrated_system.analysis_engine.emotion_recognizer, # emotion_recognizer
+                    None, # driver_identifier (simplified)
+                    None, # predictive_safety (simplified)
+                    None, # emotion_recognizer (simplified)
                 )
             else:
                 annotated_frame = self._create_basic_info_overlay(frame, 0) # Fallback to basic overlay
@@ -392,11 +399,11 @@ class DMSApp:
                 results = self.mediapipe_manager.get_latest_results()
                 if results:
                     detections = []
-                    if results.get('face') and results['face'].face_landmarks:
+                    if results.get('face') and results['face'] and hasattr(results['face'], 'face_landmarks') and results['face'].face_landmarks:
                         detections.append("Face")
-                    if results.get('pose') and results['pose'].pose_landmarks:
+                    if results.get('pose') and results['pose'] and hasattr(results['pose'], 'pose_landmarks') and results['pose'].pose_landmarks:
                         detections.append("Pose")
-                    if results.get('hand') and results['hand'].hand_landmarks:
+                    if results.get('hand') and results['hand'] and hasattr(results['hand'], 'hand_landmarks') and results['hand'].hand_landmarks:
                         detections.append("Hand")
                     
                     if detections:
@@ -604,15 +611,11 @@ class DMSApp:
             if hasattr(self, 'integrated_system') and hasattr(self.integrated_system, 'shutdown'):
                 await self.integrated_system.shutdown()
             
-            if hasattr(self, 'mediapipe_manager') and hasattr(self.mediapipe_manager, 'shutdown'):
-                shutdown_coro = self.mediapipe_manager.shutdown()
-                if shutdown_coro:
-                    await shutdown_coro
+            if hasattr(self, 'mediapipe_manager') and hasattr(self.mediapipe_manager, 'close'):
+                self.mediapipe_manager.close()
             
-            if hasattr(self, 'video_input_manager') and hasattr(self.video_input_manager, 'shutdown'):
-                shutdown_coro = self.video_input_manager.shutdown()
-                if shutdown_coro:
-                    await shutdown_coro
+            if hasattr(self, 'video_input_manager') and hasattr(self.video_input_manager, 'close'):
+                self.video_input_manager.close()
                     
         except Exception as e:
             logger.error(f"정리 중 오류: {e}")
