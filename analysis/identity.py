@@ -88,7 +88,13 @@ class DriverIdentificationSystem:
                 return 0.0
             similarity = dot_product / (norm1 * norm2)
             return max(0.0, similarity)
-        except:
+        except (TypeError, ValueError) as e:
+            # 배열 형태나 값 오류
+            logger.debug(f"특징 유사도 계산 실패 (데이터 문제): {e}")
+            return 0.0
+        except Exception as e:
+            # 기타 예상치 못한 오류
+            logger.warning(f"특징 유사도 계산 중 예상치 못한 오류: {e}")
             return 0.0
 
     def _load_driver_profiles(self):

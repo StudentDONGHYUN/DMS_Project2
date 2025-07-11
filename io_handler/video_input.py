@@ -3,9 +3,50 @@ import threading
 import time
 import os
 import logging
+import contextlib
 from typing import Optional, Dict
 
 logger = logging.getLogger(__name__)
+
+@contextlib.contextmanager
+def video_capture_context(source):
+    """VideoCapture 객체를 안전하게 관리하는 Context Manager"""
+    cap = None
+    try:
+        cap = cv2.VideoCapture(source)
+        if not cap.isOpened():
+            raise RuntimeError(f"VideoCapture 열기 실패: {source}")
+        yield cap
+    except Exception as e:
+        logger.error(f"VideoCapture Context Manager 오류: {e}")
+        raise
+    finally:
+        if cap is not None:
+            try:
+                cap.release()
+                logger.debug("VideoCapture 리소스 정리 완료")
+            except Exception as e:
+                logger.warning(f"VideoCapture 정리 중 오류: {e}")
+
+@contextlib.asynccontextmanager
+async def async_video_capture_context(source):
+    """비동기 VideoCapture Context Manager"""
+    cap = None
+    try:
+        cap = cv2.VideoCapture(source)
+        if not cap.isOpened():
+            raise RuntimeError(f"Async VideoCapture 열기 실패: {source}")
+        yield cap
+    except Exception as e:
+        logger.error(f"Async VideoCapture Context Manager 오류: {e}")
+        raise
+    finally:
+        if cap is not None:
+            try:
+                cap.release()
+                logger.debug("Async VideoCapture 리소스 정리 완료")
+            except Exception as e:
+                logger.warning(f"Async VideoCapture 정리 중 오류: {e}")
 
 class MultiVideoCalibrationManager:
     """다중 비디오 캘리브레이션 관리"""
@@ -396,9 +437,40 @@ class VideoInputManager:
         return not self.stopped
 
     def release(self):
-        self.stopped = True
-        if self.capture_thread and self.capture_thread.is_alive():
-            self.capture_thread.join(timeout=1)
-        if self.cap:
-            self.cap.release()
-        logger.info("VideoInputManager 리소스 해제 완료.")
+        """리소스 정리 (예외 안전성 보장)"""
+        try:
+            self.stopped = True
+        except Exception as e:
+            logger.warning(f"stopped 플래그 설정 실패: {e}")
+        
+        try:
+            if self.capture_thread and self.capture_thread.is_alive():
+                self.capture_thread.join(timeout=1)
+                if self.capture_thread.is_alive():
+                    logger.warning("캡처 스레드가 1초 내에 종료되지 않음")
+        except Exception as e:
+            logger.warning(f"캡처 스레드 종료 중 오류: {e}")
+        
+        try:
+            if self.cap:
+                self.cap.release()
+                self.cap = None
+        except Exception as e:
+            logger.warning(f"VideoCapture 해제 중 오류: {e}")
+        finally:
+            logger.info("VideoInputManager 리소스 해제 완료.")
+
+    def __enter__(self):
+        """Context Manager 진입"""
+        if not self.initialize():
+            raise RuntimeError("VideoInputManager 초기화 실패")
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        """Context Manager 종료 (예외 발생 시에도 리소스 정리 보장)"""
+        try:
+            self.release()
+        except Exception as e:
+            logger.error(f"Context Manager 종료 중 오류: {e}")
+        # 예외를 다시 발생시키지 않음 (리소스 정리가 우선)
+        return False

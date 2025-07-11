@@ -29,6 +29,7 @@ from io_handler.ui import EnhancedUIManager
 
 # utils 모듈 - 랜드마크 그리기 함수들
 from utils.drawing import draw_face_landmarks_on_image, draw_pose_landmarks_on_image, draw_hand_landmarks_on_image
+from utils.memory_monitor import MemoryMonitor, log_memory_usage
 
 logger = logging.getLogger(__name__)
 
@@ -52,6 +53,8 @@ class IntegratedCallbackAdapter:
         self.last_processed_timestamp = 0
         self.last_integrated_results = self._get_fallback_results()
         self.RESULT_TIMEOUT = 0.5 # 500ms
+        self.MAX_BUFFER_SIZE = 100  # 최대 버퍼 크기
+        self.buffer_cleanup_counter = 0
         
         logger.info("IntegratedCallbackAdapter (수정) 초기화 완료")
 
@@ -69,14 +72,32 @@ class IntegratedCallbackAdapter:
 
     async def _on_result(self, result_type, result, timestamp):
         ts = timestamp or int(time.time() * 1000)
-        async with self.processing_lock:
-            if ts not in self.result_buffer:
-                self.result_buffer[ts] = {'timestamp': time.time()}
-            self.result_buffer[ts][result_type] = result
-            logger.debug(f"Received {result_type} for ts {ts}. Buffer has keys: {list(self.result_buffer[ts].keys())}")
-            
-            if 'face' in self.result_buffer[ts] and 'pose' in self.result_buffer[ts]:
-                await self._process_results(ts)
+        try:
+            # 타임아웃이 있는 Lock 획득 (데드락 방지)
+            await asyncio.wait_for(self.processing_lock.acquire(), timeout=2.0)
+            try:
+                # 버퍼 크기 관리
+                if len(self.result_buffer) >= self.MAX_BUFFER_SIZE:
+                    await self._emergency_buffer_cleanup()
+                
+                if ts not in self.result_buffer:
+                    self.result_buffer[ts] = {'timestamp': time.time()}
+                self.result_buffer[ts][result_type] = result
+                logger.debug(f"Received {result_type} for ts {ts}. Buffer has keys: {list(self.result_buffer[ts].keys())}")
+                
+                # 주기적 정리
+                self.buffer_cleanup_counter += 1
+                if self.buffer_cleanup_counter % 10 == 0:
+                    await self._prune_buffer()
+                
+                if 'face' in self.result_buffer[ts] and 'pose' in self.result_buffer[ts]:
+                    await self._process_results(ts)
+            finally:
+                self.processing_lock.release()
+        except asyncio.TimeoutError:
+            logger.warning(f"Lock 획득 타임아웃 - {result_type} 결과 무시됨 (ts: {ts})")
+        except Exception as e:
+            logger.error(f"_on_result 처리 중 오류: {e}")
 
     async def _process_results(self, timestamp):
         if timestamp <= self.last_processed_timestamp:
@@ -105,6 +126,23 @@ class IntegratedCallbackAdapter:
         for ts in keys_to_delete:
             logger.warning(f"Timeout for timestamp {ts}, removing from buffer.")
             del self.result_buffer[ts]
+
+    async def _emergency_buffer_cleanup(self):
+        """긴급 버퍼 정리 - 가장 오래된 항목들을 강제로 제거"""
+        if len(self.result_buffer) == 0:
+            return
+        
+        logger.warning(f"긴급 버퍼 정리 실행 - 현재 크기: {len(self.result_buffer)}")
+        
+        # 타임스탬프 순으로 정렬하여 오래된 것부터 제거
+        sorted_timestamps = sorted(self.result_buffer.keys())
+        items_to_remove = len(self.result_buffer) - self.MAX_BUFFER_SIZE // 2
+        
+        for i in range(min(items_to_remove, len(sorted_timestamps))):
+            ts = sorted_timestamps[i]
+            del self.result_buffer[ts]
+        
+        logger.info(f"긴급 정리 완료 - 새 크기: {len(self.result_buffer)}")
 
     def get_latest_integrated_results(self):
         return self.last_integrated_results
@@ -161,6 +199,13 @@ class DMSApp:
         self.dynamic_analysis = DynamicAnalysisEngine()
         self.backup_manager = SensorBackupManager()
         self.calibration_manager = MultiVideoCalibrationManager(user_id)
+        
+        # 메모리 모니터링 설정
+        self.memory_monitor = MemoryMonitor(
+            warning_threshold_mb=600,
+            critical_threshold_mb=1000,
+            cleanup_callback=self._perform_memory_cleanup
+        )
         
         if isinstance(input_source, (list, tuple)) and len(input_source) > 1:
             self.calibration_manager.set_driver_continuity(self.is_same_driver)
@@ -480,6 +525,10 @@ class DMSApp:
             await self.initialize()
             logger.info("[수정] S-Class 통합 시스템 시작")
             
+            # 메모리 모니터링 시작
+            self.memory_monitor.start_monitoring(interval=15.0)  # 15초마다 체크
+            log_memory_usage("시스템 시작 후 ")
+            
             await asyncio.sleep(0.1)  # 초기화 대기
             frame_count = 0
             
@@ -604,10 +653,57 @@ class DMSApp:
         
         return True
 
+    def _perform_memory_cleanup(self):
+        """메모리 정리 콜백 함수"""
+        try:
+            logger.info("사용자 정의 메모리 정리 시작...")
+            
+            # 통합 콜백 어댑터 버퍼 정리
+            if hasattr(self, 'callback_adapter') and self.callback_adapter:
+                old_size = len(self.callback_adapter.result_buffer)
+                self.callback_adapter.result_buffer.clear()
+                logger.info(f"콜백 어댑터 버퍼 정리: {old_size}개 항목 제거")
+            
+            # MediaPipe 관련 정리 (실제 존재하는 속성만 사용)
+            if hasattr(self, 'mediapipe_manager') and self.mediapipe_manager:
+                logger.info("MediaPipe 매니저 상태 확인 완료")
+            
+            # 상태 관리자 관련 정리 (실제 존재하는 속성만 사용)
+            if hasattr(self, 'state_manager') and self.state_manager:
+                logger.info("상태 관리자 확인 완료")
+            
+            log_memory_usage("정리 후 ")
+            
+        except Exception as e:
+            logger.error(f"메모리 정리 중 오류: {e}")
+
+    def emergency_cleanup(self):
+        """긴급 메모리 정리 (메모리 모니터에서 호출)"""
+        try:
+            logger.critical("긴급 메모리 정리 시작...")
+            
+            # 기본 정리 수행
+            self._perform_memory_cleanup()
+            
+            # 추가 긴급 조치
+            if hasattr(self, 'callback_adapter'):
+                self.callback_adapter.buffer_cleanup_counter = 0
+                if hasattr(self.callback_adapter, 'result_buffer'):
+                    self.callback_adapter.result_buffer.clear()
+            
+            logger.critical("긴급 메모리 정리 완료")
+            
+        except Exception as e:
+            logger.error(f"긴급 메모리 정리 중 오류: {e}")
+
     async def _cleanup_async(self):
         """시스템 정리"""
         logger.info("[수정] 시스템 정리 시작")
         try:
+            # 메모리 모니터링 중지
+            if hasattr(self, 'memory_monitor'):
+                self.memory_monitor.stop_monitoring()
+            
             if hasattr(self, 'integrated_system') and hasattr(self.integrated_system, 'shutdown'):
                 await self.integrated_system.shutdown()
             
