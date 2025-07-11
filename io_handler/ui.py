@@ -441,7 +441,7 @@ class SClassAdvancedUIManager:
             EmotionState.FATIGUE: self.colors["warning_amber"],
             EmotionState.DROWSY: self.colors["danger_red"],
         }
-                 return color_map.get(emotion_state, self.colors["text_white"])
+        return color_map.get(emotion_state, self.colors["text_white"])
     
     def _draw_attention_warning(self, frame, ui_state: UIState):
         """주의집중도 경고"""
