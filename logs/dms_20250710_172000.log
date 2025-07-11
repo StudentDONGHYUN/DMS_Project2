@@ -1,0 +1,241 @@
+2025-07-10 17:20:26,324 - __main__                  - INFO     - S-Class 설정 완료: {'input_source': ['C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0097/video/SGA5100180S0097.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0126/video/SGA5100180S0126.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0135/video/SGA5100180S0135.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0086/video/SGA5100180S0086.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0101/video/SGA5100180S0101.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0109/video/SGA5100180S0109.mp4'], 'user_id': 'default', 'camera_position': <CameraPosition.DASHBOARD_CENTER: '대시보드 중앙'>, 'enable_calibration': False, 'is_same_driver': True, 'system_type': <AnalysisSystemType.STANDARD: 'standard'>, 'use_legacy_engine': False, 'sclass_features': {'enable_rppg': True, 'enable_saccade': True, 'enable_spinal_analysis': True, 'enable_tremor_fft': True, 'enable_bayesian_prediction': True}}
+2025-07-10 17:20:26,332 - systems.performance       - INFO     - PerformanceOptimizer 초기화 완료
+2025-07-10 17:20:26,335 - systems.personalization   - INFO     - 사용자 프로필 로드됨: default
+2025-07-10 17:20:26,336 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-10 17:20:26,337 - systems.dynamic           - INFO     - DynamicAnalysisEngine 초기화 완료
+2025-07-10 17:20:26,338 - systems.backup            - INFO     - SensorBackupManager 초기화 완료
+2025-07-10 17:20:26,338 - io_handler.video_input    - INFO     - 운전자 연속성 설정됨: 동일 운전자
+2025-07-10 17:20:26,343 - app                       - INFO     - 🚀 S-Class DMS 시스템 초기화 시작...
+2025-07-10 17:20:26,346 - systems.metrics_manager   - INFO     - MetricsManager 초기화 완료 - 히스토리 크기: 900
+2025-07-10 17:20:26,346 - integration.integrated_system - INFO     - 새로운 시스템 초기화 시작 - 성능 우선 전략
+2025-07-10 17:20:26,347 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 시작: standard
+2025-07-10 17:20:26,348 - analysis.factory.analysis_factory - INFO     - 지원 기능: advanced_drowsiness_detection, multi_level_distraction_detection, precise_head_pose_tracking, gaze_zone_classification, emotion_recognition...
+2025-07-10 17:20:26,348 - analysis.factory.analysis_factory - INFO     - 표준 성능 DMS 시스템 생성 중...
+2025-07-10 17:20:26,349 - analysis.fusion.fusion_engine_advanced - INFO     - MultiModalFusionEngine (S-Class) 초기화 완료 - 디지털 신경과학자 준비됨
+2025-07-10 17:20:26,423 - analysis.drowsiness       - INFO     - EnhancedDrowsinessDetector 초기화 완료
+2025-07-10 17:20:26,423 - analysis.emotion          - INFO     - EmotionRecognitionSystem 초기화 완료
+2025-07-10 17:20:26,424 - analysis.gaze             - INFO     - EnhancedSphericalGazeClassifier 초기화: 11개 구역 정의됨
+2025-07-10 17:20:26,425 - analysis.identity         - INFO     - 1명의 운전자 프로필 로드됨
+2025-07-10 17:20:26,426 - analysis.identity         - INFO     - DriverIdentificationSystem 초기화 완료
+2025-07-10 17:20:26,426 - analysis.processors.face_processor_s_class - INFO     - FaceDataProcessor (S-Class) 초기화 완료 - 디지털 심리학자 준비됨
+2025-07-10 17:20:26,427 - analysis.processors.pose_processor_s_class - INFO     - PoseDataProcessor (S-Class) 초기화 완료 - 자세 분석 전문가 준비됨
+2025-07-10 17:20:26,427 - analysis.processors.hand_processor_s_class - INFO     - HandDataProcessor (S-Class, 인터페이스 통합) 초기화 완료
+2025-07-10 17:20:26,427 - analysis.processors.object_processor_s_class - INFO     - ObjectDataProcessor (S-Class) 초기화 완료 - 행동 예측 전문가 준비됨
+2025-07-10 17:20:26,428 - analysis.orchestrator.orchestrator_advanced - INFO     - AnalysisOrchestrator (S-Class) 초기화 완료 - 지능형 지휘자 준비됨
+2025-07-10 17:20:26,428 - analysis.factory.analysis_factory - INFO     - 표준 DMS 시스템 생성 완료 - 균형 모드 활성화
+2025-07-10 17:20:26,429 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 완료: standard
+2025-07-10 17:20:26,429 - integration.integrated_system - INFO     - ✅ 새로운 standard 시스템 생성 완료
+2025-07-10 17:20:26,430 - integration.integrated_system - INFO     - IntegratedDMSSystem 초기화 완료 - 타입: standard, 레거시: False
+2025-07-10 17:20:26,430 - events.event_bus          - INFO     - EventBus 초기화 완료 - 중추 신경계 가동 시작
+2025-07-10 17:20:26,431 - events.event_bus          - INFO     - EventBus 시작됨 - 모든 우선순위 큐 처리 시작
+2025-07-10 17:20:26,431 - events.event_bus          - INFO     - 글로벌 이벤트 시스템 초기화 완료
+2025-07-10 17:20:26,431 - events.handlers           - INFO     - SafetyEventHandler 초기화 완료 - 안전 모니터링 시작
+2025-07-10 17:20:26,431 - events.event_bus          - INFO     - 글로벌 핸들러 등록: SafetyEventHandler
+2025-07-10 17:20:26,432 - events.handlers           - INFO     - AnalyticsEventHandler 초기화 완료 - 성능 모니터링 시작
+2025-07-10 17:20:26,432 - events.event_bus          - INFO     - 글로벌 핸들러 등록: AnalyticsEventHandler
+2025-07-10 17:20:26,432 - systems.metrics_manager   - INFO     - StateManager와 연결됨
+2025-07-10 17:20:26,433 - core.state_manager        - INFO     - MetricsManager와 연결됨
+2025-07-10 17:20:26,433 - integration.integrated_system - INFO     - IntegratedDMSSystem 비동기 초기화 완료
+2025-07-10 17:20:26,433 - app                       - ERROR    - 비동기 컴포넌트 초기화 실패: 'PersonalizationEngine' object has no attribute 'initialize'
+2025-07-10 17:20:26,434 - systems.performance       - INFO     - PerformanceOptimizer 초기화 완료
+2025-07-10 17:20:26,519 - systems.mediapipe_manager - INFO     - ✅ FaceLandmarker 초기화 완료 (블렌드셰이프 활성화)
+2025-07-10 17:20:26,893 - systems.mediapipe_manager - INFO     - ✅ PoseLandmarker 초기화 완료 (33 키포인트)
+2025-07-10 17:20:27,114 - systems.mediapipe_manager - INFO     - ✅ HandLandmarker 초기화 완료
+2025-07-10 17:20:27,241 - systems.mediapipe_manager - INFO     - ✅ ObjectDetector 초기화 완료 (주의산만 객체 감지)
+2025-07-10 17:20:27,574 - io_handler.video_input    - INFO     - ✅ 입력 소스 초기화 및 스레드 시작
+2025-07-10 17:20:27,575 - app                       - INFO     - 🚀 고도화된 S-Class DMS 시스템 v18+ (연구 결과 통합) 초기화 완료
+2025-07-10 17:20:27,575 - app                       - INFO     - 📊 S-Class 기능: rPPG 심박수, 사카드 분석, 스파인 정렬, FFT 떨림 분석, 베이지안 예측
+2025-07-10 17:20:27,576 - app                       - INFO     - 🎯 어텐션 메커니즘, 인지 부하 모델링, 적응형 파이프라인 활성화
+2025-07-10 17:20:27,576 - app                       - INFO     - 🎯 S-Class DMS v18+ 시스템 시작. 'q'를 눌러 종료, 스페이스바로 일시정지, 's'로 스크린샷 저장
+2025-07-10 17:20:27,709 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:28,614 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:28,708 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:28,755 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:28,806 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:28,877 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:28,943 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:29,021 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:29,123 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:29,180 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:29,240 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:29,287 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:29,331 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:29,397 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:29,439 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:29,498 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:30,120 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:30,167 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:30,220 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:30,263 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:30,309 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:30,369 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:30,415 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:30,464 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:30,497 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:30,547 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:30,585 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:30,639 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:30,676 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:30,745 - systems.performance       - WARNING  - 성능 최적화 모드 활성화
+2025-07-10 17:20:30,747 - systems.performance       - INFO     - 적용 전략: 프레임 스키핑 증가
+2025-07-10 17:20:30,747 - systems.performance       - INFO     - 적용 전략: 분석 해상도 감소
+2025-07-10 17:20:30,748 - systems.performance       - INFO     - 적용 전략: 일부 분석 기능 비활성화
+2025-07-10 17:20:30,748 - systems.performance       - INFO     - 적용 전략: 메모리 정리 강화
+2025-07-10 17:20:30,749 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:30,786 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:30,836 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:30,899 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:30,934 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:30,990 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:31,030 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:31,091 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:31,139 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:31,190 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:31,247 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:31,281 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:31,331 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:31,380 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:31,423 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:31,469 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:31,507 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:31,547 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:31,593 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:31,643 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:31,678 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:31,732 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:31,770 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:31,802 - systems.performance       - INFO     - 성능 최적화 모드 비활성화 - 정상 성능 복구
+2025-07-10 17:20:31,811 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:31,861 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:31,902 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:31,960 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:32,019 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:32,072 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:32,105 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:32,149 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:32,203 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:32,248 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:32,306 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:32,355 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:32,414 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:32,439 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:32,482 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:32,523 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:32,584 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:32,607 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:32,655 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:32,704 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:32,726 - io_handler.video_input    - INFO     - 다음 비디오 로드: SGA5100180S0126.mp4
+2025-07-10 17:20:32,757 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:32,793 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:32,843 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:32,892 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:32,920 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:32,978 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:33,064 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:33,126 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:33,217 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:33,296 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:33,363 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:33,411 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:33,458 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:33,514 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:33,556 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:33,618 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:33,653 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:33,712 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:33,782 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:33,827 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:33,897 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:33,933 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:33,997 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:34,043 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:34,095 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:34,146 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:34,208 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:34,280 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:34,315 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:34,364 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:34,408 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:34,452 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:34,516 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:34,578 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:34,624 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:34,671 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:34,717 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:34,775 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:34,809 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:34,862 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:34,902 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:34,960 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:34,996 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:35,047 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:35,094 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:35,145 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:35,190 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:35,233 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:35,283 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:35,321 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:35,365 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:35,414 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:35,468 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:35,506 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:35,549 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:35,600 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:35,658 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:35,698 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:35,758 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:35,784 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:35,831 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:35,893 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:35,916 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:35,960 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:36,000 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:36,042 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:36,092 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:36,143 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:36,189 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:36,244 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:36,289 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:36,348 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:36,384 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:36,447 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:36,492 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:36,552 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:36,612 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:36,682 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:36,716 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:36,773 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:36,811 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:36,869 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:36,892 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:36,926 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:36,976 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:37,006 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:37,065 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:37,110 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:37,138 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:37,183 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:37,227 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:37,283 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:37,354 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:37,403 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:37,449 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:37,509 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:37,558 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:37,606 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:37,662 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:37,706 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:37,752 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:37,793 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:37,831 - app                       - ERROR    - S-Class 프레임 처리 실패: 'EnhancedMediaPipeManager' object has no attribute 'last_face_result'
+2025-07-10 17:20:37,848 - app                       - INFO     - S-Class DMS v18+ 시스템 정리 중...
+2025-07-10 17:20:37,848 - systems.mediapipe_manager - INFO     - MediaPipe Task 리소스 정리 시작...
+2025-07-10 17:20:38,640 - io_handler.video_input    - INFO     - 다음 비디오 로드: SGA5100180S0135.mp4
+2025-07-10 17:20:40,021 - systems.mediapipe_manager - INFO     - MediaPipe Task 리소스 정리 완료.
+2025-07-10 17:20:40,021 - integration.integrated_system - INFO     - IntegratedDMSSystem 종료 시작
+2025-07-10 17:20:40,021 - events.event_bus          - INFO     - EventBus 종료 중...
+2025-07-10 17:20:40,028 - events.event_bus          - INFO     - EventBus 종료 완료
+2025-07-10 17:20:40,028 - events.event_bus          - INFO     - 글로벌 이벤트 시스템 종료 완료
+2025-07-10 17:20:40,028 - integration.integrated_system - INFO     - IntegratedDMSSystem 종료 완료
+2025-07-10 17:20:40,038 - app                       - ERROR    - 시스템 정리 중 오류: object NoneType can't be used in 'await' expression

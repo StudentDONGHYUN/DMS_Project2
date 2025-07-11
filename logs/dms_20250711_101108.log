@@ -1,0 +1,78 @@
+2025-07-11 10:11:14,743 - __main__                  - INFO     - main.py: main() 진입
+2025-07-11 10:11:36,061 - __main__                  - INFO     - S-Class 설정 완료: {'input_source': ['C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0097/video/SGA5100180S0097.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0126/video/SGA5100180S0126.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0135/video/SGA5100180S0135.mp4'], 'user_id': 'default', 'camera_position': <CameraPosition.REARVIEW_MIRROR: '백미러 위치'>, 'enable_calibration': False, 'is_same_driver': True, 'system_type': <AnalysisSystemType.STANDARD: 'standard'>, 'use_legacy_engine': False, 'sclass_features': {'enable_rppg': True, 'enable_saccade': True, 'enable_spinal_analysis': True, 'enable_tremor_fft': True, 'enable_bayesian_prediction': True}}
+2025-07-11 10:11:36,070 - systems.performance       - INFO     - PerformanceOptimizer 초기화 완료
+2025-07-11 10:11:36,071 - systems.personalization   - INFO     - 사용자 프로필 로드됨: default
+2025-07-11 10:11:36,072 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-11 10:11:36,073 - systems.dynamic           - INFO     - DynamicAnalysisEngine 초기화 완료
+2025-07-11 10:11:36,073 - systems.backup            - INFO     - SensorBackupManager 초기화 완료
+2025-07-11 10:11:36,074 - io_handler.video_input    - INFO     - 운전자 연속성 설정됨: 동일 운전자
+2025-07-11 10:11:36,074 - app                       - INFO     - app.py: DMSApp.run() 진입
+2025-07-11 10:11:36,078 - app                       - INFO     - 🚀 S-Class DMS 시스템 초기화 시작...
+2025-07-11 10:11:36,079 - systems.metrics_manager   - INFO     - MetricsManager 초기화 완료 - 히스토리 크기: 900
+2025-07-11 10:11:36,080 - integration.integrated_system - INFO     - 새로운 시스템 초기화 시작 - 성능 우선 전략
+2025-07-11 10:11:36,080 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 시작: standard
+2025-07-11 10:11:36,081 - analysis.factory.analysis_factory - INFO     - 지원 기능: advanced_drowsiness_detection, multi_level_distraction_detection, precise_head_pose_tracking, gaze_zone_classification, emotion_recognition...
+2025-07-11 10:11:36,081 - analysis.factory.analysis_factory - INFO     - 표준 성능 DMS 시스템 생성 중...
+2025-07-11 10:11:36,082 - analysis.fusion.fusion_engine_advanced - INFO     - MultiModalFusionEngine (S-Class) 초기화 완료 - 디지털 신경과학자 준비됨
+2025-07-11 10:11:36,239 - analysis.drowsiness       - INFO     - EnhancedDrowsinessDetector 초기화 완료
+2025-07-11 10:11:36,240 - analysis.emotion          - INFO     - EmotionRecognitionSystem 초기화 완료
+2025-07-11 10:11:36,242 - analysis.gaze             - INFO     - EnhancedSphericalGazeClassifier 초기화: 11개 구역 정의됨
+2025-07-11 10:11:36,243 - analysis.identity         - INFO     - 1명의 운전자 프로필 로드됨
+2025-07-11 10:11:36,244 - analysis.identity         - INFO     - DriverIdentificationSystem 초기화 완료
+2025-07-11 10:11:36,244 - analysis.processors.face_processor_s_class - INFO     - FaceDataProcessor (S-Class) 초기화 완료 - 디지털 심리학자 준비됨
+2025-07-11 10:11:36,244 - analysis.processors.pose_processor_s_class - INFO     - PoseDataProcessor (S-Class) 초기화 완료 - 자세 분석 전문가 준비됨
+2025-07-11 10:11:36,245 - analysis.processors.hand_processor_s_class - INFO     - HandDataProcessor (S-Class, 인터페이스 통합) 초기화 완료
+2025-07-11 10:11:36,245 - analysis.processors.object_processor_s_class - INFO     - ObjectDataProcessor (S-Class) 초기화 완료 - 행동 예측 전문가 준비됨
+2025-07-11 10:11:36,246 - analysis.orchestrator.orchestrator_advanced - INFO     - AnalysisOrchestrator (S-Class) 초기화 완료 - 지능형 지휘자 준비됨
+2025-07-11 10:11:36,246 - analysis.factory.analysis_factory - INFO     - 표준 DMS 시스템 생성 완료 - 균형 모드 활성화
+2025-07-11 10:11:36,246 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 완료: standard
+2025-07-11 10:11:36,246 - integration.integrated_system - INFO     - ✅ 새로운 standard 시스템 생성 완료
+2025-07-11 10:11:36,246 - integration.integrated_system - INFO     - IntegratedDMSSystem 초기화 완료 - 타입: standard, 레거시: False
+2025-07-11 10:11:36,246 - events.event_bus          - INFO     - EventBus 초기화 완료 - 중추 신경계 가동 시작
+2025-07-11 10:11:36,246 - events.event_bus          - INFO     - EventBus 시작됨 - 모든 우선순위 큐 처리 시작
+2025-07-11 10:11:36,246 - events.event_bus          - INFO     - 글로벌 이벤트 시스템 초기화 완료
+2025-07-11 10:11:36,246 - events.handlers           - INFO     - SafetyEventHandler 초기화 완료 - 안전 모니터링 시작
+2025-07-11 10:11:36,246 - events.event_bus          - INFO     - 글로벌 핸들러 등록: SafetyEventHandler
+2025-07-11 10:11:36,246 - events.handlers           - INFO     - AnalyticsEventHandler 초기화 완료 - 성능 모니터링 시작
+2025-07-11 10:11:36,246 - events.event_bus          - INFO     - 글로벌 핸들러 등록: AnalyticsEventHandler
+2025-07-11 10:11:36,246 - systems.metrics_manager   - INFO     - StateManager와 연결됨
+2025-07-11 10:11:36,246 - core.state_manager        - INFO     - MetricsManager와 연결됨
+2025-07-11 10:11:36,246 - integration.integrated_system - INFO     - IntegratedDMSSystem 비동기 초기화 완료
+2025-07-11 10:11:36,252 - systems.personalization   - INFO     - 사용자 프로필 로드됨: default
+2025-07-11 10:11:36,254 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-11 10:11:36,256 - app                       - INFO     - ✅ 모든 S-Class 컴포넌트 초기화 완료
+2025-07-11 10:11:36,258 - systems.performance       - INFO     - PerformanceOptimizer 초기화 완료
+2025-07-11 10:11:36,259 - systems.mediapipe_manager - INFO     - Windows/개발 환경 감지: models/face_landmarker.task에 CPU 모드 적용
+2025-07-11 10:11:36,338 - systems.mediapipe_manager - INFO     - ✅ FaceLandmarker 초기화 완료
+2025-07-11 10:11:36,347 - systems.mediapipe_manager - INFO     - Windows/개발 환경 감지: models/pose_landmarker_full.task에 CPU 모드 적용
+2025-07-11 10:11:36,589 - systems.mediapipe_manager - INFO     - ✅ PoseLandmarker 초기화 완료
+2025-07-11 10:11:36,603 - systems.mediapipe_manager - INFO     - Windows/개발 환경 감지: models/hand_landmarker.task에 CPU 모드 적용
+2025-07-11 10:11:36,688 - systems.mediapipe_manager - INFO     - ✅ HandLandmarker 초기화 완료
+2025-07-11 10:11:36,688 - systems.mediapipe_manager - INFO     - Windows/개발 환경 감지: models/efficientdet_lite0.tflite에 CPU 모드 적용
+2025-07-11 10:11:36,756 - systems.mediapipe_manager - INFO     - ✅ ObjectDetector 초기화 완료
+2025-07-11 10:11:36,756 - systems.mediapipe_manager - INFO     - MediaPipe 태스크 초기화 완료: 4/4 성공
+2025-07-11 10:11:36,756 - io_handler.video_input    - INFO     - VideoInputManager 초기화 시작 - 입력 소스: ['C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0097/video/SGA5100180S0097.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0126/video/SGA5100180S0126.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0135/video/SGA5100180S0135.mp4']
+2025-07-11 10:11:36,756 - io_handler.video_input    - INFO     - 비디오 플레이리스트: 3개 파일
+2025-07-11 10:11:36,756 - io_handler.video_input    - INFO     -   1. SGA5100180S0097.mp4
+2025-07-11 10:11:36,756 - io_handler.video_input    - INFO     -   2. SGA5100180S0126.mp4
+2025-07-11 10:11:36,756 - io_handler.video_input    - INFO     -   3. SGA5100180S0135.mp4
+2025-07-11 10:11:36,756 - io_handler.video_input    - INFO     - 비디오 파일 정보: SGA5100180S0097.mp4 (0.96MB, .mp4)
+2025-07-11 10:11:36,756 - io_handler.video_input    - INFO     - Windows/개발 환경: 표준 파일 디코더 사용
+2025-07-11 10:11:36,756 - io_handler.video_input    - INFO     - FFMPEG 백엔드로 시도 중...
+2025-07-11 10:11:36,805 - io_handler.video_input    - INFO     - ✅ FFMPEG 백엔드로 성공 (테스트 프레임: (720, 1280, 3))
+2025-07-11 10:11:36,805 - io_handler.video_input    - INFO     - 비디오 속성: 1280x720, 30.00fps, 114프레임, 3.8초
+2025-07-11 10:11:36,805 - io_handler.video_input    - INFO     - 비디오 코덱: h264
+2025-07-11 10:11:36,805 - io_handler.video_input    - INFO     - VideoCapture 객체 성공적으로 생성됨
+2025-07-11 10:11:36,821 - io_handler.video_input    - INFO     - 리더 스레드 시작 - 비디오 모드: True
+2025-07-11 10:11:36,821 - io_handler.video_input    - INFO     - 리더 스레드 시작 대기 중...
+2025-07-11 10:11:36,821 - io_handler.video_input    - INFO     - 비디오 속성 - 해상도: 1280x720, FPS: 30.00, 총 프레임: 114
+2025-07-11 10:11:36,839 - io_handler.video_input    - INFO     - 첫 번째 프레임 성공적으로 읽음 - 형태: (720, 1280, 3)
+2025-07-11 10:11:37,324 - io_handler.video_input    - INFO     - 첫 번째 프레임 대기 중 (최대 5.0초)...
+2025-07-11 10:11:37,324 - io_handler.video_input    - INFO     - ✅ 첫 번째 프레임 수신 성공
+2025-07-11 10:11:37,325 - io_handler.video_input    - INFO     - ✅ 입력 소스 초기화 및 스레드 시작 완료
+2025-07-11 10:11:37,326 - app                       - INFO     - 🚀 고도화된 S-Class DMS 시스템 v18+ (연구 결과 통합) 초기화 완료
+2025-07-11 10:11:37,327 - app                       - INFO     - 📊 S-Class 기능: rPPG 심박수, 사카드 분석, 스파인 정렬, FFT 떨림 분석, 베이지안 예측
+2025-07-11 10:11:37,327 - app                       - INFO     - 🎯 어텐션 메커니즘, 인지 부하 모델링, 적응형 파이프라인 활성화
+2025-07-11 10:11:37,328 - app                       - INFO     - 🎯 S-Class DMS v18+ 시스템 시작. 'q'를 눌러 종료, 스페이스바로 일시정지, 's'로 스크린샷 저장
+2025-07-11 10:11:37,329 - app                       - INFO     - app.py: main_async_loop 진입
+2025-07-11 10:11:37,490 - app                       - INFO     - OpenCV 창 초기화 완료

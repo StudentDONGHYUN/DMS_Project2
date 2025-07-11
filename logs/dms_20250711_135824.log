@@ -1,0 +1,1383 @@
+2025-07-11 13:58:32,030 - __main__                  - INFO     - [진단] main.py: main() 진입
+2025-07-11 13:58:37,215 - __main__                  - INFO     - S-Class 설정 완료: {'input_source': 0, 'user_id': 'default', 'camera_position': <CameraPosition.REARVIEW_MIRROR: '백미러 위치'>, 'enable_calibration': False, 'is_same_driver': True, 'system_type': <AnalysisSystemType.STANDARD: 'standard'>, 'use_legacy_engine': False, 'sclass_features': {'enable_rppg': True, 'enable_saccade': True, 'enable_spinal_analysis': True, 'enable_tremor_fft': True, 'enable_bayesian_prediction': True}}
+2025-07-11 13:58:37,215 - app                       - INFO     - [진단] app.py: DMSApp.__init__ 진입
+2025-07-11 13:58:37,215 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - input_source=0
+2025-07-11 13:58:37,218 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.input_source=0
+2025-07-11 13:58:37,218 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - user_id=default
+2025-07-11 13:58:37,218 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.user_id=default
+2025-07-11 13:58:37,219 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - camera_position=백미러 위치
+2025-07-11 13:58:37,219 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.camera_position=백미러 위치
+2025-07-11 13:58:37,219 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - enable_calibration=False
+2025-07-11 13:58:37,220 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.enable_calibration=False
+2025-07-11 13:58:37,220 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - is_same_driver=True
+2025-07-11 13:58:37,221 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.is_same_driver=True
+2025-07-11 13:58:37,221 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - system_type=AnalysisSystemType.STANDARD
+2025-07-11 13:58:37,221 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.system_type=AnalysisSystemType.STANDARD
+2025-07-11 13:58:37,222 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - use_legacy_engine=False
+2025-07-11 13:58:37,222 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.use_legacy_engine=False
+2025-07-11 13:58:37,222 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - sclass_features={'enable_rppg': True, 'enable_saccade': True, 'enable_spinal_analysis': True, 'enable_tremor_fft': True, 'enable_bayesian_prediction': True}
+2025-07-11 13:58:37,223 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.sclass_features={'enable_rppg': True, 'enable_saccade': True, 'enable_spinal_analysis': True, 'enable_tremor_fft': True, 'enable_bayesian_prediction': True}
+2025-07-11 13:58:37,224 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.running=False
+2025-07-11 13:58:37,225 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.paused=False
+2025-07-11 13:58:37,225 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.current_processed_frame=None
+2025-07-11 13:58:37,226 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.initialization_completed=False
+2025-07-11 13:58:37,227 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.safe_mode=False
+2025-07-11 13:58:37,227 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.error_count=0
+2025-07-11 13:58:37,228 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - S-Class 시스템 초기화 시작
+2025-07-11 13:58:37,230 - systems.performance       - INFO     - PerformanceOptimizer 초기화 완료
+2025-07-11 13:58:37,230 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.performance_monitor=<systems.performance.PerformanceOptimizer object at 0x000002CCE0E14590>
+2025-07-11 13:58:37,232 - systems.personalization   - INFO     - 사용자 프로필 로드됨: default
+2025-07-11 13:58:37,232 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.personalization_engine=<systems.personalization.PersonalizationEngine object at 0x000002CCE0DEED90>
+2025-07-11 13:58:37,233 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-11 13:58:37,233 - systems.dynamic           - INFO     - DynamicAnalysisEngine 초기화 완료
+2025-07-11 13:58:37,233 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.dynamic_analysis=<systems.dynamic.DynamicAnalysisEngine object at 0x000002CCD0ADA110>
+2025-07-11 13:58:37,234 - systems.backup            - INFO     - SensorBackupManager 초기화 완료
+2025-07-11 13:58:37,234 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.backup_manager=<systems.backup.SensorBackupManager object at 0x000002CCE0DF5BD0>
+2025-07-11 13:58:37,234 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.calibration_manager=<io_handler.video_input.MultiVideoCalibrationManager object at 0x000002CCE0E16F10>
+2025-07-11 13:58:37,235 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - 캘리브레이션 매니저 초기화 완료
+2025-07-11 13:58:37,235 - app                       - INFO     - [진단] app.py: run 진입
+2025-07-11 13:58:37,235 - app                       - INFO     - [진단] app.py: run - asyncio import 완료
+2025-07-11 13:58:37,236 - app                       - INFO     - [진단] app.py: run - frame_queue 생성, maxsize=5
+2025-07-11 13:58:37,236 - app                       - INFO     - [진단] app.py: run - stop_event 생성
+2025-07-11 13:58:37,238 - app                       - INFO     - [진단] app.py: run - display_thread 생성
+2025-07-11 13:58:37,242 - app                       - INFO     - [진단] app.py: run - opencv_display_loop 진입
+2025-07-11 13:58:37,243 - app                       - INFO     - [진단] app.py: run - display_thread 시작
+2025-07-11 13:58:37,244 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame=None 초기화
+2025-07-11 13:58:37,245 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:37,247 - app                       - INFO     - [진단] app.py: run - async_frame_producer 진입
+2025-07-11 13:58:37,248 - app                       - INFO     - [진단] app.py: initialize 진입
+2025-07-11 13:58:37,248 - app                       - INFO     - [진단] app.py: initialize - S-Class DMS 시스템 초기화 시작...
+2025-07-11 13:58:37,249 - app                       - INFO     - [진단] app.py: initialize - self.state_manager=<core.state_manager.EnhancedStateManager object at 0x000002CCE0D60C10>
+2025-07-11 13:58:37,250 - systems.metrics_manager   - INFO     - MetricsManager 초기화 완료 - 히스토리 크기: 900
+2025-07-11 13:58:37,251 - integration.integrated_system - INFO     - 새로운 시스템 초기화 시작 - 성능 우선 전략
+2025-07-11 13:58:37,251 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 시작: standard
+2025-07-11 13:58:37,251 - analysis.factory.analysis_factory - INFO     - 지원 기능: advanced_drowsiness_detection, multi_level_distraction_detection, precise_head_pose_tracking, gaze_zone_classification, emotion_recognition...
+2025-07-11 13:58:37,256 - analysis.factory.analysis_factory - INFO     - 표준 성능 DMS 시스템 생성 중...
+2025-07-11 13:58:37,256 - analysis.fusion.fusion_engine_advanced - INFO     - MultiModalFusionEngine (S-Class) 초기화 완료 - 디지털 신경과학자 준비됨
+2025-07-11 13:58:37,354 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:37,355 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:37,355 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:37,381 - analysis.drowsiness       - INFO     - EnhancedDrowsinessDetector 초기화 완료
+2025-07-11 13:58:37,381 - analysis.emotion          - INFO     - EmotionRecognitionSystem 초기화 완료
+2025-07-11 13:58:37,383 - analysis.gaze             - INFO     - EnhancedSphericalGazeClassifier 초기화: 11개 구역 정의됨
+2025-07-11 13:58:37,384 - analysis.identity         - INFO     - 1명의 운전자 프로필 로드됨
+2025-07-11 13:58:37,384 - analysis.identity         - INFO     - DriverIdentificationSystem 초기화 완료
+2025-07-11 13:58:37,385 - analysis.processors.face_processor_s_class - INFO     - FaceDataProcessor (S-Class) 초기화 완료 - 디지털 심리학자 준비됨
+2025-07-11 13:58:37,385 - analysis.processors.pose_processor_s_class - INFO     - PoseDataProcessor (S-Class) 초기화 완료 - 자세 분석 전문가 준비됨
+2025-07-11 13:58:37,385 - analysis.processors.hand_processor_s_class - INFO     - HandDataProcessor (S-Class, 인터페이스 통합) 초기화 완료
+2025-07-11 13:58:37,386 - analysis.processors.object_processor_s_class - INFO     - ObjectDataProcessor (S-Class) 초기화 완료 - 행동 예측 전문가 준비됨
+2025-07-11 13:58:37,386 - analysis.orchestrator.orchestrator_advanced - INFO     - AnalysisOrchestrator (S-Class) 초기화 완료 - 지능형 지휘자 준비됨
+2025-07-11 13:58:37,386 - analysis.factory.analysis_factory - INFO     - 표준 DMS 시스템 생성 완료 - 균형 모드 활성화
+2025-07-11 13:58:37,387 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 완료: standard
+2025-07-11 13:58:37,387 - integration.integrated_system - INFO     - ✅ 새로운 standard 시스템 생성 완료
+2025-07-11 13:58:37,387 - integration.integrated_system - INFO     - IntegratedDMSSystem 초기화 완료 - 타입: standard, 레거시: False
+2025-07-11 13:58:37,387 - app                       - INFO     - [진단] app.py: initialize - self.integrated_system=<integration.integrated_system.IntegratedDMSSystem object at 0x000002CCE23C0910>
+2025-07-11 13:58:37,387 - app                       - INFO     - [진단] app.py: initialize - 비동기 컴포넌트 초기화 await 전
+2025-07-11 13:58:37,388 - app                       - INFO     - [진단] app.py: _initialize_async_components 진입
+2025-07-11 13:58:37,389 - app                       - INFO     - [진단] app.py: _initialize_async_components - init_tasks 리스트 생성 전
+2025-07-11 13:58:37,390 - app                       - INFO     - [진단] app.py: _initialize_async_components - init_tasks=[<coroutine object IntegratedDMSSystem.initialize at 0x000002CCE27D13C0>, <coroutine object PersonalizationEngine.initialize at 0x000002CCE335B5A0>, <coroutine object DynamicAnalysisEngine.initialize at 0x000002CCE33529B0>]
+2025-07-11 13:58:37,391 - app                       - INFO     - [진단] app.py: _initialize_async_components - asyncio.gather await 전
+2025-07-11 13:58:37,391 - events.event_bus          - INFO     - EventBus 초기화 완료 - 중추 신경계 가동 시작
+2025-07-11 13:58:37,392 - events.event_bus          - INFO     - EventBus 시작됨 - 모든 우선순위 큐 처리 시작
+2025-07-11 13:58:37,392 - events.event_bus          - INFO     - 글로벌 이벤트 시스템 초기화 완료
+2025-07-11 13:58:37,393 - events.handlers           - INFO     - SafetyEventHandler 초기화 완료 - 안전 모니터링 시작
+2025-07-11 13:58:37,393 - events.event_bus          - INFO     - 글로벌 핸들러 등록: SafetyEventHandler
+2025-07-11 13:58:37,394 - events.handlers           - INFO     - AnalyticsEventHandler 초기화 완료 - 성능 모니터링 시작
+2025-07-11 13:58:37,394 - events.event_bus          - INFO     - 글로벌 핸들러 등록: AnalyticsEventHandler
+2025-07-11 13:58:37,395 - systems.metrics_manager   - INFO     - StateManager와 연결됨
+2025-07-11 13:58:37,395 - core.state_manager        - INFO     - MetricsManager와 연결됨
+2025-07-11 13:58:37,395 - integration.integrated_system - INFO     - IntegratedDMSSystem 비동기 초기화 완료
+2025-07-11 13:58:37,396 - systems.personalization   - INFO     - 사용자 프로필 로드됨: default
+2025-07-11 13:58:37,397 - systems.personalization   - INFO     - PersonalizationEngine for default initialized.
+2025-07-11 13:58:37,397 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-11 13:58:37,397 - systems.dynamic           - INFO     - DynamicAnalysisEngine for async initialized.
+2025-07-11 13:58:37,398 - app                       - INFO     - [진단] app.py: _initialize_async_components - 모든 S-Class 비동기 컴포넌트 초기화 완료
+2025-07-11 13:58:37,398 - app                       - INFO     - [진단] app.py: initialize - 비동기 컴포넌트 초기화 완료
+2025-07-11 13:58:37,400 - systems.performance       - INFO     - PerformanceOptimizer 초기화 완료
+2025-07-11 13:58:37,400 - systems.mediapipe_manager - INFO     - Windows/개발 환경 감지: models/face_landmarker.task에 CPU 모드 적용
+2025-07-11 13:58:37,474 - systems.mediapipe_manager - INFO     - ✅ FaceLandmarker 초기화 완료
+2025-07-11 13:58:37,474 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:37,474 - systems.mediapipe_manager - INFO     - Windows/개발 환경 감지: models/pose_landmarker_full.task에 CPU 모드 적용
+2025-07-11 13:58:37,474 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:37,808 - systems.mediapipe_manager - INFO     - ✅ PoseLandmarker 초기화 완료
+2025-07-11 13:58:37,808 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:37,808 - systems.mediapipe_manager - INFO     - Windows/개발 환경 감지: models/hand_landmarker.task에 CPU 모드 적용
+2025-07-11 13:58:37,941 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:37,941 - systems.mediapipe_manager - INFO     - ✅ HandLandmarker 초기화 완료
+2025-07-11 13:58:37,941 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:37,941 - systems.mediapipe_manager - INFO     - Windows/개발 환경 감지: models/efficientdet_lite0.tflite에 CPU 모드 적용
+2025-07-11 13:58:37,941 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:38,024 - systems.mediapipe_manager - INFO     - ✅ ObjectDetector 초기화 완료
+2025-07-11 13:58:38,024 - systems.mediapipe_manager - INFO     - MediaPipe 태스크 초기화 완료: 4/4 성공
+2025-07-11 13:58:38,024 - app                       - INFO     - [진단] app.py: initialize - self.mediapipe_manager(더미)=<systems.mediapipe_manager.EnhancedMediaPipeManager object at 0x000002CCE33A66D0>
+2025-07-11 13:58:38,038 - app                       - INFO     - [진단] app.py: initialize - callback_adapter=<app.SafeOrchestratorCallbackAdapter object at 0x000002CCE33A6C90>
+2025-07-11 13:58:38,039 - app                       - INFO     - [진단] app.py: initialize - self.mediapipe_manager.analysis_engine=<app.SafeOrchestratorCallbackAdapter object at 0x000002CCE33A6C90>
+2025-07-11 13:58:38,040 - app                       - INFO     - [진단] app.py: initialize - 콜백 재설정 전
+2025-07-11 13:58:38,040 - app                       - INFO     - [진단] app.py: initialize - 콜백 재설정 완료
+2025-07-11 13:58:38,040 - app                       - INFO     - [진단] app.py: initialize - self.video_input_manager=<io_handler.video_input.VideoInputManager object at 0x000002CCE33A7490>
+2025-07-11 13:58:38,040 - io_handler.video_input    - INFO     - VideoInputManager 초기화 시작 - 입력 소스: 0
+2025-07-11 13:58:38,040 - io_handler.video_input    - INFO     - 웹캠 모드 - 디바이스 0
+2025-07-11 13:58:38,040 - io_handler.video_input    - INFO     - Windows/개발 환경: 표준 웹캠 캡처 사용 (디바이스: 0)
+2025-07-11 13:58:38,138 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:38,139 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:38,140 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:38,252 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:38,252 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:38,253 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:38,369 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:38,369 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:38,369 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:38,485 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:38,485 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:38,485 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:38,588 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:38,588 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:38,589 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:38,704 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:38,705 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:38,706 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:38,820 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:38,820 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:38,821 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:38,936 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:38,936 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:38,937 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:39,054 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:39,054 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:39,055 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:39,169 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:39,170 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:39,171 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:39,286 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:39,286 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:39,287 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:39,403 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:39,403 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:39,403 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:39,519 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:39,519 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:39,519 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:39,638 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:39,638 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:39,638 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:39,754 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:39,754 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:39,754 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:39,868 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:39,868 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:39,868 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:39,985 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:39,985 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:39,985 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:40,090 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:40,090 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:40,090 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:40,203 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:40,203 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:40,204 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:40,319 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:40,320 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:40,320 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:40,435 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:40,435 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:40,436 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:40,555 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:40,555 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:40,555 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:40,669 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:40,669 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:40,670 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:40,788 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:40,788 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:40,788 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:40,904 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:40,904 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:40,904 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:41,019 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:41,019 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:41,019 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:41,136 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:41,136 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:41,136 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:41,253 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:41,253 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:41,254 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:41,361 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:41,362 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:41,362 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:41,471 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:41,471 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:41,471 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:41,585 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:41,585 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:41,586 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:41,703 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:41,703 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:41,704 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:41,821 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:41,821 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:41,821 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:41,936 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:41,936 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:41,937 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:42,052 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:42,052 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:42,052 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:42,169 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:42,169 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:42,169 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:42,272 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:42,272 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:42,272 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:42,386 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:42,387 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:42,387 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:42,503 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:42,503 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:42,503 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:42,618 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:42,618 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:42,618 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:42,737 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:42,737 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:42,737 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:42,842 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:42,842 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:42,842 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:42,946 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:42,946 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:42,946 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:43,053 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:43,053 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:43,054 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:43,171 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:43,171 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:43,172 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:43,286 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:43,286 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:43,286 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:43,404 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:43,404 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:43,404 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:43,519 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:43,519 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:43,519 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:43,621 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:43,621 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:43,621 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:43,737 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:43,738 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:43,738 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:43,853 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:43,853 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:43,853 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:43,972 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:43,972 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:43,972 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:44,081 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:44,082 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:44,082 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:44,187 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:44,188 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:44,189 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:44,303 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:44,303 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:44,303 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:44,419 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:44,419 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:44,419 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:44,536 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:44,536 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:44,536 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:44,653 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:44,653 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:44,653 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:44,769 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:44,769 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:44,769 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:44,886 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:44,886 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:44,886 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:45,003 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:45,003 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:45,003 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:45,119 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:45,119 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:45,120 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:45,236 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:45,236 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:45,236 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:45,353 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:45,353 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:45,353 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:45,471 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:45,471 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:45,471 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:45,587 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:45,587 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:45,588 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:45,703 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:45,703 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:45,704 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:45,820 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:45,821 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:45,821 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:45,936 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:45,936 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:45,937 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:46,055 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:46,055 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:46,055 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:46,170 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:46,170 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:46,171 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:46,286 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:46,286 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:46,287 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:46,403 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:46,403 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:46,403 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:46,519 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:46,519 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:46,519 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:46,637 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:46,637 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:46,637 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:46,753 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:46,753 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:46,753 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:46,855 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:46,855 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:46,855 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:46,969 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:46,969 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:46,970 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:47,074 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:47,074 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:47,074 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:47,185 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:47,185 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:47,185 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:47,304 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:47,305 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:47,305 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:47,419 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:47,419 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:47,419 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:47,538 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:47,538 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:47,538 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:47,653 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:47,653 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:47,653 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:47,770 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:47,770 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:47,771 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:47,886 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:47,886 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:47,886 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:48,003 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:48,004 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:48,004 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:48,120 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:48,130 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:48,130 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:48,239 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:48,239 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:48,239 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:48,352 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:48,352 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:48,352 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:48,471 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:48,471 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:48,471 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:48,586 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:48,586 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:48,587 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:48,702 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:48,702 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:48,702 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:48,804 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:48,804 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:48,804 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:48,920 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:48,920 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:48,920 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:49,038 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:49,038 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:49,038 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:49,153 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:49,153 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:49,154 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:49,270 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:49,270 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:49,271 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:49,387 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:49,387 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:49,388 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:49,502 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:49,502 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:49,502 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:49,618 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:49,618 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:49,618 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:49,735 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:49,735 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:49,735 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:49,838 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:49,838 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:49,838 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:49,946 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:49,946 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:49,946 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:50,057 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:50,057 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:50,057 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:50,161 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:50,161 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:50,161 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:50,271 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:50,271 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:50,271 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:50,386 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:50,386 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:50,386 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:50,490 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:50,490 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:50,490 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:50,604 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:50,604 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:50,604 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:50,721 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:50,722 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:50,722 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:50,836 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:50,836 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:50,836 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:50,954 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:50,954 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:50,955 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:51,070 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:51,071 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:51,071 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:51,187 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:51,188 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:51,188 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:51,303 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:51,303 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:51,303 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:51,417 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:51,417 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:51,417 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:51,521 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:51,521 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:51,521 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:51,637 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:51,637 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:51,637 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:51,754 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:51,754 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:51,754 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:51,870 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:51,870 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:51,871 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:51,986 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:51,986 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:51,987 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:52,104 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:52,104 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:52,104 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:52,220 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:52,221 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:52,222 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:52,336 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:52,337 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:52,337 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:52,453 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:52,454 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:52,454 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:52,569 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:52,569 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:52,569 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:52,688 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:52,688 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:52,688 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:52,804 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:52,804 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:52,804 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:52,913 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:52,913 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:52,913 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:53,033 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:53,033 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:53,033 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:53,137 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:53,138 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:53,138 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:53,240 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:53,240 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:53,241 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:53,355 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:53,355 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:53,355 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:53,460 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:53,460 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:53,460 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:53,570 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:53,571 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:53,571 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:53,687 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:53,688 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:53,688 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:53,802 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:53,802 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:53,802 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:53,920 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:53,921 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:53,921 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:54,037 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:54,038 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:54,038 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:54,152 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:54,152 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:54,153 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:54,255 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:54,255 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:54,255 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:54,368 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:54,368 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:54,369 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:54,485 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:54,485 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:54,485 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:54,587 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:54,588 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:54,588 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:54,704 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:54,704 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:54,704 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:54,820 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:54,821 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:54,821 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:54,937 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:54,937 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:54,937 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:55,053 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:55,053 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:55,053 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:55,168 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:55,168 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:55,169 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:55,271 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:55,271 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:55,272 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:55,386 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:55,386 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:55,386 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:55,503 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:55,503 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:55,504 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:55,607 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:55,608 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:55,608 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:55,714 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:55,715 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:55,715 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:55,820 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:55,821 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:55,821 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:55,936 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:55,936 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:55,936 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:56,052 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:56,052 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:56,052 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:56,161 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:56,161 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:56,161 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:56,288 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:56,288 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:56,288 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:56,404 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:56,404 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:56,404 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:56,521 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:56,521 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:56,521 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:56,640 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:56,640 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:56,641 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:56,754 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:56,754 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:56,754 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:56,868 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:56,868 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:56,868 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:56,986 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:56,986 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:56,986 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:57,103 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:57,103 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:57,103 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:57,219 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:57,219 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:57,220 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:57,337 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:57,337 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:57,337 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:57,453 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:57,453 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:57,453 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:57,569 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:57,569 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:57,569 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:57,685 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:57,685 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:57,685 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:57,802 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:57,802 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:57,802 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:57,920 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:57,920 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:57,920 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:58,035 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:58,035 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:58,035 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:58,153 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:58,153 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:58,153 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:58,271 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:58,271 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:58,271 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:58,388 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:58,388 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:58,388 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:58,504 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:58,504 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:58,505 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:58,620 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:58,620 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:58,621 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:58,735 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:58,735 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:58,736 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:58,838 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:58,838 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:58,838 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:58,953 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:58,953 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:58,953 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:59,070 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:59,070 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:59,071 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:59,186 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:59,186 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:59,186 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:59,303 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:59,303 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:59,304 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:59,420 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:59,420 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:59,420 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:59,535 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:59,535 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:59,536 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:59,638 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:59,638 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:59,638 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:59,753 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:59,753 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:59,753 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:59,869 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:59,869 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:59,870 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:58:59,986 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:58:59,986 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:58:59,986 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:00,105 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:00,105 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:00,105 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:00,219 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:00,219 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:00,219 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:00,338 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:00,338 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:00,338 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:00,452 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:00,452 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:00,452 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:00,555 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:00,555 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:00,555 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:00,671 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:00,671 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:00,671 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:00,787 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:00,788 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:00,788 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:00,902 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:00,903 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:00,903 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:01,019 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:01,019 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:01,020 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:01,136 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:01,136 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:01,137 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:01,239 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:01,242 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:01,242 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:01,358 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:01,379 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:01,379 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:01,486 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:01,512 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:01,517 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:01,641 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:01,649 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:01,649 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:01,755 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:01,758 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:01,761 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:01,869 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:01,869 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:01,869 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:01,985 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:01,985 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:01,985 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:02,088 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:02,089 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:02,089 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:02,205 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:02,205 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:02,205 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:02,320 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:02,320 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:02,320 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:02,436 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:02,436 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:02,436 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:02,553 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:02,553 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:02,553 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:02,670 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:02,670 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:02,671 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:02,786 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:02,786 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:02,786 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:02,905 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:02,905 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:02,905 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:03,019 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:03,019 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:03,019 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:03,136 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:03,136 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:03,136 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:03,253 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:03,254 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:03,255 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:03,370 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:03,370 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:03,371 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:03,485 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:03,485 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:03,485 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:03,588 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:03,588 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:03,588 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:03,672 - io_handler.video_input    - INFO     - 웹캠 테스트 성공: (480, 640, 3)
+2025-07-11 13:59:03,672 - io_handler.video_input    - INFO     - VideoCapture 객체 성공적으로 생성됨
+2025-07-11 13:59:03,672 - io_handler.video_input    - INFO     - [진단] VideoCapture backend: MSMF, codec:    , 총 프레임: -1
+2025-07-11 13:59:03,672 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 진입
+2025-07-11 13:59:03,672 - io_handler.video_input    - INFO     - 리더 스레드 시작 대기 중...
+2025-07-11 13:59:03,672 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:03,690 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:03,690 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:03,695 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:03,695 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:03,695 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:03,725 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:03,733 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:03,733 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:03,769 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:03,773 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:03,773 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:03,806 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:03,806 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:03,806 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:03,808 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:03,816 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:03,816 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:03,851 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:03,853 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:03,853 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:03,888 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:03,892 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:03,893 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:03,923 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:03,923 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:03,924 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:03,927 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:03,934 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:03,935 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:03,970 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:03,973 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:03,974 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:04,008 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:04,016 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,016 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:04,040 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:04,040 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:04,041 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:04,052 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:04,054 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,055 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:04,089 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:04,091 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,091 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:04,127 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:04,134 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,134 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:04,154 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:04,154 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:04,154 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:04,169 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:04,171 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,171 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:04,188 - io_handler.video_input    - INFO     - 첫 번째 프레임 대기 중 (최대 5.0초)...
+2025-07-11 13:59:04,188 - io_handler.video_input    - INFO     - ✅ 첫 번째 프레임 수신 성공
+2025-07-11 13:59:04,188 - io_handler.video_input    - INFO     - ✅ 입력 소스 초기화 및 스레드 시작 완료
+2025-07-11 13:59:04,189 - app                       - INFO     - [진단] app.py: initialize - S-Class DMS 시스템 v18+ (연구 결과 통합) 초기화 완료
+2025-07-11 13:59:04,189 - app                       - INFO     - [진단] app.py: initialize - S-Class 기능/어텐션/인지 부하/적응형 파이프라인 활성화
+2025-07-11 13:59:04,189 - app                       - INFO     - [진단] app.py: initialize - self.initialization_completed=True
+2025-07-11 13:59:04,190 - app                       - INFO     - [진단] app.py: run - S-Class DMS 시스템 초기화 완료
+2025-07-11 13:59:04,190 - app                       - INFO     - [진단] app.py: run - S-Class 기능/어텐션/인지 부하/적응형 파이프라인 활성화
+2025-07-11 13:59:04,191 - app                       - INFO     - [진단] app.py: run - S-Class DMS v18+ 시스템 시작 안내
+2025-07-11 13:59:04,206 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:04,208 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,208 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:04,244 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:04,251 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,251 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:04,257 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get timeout (queue.Empty)
+2025-07-11 13:59:04,258 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:04,258 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:04,286 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:04,290 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,291 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:04,306 - app                       - INFO     - [진단] app.py: run - 초기 대기 완료
+2025-07-11 13:59:04,307 - app                       - INFO     - [진단] app.py: run - frame_count 초기화: 0
+2025-07-11 13:59:04,308 - app                       - INFO     - [진단] app.py: run - async_frame_producer 루프 반복, frame_count=0
+2025-07-11 13:59:04,308 - io_handler.video_input    - INFO     - [진단] video_input.get_frame 진입
+2025-07-11 13:59:04,313 - io_handler.video_input    - INFO     - [진단] video_input.get_frame: ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,314 - app                       - INFO     - [진단] app.py: run - async_frame_producer - get_frame() 반환값: <class 'numpy.ndarray'>, shape: (480, 640, 3)
+2025-07-11 13:59:04,314 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results: {'face': None, 'pose': None, 'hand': None, 'object': None}
+2025-07-11 13:59:04,314 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results 있음, 어노테이션 시도
+2025-07-11 13:59:04,314 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 13:59:04,317 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - frame type: <class 'numpy.ndarray'>, mediapipe_results type: <class 'dict'>
+2025-07-11 13:59:04,317 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - mediapipe_results가 None 또는 비어있음, 원본 프레임 반환
+2025-07-11 13:59:04,318 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_queue.put_nowait 성공
+2025-07-11 13:59:04,318 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 13:59:04,318 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_count 증가: 1
+2025-07-11 13:59:04,319 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 13:59:04,319 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame is not None, imshow 시도
+2025-07-11 13:59:04,321 - app                       - INFO     - [진단] app.py: run - async_frame_producer - 루프 끝, 다음 반복
+2025-07-11 13:59:04,322 - app                       - INFO     - [진단] app.py: run - async_frame_producer 루프 반복, frame_count=1
+2025-07-11 13:59:04,322 - io_handler.video_input    - INFO     - [진단] video_input.get_frame 진입
+2025-07-11 13:59:04,325 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:04,325 - io_handler.video_input    - INFO     - [진단] video_input.get_frame: ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,327 - app                       - INFO     - [진단] app.py: run - async_frame_producer - get_frame() 반환값: <class 'numpy.ndarray'>, shape: (480, 640, 3)
+2025-07-11 13:59:04,328 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results: {'face': None, 'pose': None, 'hand': None, 'object': None}
+2025-07-11 13:59:04,329 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results 있음, 어노테이션 시도
+2025-07-11 13:59:04,329 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 13:59:04,330 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - frame type: <class 'numpy.ndarray'>, mediapipe_results type: <class 'dict'>
+2025-07-11 13:59:04,330 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - mediapipe_results가 None 또는 비어있음, 원본 프레임 반환
+2025-07-11 13:59:04,331 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_queue.put_nowait 성공
+2025-07-11 13:59:04,331 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_count 증가: 2
+2025-07-11 13:59:04,334 - app                       - INFO     - [진단] app.py: run - async_frame_producer - 루프 끝, 다음 반복
+2025-07-11 13:59:04,334 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,334 - app                       - INFO     - [진단] app.py: run - async_frame_producer 루프 반복, frame_count=2
+2025-07-11 13:59:04,334 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:04,334 - io_handler.video_input    - INFO     - [진단] video_input.get_frame 진입
+2025-07-11 13:59:04,344 - io_handler.video_input    - INFO     - [진단] video_input.get_frame: ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,344 - app                       - INFO     - [진단] app.py: run - async_frame_producer - get_frame() 반환값: <class 'numpy.ndarray'>, shape: (480, 640, 3)
+2025-07-11 13:59:04,344 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results: {'face': None, 'pose': None, 'hand': None, 'object': None}
+2025-07-11 13:59:04,344 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results 있음, 어노테이션 시도
+2025-07-11 13:59:04,344 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 13:59:04,349 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - frame type: <class 'numpy.ndarray'>, mediapipe_results type: <class 'dict'>
+2025-07-11 13:59:04,349 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - mediapipe_results가 None 또는 비어있음, 원본 프레임 반환
+2025-07-11 13:59:04,349 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_queue.put_nowait 성공
+2025-07-11 13:59:04,350 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_count 증가: 3
+2025-07-11 13:59:04,353 - app                       - INFO     - [진단] app.py: run - async_frame_producer - 루프 끝, 다음 반복
+2025-07-11 13:59:04,353 - app                       - INFO     - [진단] app.py: run - async_frame_producer 루프 반복, frame_count=3
+2025-07-11 13:59:04,353 - io_handler.video_input    - INFO     - [진단] video_input.get_frame 진입
+2025-07-11 13:59:04,370 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:04,377 - io_handler.video_input    - INFO     - [진단] video_input.get_frame: ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,378 - app                       - INFO     - [진단] app.py: run - async_frame_producer - get_frame() 반환값: <class 'numpy.ndarray'>, shape: (480, 640, 3)
+2025-07-11 13:59:04,378 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results: {'face': None, 'pose': None, 'hand': None, 'object': None}
+2025-07-11 13:59:04,378 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results 있음, 어노테이션 시도
+2025-07-11 13:59:04,378 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 13:59:04,381 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - frame type: <class 'numpy.ndarray'>, mediapipe_results type: <class 'dict'>
+2025-07-11 13:59:04,381 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - mediapipe_results가 None 또는 비어있음, 원본 프레임 반환
+2025-07-11 13:59:04,382 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_queue.put_nowait 성공
+2025-07-11 13:59:04,382 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_count 증가: 4
+2025-07-11 13:59:04,387 - app                       - INFO     - [진단] app.py: run - async_frame_producer - 루프 끝, 다음 반복
+2025-07-11 13:59:04,387 - app                       - INFO     - [진단] app.py: run - async_frame_producer 루프 반복, frame_count=4
+2025-07-11 13:59:04,388 - io_handler.video_input    - INFO     - [진단] video_input.get_frame 진입
+2025-07-11 13:59:04,408 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,408 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:04,439 - io_handler.video_input    - INFO     - [진단] video_input.get_frame: ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,440 - app                       - INFO     - [진단] app.py: run - async_frame_producer - get_frame() 반환값: <class 'numpy.ndarray'>, shape: (480, 640, 3)
+2025-07-11 13:59:04,440 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results: {'face': None, 'pose': None, 'hand': None, 'object': None}
+2025-07-11 13:59:04,441 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results 있음, 어노테이션 시도
+2025-07-11 13:59:04,441 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 13:59:04,441 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - frame type: <class 'numpy.ndarray'>, mediapipe_results type: <class 'dict'>
+2025-07-11 13:59:04,442 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - mediapipe_results가 None 또는 비어있음, 원본 프레임 반환
+2025-07-11 13:59:04,442 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:04,442 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_queue.put_nowait 성공
+2025-07-11 13:59:04,443 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_count 증가: 5
+2025-07-11 13:59:04,457 - app                       - INFO     - [진단] app.py: run - async_frame_producer - 루프 끝, 다음 반복
+2025-07-11 13:59:04,457 - app                       - INFO     - [진단] app.py: run - async_frame_producer 루프 반복, frame_count=5
+2025-07-11 13:59:04,458 - io_handler.video_input    - INFO     - [진단] video_input.get_frame 진입
+2025-07-11 13:59:04,477 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,478 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:04,506 - io_handler.video_input    - INFO     - [진단] video_input.get_frame: ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,507 - app                       - INFO     - [진단] app.py: run - async_frame_producer - get_frame() 반환값: <class 'numpy.ndarray'>, shape: (480, 640, 3)
+2025-07-11 13:59:04,508 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results: {'face': None, 'pose': None, 'hand': None, 'object': None}
+2025-07-11 13:59:04,508 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results 있음, 어노테이션 시도
+2025-07-11 13:59:04,509 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 13:59:04,509 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - frame type: <class 'numpy.ndarray'>, mediapipe_results type: <class 'dict'>
+2025-07-11 13:59:04,509 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - mediapipe_results가 None 또는 비어있음, 원본 프레임 반환
+2025-07-11 13:59:04,509 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_queue.put_nowait 성공
+2025-07-11 13:59:04,509 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_count 증가: 6
+2025-07-11 13:59:04,512 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:04,515 - app                       - INFO     - [진단] app.py: run - async_frame_producer - 루프 끝, 다음 반복
+2025-07-11 13:59:04,515 - app                       - INFO     - [진단] app.py: run - async_frame_producer 루프 반복, frame_count=6
+2025-07-11 13:59:04,515 - io_handler.video_input    - INFO     - [진단] video_input.get_frame 진입
+2025-07-11 13:59:04,537 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,538 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:04,569 - io_handler.video_input    - INFO     - [진단] video_input.get_frame: ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,571 - app                       - INFO     - [진단] app.py: run - async_frame_producer - get_frame() 반환값: <class 'numpy.ndarray'>, shape: (480, 640, 3)
+2025-07-11 13:59:04,573 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:04,574 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results: {'face': None, 'pose': None, 'hand': None, 'object': None}
+2025-07-11 13:59:04,575 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results 있음, 어노테이션 시도
+2025-07-11 13:59:04,576 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 13:59:04,576 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - frame type: <class 'numpy.ndarray'>, mediapipe_results type: <class 'dict'>
+2025-07-11 13:59:04,576 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - mediapipe_results가 None 또는 비어있음, 원본 프레임 반환
+2025-07-11 13:59:04,577 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_queue 가득참 (queue.Full)
+2025-07-11 13:59:04,577 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_count 증가: 7
+2025-07-11 13:59:04,580 - app                       - INFO     - [진단] app.py: run - async_frame_producer - 루프 끝, 다음 반복
+2025-07-11 13:59:04,580 - app                       - INFO     - [진단] app.py: run - async_frame_producer 루프 반복, frame_count=7
+2025-07-11 13:59:04,580 - io_handler.video_input    - INFO     - [진단] video_input.get_frame 진입
+2025-07-11 13:59:04,602 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,603 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:04,609 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:04,609 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:04,611 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 13:59:04,611 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 13:59:04,612 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame is not None, imshow 시도
+2025-07-11 13:59:04,625 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:04,626 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:04,627 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 13:59:04,628 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 13:59:04,628 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame is not None, imshow 시도
+2025-07-11 13:59:04,635 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:04,635 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:04,635 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 13:59:04,636 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 13:59:04,636 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame is not None, imshow 시도
+2025-07-11 13:59:04,638 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:04,640 - io_handler.video_input    - INFO     - [진단] video_input.get_frame: ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,641 - app                       - INFO     - [진단] app.py: run - async_frame_producer - get_frame() 반환값: <class 'numpy.ndarray'>, shape: (480, 640, 3)
+2025-07-11 13:59:04,643 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results: {'face': None, 'pose': None, 'hand': None, 'object': None}
+2025-07-11 13:59:04,643 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results 있음, 어노테이션 시도
+2025-07-11 13:59:04,644 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 13:59:04,645 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - frame type: <class 'numpy.ndarray'>, mediapipe_results type: <class 'dict'>
+2025-07-11 13:59:04,645 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - mediapipe_results가 None 또는 비어있음, 원본 프레임 반환
+2025-07-11 13:59:04,646 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:04,646 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_queue.put_nowait 성공
+2025-07-11 13:59:04,646 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:04,646 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_count 증가: 8
+2025-07-11 13:59:04,647 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 13:59:04,648 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 13:59:04,648 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame is not None, imshow 시도
+2025-07-11 13:59:04,660 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:04,660 - app                       - INFO     - [진단] app.py: run - async_frame_producer - 루프 끝, 다음 반복
+2025-07-11 13:59:04,660 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:04,662 - app                       - INFO     - [진단] app.py: run - async_frame_producer 루프 반복, frame_count=8
+2025-07-11 13:59:04,662 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 13:59:04,663 - io_handler.video_input    - INFO     - [진단] video_input.get_frame 진입
+2025-07-11 13:59:04,663 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 13:59:04,664 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame is not None, imshow 시도
+2025-07-11 13:59:04,670 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:04,670 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:04,671 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 13:59:04,671 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 13:59:04,672 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame is not None, imshow 시도
+2025-07-11 13:59:04,675 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,678 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:04,691 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:04,692 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:04,713 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:04,719 - io_handler.video_input    - INFO     - [진단] video_input.get_frame: ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,719 - app                       - INFO     - [진단] app.py: run - async_frame_producer - get_frame() 반환값: <class 'numpy.ndarray'>, shape: (480, 640, 3)
+2025-07-11 13:59:04,719 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results: {'face': None, 'pose': None, 'hand': None, 'object': None}
+2025-07-11 13:59:04,721 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results 있음, 어노테이션 시도
+2025-07-11 13:59:04,721 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 13:59:04,722 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - frame type: <class 'numpy.ndarray'>, mediapipe_results type: <class 'dict'>
+2025-07-11 13:59:04,722 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - mediapipe_results가 None 또는 비어있음, 원본 프레임 반환
+2025-07-11 13:59:04,723 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_queue.put_nowait 성공
+2025-07-11 13:59:04,723 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 13:59:04,724 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_count 증가: 9
+2025-07-11 13:59:04,724 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 13:59:04,725 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame is not None, imshow 시도
+2025-07-11 13:59:04,741 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:04,742 - app                       - INFO     - [진단] app.py: run - async_frame_producer - 루프 끝, 다음 반복
+2025-07-11 13:59:04,742 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:04,743 - app                       - INFO     - [진단] app.py: run - async_frame_producer 루프 반복, frame_count=9
+2025-07-11 13:59:04,745 - io_handler.video_input    - INFO     - [진단] video_input.get_frame 진입
+2025-07-11 13:59:04,753 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,753 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:04,785 - io_handler.video_input    - INFO     - [진단] video_input.get_frame: ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,785 - app                       - INFO     - [진단] app.py: run - async_frame_producer - get_frame() 반환값: <class 'numpy.ndarray'>, shape: (480, 640, 3)
+2025-07-11 13:59:04,785 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results: {'face': None, 'pose': None, 'hand': None, 'object': None}
+2025-07-11 13:59:04,785 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results 있음, 어노테이션 시도
+2025-07-11 13:59:04,788 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:04,788 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 13:59:04,789 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - frame type: <class 'numpy.ndarray'>, mediapipe_results type: <class 'dict'>
+2025-07-11 13:59:04,789 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - mediapipe_results가 None 또는 비어있음, 원본 프레임 반환
+2025-07-11 13:59:04,790 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_queue.put_nowait 성공
+2025-07-11 13:59:04,790 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 13:59:04,791 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_count 증가: 10
+2025-07-11 13:59:04,792 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 13:59:04,793 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame is not None, imshow 시도
+2025-07-11 13:59:04,793 - app                       - INFO     - [진단] app.py: run - async_frame_producer - 루프 끝, 다음 반복
+2025-07-11 13:59:04,794 - app                       - INFO     - [진단] app.py: run - async_frame_producer 루프 반복, frame_count=10
+2025-07-11 13:59:04,795 - io_handler.video_input    - INFO     - [진단] video_input.get_frame 진입
+2025-07-11 13:59:04,808 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:04,809 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:04,815 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,816 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:04,847 - io_handler.video_input    - INFO     - [진단] video_input.get_frame: ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,848 - app                       - INFO     - [진단] app.py: run - async_frame_producer - get_frame() 반환값: <class 'numpy.ndarray'>, shape: (480, 640, 3)
+2025-07-11 13:59:04,848 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results: {'face': None, 'pose': None, 'hand': None, 'object': None}
+2025-07-11 13:59:04,849 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results 있음, 어노테이션 시도
+2025-07-11 13:59:04,849 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 13:59:04,849 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - frame type: <class 'numpy.ndarray'>, mediapipe_results type: <class 'dict'>
+2025-07-11 13:59:04,850 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - mediapipe_results가 None 또는 비어있음, 원본 프레임 반환
+2025-07-11 13:59:04,850 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_queue.put_nowait 성공
+2025-07-11 13:59:04,851 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 13:59:04,851 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:04,851 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_count 증가: 11
+2025-07-11 13:59:04,851 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 13:59:04,851 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame is not None, imshow 시도
+2025-07-11 13:59:04,862 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:04,862 - app                       - INFO     - [진단] app.py: run - async_frame_producer - 루프 끝, 다음 반복
+2025-07-11 13:59:04,863 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:04,863 - app                       - INFO     - [진단] app.py: run - async_frame_producer 루프 반복, frame_count=11
+2025-07-11 13:59:04,864 - io_handler.video_input    - INFO     - [진단] video_input.get_frame 진입
+2025-07-11 13:59:04,873 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,874 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:04,906 - io_handler.video_input    - INFO     - [진단] video_input.get_frame: ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,907 - app                       - INFO     - [진단] app.py: run - async_frame_producer - get_frame() 반환값: <class 'numpy.ndarray'>, shape: (480, 640, 3)
+2025-07-11 13:59:04,908 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results: {'face': None, 'pose': None, 'hand': None, 'object': None}
+2025-07-11 13:59:04,908 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results 있음, 어노테이션 시도
+2025-07-11 13:59:04,909 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:04,909 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 13:59:04,909 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - frame type: <class 'numpy.ndarray'>, mediapipe_results type: <class 'dict'>
+2025-07-11 13:59:04,909 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - mediapipe_results가 None 또는 비어있음, 원본 프레임 반환
+2025-07-11 13:59:04,911 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_queue.put_nowait 성공
+2025-07-11 13:59:04,911 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 13:59:04,911 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_count 증가: 12
+2025-07-11 13:59:04,911 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 13:59:04,911 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame is not None, imshow 시도
+2025-07-11 13:59:04,925 - app                       - INFO     - [진단] app.py: run - async_frame_producer - 루프 끝, 다음 반복
+2025-07-11 13:59:04,925 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:04,926 - app                       - INFO     - [진단] app.py: run - async_frame_producer 루프 반복, frame_count=12
+2025-07-11 13:59:04,926 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:04,926 - io_handler.video_input    - INFO     - [진단] video_input.get_frame 진입
+2025-07-11 13:59:04,935 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,935 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:04,969 - io_handler.video_input    - INFO     - [진단] video_input.get_frame: ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:04,970 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:04,970 - app                       - INFO     - [진단] app.py: run - async_frame_producer - get_frame() 반환값: <class 'numpy.ndarray'>, shape: (480, 640, 3)
+2025-07-11 13:59:04,970 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results: {'face': None, 'pose': None, 'hand': None, 'object': None}
+2025-07-11 13:59:04,971 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results 있음, 어노테이션 시도
+2025-07-11 13:59:04,971 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 13:59:04,972 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - frame type: <class 'numpy.ndarray'>, mediapipe_results type: <class 'dict'>
+2025-07-11 13:59:04,972 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - mediapipe_results가 None 또는 비어있음, 원본 프레임 반환
+2025-07-11 13:59:04,973 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_queue.put_nowait 성공
+2025-07-11 13:59:04,973 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 13:59:04,974 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_count 증가: 13
+2025-07-11 13:59:04,974 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 13:59:04,975 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame is not None, imshow 시도
+2025-07-11 13:59:04,988 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:04,989 - app                       - INFO     - [진단] app.py: run - async_frame_producer - 루프 끝, 다음 반복
+2025-07-11 13:59:04,990 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:04,990 - app                       - INFO     - [진단] app.py: run - async_frame_producer 루프 반복, frame_count=13
+2025-07-11 13:59:04,991 - io_handler.video_input    - INFO     - [진단] video_input.get_frame 진입
+2025-07-11 13:59:04,999 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:05,000 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:05,034 - io_handler.video_input    - INFO     - [진단] video_input.get_frame: ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:05,035 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:05,035 - app                       - INFO     - [진단] app.py: run - async_frame_producer - get_frame() 반환값: <class 'numpy.ndarray'>, shape: (480, 640, 3)
+2025-07-11 13:59:05,035 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results: {'face': None, 'pose': None, 'hand': None, 'object': None}
+2025-07-11 13:59:05,035 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results 있음, 어노테이션 시도
+2025-07-11 13:59:05,035 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 13:59:05,035 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - frame type: <class 'numpy.ndarray'>, mediapipe_results type: <class 'dict'>
+2025-07-11 13:59:05,035 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - mediapipe_results가 None 또는 비어있음, 원본 프레임 반환
+2025-07-11 13:59:05,037 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_queue.put_nowait 성공
+2025-07-11 13:59:05,037 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 13:59:05,038 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_count 증가: 14
+2025-07-11 13:59:05,038 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 13:59:05,041 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame is not None, imshow 시도
+2025-07-11 13:59:05,042 - app                       - INFO     - [진단] app.py: run - async_frame_producer - 루프 끝, 다음 반복
+2025-07-11 13:59:05,043 - app                       - INFO     - [진단] app.py: run - async_frame_producer 루프 반복, frame_count=14
+2025-07-11 13:59:05,044 - io_handler.video_input    - INFO     - [진단] video_input.get_frame 진입
+2025-07-11 13:59:05,058 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:05,059 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:05,074 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:05,075 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:05,109 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:05,122 - io_handler.video_input    - INFO     - [진단] video_input.get_frame: ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:05,123 - app                       - INFO     - [진단] app.py: run - async_frame_producer - get_frame() 반환값: <class 'numpy.ndarray'>, shape: (480, 640, 3)
+2025-07-11 13:59:05,124 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results: {'face': None, 'pose': None, 'hand': None, 'object': None}
+2025-07-11 13:59:05,125 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results 있음, 어노테이션 시도
+2025-07-11 13:59:05,125 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 13:59:05,126 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - frame type: <class 'numpy.ndarray'>, mediapipe_results type: <class 'dict'>
+2025-07-11 13:59:05,127 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - mediapipe_results가 None 또는 비어있음, 원본 프레임 반환
+2025-07-11 13:59:05,127 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_queue.put_nowait 성공
+2025-07-11 13:59:05,127 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 13:59:05,128 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_count 증가: 15
+2025-07-11 13:59:05,128 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 13:59:05,130 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame is not None, imshow 시도
+2025-07-11 13:59:05,132 - app                       - INFO     - [진단] app.py: run - async_frame_producer - 루프 끝, 다음 반복
+2025-07-11 13:59:05,133 - app                       - INFO     - [진단] app.py: run - async_frame_producer 루프 반복, frame_count=15
+2025-07-11 13:59:05,135 - io_handler.video_input    - INFO     - [진단] video_input.get_frame 진입
+2025-07-11 13:59:05,151 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:05,151 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:05,151 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:05,152 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:05,185 - io_handler.video_input    - INFO     - [진단] video_input.get_frame: ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:05,186 - app                       - INFO     - [진단] app.py: run - async_frame_producer - get_frame() 반환값: <class 'numpy.ndarray'>, shape: (480, 640, 3)
+2025-07-11 13:59:05,186 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results: {'face': None, 'pose': None, 'hand': None, 'object': None}
+2025-07-11 13:59:05,186 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:05,186 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results 있음, 어노테이션 시도
+2025-07-11 13:59:05,186 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 13:59:05,188 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - frame type: <class 'numpy.ndarray'>, mediapipe_results type: <class 'dict'>
+2025-07-11 13:59:05,188 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - mediapipe_results가 None 또는 비어있음, 원본 프레임 반환
+2025-07-11 13:59:05,189 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_queue.put_nowait 성공
+2025-07-11 13:59:05,189 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 13:59:05,190 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_count 증가: 16
+2025-07-11 13:59:05,190 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 13:59:05,191 - app                       - INFO     - [진단] app.py: run - async_frame_producer - 루프 끝, 다음 반복
+2025-07-11 13:59:05,191 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame is not None, imshow 시도
+2025-07-11 13:59:05,192 - app                       - INFO     - [진단] app.py: run - async_frame_producer 루프 반복, frame_count=16
+2025-07-11 13:59:05,194 - io_handler.video_input    - INFO     - [진단] video_input.get_frame 진입
+2025-07-11 13:59:05,209 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:05,210 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:05,214 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:05,215 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:05,248 - io_handler.video_input    - INFO     - [진단] video_input.get_frame: ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:05,248 - app                       - INFO     - [진단] app.py: run - async_frame_producer - get_frame() 반환값: <class 'numpy.ndarray'>, shape: (480, 640, 3)
+2025-07-11 13:59:05,249 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:05,249 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results: {'face': None, 'pose': None, 'hand': None, 'object': None}
+2025-07-11 13:59:05,249 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results 있음, 어노테이션 시도
+2025-07-11 13:59:05,249 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 13:59:05,249 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - frame type: <class 'numpy.ndarray'>, mediapipe_results type: <class 'dict'>
+2025-07-11 13:59:05,249 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - mediapipe_results가 None 또는 비어있음, 원본 프레임 반환
+2025-07-11 13:59:05,249 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_queue.put_nowait 성공
+2025-07-11 13:59:05,249 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 13:59:05,249 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_count 증가: 17
+2025-07-11 13:59:05,249 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 13:59:05,249 - app                       - INFO     - [진단] app.py: run - async_frame_producer - 루프 끝, 다음 반복
+2025-07-11 13:59:05,249 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame is not None, imshow 시도
+2025-07-11 13:59:05,254 - app                       - INFO     - [진단] app.py: run - async_frame_producer 루프 반복, frame_count=17
+2025-07-11 13:59:05,256 - io_handler.video_input    - INFO     - [진단] video_input.get_frame 진입
+2025-07-11 13:59:05,270 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:05,271 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:05,273 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:05,275 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:05,304 - io_handler.video_input    - INFO     - [진단] video_input.get_frame: ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:05,306 - app                       - INFO     - [진단] app.py: run - async_frame_producer - get_frame() 반환값: <class 'numpy.ndarray'>, shape: (480, 640, 3)
+2025-07-11 13:59:05,307 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results: {'face': None, 'pose': None, 'hand': None, 'object': None}
+2025-07-11 13:59:05,308 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results 있음, 어노테이션 시도
+2025-07-11 13:59:05,309 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:05,309 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 13:59:05,311 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - frame type: <class 'numpy.ndarray'>, mediapipe_results type: <class 'dict'>
+2025-07-11 13:59:05,311 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - mediapipe_results가 None 또는 비어있음, 원본 프레임 반환
+2025-07-11 13:59:05,312 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_queue.put_nowait 성공
+2025-07-11 13:59:05,312 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 13:59:05,312 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_count 증가: 18
+2025-07-11 13:59:05,313 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 13:59:05,313 - app                       - INFO     - [진단] app.py: run - async_frame_producer - 루프 끝, 다음 반복
+2025-07-11 13:59:05,314 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame is not None, imshow 시도
+2025-07-11 13:59:05,314 - app                       - INFO     - [진단] app.py: run - async_frame_producer 루프 반복, frame_count=18
+2025-07-11 13:59:05,315 - io_handler.video_input    - INFO     - [진단] video_input.get_frame 진입
+2025-07-11 13:59:05,334 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:05,335 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:05,338 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:05,339 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:05,370 - io_handler.video_input    - INFO     - [진단] video_input.get_frame: ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:05,370 - app                       - INFO     - [진단] app.py: run - async_frame_producer - get_frame() 반환값: <class 'numpy.ndarray'>, shape: (480, 640, 3)
+2025-07-11 13:59:05,370 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results: {'face': None, 'pose': None, 'hand': None, 'object': None}
+2025-07-11 13:59:05,370 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results 있음, 어노테이션 시도
+2025-07-11 13:59:05,370 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 13:59:05,370 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - frame type: <class 'numpy.ndarray'>, mediapipe_results type: <class 'dict'>
+2025-07-11 13:59:05,370 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - mediapipe_results가 None 또는 비어있음, 원본 프레임 반환
+2025-07-11 13:59:05,370 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_queue.put_nowait 성공
+2025-07-11 13:59:05,374 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 13:59:05,374 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:05,375 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_count 증가: 19
+2025-07-11 13:59:05,375 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 13:59:05,376 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame is not None, imshow 시도
+2025-07-11 13:59:05,378 - app                       - INFO     - [진단] app.py: run - async_frame_producer - 루프 끝, 다음 반복
+2025-07-11 13:59:05,378 - app                       - INFO     - [진단] app.py: run - async_frame_producer 루프 반복, frame_count=19
+2025-07-11 13:59:05,379 - io_handler.video_input    - INFO     - [진단] video_input.get_frame 진입
+2025-07-11 13:59:05,392 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:05,392 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:05,401 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:05,401 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:05,436 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:05,436 - io_handler.video_input    - INFO     - [진단] video_input.get_frame: ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:05,436 - app                       - INFO     - [진단] app.py: run - async_frame_producer - get_frame() 반환값: <class 'numpy.ndarray'>, shape: (480, 640, 3)
+2025-07-11 13:59:05,438 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results: {'face': None, 'pose': None, 'hand': None, 'object': None}
+2025-07-11 13:59:05,438 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results 있음, 어노테이션 시도
+2025-07-11 13:59:05,439 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 13:59:05,439 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - frame type: <class 'numpy.ndarray'>, mediapipe_results type: <class 'dict'>
+2025-07-11 13:59:05,440 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - mediapipe_results가 None 또는 비어있음, 원본 프레임 반환
+2025-07-11 13:59:05,441 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_queue.put_nowait 성공
+2025-07-11 13:59:05,441 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 13:59:05,442 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_count 증가: 20
+2025-07-11 13:59:05,443 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 13:59:05,444 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame is not None, imshow 시도
+2025-07-11 13:59:05,445 - app                       - INFO     - [진단] app.py: run - async_frame_producer - 루프 끝, 다음 반복
+2025-07-11 13:59:05,445 - app                       - INFO     - [진단] app.py: run - async_frame_producer 루프 반복, frame_count=20
+2025-07-11 13:59:05,446 - io_handler.video_input    - INFO     - [진단] video_input.get_frame 진입
+2025-07-11 13:59:05,459 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:05,460 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:05,470 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:05,471 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:05,501 - io_handler.video_input    - INFO     - [진단] video_input.get_frame: ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:05,502 - app                       - INFO     - [진단] app.py: run - async_frame_producer - get_frame() 반환값: <class 'numpy.ndarray'>, shape: (480, 640, 3)
+2025-07-11 13:59:05,502 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results: {'face': None, 'pose': None, 'hand': None, 'object': None}
+2025-07-11 13:59:05,502 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results 있음, 어노테이션 시도
+2025-07-11 13:59:05,502 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 13:59:05,502 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - frame type: <class 'numpy.ndarray'>, mediapipe_results type: <class 'dict'>
+2025-07-11 13:59:05,504 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - mediapipe_results가 None 또는 비어있음, 원본 프레임 반환
+2025-07-11 13:59:05,505 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_queue.put_nowait 성공
+2025-07-11 13:59:05,505 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 13:59:05,506 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:05,506 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_count 증가: 21
+2025-07-11 13:59:05,506 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 13:59:05,508 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame is not None, imshow 시도
+2025-07-11 13:59:05,523 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:05,524 - app                       - INFO     - [진단] app.py: run - async_frame_producer - 루프 끝, 다음 반복
+2025-07-11 13:59:05,524 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:05,525 - app                       - INFO     - [진단] app.py: run - async_frame_producer 루프 반복, frame_count=21
+2025-07-11 13:59:05,526 - io_handler.video_input    - INFO     - [진단] video_input.get_frame 진입
+2025-07-11 13:59:05,548 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:05,549 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:05,581 - io_handler.video_input    - INFO     - [진단] video_input.get_frame: ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:05,581 - app                       - INFO     - [진단] app.py: run - async_frame_producer - get_frame() 반환값: <class 'numpy.ndarray'>, shape: (480, 640, 3)
+2025-07-11 13:59:05,581 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results: {'face': None, 'pose': None, 'hand': None, 'object': None}
+2025-07-11 13:59:05,583 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:05,583 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results 있음, 어노테이션 시도
+2025-07-11 13:59:05,583 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 13:59:05,583 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - frame type: <class 'numpy.ndarray'>, mediapipe_results type: <class 'dict'>
+2025-07-11 13:59:05,583 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - mediapipe_results가 None 또는 비어있음, 원본 프레임 반환
+2025-07-11 13:59:05,583 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_queue.put_nowait 성공
+2025-07-11 13:59:05,583 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 13:59:05,583 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_count 증가: 22
+2025-07-11 13:59:05,583 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 13:59:05,583 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame is not None, imshow 시도
+2025-07-11 13:59:05,593 - app                       - INFO     - [진단] app.py: run - async_frame_producer - 루프 끝, 다음 반복
+2025-07-11 13:59:05,594 - app                       - INFO     - [진단] app.py: run - async_frame_producer 루프 반복, frame_count=22
+2025-07-11 13:59:05,594 - io_handler.video_input    - INFO     - [진단] video_input.get_frame 진입
+2025-07-11 13:59:05,595 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:05,595 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:05,613 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:05,614 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:05,646 - io_handler.video_input    - INFO     - [진단] video_input.get_frame: ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:05,647 - app                       - INFO     - [진단] app.py: run - async_frame_producer - get_frame() 반환값: <class 'numpy.ndarray'>, shape: (480, 640, 3)
+2025-07-11 13:59:05,647 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results: {'face': None, 'pose': None, 'hand': None, 'object': None}
+2025-07-11 13:59:05,648 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results 있음, 어노테이션 시도
+2025-07-11 13:59:05,648 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 13:59:05,649 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - frame type: <class 'numpy.ndarray'>, mediapipe_results type: <class 'dict'>
+2025-07-11 13:59:05,649 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:05,649 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - mediapipe_results가 None 또는 비어있음, 원본 프레임 반환
+2025-07-11 13:59:05,650 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_queue.put_nowait 성공
+2025-07-11 13:59:05,650 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 13:59:05,650 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_count 증가: 23
+2025-07-11 13:59:05,650 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 13:59:05,650 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame is not None, imshow 시도
+2025-07-11 13:59:05,653 - app                       - INFO     - [진단] app.py: run - async_frame_producer - 루프 끝, 다음 반복
+2025-07-11 13:59:05,653 - app                       - INFO     - [진단] app.py: run - async_frame_producer 루프 반복, frame_count=23
+2025-07-11 13:59:05,653 - io_handler.video_input    - INFO     - [진단] video_input.get_frame 진입
+2025-07-11 13:59:05,660 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:05,660 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:05,673 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:05,674 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:05,703 - io_handler.video_input    - INFO     - [진단] video_input.get_frame: ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:05,703 - app                       - INFO     - [진단] app.py: run - async_frame_producer - get_frame() 반환값: <class 'numpy.ndarray'>, shape: (480, 640, 3)
+2025-07-11 13:59:05,704 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results: {'face': None, 'pose': None, 'hand': None, 'object': None}
+2025-07-11 13:59:05,705 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results 있음, 어노테이션 시도
+2025-07-11 13:59:05,705 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 13:59:05,706 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - frame type: <class 'numpy.ndarray'>, mediapipe_results type: <class 'dict'>
+2025-07-11 13:59:05,706 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - mediapipe_results가 None 또는 비어있음, 원본 프레임 반환
+2025-07-11 13:59:05,707 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_queue.put_nowait 성공
+2025-07-11 13:59:05,707 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 13:59:05,708 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_count 증가: 24
+2025-07-11 13:59:05,708 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 13:59:05,709 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:05,710 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame is not None, imshow 시도
+2025-07-11 13:59:05,725 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 255
+2025-07-11 13:59:05,725 - app                       - INFO     - [진단] app.py: run - async_frame_producer - 루프 끝, 다음 반복
+2025-07-11 13:59:05,726 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 루프 반복
+2025-07-11 13:59:05,726 - app                       - INFO     - [진단] app.py: run - async_frame_producer 루프 반복, frame_count=24
+2025-07-11 13:59:05,727 - io_handler.video_input    - INFO     - [진단] video_input.get_frame 진입
+2025-07-11 13:59:05,737 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:05,738 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:05,769 - io_handler.video_input    - INFO     - [진단] video_input.get_frame: ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:05,769 - app                       - INFO     - [진단] app.py: run - async_frame_producer - get_frame() 반환값: <class 'numpy.ndarray'>, shape: (480, 640, 3)
+2025-07-11 13:59:05,769 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results: {'face': None, 'pose': None, 'hand': None, 'object': None}
+2025-07-11 13:59:05,771 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results 있음, 어노테이션 시도
+2025-07-11 13:59:05,771 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 13:59:05,772 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - frame type: <class 'numpy.ndarray'>, mediapipe_results type: <class 'dict'>
+2025-07-11 13:59:05,773 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:05,773 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - mediapipe_results가 None 또는 비어있음, 원본 프레임 반환
+2025-07-11 13:59:05,774 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_queue.put_nowait 성공
+2025-07-11 13:59:05,774 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 13:59:05,775 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_count 증가: 25
+2025-07-11 13:59:05,775 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 13:59:05,775 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame is not None, imshow 시도
+2025-07-11 13:59:05,777 - app                       - INFO     - [진단] app.py: run - async_frame_producer - 루프 끝, 다음 반복
+2025-07-11 13:59:05,778 - app                       - INFO     - [진단] app.py: run - async_frame_producer 루프 반복, frame_count=25
+2025-07-11 13:59:05,778 - io_handler.video_input    - INFO     - [진단] video_input.get_frame 진입
+2025-07-11 13:59:05,784 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 키 입력: 113
+2025-07-11 13:59:05,784 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - 'q' 입력, stop_event.set() 및 break
+2025-07-11 13:59:05,797 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - OpenCV 창 종료
+2025-07-11 13:59:05,803 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:05,803 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 13:59:05,835 - io_handler.video_input    - INFO     - [진단] video_input.get_frame: ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 13:59:05,835 - app                       - INFO     - [진단] app.py: run - async_frame_producer - get_frame() 반환값: <class 'numpy.ndarray'>, shape: (480, 640, 3)
+2025-07-11 13:59:05,835 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results: {'face': None, 'pose': None, 'hand': None, 'object': None}
+2025-07-11 13:59:05,835 - app                       - INFO     - [진단] app.py: run - async_frame_producer - mediapipe_results 있음, 어노테이션 시도
+2025-07-11 13:59:05,835 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 13:59:05,835 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - frame type: <class 'numpy.ndarray'>, mediapipe_results type: <class 'dict'>
+2025-07-11 13:59:05,835 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results - mediapipe_results가 None 또는 비어있음, 원본 프레임 반환
+2025-07-11 13:59:05,837 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_queue.put_nowait 성공
+2025-07-11 13:59:05,837 - app                       - INFO     - [진단] app.py: run - async_frame_producer - frame_count 증가: 26
+2025-07-11 13:59:05,838 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 루프 반복: stopped=False, cap_opened=True
+2025-07-11 13:59:05,845 - app                       - INFO     - [진단] app.py: run - async_frame_producer - 루프 끝, 다음 반복
+2025-07-11 13:59:05,845 - app                       - INFO     - [진단] app.py: run - async_frame_producer - 종료 시 frame_queue에 None 삽입
+2025-07-11 13:59:05,845 - events.event_bus          - INFO     - HIGH 우선순위 큐 처리 취소됨
+2025-07-11 13:59:05,845 - events.event_bus          - INFO     - CRITICAL 우선순위 큐 처리 취소됨
+2025-07-11 13:59:05,846 - events.event_bus          - INFO     - MEDIUM 우선순위 큐 처리 취소됨
+2025-07-11 13:59:05,846 - events.event_bus          - INFO     - EMERGENCY 우선순위 큐 처리 취소됨
+2025-07-11 13:59:05,846 - events.event_bus          - INFO     - LOW 우선순위 큐 처리 취소됨
+2025-07-11 13:59:05,847 - app                       - INFO     - [진단] app.py: run - asyncio.run(async_frame_producer()) 완료
+2025-07-11 13:59:05,847 - app                       - INFO     - [진단] app.py: run - stop_event.set() 호출
+2025-07-11 13:59:05,848 - app                       - INFO     - [진단] app.py: run - display_thread.join() 완료

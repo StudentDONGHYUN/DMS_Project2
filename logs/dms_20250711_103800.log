@@ -1,0 +1,98 @@
+2025-07-11 10:38:09,945 - __main__                  - INFO     - main.py: main() 진입
+2025-07-11 10:38:21,187 - __main__                  - INFO     - S-Class 설정 완료: {'input_source': ['C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0097/video/SGA5100180S0097.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0126/video/SGA5100180S0126.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0135/video/SGA5100180S0135.mp4'], 'user_id': 'default', 'camera_position': <CameraPosition.REARVIEW_MIRROR: '백미러 위치'>, 'enable_calibration': False, 'is_same_driver': True, 'system_type': <AnalysisSystemType.STANDARD: 'standard'>, 'use_legacy_engine': False, 'sclass_features': {'enable_rppg': True, 'enable_saccade': True, 'enable_spinal_analysis': True, 'enable_tremor_fft': True, 'enable_bayesian_prediction': True}}
+2025-07-11 10:38:21,192 - systems.performance       - INFO     - PerformanceOptimizer 초기화 완료
+2025-07-11 10:38:21,194 - systems.personalization   - INFO     - 사용자 프로필 로드됨: default
+2025-07-11 10:38:21,195 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-11 10:38:21,195 - systems.dynamic           - INFO     - DynamicAnalysisEngine 초기화 완료
+2025-07-11 10:38:21,196 - systems.backup            - INFO     - SensorBackupManager 초기화 완료
+2025-07-11 10:38:21,196 - io_handler.video_input    - INFO     - 운전자 연속성 설정됨: 동일 운전자
+2025-07-11 10:38:21,197 - app                       - INFO     - app.py: DMSApp.run() 진입
+2025-07-11 10:38:21,199 - app                       - INFO     - 🚀 S-Class DMS 시스템 초기화 시작...
+2025-07-11 10:38:21,201 - systems.metrics_manager   - INFO     - MetricsManager 초기화 완료 - 히스토리 크기: 900
+2025-07-11 10:38:21,202 - integration.integrated_system - INFO     - 새로운 시스템 초기화 시작 - 성능 우선 전략
+2025-07-11 10:38:21,205 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 시작: standard
+2025-07-11 10:38:21,206 - analysis.factory.analysis_factory - INFO     - 지원 기능: advanced_drowsiness_detection, multi_level_distraction_detection, precise_head_pose_tracking, gaze_zone_classification, emotion_recognition...
+2025-07-11 10:38:21,207 - analysis.factory.analysis_factory - INFO     - 표준 성능 DMS 시스템 생성 중...
+2025-07-11 10:38:21,207 - analysis.fusion.fusion_engine_advanced - INFO     - MultiModalFusionEngine (S-Class) 초기화 완료 - 디지털 신경과학자 준비됨
+2025-07-11 10:38:21,434 - analysis.drowsiness       - INFO     - EnhancedDrowsinessDetector 초기화 완료
+2025-07-11 10:38:21,434 - analysis.emotion          - INFO     - EmotionRecognitionSystem 초기화 완료
+2025-07-11 10:38:21,435 - analysis.gaze             - INFO     - EnhancedSphericalGazeClassifier 초기화: 11개 구역 정의됨
+2025-07-11 10:38:21,436 - analysis.identity         - INFO     - 1명의 운전자 프로필 로드됨
+2025-07-11 10:38:21,436 - analysis.identity         - INFO     - DriverIdentificationSystem 초기화 완료
+2025-07-11 10:38:21,437 - analysis.processors.face_processor_s_class - INFO     - FaceDataProcessor (S-Class) 초기화 완료 - 디지털 심리학자 준비됨
+2025-07-11 10:38:21,438 - analysis.processors.pose_processor_s_class - INFO     - PoseDataProcessor (S-Class) 초기화 완료 - 자세 분석 전문가 준비됨
+2025-07-11 10:38:21,438 - analysis.processors.hand_processor_s_class - INFO     - HandDataProcessor (S-Class, 인터페이스 통합) 초기화 완료
+2025-07-11 10:38:21,439 - analysis.processors.object_processor_s_class - INFO     - ObjectDataProcessor (S-Class) 초기화 완료 - 행동 예측 전문가 준비됨
+2025-07-11 10:38:21,439 - analysis.orchestrator.orchestrator_advanced - INFO     - AnalysisOrchestrator (S-Class) 초기화 완료 - 지능형 지휘자 준비됨
+2025-07-11 10:38:21,440 - analysis.factory.analysis_factory - INFO     - 표준 DMS 시스템 생성 완료 - 균형 모드 활성화
+2025-07-11 10:38:21,440 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 완료: standard
+2025-07-11 10:38:21,441 - integration.integrated_system - INFO     - ✅ 새로운 standard 시스템 생성 완료
+2025-07-11 10:38:21,441 - integration.integrated_system - INFO     - IntegratedDMSSystem 초기화 완료 - 타입: standard, 레거시: False
+2025-07-11 10:38:21,441 - events.event_bus          - INFO     - EventBus 초기화 완료 - 중추 신경계 가동 시작
+2025-07-11 10:38:21,442 - events.event_bus          - INFO     - EventBus 시작됨 - 모든 우선순위 큐 처리 시작
+2025-07-11 10:38:21,442 - events.event_bus          - INFO     - 글로벌 이벤트 시스템 초기화 완료
+2025-07-11 10:38:21,443 - events.handlers           - INFO     - SafetyEventHandler 초기화 완료 - 안전 모니터링 시작
+2025-07-11 10:38:21,443 - events.event_bus          - INFO     - 글로벌 핸들러 등록: SafetyEventHandler
+2025-07-11 10:38:21,443 - events.handlers           - INFO     - AnalyticsEventHandler 초기화 완료 - 성능 모니터링 시작
+2025-07-11 10:38:21,443 - events.event_bus          - INFO     - 글로벌 핸들러 등록: AnalyticsEventHandler
+2025-07-11 10:38:21,444 - systems.metrics_manager   - INFO     - StateManager와 연결됨
+2025-07-11 10:38:21,444 - core.state_manager        - INFO     - MetricsManager와 연결됨
+2025-07-11 10:38:21,444 - integration.integrated_system - INFO     - IntegratedDMSSystem 비동기 초기화 완료
+2025-07-11 10:38:21,445 - systems.personalization   - INFO     - 사용자 프로필 로드됨: default
+2025-07-11 10:38:21,445 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-11 10:38:21,446 - app                       - INFO     - ✅ 모든 S-Class 컴포넌트 초기화 완료
+2025-07-11 10:38:21,446 - systems.performance       - INFO     - PerformanceOptimizer 초기화 완료
+2025-07-11 10:38:21,447 - systems.mediapipe_manager - INFO     - Windows/개발 환경 감지: models/face_landmarker.task에 CPU 모드 적용
+2025-07-11 10:38:21,585 - systems.mediapipe_manager - INFO     - ✅ FaceLandmarker 초기화 완료
+2025-07-11 10:38:21,586 - systems.mediapipe_manager - INFO     - Windows/개발 환경 감지: models/pose_landmarker_full.task에 CPU 모드 적용
+2025-07-11 10:38:21,845 - systems.mediapipe_manager - INFO     - ✅ PoseLandmarker 초기화 완료
+2025-07-11 10:38:21,846 - systems.mediapipe_manager - INFO     - Windows/개발 환경 감지: models/hand_landmarker.task에 CPU 모드 적용
+2025-07-11 10:38:21,956 - systems.mediapipe_manager - INFO     - ✅ HandLandmarker 초기화 완료
+2025-07-11 10:38:21,957 - systems.mediapipe_manager - INFO     - Windows/개발 환경 감지: models/efficientdet_lite0.tflite에 CPU 모드 적용
+2025-07-11 10:38:22,052 - systems.mediapipe_manager - INFO     - ✅ ObjectDetector 초기화 완료
+2025-07-11 10:38:22,053 - systems.mediapipe_manager - INFO     - MediaPipe 태스크 초기화 완료: 4/4 성공
+2025-07-11 10:38:22,053 - io_handler.video_input    - INFO     - VideoInputManager 초기화 시작 - 입력 소스: ['C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0097/video/SGA5100180S0097.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0126/video/SGA5100180S0126.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0135/video/SGA5100180S0135.mp4']
+2025-07-11 10:38:22,054 - io_handler.video_input    - INFO     - 비디오 플레이리스트: 3개 파일
+2025-07-11 10:38:22,054 - io_handler.video_input    - INFO     -   1. SGA5100180S0097.mp4
+2025-07-11 10:38:22,055 - io_handler.video_input    - INFO     -   2. SGA5100180S0126.mp4
+2025-07-11 10:38:22,055 - io_handler.video_input    - INFO     -   3. SGA5100180S0135.mp4
+2025-07-11 10:38:22,055 - io_handler.video_input    - INFO     - 비디오 파일 정보: SGA5100180S0097.mp4 (0.96MB, .mp4)
+2025-07-11 10:38:22,056 - io_handler.video_input    - INFO     - Windows/개발 환경: 표준 파일 디코더 사용
+2025-07-11 10:38:22,056 - io_handler.video_input    - INFO     - FFMPEG 백엔드로 시도 중...
+2025-07-11 10:38:22,105 - io_handler.video_input    - INFO     - ✅ FFMPEG 백엔드로 성공 (테스트 프레임: (720, 1280, 3))
+2025-07-11 10:38:22,108 - io_handler.video_input    - INFO     - 비디오 속성: 1280x720, 30.00fps, 114프레임, 3.8초
+2025-07-11 10:38:22,109 - io_handler.video_input    - INFO     - 비디오 코덱: h264
+2025-07-11 10:38:22,110 - io_handler.video_input    - INFO     - VideoCapture 객체 성공적으로 생성됨
+2025-07-11 10:38:22,113 - io_handler.video_input    - INFO     - 리더 스레드 시작 - 비디오 모드: True
+2025-07-11 10:38:22,113 - io_handler.video_input    - INFO     - 리더 스레드 시작 대기 중...
+2025-07-11 10:38:22,114 - io_handler.video_input    - INFO     - 비디오 속성 - 해상도: 1280x720, FPS: 30.00, 총 프레임: 114
+2025-07-11 10:38:22,431 - io_handler.video_input    - WARNING  - 프레임 읽기 실패 1회 연속
+2025-07-11 10:38:22,483 - io_handler.video_input    - WARNING  - 프레임 읽기 실패 2회 연속
+2025-07-11 10:38:22,534 - io_handler.video_input    - WARNING  - 프레임 읽기 실패 3회 연속
+2025-07-11 10:38:22,585 - io_handler.video_input    - WARNING  - 프레임 읽기 실패 4회 연속
+2025-07-11 10:38:22,615 - io_handler.video_input    - INFO     - 첫 번째 프레임 대기 중 (최대 5.0초)...
+2025-07-11 10:38:22,615 - io_handler.video_input    - INFO     - ✅ 첫 번째 프레임 수신 성공
+2025-07-11 10:38:22,616 - io_handler.video_input    - INFO     - ✅ 입력 소스 초기화 및 스레드 시작 완료
+2025-07-11 10:38:22,616 - app                       - INFO     - 🚀 고도화된 S-Class DMS 시스템 v18+ (연구 결과 통합) 초기화 완료
+2025-07-11 10:38:22,617 - app                       - INFO     - 📊 S-Class 기능: rPPG 심박수, 사카드 분석, 스파인 정렬, FFT 떨림 분석, 베이지안 예측
+2025-07-11 10:38:22,617 - app                       - INFO     - 🎯 어텐션 메커니즘, 인지 부하 모델링, 적응형 파이프라인 활성화
+2025-07-11 10:38:22,618 - app                       - INFO     - 🎯 S-Class DMS v18+ 시스템 시작. 'q'를 눌러 종료, 스페이스바로 일시정지, 's'로 스크린샷 저장
+2025-07-11 10:38:22,618 - app                       - INFO     - app.py: main_async_loop 진입
+2025-07-11 10:38:22,635 - io_handler.video_input    - WARNING  - 프레임 읽기 실패 5회 연속
+2025-07-11 10:38:22,686 - io_handler.video_input    - WARNING  - 프레임 읽기 실패 6회 연속
+2025-07-11 10:38:22,737 - io_handler.video_input    - WARNING  - 프레임 읽기 실패 7회 연속
+2025-07-11 10:38:22,788 - io_handler.video_input    - WARNING  - 프레임 읽기 실패 8회 연속
+2025-07-11 10:38:22,839 - io_handler.video_input    - WARNING  - 프레임 읽기 실패 9회 연속
+2025-07-11 10:38:22,873 - app                       - INFO     - OpenCV 창 초기화 완료
+2025-07-11 10:38:22,891 - io_handler.video_input    - WARNING  - 프레임 읽기 실패 10회 연속
+2025-07-11 10:38:22,892 - io_handler.video_input    - ERROR    - 프레임 연속 10회 실패. 스레드 종료.
+2025-07-11 10:38:22,966 - app                       - INFO     - 비디오 입력 종료됨
+2025-07-11 10:38:22,967 - integration.integrated_system - INFO     - IntegratedDMSSystem 종료 시작
+2025-07-11 10:38:22,978 - events.event_bus          - INFO     - EventBus 종료 중...
+2025-07-11 10:38:22,984 - events.event_bus          - INFO     - LOW 우선순위 큐 처리 취소됨
+2025-07-11 10:38:22,987 - events.event_bus          - INFO     - MEDIUM 우선순위 큐 처리 취소됨
+2025-07-11 10:38:22,994 - events.event_bus          - INFO     - HIGH 우선순위 큐 처리 취소됨
+2025-07-11 10:38:23,002 - events.event_bus          - INFO     - CRITICAL 우선순위 큐 처리 취소됨
+2025-07-11 10:38:23,006 - events.event_bus          - INFO     - EMERGENCY 우선순위 큐 처리 취소됨
+2025-07-11 10:38:23,009 - events.event_bus          - INFO     - EventBus 종료 완료
+2025-07-11 10:38:23,011 - events.event_bus          - INFO     - 글로벌 이벤트 시스템 종료 완료

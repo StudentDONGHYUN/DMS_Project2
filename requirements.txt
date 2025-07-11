@@ -1,0 +1,7 @@
+opencv-python
+numpy
+mediapipe
+scipy
+scikit-learn
+cachetools
+psutil

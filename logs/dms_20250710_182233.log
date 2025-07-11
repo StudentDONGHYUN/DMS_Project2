@@ -1,0 +1,189 @@
+2025-07-10 18:22:52,130 - __main__                  - INFO     - S-Class 설정 완료: {'input_source': ['C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0097/video/SGA5100180S0097.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0126/video/SGA5100180S0126.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0135/video/SGA5100180S0135.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0086/video/SGA5100180S0086.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0101/video/SGA5100180S0101.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0109/video/SGA5100180S0109.mp4'], 'user_id': 'default', 'camera_position': <CameraPosition.REARVIEW_MIRROR: '백미러 위치'>, 'enable_calibration': False, 'is_same_driver': True, 'system_type': <AnalysisSystemType.STANDARD: 'standard'>, 'use_legacy_engine': False, 'sclass_features': {'enable_rppg': True, 'enable_saccade': True, 'enable_spinal_analysis': True, 'enable_tremor_fft': True, 'enable_bayesian_prediction': True}}
+2025-07-10 18:22:52,141 - systems.performance       - INFO     - PerformanceOptimizer 초기화 완료
+2025-07-10 18:22:52,160 - systems.personalization   - INFO     - 사용자 프로필 로드됨: default
+2025-07-10 18:22:52,160 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-10 18:22:52,160 - systems.dynamic           - INFO     - DynamicAnalysisEngine 초기화 완료
+2025-07-10 18:22:52,161 - systems.backup            - INFO     - SensorBackupManager 초기화 완료
+2025-07-10 18:22:52,162 - io_handler.video_input    - INFO     - 운전자 연속성 설정됨: 동일 운전자
+2025-07-10 18:22:52,162 - app                       - INFO     - 🚀 S-Class DMS 시스템 초기화 시작...
+2025-07-10 18:22:52,162 - systems.metrics_manager   - INFO     - MetricsManager 초기화 완료 - 히스토리 크기: 900
+2025-07-10 18:22:52,162 - integration.integrated_system - INFO     - 새로운 시스템 초기화 시작 - 성능 우선 전략
+2025-07-10 18:22:52,162 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 시작: standard
+2025-07-10 18:22:52,162 - analysis.factory.analysis_factory - INFO     - 지원 기능: advanced_drowsiness_detection, multi_level_distraction_detection, precise_head_pose_tracking, gaze_zone_classification, emotion_recognition...
+2025-07-10 18:22:52,173 - analysis.factory.analysis_factory - INFO     - 표준 성능 DMS 시스템 생성 중...
+2025-07-10 18:22:52,175 - analysis.fusion.fusion_engine_advanced - INFO     - MultiModalFusionEngine (S-Class) 초기화 완료 - 디지털 신경과학자 준비됨
+2025-07-10 18:22:52,268 - analysis.drowsiness       - INFO     - EnhancedDrowsinessDetector 초기화 완료
+2025-07-10 18:22:52,268 - analysis.emotion          - INFO     - EmotionRecognitionSystem 초기화 완료
+2025-07-10 18:22:52,269 - analysis.gaze             - INFO     - EnhancedSphericalGazeClassifier 초기화: 11개 구역 정의됨
+2025-07-10 18:22:52,269 - analysis.identity         - INFO     - 1명의 운전자 프로필 로드됨
+2025-07-10 18:22:52,269 - analysis.identity         - INFO     - DriverIdentificationSystem 초기화 완료
+2025-07-10 18:22:52,270 - analysis.processors.face_processor_s_class - INFO     - FaceDataProcessor (S-Class) 초기화 완료 - 디지털 심리학자 준비됨
+2025-07-10 18:22:52,270 - analysis.processors.pose_processor_s_class - INFO     - PoseDataProcessor (S-Class) 초기화 완료 - 자세 분석 전문가 준비됨
+2025-07-10 18:22:52,270 - analysis.processors.hand_processor_s_class - INFO     - HandDataProcessor (S-Class, 인터페이스 통합) 초기화 완료
+2025-07-10 18:22:52,271 - analysis.processors.object_processor_s_class - INFO     - ObjectDataProcessor (S-Class) 초기화 완료 - 행동 예측 전문가 준비됨
+2025-07-10 18:22:52,271 - analysis.orchestrator.orchestrator_advanced - INFO     - AnalysisOrchestrator (S-Class) 초기화 완료 - 지능형 지휘자 준비됨
+2025-07-10 18:22:52,272 - analysis.factory.analysis_factory - INFO     - 표준 DMS 시스템 생성 완료 - 균형 모드 활성화
+2025-07-10 18:22:52,272 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 완료: standard
+2025-07-10 18:22:52,272 - integration.integrated_system - INFO     - ✅ 새로운 standard 시스템 생성 완료
+2025-07-10 18:22:52,272 - integration.integrated_system - INFO     - IntegratedDMSSystem 초기화 완료 - 타입: standard, 레거시: False
+2025-07-10 18:22:52,273 - events.event_bus          - INFO     - EventBus 초기화 완료 - 중추 신경계 가동 시작
+2025-07-10 18:22:52,274 - events.event_bus          - INFO     - EventBus 시작됨 - 모든 우선순위 큐 처리 시작
+2025-07-10 18:22:52,275 - events.event_bus          - INFO     - 글로벌 이벤트 시스템 초기화 완료
+2025-07-10 18:22:52,275 - events.handlers           - INFO     - SafetyEventHandler 초기화 완료 - 안전 모니터링 시작
+2025-07-10 18:22:52,276 - events.event_bus          - INFO     - 글로벌 핸들러 등록: SafetyEventHandler
+2025-07-10 18:22:52,276 - events.handlers           - INFO     - AnalyticsEventHandler 초기화 완료 - 성능 모니터링 시작
+2025-07-10 18:22:52,278 - events.event_bus          - INFO     - 글로벌 핸들러 등록: AnalyticsEventHandler
+2025-07-10 18:22:52,278 - systems.metrics_manager   - INFO     - StateManager와 연결됨
+2025-07-10 18:22:52,279 - core.state_manager        - INFO     - MetricsManager와 연결됨
+2025-07-10 18:22:52,279 - integration.integrated_system - INFO     - IntegratedDMSSystem 비동기 초기화 완료
+2025-07-10 18:22:52,280 - app                       - ERROR    - 비동기 컴포넌트 초기화 실패: 'PersonalizationEngine' object has no attribute 'initialize'
+2025-07-10 18:22:52,280 - systems.performance       - INFO     - PerformanceOptimizer 초기화 완료
+2025-07-10 18:22:52,364 - systems.mediapipe_manager - INFO     - ✅ FaceLandmarker 초기화 완료 (블렌드셰이프 활성화)
+2025-07-10 18:22:52,656 - systems.mediapipe_manager - INFO     - ✅ PoseLandmarker 초기화 완료 (33 키포인트)
+2025-07-10 18:22:52,755 - systems.mediapipe_manager - INFO     - ✅ HandLandmarker 초기화 완료
+2025-07-10 18:22:52,845 - systems.mediapipe_manager - INFO     - ✅ ObjectDetector 초기화 완료 (주의산만 객체 감지)
+2025-07-10 18:22:52,863 - io_handler.video_input    - INFO     - ✅ 입력 소스 초기화 및 스레드 시작
+2025-07-10 18:22:52,863 - app                       - INFO     - 🚀 고도화된 S-Class DMS 시스템 v18+ (연구 결과 통합) 초기화 완료
+2025-07-10 18:22:52,863 - app                       - INFO     - 📊 S-Class 기능: rPPG 심박수, 사카드 분석, 스파인 정렬, FFT 떨림 분석, 베이지안 예측
+2025-07-10 18:22:52,863 - app                       - INFO     - 🎯 어텐션 메커니즘, 인지 부하 모델링, 적응형 파이프라인 활성화
+2025-07-10 18:22:52,863 - app                       - INFO     - 🎯 S-Class DMS v18+ 시스템 시작. 'q'를 눌러 종료, 스페이스바로 일시정지, 's'로 스크린샷 저장
+2025-07-10 18:22:52,922 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:52,922 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:52,922 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:52,922 - systems.metrics_manager   - WARNING  - 경고 발생 - distraction: critical (값: 1.000)
+2025-07-10 18:22:52,922 - core.state_manager        - WARNING  - 경고 수신: distraction - critical (값: 1.000)
+2025-07-10 18:22:52,922 - integration.integrated_system - INFO     - 성능 리포트 - 평균 처리시간: 15.6ms, FPS: 64.0
+2025-07-10 18:22:53,154 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:53,155 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:53,161 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:53,214 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:53,220 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:53,222 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:53,283 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:53,288 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:53,290 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:53,343 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:53,350 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:53,351 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:53,408 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:53,409 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:53,410 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:53,450 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:53,451 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:53,452 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:53,491 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:53,492 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:53,493 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:53,536 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:53,539 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:53,541 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:53,623 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:53,652 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:53,654 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:53,775 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:53,797 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:53,848 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:53,967 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:53,969 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:53,971 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:54,048 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:54,050 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:54,051 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:54,169 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:54,179 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:54,184 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:54,244 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:54,260 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:54,261 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:54,318 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:54,332 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:54,334 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:54,398 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:54,401 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:54,401 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:54,478 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:54,478 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:54,478 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:54,549 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:54,559 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:54,559 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:54,631 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:54,631 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:54,631 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:54,716 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:54,716 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:54,716 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:54,791 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:54,800 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:54,802 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:54,848 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:54,862 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:54,865 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:54,930 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:54,931 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:54,931 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:54,971 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:54,973 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:54,974 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:55,046 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:55,047 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:55,048 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:55,092 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:55,093 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:55,100 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:55,144 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:55,144 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:55,156 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:55,208 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:55,223 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:55,226 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:55,276 - systems.performance       - WARNING  - 성능 최적화 모드 활성화
+2025-07-10 18:22:55,290 - systems.performance       - INFO     - 적용 전략: 프레임 스키핑 증가
+2025-07-10 18:22:55,294 - systems.performance       - INFO     - 적용 전략: 분석 해상도 감소
+2025-07-10 18:22:55,295 - systems.performance       - INFO     - 적용 전략: 일부 분석 기능 비활성화
+2025-07-10 18:22:55,295 - systems.performance       - INFO     - 적용 전략: 메모리 정리 강화
+2025-07-10 18:22:55,301 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:55,301 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:55,308 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:55,320 - systems.performance       - WARNING  - 성능 최적화 모드 활성화
+2025-07-10 18:22:55,321 - systems.performance       - INFO     - 적용 전략: 프레임 스키핑 증가
+2025-07-10 18:22:55,321 - systems.performance       - INFO     - 적용 전략: 분석 해상도 감소
+2025-07-10 18:22:55,321 - systems.performance       - INFO     - 적용 전략: 일부 분석 기능 비활성화
+2025-07-10 18:22:55,322 - systems.performance       - INFO     - 적용 전략: 메모리 정리 강화
+2025-07-10 18:22:55,837 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:55,837 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:55,837 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:55,894 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:55,897 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:55,902 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:55,966 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:55,967 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:55,967 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:56,024 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:56,029 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:56,030 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:56,095 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:56,095 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:56,095 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:56,162 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:56,162 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:56,162 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:56,212 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:56,212 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:56,212 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:56,273 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:56,276 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:56,278 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:56,334 - analysis.processors.face_processor_s_class - WARNING  - 얼굴이 감지되지 않음 - 모든 얼굴 관련 지표를 기본값으로 설정
+2025-07-10 18:22:56,334 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 18:22:56,334 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 18:22:56,361 - integration.integrated_system - INFO     - IntegratedDMSSystem 종료 시작
+2025-07-10 18:22:56,363 - events.event_bus          - INFO     - EventBus 종료 중...
+2025-07-10 18:22:56,364 - events.event_bus          - INFO     - LOW 우선순위 큐 처리 취소됨
+2025-07-10 18:22:56,367 - events.event_bus          - INFO     - HIGH 우선순위 큐 처리 취소됨
+2025-07-10 18:22:56,368 - events.event_bus          - INFO     - CRITICAL 우선순위 큐 처리 취소됨
+2025-07-10 18:22:56,368 - events.event_bus          - INFO     - EMERGENCY 우선순위 큐 처리 취소됨
+2025-07-10 18:22:56,369 - events.event_bus          - INFO     - EventBus 종료 완료
+2025-07-10 18:22:56,369 - events.event_bus          - INFO     - 글로벌 이벤트 시스템 종료 완료
+2025-07-10 18:22:56,369 - integration.integrated_system - INFO     - 최종 성능 리포트 - 총 39프레임, 평균 12.5ms
+2025-07-10 18:22:56,370 - integration.integrated_system - INFO     - IntegratedDMSSystem 종료 완료

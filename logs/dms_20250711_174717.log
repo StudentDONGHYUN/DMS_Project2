@@ -1,0 +1,428 @@
+2025-07-11 17:47:17,908 - __main__                  - INFO     - [진단] main.py: main() 진입
+2025-07-11 17:47:28,623 - __main__                  - INFO     - S-Class 설정 완료: {'input_source': ['C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0097/video/SGA5100180S0097.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0126/video/SGA5100180S0126.mp4'], 'user_id': 'default', 'camera_position': <CameraPosition.REARVIEW_MIRROR: '백미러 위치'>, 'enable_calibration': False, 'is_same_driver': True, 'system_type': <AnalysisSystemType.STANDARD: 'standard'>, 'use_legacy_engine': False, 'sclass_features': {'enable_rppg': True, 'enable_saccade': True, 'enable_spinal_analysis': True, 'enable_tremor_fft': True, 'enable_bayesian_prediction': True}}
+2025-07-11 17:47:28,623 - app                       - INFO     - [수정] app_fixed.py: DMSApp.__init__ 진입
+2025-07-11 17:47:28,638 - systems.performance       - INFO     - PerformanceOptimizer 초기화 완료
+2025-07-11 17:47:28,638 - systems.personalization   - INFO     - 사용자 프로필 로드됨: default
+2025-07-11 17:47:28,638 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-11 17:47:28,638 - systems.dynamic           - INFO     - DynamicAnalysisEngine 초기화 완료
+2025-07-11 17:47:28,638 - systems.backup            - INFO     - SensorBackupManager 초기화 완료
+2025-07-11 17:47:28,638 - io_handler.video_input    - INFO     - 운전자 연속성 설정됨: 동일 운전자
+2025-07-11 17:47:28,638 - app                       - INFO     - [수정] S-Class 시스템 초기화 완료
+2025-07-11 17:47:28,638 - app                       - INFO     - [수정] S-Class DMS 시스템 시작
+2025-07-11 17:47:28,650 - app                       - INFO     - [수정] S-Class DMS 시스템 초기화 시작...
+2025-07-11 17:47:28,653 - systems.metrics_manager   - INFO     - MetricsManager 초기화 완료 - 히스토리 크기: 900
+2025-07-11 17:47:28,653 - integration.integrated_system - INFO     - 새로운 시스템 초기화 시작 - 성능 우선 전략
+2025-07-11 17:47:28,654 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 시작: standard
+2025-07-11 17:47:28,654 - analysis.factory.analysis_factory - INFO     - 지원 기능: advanced_drowsiness_detection, multi_level_distraction_detection, precise_head_pose_tracking, gaze_zone_classification, emotion_recognition...
+2025-07-11 17:47:28,655 - analysis.factory.analysis_factory - INFO     - 표준 성능 DMS 시스템 생성 중...
+2025-07-11 17:47:28,655 - analysis.fusion.fusion_engine_advanced - INFO     - MultiModalFusionEngine (S-Class) 초기화 완료 - 디지털 신경과학자 준비됨
+2025-07-11 17:47:28,741 - analysis.drowsiness       - INFO     - EnhancedDrowsinessDetector 초기화 완료
+2025-07-11 17:47:28,742 - analysis.emotion          - INFO     - EmotionRecognitionSystem 초기화 완료
+2025-07-11 17:47:28,743 - analysis.gaze             - INFO     - EnhancedSphericalGazeClassifier 초기화: 11개 구역 정의됨
+2025-07-11 17:47:28,744 - analysis.identity         - INFO     - 1명의 운전자 프로필 로드됨
+2025-07-11 17:47:28,745 - analysis.identity         - INFO     - DriverIdentificationSystem 초기화 완료
+2025-07-11 17:47:28,745 - analysis.processors.face_processor_s_class - INFO     - FaceDataProcessor (S-Class) 초기화 완료 - 디지털 심리학자 준비됨
+2025-07-11 17:47:28,745 - analysis.processors.pose_processor_s_class - INFO     - PoseDataProcessor (S-Class) 초기화 완료 - 자세 분석 전문가 준비됨
+2025-07-11 17:47:28,746 - analysis.processors.hand_processor_s_class - INFO     - HandDataProcessor (S-Class, 인터페이스 통합) 초기화 완료
+2025-07-11 17:47:28,746 - analysis.processors.object_processor_s_class - INFO     - ObjectDataProcessor (S-Class) 초기화 완료 - 행동 예측 전문가 준비됨
+2025-07-11 17:47:28,747 - analysis.orchestrator.orchestrator_advanced - INFO     - AnalysisOrchestrator (S-Class) 초기화 완료 - 지능형 지휘자 준비됨
+2025-07-11 17:47:28,747 - analysis.factory.analysis_factory - INFO     - 표준 DMS 시스템 생성 완료 - 균형 모드 활성화
+2025-07-11 17:47:28,747 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 완료: standard
+2025-07-11 17:47:28,748 - integration.integrated_system - INFO     - ✅ 새로운 standard 시스템 생성 완료
+2025-07-11 17:47:28,748 - integration.integrated_system - INFO     - IntegratedDMSSystem 초기화 완료 - 타입: standard, 레거시: False
+2025-07-11 17:47:28,749 - events.event_bus          - INFO     - EventBus 초기화 완료 - 중추 신경계 가동 시작
+2025-07-11 17:47:28,749 - events.event_bus          - INFO     - EventBus 시작됨 - 모든 우선순위 큐 처리 시작
+2025-07-11 17:47:28,749 - events.event_bus          - INFO     - 글로벌 이벤트 시스템 초기화 완료
+2025-07-11 17:47:28,750 - events.handlers           - INFO     - SafetyEventHandler 초기화 완료 - 안전 모니터링 시작
+2025-07-11 17:47:28,750 - events.event_bus          - INFO     - 글로벌 핸들러 등록: SafetyEventHandler
+2025-07-11 17:47:28,750 - events.handlers           - INFO     - AnalyticsEventHandler 초기화 완료 - 성능 모니터링 시작
+2025-07-11 17:47:28,751 - events.event_bus          - INFO     - 글로벌 핸들러 등록: AnalyticsEventHandler
+2025-07-11 17:47:28,751 - systems.metrics_manager   - INFO     - StateManager와 연결됨
+2025-07-11 17:47:28,751 - core.state_manager        - INFO     - MetricsManager와 연결됨
+2025-07-11 17:47:28,752 - integration.integrated_system - INFO     - IntegratedDMSSystem 비동기 초기화 완료
+2025-07-11 17:47:28,753 - systems.personalization   - INFO     - 사용자 프로필 로드됨: default
+2025-07-11 17:47:28,753 - systems.personalization   - INFO     - PersonalizationEngine for default initialized.
+2025-07-11 17:47:28,753 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-11 17:47:28,753 - systems.dynamic           - INFO     - DynamicAnalysisEngine for async initialized.
+2025-07-11 17:47:28,753 - app                       - INFO     - [수정] 모든 S-Class 비동기 컴포넌트 초기화 완료
+2025-07-11 17:47:28,753 - systems.performance       - INFO     - PerformanceOptimizer 초기화 완료
+2025-07-11 17:47:28,817 - systems.mediapipe_manager - INFO     - ✅ FaceLandmarker 초기화 완료
+2025-07-11 17:47:29,026 - systems.mediapipe_manager - INFO     - ✅ PoseLandmarker 초기화 완료
+2025-07-11 17:47:29,126 - systems.mediapipe_manager - INFO     - ✅ HandLandmarker 초기화 완료
+2025-07-11 17:47:29,195 - systems.mediapipe_manager - INFO     - ✅ ObjectDetector 초기화 완료
+2025-07-11 17:47:29,195 - app                       - INFO     - IntegratedCallbackAdapter (수정) 초기화 완료
+2025-07-11 17:47:29,195 - io_handler.video_input    - INFO     - [진단] video_input.initialize 진입
+2025-07-11 17:47:29,195 - io_handler.video_input    - INFO     - [진단] video_input.initialize - self.input_source=['C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0097/video/SGA5100180S0097.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0126/video/SGA5100180S0126.mp4']
+2025-07-11 17:47:29,195 - io_handler.video_input    - INFO     - 비디오 플레이리스트: 2개 파일
+2025-07-11 17:47:29,195 - io_handler.video_input    - INFO     -   1. SGA5100180S0097.mp4
+2025-07-11 17:47:29,195 - io_handler.video_input    - INFO     -   2. SGA5100180S0126.mp4
+2025-07-11 17:47:29,195 - io_handler.video_input    - INFO     - 비디오 파일 정보: SGA5100180S0097.mp4 (0.96MB, .mp4)
+2025-07-11 17:47:29,195 - io_handler.video_input    - INFO     - Windows/개발 환경: 표준 파일 디코더 사용
+2025-07-11 17:47:29,195 - io_handler.video_input    - INFO     - FFMPEG 백엔드로 시도 중...
+2025-07-11 17:47:29,379 - io_handler.video_input    - INFO     - ✅ FFMPEG 백엔드로 성공 (테스트 프레임: (720, 1280, 3))
+2025-07-11 17:47:29,380 - io_handler.video_input    - INFO     - 비디오 속성: 1280x720, 30.00fps, 114프레임, 3.8초
+2025-07-11 17:47:29,380 - io_handler.video_input    - INFO     - 비디오 코덱: h264
+2025-07-11 17:47:29,381 - io_handler.video_input    - INFO     - [진단] VideoCapture backend: FFMPEG, codec: h264, 총 프레임: 114
+2025-07-11 17:47:29,381 - io_handler.video_input    - INFO     - VideoCapture 객체 성공적으로 생성됨
+2025-07-11 17:47:29,381 - io_handler.video_input    - INFO     - [진단] VideoCapture backend: FFMPEG, codec: h264, 총 프레임: 114
+2025-07-11 17:47:29,383 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 진입
+2025-07-11 17:47:29,383 - io_handler.video_input    - INFO     - 리더 스레드 시작 대기 중...
+2025-07-11 17:47:29,394 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:29,395 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:29,430 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:29,430 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:29,467 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:29,467 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:29,504 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:29,507 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:29,544 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:29,545 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:29,582 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:29,583 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:29,618 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:29,618 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:29,658 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:29,660 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:29,697 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:29,697 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:29,733 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:29,733 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:29,770 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:29,773 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:29,810 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:29,811 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:29,849 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:29,849 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:29,884 - io_handler.video_input    - INFO     - 첫 번째 프레임 대기 중 (최대 5.0초)...
+2025-07-11 17:47:29,885 - io_handler.video_input    - INFO     - ✅ 첫 번째 프레임 수신 성공
+2025-07-11 17:47:29,885 - io_handler.video_input    - INFO     - ✅ 입력 소스 초기화 및 스레드 시작 완료
+2025-07-11 17:47:29,885 - app                       - INFO     - [수정] S-Class DMS 시스템 v18+ (통합 수정) 초기화 완료
+2025-07-11 17:47:29,885 - app                       - INFO     - [수정] S-Class 통합 시스템 시작
+2025-07-11 17:47:29,885 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:29,885 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:29,924 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:29,925 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:29,962 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:29,962 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:30,000 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:30,000 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:30,029 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:30,047 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:30,056 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:30,094 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:30,106 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:30,110 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:30,163 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:30,180 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:30,194 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:30,230 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:30,233 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:30,267 - app                       - INFO     - Processing results for timestamp 1752223649994
+2025-07-11 17:47:30,270 - app                       - ERROR    - 통합 분석 중 오류: 'IntegratedDMSSystem' object has no attribute 'process_frame'
+2025-07-11 17:47:30,275 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:30,275 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:30,287 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:30,341 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:30,357 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:30,381 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:30,391 - app                       - INFO     - Processing results for timestamp 1752223650064
+2025-07-11 17:47:30,395 - app                       - ERROR    - 통합 분석 중 오류: 'IntegratedDMSSystem' object has no attribute 'process_frame'
+2025-07-11 17:47:30,451 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:30,454 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:30,464 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:30,506 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:30,513 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:30,571 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:30,571 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:30,571 - app                       - INFO     - Processing results for timestamp 1752223650149
+2025-07-11 17:47:30,656 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:30,717 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:30,721 - app                       - ERROR    - 통합 분석 중 오류: 'IntegratedDMSSystem' object has no attribute 'process_frame'
+2025-07-11 17:47:30,762 - app                       - INFO     - Processing results for timestamp 1752223650235
+2025-07-11 17:47:30,765 - app                       - ERROR    - 통합 분석 중 오류: 'IntegratedDMSSystem' object has no attribute 'process_frame'
+2025-07-11 17:47:30,782 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:30,786 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:30,830 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:30,832 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:30,833 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:30,877 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:30,877 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:30,910 - app                       - INFO     - Frame 10: Face=YES, Pose=YES, Hand=YES | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:47:30,910 - app                       - INFO     - Processing results for timestamp 1752223650318
+2025-07-11 17:47:30,910 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:30,922 - app                       - ERROR    - 통합 분석 중 오류: 'IntegratedDMSSystem' object has no attribute 'process_frame'
+2025-07-11 17:47:30,929 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:30,941 - app                       - WARNING  - Timeout for timestamp 1752223649994, removing from buffer.
+2025-07-11 17:47:30,982 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:30,983 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:31,033 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:31,052 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:31,066 - app                       - INFO     - Processing results for timestamp 1752223650413
+2025-07-11 17:47:31,068 - app                       - ERROR    - 통합 분석 중 오류: 'IntegratedDMSSystem' object has no attribute 'process_frame'
+2025-07-11 17:47:31,084 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:31,108 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:31,111 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:31,165 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:31,166 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:31,178 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:31,212 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:31,227 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:31,245 - app                       - INFO     - Processing results for timestamp 1752223650511
+2025-07-11 17:47:31,260 - app                       - ERROR    - 통합 분석 중 오류: 'IntegratedDMSSystem' object has no attribute 'process_frame'
+2025-07-11 17:47:31,261 - app                       - WARNING  - Timeout for timestamp 1752223650064, removing from buffer.
+2025-07-11 17:47:31,261 - app                       - WARNING  - Timeout for timestamp 1752223650627, removing from buffer.
+2025-07-11 17:47:31,275 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:31,288 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:31,292 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:31,343 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:31,359 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:31,361 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:31,426 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:31,430 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:31,438 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:31,509 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:31,535 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:31,536 - app                       - INFO     - Processing results for timestamp 1752223650787
+2025-07-11 17:47:31,540 - app                       - ERROR    - 통합 분석 중 오류: 'IntegratedDMSSystem' object has no attribute 'process_frame'
+2025-07-11 17:47:31,542 - app                       - WARNING  - Timeout for timestamp 1752223650235, removing from buffer.
+2025-07-11 17:47:31,547 - app                       - WARNING  - Timeout for timestamp 1752223650318, removing from buffer.
+2025-07-11 17:47:31,549 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:31,553 - app                       - WARNING  - Timeout for timestamp 1752223650877, removing from buffer.
+2025-07-11 17:47:31,566 - app                       - WARNING  - Timeout for timestamp 1752223650149, removing from buffer.
+2025-07-11 17:47:31,572 - app                       - WARNING  - Timeout for timestamp 1752223650946, removing from buffer.
+2025-07-11 17:47:31,598 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:31,608 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:31,658 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:31,658 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:31,673 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:31,774 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:31,825 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:31,840 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:31,918 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:31,927 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:31,927 - app                       - INFO     - Frame 20: Face=YES, Pose=YES, Hand=YES | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:47:31,927 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:31,980 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:31,983 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:32,010 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:32,060 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:32,077 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:32,077 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:32,086 - app                       - INFO     - Processing results for timestamp 1752223651033
+2025-07-11 17:47:32,095 - app                       - ERROR    - 통합 분석 중 오류: 'IntegratedDMSSystem' object has no attribute 'process_frame'
+2025-07-11 17:47:32,100 - app                       - WARNING  - Timeout for timestamp 1752223650413, removing from buffer.
+2025-07-11 17:47:32,101 - app                       - WARNING  - Timeout for timestamp 1752223651111, removing from buffer.
+2025-07-11 17:47:32,102 - app                       - WARNING  - Timeout for timestamp 1752223650511, removing from buffer.
+2025-07-11 17:47:32,104 - app                       - WARNING  - Timeout for timestamp 1752223651208, removing from buffer.
+2025-07-11 17:47:32,104 - app                       - WARNING  - Timeout for timestamp 1752223650627, removing from buffer.
+2025-07-11 17:47:32,113 - app                       - WARNING  - Timeout for timestamp 1752223651321, removing from buffer.
+2025-07-11 17:47:32,115 - app                       - WARNING  - Timeout for timestamp 1752223651386, removing from buffer.
+2025-07-11 17:47:32,126 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:32,130 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:32,157 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:32,169 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:32,176 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:32,227 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:32,229 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:32,230 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:32,273 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:32,294 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:32,310 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:32,345 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:32,348 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:32,385 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:32,393 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:32,394 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:32,452 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:32,459 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:32,472 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:32,495 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:32,495 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:32,542 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:32,542 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:32,558 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:32,601 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:32,616 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:32,628 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:32,666 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:32,670 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:32,715 - app                       - INFO     - Processing results for timestamp 1752223651477
+2025-07-11 17:47:32,715 - app                       - ERROR    - 통합 분석 중 오류: 'IntegratedDMSSystem' object has no attribute 'process_frame'
+2025-07-11 17:47:32,715 - app                       - WARNING  - Timeout for timestamp 1752223650877, removing from buffer.
+2025-07-11 17:47:32,723 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:32,724 - app                       - INFO     - Frame 30: Face=YES, Pose=YES, Hand=YES | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:47:32,724 - app                       - WARNING  - Timeout for timestamp 1752223650787, removing from buffer.
+2025-07-11 17:47:32,727 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:32,728 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:32,728 - app                       - WARNING  - Timeout for timestamp 1752223651600, removing from buffer.
+2025-07-11 17:47:32,730 - app                       - WARNING  - Timeout for timestamp 1752223651791, removing from buffer.
+2025-07-11 17:47:32,731 - app                       - WARNING  - Timeout for timestamp 1752223650946, removing from buffer.
+2025-07-11 17:47:32,733 - app                       - WARNING  - Timeout for timestamp 1752223651856, removing from buffer.
+2025-07-11 17:47:32,734 - app                       - WARNING  - Timeout for timestamp 1752223651979, removing from buffer.
+2025-07-11 17:47:32,736 - app                       - WARNING  - Timeout for timestamp 1752223652038, removing from buffer.
+2025-07-11 17:47:32,763 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:32,775 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:32,823 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:32,841 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:32,841 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:32,898 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:32,898 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:32,909 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:32,979 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:32,979 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:32,979 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:33,032 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:33,034 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:33,048 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:33,088 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:33,134 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:33,144 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:33,179 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:33,187 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:33,192 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:33,254 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:33,256 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:33,262 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:33,297 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:33,297 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:33,345 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:33,346 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:33,348 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:33,394 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:33,409 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:33,441 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:33,460 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:33,460 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:33,460 - app                       - INFO     - Processing results for timestamp 1752223652126
+2025-07-11 17:47:33,493 - app                       - ERROR    - 통합 분석 중 오류: 'IntegratedDMSSystem' object has no attribute 'process_frame'
+2025-07-11 17:47:33,493 - app                       - WARNING  - Timeout for timestamp 1752223651111, removing from buffer.
+2025-07-11 17:47:33,502 - app                       - WARNING  - Timeout for timestamp 1752223651033, removing from buffer.
+2025-07-11 17:47:33,502 - app                       - WARNING  - Timeout for timestamp 1752223652190, removing from buffer.
+2025-07-11 17:47:33,502 - app                       - WARNING  - Timeout for timestamp 1752223650511, removing from buffer.
+2025-07-11 17:47:33,502 - app                       - WARNING  - Timeout for timestamp 1752223652270, removing from buffer.
+2025-07-11 17:47:33,508 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:33,509 - app                       - INFO     - Frame 40: Face=YES, Pose=YES, Hand=YES | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:47:33,509 - app                       - WARNING  - Timeout for timestamp 1752223651208, removing from buffer.
+2025-07-11 17:47:33,511 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:33,511 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:33,511 - app                       - WARNING  - Timeout for timestamp 1752223652350, removing from buffer.
+2025-07-11 17:47:33,517 - app                       - WARNING  - Timeout for timestamp 1752223651321, removing from buffer.
+2025-07-11 17:47:33,517 - app                       - WARNING  - Timeout for timestamp 1752223650627, removing from buffer.
+2025-07-11 17:47:33,518 - app                       - WARNING  - Timeout for timestamp 1752223652421, removing from buffer.
+2025-07-11 17:47:33,518 - app                       - WARNING  - Timeout for timestamp 1752223652516, removing from buffer.
+2025-07-11 17:47:33,518 - app                       - WARNING  - Timeout for timestamp 1752223651386, removing from buffer.
+2025-07-11 17:47:33,522 - app                       - WARNING  - Timeout for timestamp 1752223652587, removing from buffer.
+2025-07-11 17:47:33,523 - app                       - WARNING  - Timeout for timestamp 1752223652675, removing from buffer.
+2025-07-11 17:47:33,526 - app                       - WARNING  - Timeout for timestamp 1752223651600, removing from buffer.
+2025-07-11 17:47:33,535 - app                       - WARNING  - Timeout for timestamp 1752223652763, removing from buffer.
+2025-07-11 17:47:33,536 - app                       - WARNING  - Timeout for timestamp 1752223650877, removing from buffer.
+2025-07-11 17:47:33,536 - app                       - WARNING  - Timeout for timestamp 1752223652859, removing from buffer.
+2025-07-11 17:47:33,537 - app                       - WARNING  - Timeout for timestamp 1752223651791, removing from buffer.
+2025-07-11 17:47:33,555 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:33,559 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:33,609 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:33,630 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:33,630 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:33,676 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:33,677 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:33,677 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:33,744 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:33,744 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:33,759 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:33,794 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:33,803 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:33,844 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:33,844 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:33,844 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:33,900 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:33,912 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:33,928 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:33,950 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:33,961 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:33,999 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:34,007 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:34,008 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:34,344 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:34,359 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:34,381 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:34,381 - app                       - INFO     - Processing results for timestamp 1752223652948
+2025-07-11 17:47:34,389 - app                       - ERROR    - 통합 분석 중 오류: 'IntegratedDMSSystem' object has no attribute 'process_frame'
+2025-07-11 17:47:34,390 - app                       - WARNING  - Timeout for timestamp 1752223653004, removing from buffer.
+2025-07-11 17:47:34,391 - app                       - WARNING  - Timeout for timestamp 1752223651477, removing from buffer.
+2025-07-11 17:47:34,393 - app                       - WARNING  - Timeout for timestamp 1752223651856, removing from buffer.
+2025-07-11 17:47:34,402 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:34,410 - app                       - WARNING  - Timeout for timestamp 1752223653055, removing from buffer.
+2025-07-11 17:47:34,410 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:34,424 - app                       - WARNING  - Timeout for timestamp 1752223650946, removing from buffer.
+2025-07-11 17:47:34,454 - app                       - WARNING  - Timeout for timestamp 1752223653146, removing from buffer.
+2025-07-11 17:47:34,464 - app                       - WARNING  - Timeout for timestamp 1752223651979, removing from buffer.
+2025-07-11 17:47:34,467 - app                       - WARNING  - Timeout for timestamp 1752223653219, removing from buffer.
+2025-07-11 17:47:34,469 - app                       - WARNING  - Timeout for timestamp 1752223652038, removing from buffer.
+2025-07-11 17:47:34,470 - app                       - WARNING  - Timeout for timestamp 1752223653297, removing from buffer.
+2025-07-11 17:47:34,470 - app                       - WARNING  - Timeout for timestamp 1752223653376, removing from buffer.
+2025-07-11 17:47:34,471 - app                       - WARNING  - Timeout for timestamp 1752223653460, removing from buffer.
+2025-07-11 17:47:34,472 - app                       - WARNING  - Timeout for timestamp 1752223652190, removing from buffer.
+2025-07-11 17:47:34,472 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:34,475 - app                       - WARNING  - Timeout for timestamp 1752223651111, removing from buffer.
+2025-07-11 17:47:34,483 - app                       - WARNING  - Timeout for timestamp 1752223653554, removing from buffer.
+2025-07-11 17:47:34,484 - app                       - WARNING  - Timeout for timestamp 1752223653630, removing from buffer.
+2025-07-11 17:47:34,487 - app                       - WARNING  - Timeout for timestamp 1752223652270, removing from buffer.
+2025-07-11 17:47:34,488 - app                       - WARNING  - Timeout for timestamp 1752223653719, removing from buffer.
+2025-07-11 17:47:34,490 - app                       - WARNING  - Timeout for timestamp 1752223652350, removing from buffer.
+2025-07-11 17:47:34,492 - app                       - WARNING  - Timeout for timestamp 1752223651208, removing from buffer.
+2025-07-11 17:47:34,494 - app                       - WARNING  - Timeout for timestamp 1752223653806, removing from buffer.
+2025-07-11 17:47:34,495 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:34,500 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:34,554 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:34,556 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:34,573 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:34,599 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:34,599 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:34,645 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:34,645 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:34,661 - app                       - INFO     - Frame 50: Face=YES, Pose=YES, Hand=YES | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:47:34,667 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:34,703 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:34,730 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:34,758 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:34,777 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:34,781 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:34,828 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:34,828 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:34,828 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:34,893 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:34,893 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:34,909 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:34,943 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:34,943 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:34,987 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:34,994 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:34,997 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:35,060 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:35,060 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:35,060 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:35,121 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:35,121 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:35,146 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:35,166 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:35,167 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:35,215 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:35,218 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:35,218 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:35,285 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:35,287 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:35,313 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:35,329 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:35,332 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:35,375 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:35,377 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:35,381 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:35,427 - app                       - INFO     - Frame 60: Face=YES, Pose=YES, Hand=YES | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:47:35,458 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(720, 1280, 3)
+2025-07-11 17:47:35,474 - app                       - ERROR    - [수정] 통합 어노테이션 중 오류: 'DMSApp' object has no attribute 'ui_manager'
+2025-07-11 17:47:35,508 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(720, 1280, 3)
+2025-07-11 17:47:35,535 - events.event_bus          - INFO     - MEDIUM 우선순위 큐 처리 취소됨
+2025-07-11 17:47:35,535 - events.event_bus          - INFO     - EMERGENCY 우선순위 큐 처리 취소됨
+2025-07-11 17:47:35,542 - events.event_bus          - INFO     - HIGH 우선순위 큐 처리 취소됨
+2025-07-11 17:47:35,544 - events.event_bus          - INFO     - LOW 우선순위 큐 처리 취소됨
+2025-07-11 17:47:35,544 - events.event_bus          - INFO     - CRITICAL 우선순위 큐 처리 취소됨

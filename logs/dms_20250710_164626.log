@@ -1,0 +1,181 @@
+2025-07-10 16:46:51,681 - __main__                  - INFO     - 설정 완료: {'input_source': ['C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0097/video/SGA5100180S0097.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0126/video/SGA5100180S0126.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0135/video/SGA5100180S0135.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0086/video/SGA5100180S0086.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0101/video/SGA5100180S0101.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0109/video/SGA5100180S0109.mp4'], 'user_id': 'default', 'camera_position': <CameraPosition.DASHBOARD_CENTER: '대시보드 중앙'>, 'enable_calibration': False, 'is_same_driver': True}
+2025-07-10 16:46:51,685 - systems.performance       - INFO     - PerformanceOptimizer 초기화 완료
+2025-07-10 16:46:51,685 - io_handler.video_input    - INFO     - 운전자 연속성 설정됨: 동일 운전자
+2025-07-10 16:46:51,686 - systems.personalization   - INFO     - 사용자 프로필 로드됨: default
+2025-07-10 16:46:51,687 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-10 16:46:51,687 - systems.dynamic           - INFO     - DynamicAnalysisEngine 초기화 완료
+2025-07-10 16:46:51,688 - systems.backup            - INFO     - SensorBackupManager 초기화 완료
+2025-07-10 16:46:51,689 - analysis.gaze             - INFO     - EnhancedSphericalGazeClassifier 초기화: 11개 구역 정의됨
+2025-07-10 16:46:51,690 - analysis.drowsiness       - INFO     - EnhancedDrowsinessDetector 초기화 완료
+2025-07-10 16:46:51,691 - analysis.emotion          - INFO     - EmotionRecognitionSystem 초기화 완료
+2025-07-10 16:46:51,691 - analysis.distraction      - INFO     - DistractionObjectDetector 초기화 완료
+2025-07-10 16:46:51,693 - analysis.identity         - INFO     - 1명의 운전자 프로필 로드됨
+2025-07-10 16:46:51,693 - analysis.identity         - INFO     - DriverIdentificationSystem 초기화 완료
+2025-07-10 16:46:51,693 - analysis.prediction       - INFO     - PredictiveSafetySystem 초기화 완료
+2025-07-10 16:46:51,694 - systems.performance       - INFO     - PerformanceOptimizer 초기화 완료
+2025-07-10 16:46:51,869 - systems.mediapipe_manager - INFO     - ✅ FaceLandmarker 초기화 완료 (블렌드셰이프 활성화)
+2025-07-10 16:46:52,169 - systems.mediapipe_manager - INFO     - ✅ PoseLandmarker 초기화 완료 (33 키포인트)
+2025-07-10 16:46:52,309 - systems.mediapipe_manager - INFO     - ✅ HandLandmarker 초기화 완료
+2025-07-10 16:46:52,411 - systems.mediapipe_manager - INFO     - ✅ ObjectDetector 초기화 완료 (주의산만 객체 감지)
+2025-07-10 16:46:52,532 - io_handler.video_input    - INFO     - ✅ 입력 소스 초기화 및 스레드 시작
+2025-07-10 16:46:52,533 - app                       - INFO     - 🚀 고도화된 DMS 시스템 v18 (연구 결과 통합) 초기화 완료
+2025-07-10 16:46:52,533 - app                       - INFO     - 📊 새로운 기능: 향상된 EAR, 감정 인식, 예측적 안전, 운전자 식별
+2025-07-10 16:46:52,534 - app                       - INFO     - 🎯 DMS v18 시스템 시작. 'q'를 눌러 종료, 스페이스바로 일시정지, 's'로 스크린샷 저장
+2025-07-10 16:46:53,833 - systems.backup            - WARNING  - 백업 모드 활성화: hand_backup_active
+2025-07-10 16:46:56,362 - systems.performance       - WARNING  - 성능 최적화 모드 활성화
+2025-07-10 16:46:56,362 - systems.performance       - INFO     - 적용 전략: 프레임 스키핑 증가
+2025-07-10 16:46:56,363 - systems.performance       - INFO     - 적용 전략: 분석 해상도 감소
+2025-07-10 16:46:56,363 - systems.performance       - INFO     - 적용 전략: 일부 분석 기능 비활성화
+2025-07-10 16:46:56,363 - systems.performance       - INFO     - 적용 전략: 메모리 정리 강화
+2025-07-10 16:46:56,495 - systems.performance       - WARNING  - 성능 최적화 모드 활성화
+2025-07-10 16:46:56,495 - systems.performance       - INFO     - 적용 전략: 프레임 스키핑 증가
+2025-07-10 16:46:56,496 - systems.performance       - INFO     - 적용 전략: 분석 해상도 감소
+2025-07-10 16:46:56,496 - systems.performance       - INFO     - 적용 전략: 일부 분석 기능 비활성화
+2025-07-10 16:46:56,496 - systems.performance       - INFO     - 적용 전략: 메모리 정리 강화
+2025-07-10 16:46:57,118 - io_handler.video_input    - INFO     - 다음 비디오 로드: SGA5100180S0126.mp4
+2025-07-10 16:46:58,679 - systems.performance       - INFO     - 성능 최적화 모드 비활성화 - 정상 성능 복구
+2025-07-10 16:46:58,719 - systems.performance       - INFO     - 성능 최적화 모드 비활성화 - 정상 성능 복구
+2025-07-10 16:47:02,251 - io_handler.video_input    - INFO     - 다음 비디오 로드: SGA5100180S0135.mp4
+2025-07-10 16:47:02,400 - systems.backup            - WARNING  - 백업 모드 활성화: face_backup_active
+2025-07-10 16:47:02,495 - systems.backup            - INFO     - 백업 모드 비활성화: face_backup_active - 원본 센서 복구됨
+2025-07-10 16:47:04,347 - systems.backup            - WARNING  - 백업 모드 활성화: face_backup_active
+2025-07-10 16:47:04,449 - core.state_manager        - INFO     - 상태 전환: SAFE -> FATIGUE_LOW (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:04,522 - core.state_manager        - INFO     - 상태 전환: FATIGUE_LOW -> FATIGUE_HIGH (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:04,579 - core.state_manager        - INFO     - 상태 전환: FATIGUE_HIGH -> FATIGUE_LOW (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:04,626 - core.state_manager        - INFO     - 상태 전환: FATIGUE_LOW -> FATIGUE_HIGH (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:04,673 - core.state_manager        - INFO     - 상태 전환: FATIGUE_HIGH -> FATIGUE_LOW (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:04,732 - core.state_manager        - INFO     - 상태 전환: FATIGUE_LOW -> FATIGUE_HIGH (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:04,770 - core.state_manager        - INFO     - 상태 전환: FATIGUE_HIGH -> FATIGUE_LOW (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:04,827 - core.state_manager        - INFO     - 상태 전환: FATIGUE_LOW -> FATIGUE_HIGH (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:04,869 - core.state_manager        - INFO     - 상태 전환: FATIGUE_HIGH -> FATIGUE_LOW (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:04,918 - systems.backup            - INFO     - 백업 모드 비활성화: face_backup_active - 원본 센서 복구됨
+2025-07-10 16:47:04,926 - core.state_manager        - INFO     - 상태 전환: FATIGUE_LOW -> FATIGUE_HIGH (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:05,004 - systems.backup            - WARNING  - 백업 모드 활성화: face_backup_active
+2025-07-10 16:47:05,006 - core.state_manager        - INFO     - 상태 전환: FATIGUE_HIGH -> FATIGUE_LOW (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:05,061 - core.state_manager        - INFO     - 상태 전환: FATIGUE_LOW -> FATIGUE_HIGH (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:05,108 - core.state_manager        - INFO     - 상태 전환: FATIGUE_HIGH -> FATIGUE_LOW (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:05,166 - core.state_manager        - INFO     - 상태 전환: FATIGUE_LOW -> FATIGUE_HIGH (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:05,204 - core.state_manager        - INFO     - 상태 전환: FATIGUE_HIGH -> FATIGUE_LOW (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:05,250 - core.state_manager        - INFO     - 상태 전환: FATIGUE_LOW -> FATIGUE_HIGH (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:05,297 - core.state_manager        - INFO     - 상태 전환: FATIGUE_HIGH -> FATIGUE_LOW (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:05,354 - core.state_manager        - INFO     - 상태 전환: FATIGUE_LOW -> FATIGUE_HIGH (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:05,389 - core.state_manager        - INFO     - 상태 전환: FATIGUE_HIGH -> FATIGUE_LOW (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:05,436 - systems.backup            - INFO     - 백업 모드 비활성화: face_backup_active - 원본 센서 복구됨
+2025-07-10 16:47:05,443 - core.state_manager        - INFO     - 상태 전환: FATIGUE_LOW -> DISTRACTION_NORMAL (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:05,568 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_NORMAL -> FATIGUE_LOW (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:05,633 - core.state_manager        - INFO     - 상태 전환: FATIGUE_LOW -> FATIGUE_HIGH (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:05,698 - core.state_manager        - INFO     - 상태 전환: FATIGUE_HIGH -> FATIGUE_LOW (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:05,758 - core.state_manager        - INFO     - 상태 전환: FATIGUE_LOW -> FATIGUE_HIGH (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:05,820 - core.state_manager        - INFO     - 상태 전환: FATIGUE_HIGH -> FATIGUE_LOW (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:05,882 - core.state_manager        - INFO     - 상태 전환: FATIGUE_LOW -> FATIGUE_HIGH (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:05,948 - core.state_manager        - INFO     - 상태 전환: FATIGUE_HIGH -> FATIGUE_LOW (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:06,012 - core.state_manager        - INFO     - 상태 전환: FATIGUE_LOW -> FATIGUE_HIGH (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:06,082 - core.state_manager        - INFO     - 상태 전환: FATIGUE_HIGH -> FATIGUE_LOW (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:06,148 - core.state_manager        - INFO     - 상태 전환: FATIGUE_LOW -> FATIGUE_HIGH (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:06,215 - core.state_manager        - INFO     - 상태 전환: FATIGUE_HIGH -> FATIGUE_LOW (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:06,286 - core.state_manager        - INFO     - 상태 전환: FATIGUE_LOW -> FATIGUE_HIGH (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:06,370 - core.state_manager        - INFO     - 상태 전환: FATIGUE_HIGH -> FATIGUE_LOW (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:06,448 - core.state_manager        - INFO     - 상태 전환: FATIGUE_LOW -> FATIGUE_HIGH (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:06,516 - core.state_manager        - INFO     - 상태 전환: FATIGUE_HIGH -> DISTRACTION_NORMAL (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:06,597 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_NORMAL -> DISTRACTION_DANGER (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:06,666 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_DANGER -> DISTRACTION_NORMAL (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:06,738 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_NORMAL -> DISTRACTION_DANGER (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:06,803 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_DANGER -> DISTRACTION_NORMAL (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:06,876 - io_handler.video_input    - INFO     - 다음 비디오 로드: SGA5100180S0086.mp4
+2025-07-10 16:47:06,883 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_NORMAL -> DISTRACTION_DANGER (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:06,968 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_DANGER -> DISTRACTION_NORMAL (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:07,042 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_NORMAL -> DISTRACTION_DANGER (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:07,106 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_DANGER -> DISTRACTION_NORMAL (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:07,172 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_NORMAL -> DISTRACTION_DANGER (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:07,241 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_DANGER -> DISTRACTION_NORMAL (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:07,304 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_NORMAL -> DISTRACTION_DANGER (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:07,374 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_DANGER -> DISTRACTION_NORMAL (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:07,880 - systems.performance       - WARNING  - 성능 최적화 모드 활성화
+2025-07-10 16:47:07,881 - systems.performance       - INFO     - 적용 전략: 프레임 스키핑 증가
+2025-07-10 16:47:07,881 - systems.performance       - INFO     - 적용 전략: 분석 해상도 감소
+2025-07-10 16:47:07,881 - systems.performance       - INFO     - 적용 전략: 일부 분석 기능 비활성화
+2025-07-10 16:47:07,881 - systems.performance       - INFO     - 적용 전략: 메모리 정리 강화
+2025-07-10 16:47:07,921 - systems.performance       - WARNING  - 성능 최적화 모드 활성화
+2025-07-10 16:47:07,921 - systems.performance       - INFO     - 적용 전략: 프레임 스키핑 증가
+2025-07-10 16:47:07,921 - systems.performance       - INFO     - 적용 전략: 분석 해상도 감소
+2025-07-10 16:47:07,921 - systems.performance       - INFO     - 적용 전략: 일부 분석 기능 비활성화
+2025-07-10 16:47:07,922 - systems.performance       - INFO     - 적용 전략: 메모리 정리 강화
+2025-07-10 16:47:09,131 - systems.backup            - WARNING  - 백업 모드 활성화: face_backup_active
+2025-07-10 16:47:09,480 - systems.performance       - INFO     - 성능 최적화 모드 비활성화 - 정상 성능 복구
+2025-07-10 16:47:09,497 - systems.performance       - INFO     - 성능 최적화 모드 비활성화 - 정상 성능 복구
+2025-07-10 16:47:09,543 - systems.backup            - INFO     - 백업 모드 비활성화: face_backup_active - 원본 센서 복구됨
+2025-07-10 16:47:09,685 - systems.backup            - WARNING  - 백업 모드 활성화: face_backup_active
+2025-07-10 16:47:10,266 - systems.backup            - INFO     - 백업 모드 비활성화: face_backup_active - 원본 센서 복구됨
+2025-07-10 16:47:10,351 - systems.backup            - WARNING  - 백업 모드 활성화: face_backup_active
+2025-07-10 16:47:10,952 - systems.backup            - INFO     - 백업 모드 비활성화: face_backup_active - 원본 센서 복구됨
+2025-07-10 16:47:11,809 - io_handler.video_input    - INFO     - 다음 비디오 로드: SGA5100180S0101.mp4
+2025-07-10 16:47:12,403 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_NORMAL -> SAFE (이벤트: NORMAL_BEHAVIOR)
+2025-07-10 16:47:13,047 - systems.backup            - WARNING  - 백업 모드 활성화: face_backup_active
+2025-07-10 16:47:13,143 - systems.backup            - INFO     - 백업 모드 비활성화: face_backup_active - 원본 센서 복구됨
+2025-07-10 16:47:13,316 - systems.backup            - WARNING  - 백업 모드 활성화: face_backup_active
+2025-07-10 16:47:13,320 - core.state_manager        - INFO     - 상태 전환: SAFE -> FATIGUE_LOW (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:13,376 - core.state_manager        - INFO     - 상태 전환: FATIGUE_LOW -> FATIGUE_HIGH (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:13,441 - core.state_manager        - INFO     - 상태 전환: FATIGUE_HIGH -> FATIGUE_LOW (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:13,499 - core.state_manager        - INFO     - 상태 전환: FATIGUE_LOW -> FATIGUE_HIGH (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:13,548 - core.state_manager        - INFO     - 상태 전환: FATIGUE_HIGH -> FATIGUE_LOW (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:13,606 - core.state_manager        - INFO     - 상태 전환: FATIGUE_LOW -> FATIGUE_HIGH (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:13,655 - core.state_manager        - INFO     - 상태 전환: FATIGUE_HIGH -> FATIGUE_LOW (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:13,710 - systems.backup            - INFO     - 백업 모드 비활성화: face_backup_active - 원본 센서 복구됨
+2025-07-10 16:47:13,772 - systems.backup            - WARNING  - 백업 모드 활성화: face_backup_active
+2025-07-10 16:47:13,778 - core.state_manager        - INFO     - 상태 전환: FATIGUE_LOW -> FATIGUE_HIGH (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:13,825 - core.state_manager        - INFO     - 상태 전환: FATIGUE_HIGH -> FATIGUE_LOW (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:13,883 - core.state_manager        - INFO     - 상태 전환: FATIGUE_LOW -> FATIGUE_HIGH (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:13,940 - core.state_manager        - INFO     - 상태 전환: FATIGUE_HIGH -> FATIGUE_LOW (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:13,983 - systems.backup            - INFO     - 백업 모드 비활성화: face_backup_active - 원본 센서 복구됨
+2025-07-10 16:47:14,167 - core.state_manager        - INFO     - 상태 전환: FATIGUE_LOW -> FATIGUE_HIGH (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:14,227 - core.state_manager        - INFO     - 상태 전환: FATIGUE_HIGH -> FATIGUE_LOW (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:14,290 - core.state_manager        - INFO     - 상태 전환: FATIGUE_LOW -> FATIGUE_HIGH (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:14,360 - core.state_manager        - INFO     - 상태 전환: FATIGUE_HIGH -> FATIGUE_LOW (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:14,424 - core.state_manager        - INFO     - 상태 전환: FATIGUE_LOW -> FATIGUE_HIGH (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:14,490 - core.state_manager        - INFO     - 상태 전환: FATIGUE_HIGH -> FATIGUE_LOW (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:14,787 - core.state_manager        - INFO     - 상태 전환: FATIGUE_LOW -> DISTRACTION_NORMAL (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:14,853 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_NORMAL -> DISTRACTION_DANGER (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:14,920 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_DANGER -> FATIGUE_LOW (이벤트: FATIGUE_ACCUMULATION)
+2025-07-10 16:47:15,118 - core.state_manager        - INFO     - 상태 전환: FATIGUE_LOW -> DISTRACTION_NORMAL (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:15,187 - analysis.drowsiness       - INFO     - 개인화 임계값 업데이트: 0.350
+2025-07-10 16:47:15,195 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_NORMAL -> DISTRACTION_DANGER (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:15,270 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_DANGER -> DISTRACTION_NORMAL (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:15,337 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_NORMAL -> DISTRACTION_DANGER (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:15,465 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_DANGER -> DISTRACTION_NORMAL (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:15,537 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_NORMAL -> DISTRACTION_DANGER (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:15,610 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_DANGER -> DISTRACTION_NORMAL (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:15,679 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_NORMAL -> DISTRACTION_DANGER (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:17,696 - io_handler.video_input    - INFO     - 다음 비디오 로드: SGA5100180S0109.mp4
+2025-07-10 16:47:18,897 - systems.backup            - WARNING  - 백업 모드 활성화: face_backup_active
+2025-07-10 16:47:18,996 - systems.backup            - INFO     - 백업 모드 비활성화: face_backup_active - 원본 센서 복구됨
+2025-07-10 16:47:19,784 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_DANGER -> DISTRACTION_NORMAL (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:19,850 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_NORMAL -> DISTRACTION_DANGER (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:19,916 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_DANGER -> DISTRACTION_NORMAL (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:20,103 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_NORMAL -> DISTRACTION_DANGER (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:20,167 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_DANGER -> DISTRACTION_NORMAL (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:20,246 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_NORMAL -> DISTRACTION_DANGER (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:20,325 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_DANGER -> DISTRACTION_NORMAL (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:20,403 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_NORMAL -> DISTRACTION_DANGER (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:20,484 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_DANGER -> DISTRACTION_NORMAL (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:20,553 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_NORMAL -> DISTRACTION_DANGER (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:20,627 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_DANGER -> DISTRACTION_NORMAL (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:20,694 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_NORMAL -> DISTRACTION_DANGER (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:20,754 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_DANGER -> DISTRACTION_NORMAL (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:20,822 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_NORMAL -> DISTRACTION_DANGER (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:20,888 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_DANGER -> DISTRACTION_NORMAL (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:20,952 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_NORMAL -> DISTRACTION_DANGER (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:21,021 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_DANGER -> DISTRACTION_NORMAL (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:21,104 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_NORMAL -> DISTRACTION_DANGER (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:21,167 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_DANGER -> DISTRACTION_NORMAL (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:21,236 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_NORMAL -> DISTRACTION_DANGER (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:21,301 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_DANGER -> DISTRACTION_NORMAL (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:21,368 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_NORMAL -> DISTRACTION_DANGER (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:21,441 - core.state_manager        - INFO     - 상태 전환: DISTRACTION_DANGER -> DISTRACTION_NORMAL (이벤트: ATTENTION_DECLINE)
+2025-07-10 16:47:23,373 - app                       - INFO     - 모든 비디오 재생 완료 또는 입력 종료
+2025-07-10 16:47:23,375 - systems.performance       - INFO     - 세션 요약 저장: performance_logs\summary_performance_v6_20250710_164651.json
+2025-07-10 16:47:23,375 - app                       - INFO     - Enhanced DMS v18 시스템 정리 중...
+2025-07-10 16:47:23,375 - systems.mediapipe_manager - INFO     - MediaPipe Task 리소스 정리 시작...
+2025-07-10 16:47:23,396 - systems.mediapipe_manager - INFO     - MediaPipe Task 리소스 정리 완료.
+2025-07-10 16:47:23,414 - io_handler.video_input    - INFO     - VideoInputManager 리소스 해제 완료.
+2025-07-10 16:47:23,435 - app                       - INFO     - 최종 성능 요약 - 평균 FPS: 19.9, 성능 점수: 75.9%
+2025-07-10 16:47:23,437 - app                       - INFO     - Enhanced DMS v18 시스템 정리 완료

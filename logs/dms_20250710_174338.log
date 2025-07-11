@@ -1,0 +1,55 @@
+2025-07-10 17:43:56,185 - __main__                  - INFO     - S-Class 설정 완료: {'input_source': 0, 'user_id': 'default', 'camera_position': <CameraPosition.REARVIEW_MIRROR: '백미러 위치'>, 'enable_calibration': True, 'is_same_driver': True, 'system_type': <AnalysisSystemType.STANDARD: 'standard'>, 'use_legacy_engine': False, 'sclass_features': {'enable_rppg': True, 'enable_saccade': True, 'enable_spinal_analysis': True, 'enable_tremor_fft': True, 'enable_bayesian_prediction': True}}
+2025-07-10 17:43:56,201 - systems.performance       - INFO     - PerformanceOptimizer 초기화 완료
+2025-07-10 17:43:56,201 - systems.personalization   - INFO     - 사용자 프로필 로드됨: default
+2025-07-10 17:43:56,201 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-10 17:43:56,201 - systems.dynamic           - INFO     - DynamicAnalysisEngine 초기화 완료
+2025-07-10 17:43:56,201 - systems.backup            - INFO     - SensorBackupManager 초기화 완료
+2025-07-10 17:43:56,208 - app                       - INFO     - 🚀 S-Class DMS 시스템 초기화 시작...
+2025-07-10 17:43:56,210 - systems.metrics_manager   - INFO     - MetricsManager 초기화 완료 - 히스토리 크기: 900
+2025-07-10 17:43:56,210 - integration.integrated_system - INFO     - 새로운 시스템 초기화 시작 - 성능 우선 전략
+2025-07-10 17:43:56,210 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 시작: standard
+2025-07-10 17:43:56,211 - analysis.factory.analysis_factory - INFO     - 지원 기능: advanced_drowsiness_detection, multi_level_distraction_detection, precise_head_pose_tracking, gaze_zone_classification, emotion_recognition...
+2025-07-10 17:43:56,211 - analysis.factory.analysis_factory - INFO     - 표준 성능 DMS 시스템 생성 중...
+2025-07-10 17:43:56,211 - analysis.fusion.fusion_engine_advanced - INFO     - MultiModalFusionEngine (S-Class) 초기화 완료 - 디지털 신경과학자 준비됨
+2025-07-10 17:43:56,356 - analysis.drowsiness       - INFO     - EnhancedDrowsinessDetector 초기화 완료
+2025-07-10 17:43:56,358 - analysis.emotion          - INFO     - EmotionRecognitionSystem 초기화 완료
+2025-07-10 17:43:56,358 - analysis.gaze             - INFO     - EnhancedSphericalGazeClassifier 초기화: 11개 구역 정의됨
+2025-07-10 17:43:56,358 - analysis.identity         - INFO     - 1명의 운전자 프로필 로드됨
+2025-07-10 17:43:56,358 - analysis.identity         - INFO     - DriverIdentificationSystem 초기화 완료
+2025-07-10 17:43:56,358 - analysis.processors.face_processor_s_class - INFO     - FaceDataProcessor (S-Class) 초기화 완료 - 디지털 심리학자 준비됨
+2025-07-10 17:43:56,358 - analysis.processors.pose_processor_s_class - INFO     - PoseDataProcessor (S-Class) 초기화 완료 - 자세 분석 전문가 준비됨
+2025-07-10 17:43:56,358 - analysis.processors.hand_processor_s_class - INFO     - HandDataProcessor (S-Class, 인터페이스 통합) 초기화 완료
+2025-07-10 17:43:56,358 - analysis.processors.object_processor_s_class - INFO     - ObjectDataProcessor (S-Class) 초기화 완료 - 행동 예측 전문가 준비됨
+2025-07-10 17:43:56,358 - analysis.orchestrator.orchestrator_advanced - INFO     - AnalysisOrchestrator (S-Class) 초기화 완료 - 지능형 지휘자 준비됨
+2025-07-10 17:43:56,358 - analysis.factory.analysis_factory - INFO     - 표준 DMS 시스템 생성 완료 - 균형 모드 활성화
+2025-07-10 17:43:56,358 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 완료: standard
+2025-07-10 17:43:56,358 - integration.integrated_system - INFO     - ✅ 새로운 standard 시스템 생성 완료
+2025-07-10 17:43:56,358 - integration.integrated_system - INFO     - IntegratedDMSSystem 초기화 완료 - 타입: standard, 레거시: False
+2025-07-10 17:43:56,358 - events.event_bus          - INFO     - EventBus 초기화 완료 - 중추 신경계 가동 시작
+2025-07-10 17:43:56,358 - events.event_bus          - INFO     - EventBus 시작됨 - 모든 우선순위 큐 처리 시작
+2025-07-10 17:43:56,358 - events.event_bus          - INFO     - 글로벌 이벤트 시스템 초기화 완료
+2025-07-10 17:43:56,358 - events.handlers           - INFO     - SafetyEventHandler 초기화 완료 - 안전 모니터링 시작
+2025-07-10 17:43:56,358 - events.event_bus          - INFO     - 글로벌 핸들러 등록: SafetyEventHandler
+2025-07-10 17:43:56,365 - events.handlers           - INFO     - AnalyticsEventHandler 초기화 완료 - 성능 모니터링 시작
+2025-07-10 17:43:56,365 - events.event_bus          - INFO     - 글로벌 핸들러 등록: AnalyticsEventHandler
+2025-07-10 17:43:56,365 - systems.metrics_manager   - INFO     - StateManager와 연결됨
+2025-07-10 17:43:56,365 - core.state_manager        - INFO     - MetricsManager와 연결됨
+2025-07-10 17:43:56,365 - integration.integrated_system - INFO     - IntegratedDMSSystem 비동기 초기화 완료
+2025-07-10 17:43:56,366 - app                       - ERROR    - 비동기 컴포넌트 초기화 실패: 'PersonalizationEngine' object has no attribute 'initialize'
+2025-07-10 17:43:56,366 - systems.performance       - INFO     - PerformanceOptimizer 초기화 완료
+2025-07-10 17:43:56,524 - systems.mediapipe_manager - INFO     - ✅ FaceLandmarker 초기화 완료 (블렌드셰이프 활성화)
+2025-07-10 17:43:56,825 - systems.mediapipe_manager - INFO     - ✅ PoseLandmarker 초기화 완료 (33 키포인트)
+2025-07-10 17:43:56,958 - systems.mediapipe_manager - INFO     - ✅ HandLandmarker 초기화 완료
+2025-07-10 17:43:57,059 - systems.mediapipe_manager - INFO     - ✅ ObjectDetector 초기화 완료 (주의산만 객체 감지)
+2025-07-10 17:44:02,806 - io_handler.video_input    - INFO     - ✅ 입력 소스 초기화 및 스레드 시작
+2025-07-10 17:44:02,806 - app                       - INFO     - 🚀 고도화된 S-Class DMS 시스템 v18+ (연구 결과 통합) 초기화 완료
+2025-07-10 17:44:02,806 - app                       - INFO     - 📊 S-Class 기능: rPPG 심박수, 사카드 분석, 스파인 정렬, FFT 떨림 분석, 베이지안 예측
+2025-07-10 17:44:02,806 - app                       - INFO     - 🎯 어텐션 메커니즘, 인지 부하 모델링, 적응형 파이프라인 활성화
+2025-07-10 17:44:02,806 - app                       - INFO     - 🎯 S-Class DMS v18+ 시스템 시작. 'q'를 눌러 종료, 스페이스바로 일시정지, 's'로 스크린샷 저장
+2025-07-10 17:44:03,115 - analysis.orchestrator.orchestrator_advanced - ERROR    - face 프로세서 실행 중 오류: FaceDataProcessor.process_data() missing 1 required positional argument: 'timestamp'
+2025-07-10 17:44:03,121 - analysis.processors.pose_processor_s_class - WARNING  - 자세가 감지되지 않음 - 백업 모드 또는 센서 재보정 필요
+2025-07-10 17:44:03,121 - analysis.processors.hand_processor_s_class - WARNING  - 손이 감지되지 않았습니다.
+2025-07-10 17:44:03,122 - systems.metrics_manager   - WARNING  - 경고 발생 - distraction: critical (값: 1.000)
+2025-07-10 17:44:03,122 - core.state_manager        - WARNING  - 경고 수신: distraction - critical (값: 1.000)
+2025-07-10 17:44:03,122 - analysis.orchestrator.orchestrator_advanced - ERROR    - object 프로세서 실행 중 오류: An asyncio.Future, a coroutine or an awaitable is required
+2025-07-10 17:44:03,123 - integration.integrated_system - INFO     - 성능 리포트 - 평균 처리시간: 8.6ms, FPS: 116.0

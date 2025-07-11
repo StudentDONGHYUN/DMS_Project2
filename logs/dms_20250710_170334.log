@@ -1,0 +1,37 @@
+2025-07-10 17:03:59,380 - __main__                  - INFO     - S-Class 설정 완료: {'input_source': ['C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0097/video/SGA5100180S0097.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0126/video/SGA5100180S0126.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0135/video/SGA5100180S0135.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0086/video/SGA5100180S0086.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0101/video/SGA5100180S0101.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0109/video/SGA5100180S0109.mp4'], 'user_id': 'default', 'camera_position': <CameraPosition.DASHBOARD_CENTER: '대시보드 중앙'>, 'enable_calibration': True, 'is_same_driver': True, 'system_type': <AnalysisSystemType.STANDARD: 'standard'>, 'use_legacy_engine': False, 'sclass_features': {'enable_rppg': True, 'enable_saccade': True, 'enable_spinal_analysis': True, 'enable_tremor_fft': True, 'enable_bayesian_prediction': True}}
+2025-07-10 17:03:59,385 - systems.performance       - INFO     - PerformanceOptimizer 초기화 완료
+2025-07-10 17:03:59,386 - systems.personalization   - INFO     - 사용자 프로필 로드됨: default
+2025-07-10 17:03:59,386 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-10 17:03:59,387 - systems.dynamic           - INFO     - DynamicAnalysisEngine 초기화 완료
+2025-07-10 17:03:59,388 - systems.backup            - INFO     - SensorBackupManager 초기화 완료
+2025-07-10 17:03:59,389 - io_handler.video_input    - INFO     - 운전자 연속성 설정됨: 동일 운전자
+2025-07-10 17:03:59,390 - app                       - INFO     - 🚀 S-Class DMS 시스템 초기화 시작...
+2025-07-10 17:03:59,393 - systems.metrics_manager   - INFO     - MetricsManager 초기화 완료 - 히스토리 크기: 900
+2025-07-10 17:03:59,394 - integration.integrated_system - INFO     - 새로운 시스템 초기화 시작 - 성능 우선 전략
+2025-07-10 17:03:59,395 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 시작: standard
+2025-07-10 17:03:59,396 - analysis.factory.analysis_factory - INFO     - 지원 기능: advanced_drowsiness_detection, multi_level_distraction_detection, precise_head_pose_tracking, gaze_zone_classification, emotion_recognition...
+2025-07-10 17:03:59,396 - analysis.factory.analysis_factory - INFO     - 표준 성능 DMS 시스템 생성 중...
+2025-07-10 17:03:59,397 - analysis.fusion.fusion_engine_advanced - INFO     - MultiModalFusionEngine (S-Class) 초기화 완료 - 디지털 신경과학자 준비됨
+2025-07-10 17:03:59,487 - analysis.drowsiness       - INFO     - EnhancedDrowsinessDetector 초기화 완료
+2025-07-10 17:03:59,487 - analysis.emotion          - INFO     - EmotionRecognitionSystem 초기화 완료
+2025-07-10 17:03:59,488 - analysis.gaze             - INFO     - EnhancedSphericalGazeClassifier 초기화: 11개 구역 정의됨
+2025-07-10 17:03:59,488 - analysis.identity         - INFO     - 1명의 운전자 프로필 로드됨
+2025-07-10 17:03:59,489 - analysis.identity         - INFO     - DriverIdentificationSystem 초기화 완료
+2025-07-10 17:03:59,489 - analysis.processors.face_processor_s_class - INFO     - FaceDataProcessor (S-Class) 초기화 완료 - 디지털 심리학자 준비됨
+2025-07-10 17:03:59,489 - analysis.processors.pose_processor_s_class - INFO     - PoseDataProcessor (S-Class) 초기화 완료 - 자세 분석 전문가 준비됨
+2025-07-10 17:03:59,490 - analysis.processors.hand_processor_s_class - INFO     - HandDataProcessor (S-Class, 인터페이스 통합) 초기화 완료
+2025-07-10 17:03:59,490 - analysis.processors.object_processor_s_class - INFO     - ObjectDataProcessor (S-Class) 초기화 완료 - 행동 예측 전문가 준비됨
+2025-07-10 17:03:59,490 - analysis.orchestrator.orchestrator_advanced - INFO     - AnalysisOrchestrator (S-Class) 초기화 완료 - 지능형 지휘자 준비됨
+2025-07-10 17:03:59,491 - analysis.factory.analysis_factory - INFO     - 표준 DMS 시스템 생성 완료 - 균형 모드 활성화
+2025-07-10 17:03:59,491 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 완료: standard
+2025-07-10 17:03:59,492 - integration.integrated_system - INFO     - ✅ 새로운 standard 시스템 생성 완료
+2025-07-10 17:03:59,492 - integration.integrated_system - INFO     - IntegratedDMSSystem 초기화 완료 - 타입: standard, 레거시: False
+2025-07-10 17:03:59,493 - app                       - ERROR    - S-Class 시스템 초기화 실패: no running event loop
+Traceback (most recent call last):
+  File "c:\Users\HKIT\Downloads\DMS_Project\app.py", line 84, in initialize
+    asyncio.create_task(self._initialize_async_components())
+  File "C:\Users\HKIT\.conda\envs\new_env\Lib\asyncio\tasks.py", line 381, in create_task
+    loop = events.get_running_loop()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: no running event loop
+2025-07-10 17:03:59,569 - app                       - ERROR    - S-Class 시스템 초기화 실패

@@ -1,0 +1,1124 @@
+2025-07-11 17:08:05,510 - __main__                  - INFO     - [진단] main.py: main() 진입
+2025-07-11 17:08:09,775 - __main__                  - INFO     - S-Class 설정 완료: {'input_source': 0, 'user_id': 'default', 'camera_position': <CameraPosition.REARVIEW_MIRROR: '백미러 위치'>, 'enable_calibration': False, 'is_same_driver': True, 'system_type': <AnalysisSystemType.STANDARD: 'standard'>, 'use_legacy_engine': False, 'sclass_features': {'enable_rppg': True, 'enable_saccade': True, 'enable_spinal_analysis': True, 'enable_tremor_fft': True, 'enable_bayesian_prediction': True}}
+2025-07-11 17:08:09,775 - app                       - INFO     - [수정] app_fixed.py: DMSApp.__init__ 진입
+2025-07-11 17:08:09,785 - systems.performance       - INFO     - PerformanceOptimizer 초기화 완료
+2025-07-11 17:08:09,786 - systems.personalization   - INFO     - 사용자 프로필 로드됨: default
+2025-07-11 17:08:09,786 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-11 17:08:09,786 - systems.dynamic           - INFO     - DynamicAnalysisEngine 초기화 완료
+2025-07-11 17:08:09,787 - systems.backup            - INFO     - SensorBackupManager 초기화 완료
+2025-07-11 17:08:09,787 - app                       - INFO     - [수정] S-Class 시스템 초기화 완료
+2025-07-11 17:08:09,787 - app                       - INFO     - [수정] S-Class DMS 시스템 시작
+2025-07-11 17:08:09,791 - app                       - INFO     - [수정] S-Class DMS 시스템 초기화 시작...
+2025-07-11 17:08:09,793 - systems.metrics_manager   - INFO     - MetricsManager 초기화 완료 - 히스토리 크기: 900
+2025-07-11 17:08:09,794 - integration.integrated_system - INFO     - 새로운 시스템 초기화 시작 - 성능 우선 전략
+2025-07-11 17:08:09,794 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 시작: standard
+2025-07-11 17:08:09,795 - analysis.factory.analysis_factory - INFO     - 지원 기능: advanced_drowsiness_detection, multi_level_distraction_detection, precise_head_pose_tracking, gaze_zone_classification, emotion_recognition...
+2025-07-11 17:08:09,795 - analysis.factory.analysis_factory - INFO     - 표준 성능 DMS 시스템 생성 중...
+2025-07-11 17:08:09,796 - analysis.fusion.fusion_engine_advanced - INFO     - MultiModalFusionEngine (S-Class) 초기화 완료 - 디지털 신경과학자 준비됨
+2025-07-11 17:08:09,941 - analysis.drowsiness       - INFO     - EnhancedDrowsinessDetector 초기화 완료
+2025-07-11 17:08:09,941 - analysis.emotion          - INFO     - EmotionRecognitionSystem 초기화 완료
+2025-07-11 17:08:09,941 - analysis.gaze             - INFO     - EnhancedSphericalGazeClassifier 초기화: 11개 구역 정의됨
+2025-07-11 17:08:09,941 - analysis.identity         - INFO     - 1명의 운전자 프로필 로드됨
+2025-07-11 17:08:09,941 - analysis.identity         - INFO     - DriverIdentificationSystem 초기화 완료
+2025-07-11 17:08:09,941 - analysis.processors.face_processor_s_class - INFO     - FaceDataProcessor (S-Class) 초기화 완료 - 디지털 심리학자 준비됨
+2025-07-11 17:08:09,941 - analysis.processors.pose_processor_s_class - INFO     - PoseDataProcessor (S-Class) 초기화 완료 - 자세 분석 전문가 준비됨
+2025-07-11 17:08:09,941 - analysis.processors.hand_processor_s_class - INFO     - HandDataProcessor (S-Class, 인터페이스 통합) 초기화 완료
+2025-07-11 17:08:09,941 - analysis.processors.object_processor_s_class - INFO     - ObjectDataProcessor (S-Class) 초기화 완료 - 행동 예측 전문가 준비됨
+2025-07-11 17:08:09,941 - analysis.orchestrator.orchestrator_advanced - INFO     - AnalysisOrchestrator (S-Class) 초기화 완료 - 지능형 지휘자 준비됨
+2025-07-11 17:08:09,941 - analysis.factory.analysis_factory - INFO     - 표준 DMS 시스템 생성 완료 - 균형 모드 활성화
+2025-07-11 17:08:09,941 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 완료: standard
+2025-07-11 17:08:09,941 - integration.integrated_system - INFO     - ✅ 새로운 standard 시스템 생성 완료
+2025-07-11 17:08:09,941 - integration.integrated_system - INFO     - IntegratedDMSSystem 초기화 완료 - 타입: standard, 레거시: False
+2025-07-11 17:08:09,941 - events.event_bus          - INFO     - EventBus 초기화 완료 - 중추 신경계 가동 시작
+2025-07-11 17:08:09,941 - events.event_bus          - INFO     - EventBus 시작됨 - 모든 우선순위 큐 처리 시작
+2025-07-11 17:08:09,941 - events.event_bus          - INFO     - 글로벌 이벤트 시스템 초기화 완료
+2025-07-11 17:08:09,941 - events.handlers           - INFO     - SafetyEventHandler 초기화 완료 - 안전 모니터링 시작
+2025-07-11 17:08:09,941 - events.event_bus          - INFO     - 글로벌 핸들러 등록: SafetyEventHandler
+2025-07-11 17:08:09,956 - events.handlers           - INFO     - AnalyticsEventHandler 초기화 완료 - 성능 모니터링 시작
+2025-07-11 17:08:09,957 - events.event_bus          - INFO     - 글로벌 핸들러 등록: AnalyticsEventHandler
+2025-07-11 17:08:09,958 - systems.metrics_manager   - INFO     - StateManager와 연결됨
+2025-07-11 17:08:09,958 - core.state_manager        - INFO     - MetricsManager와 연결됨
+2025-07-11 17:08:09,958 - integration.integrated_system - INFO     - IntegratedDMSSystem 비동기 초기화 완료
+2025-07-11 17:08:09,958 - systems.personalization   - INFO     - 사용자 프로필 로드됨: default
+2025-07-11 17:08:09,958 - systems.personalization   - INFO     - PersonalizationEngine for default initialized.
+2025-07-11 17:08:09,958 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-11 17:08:09,958 - systems.dynamic           - INFO     - DynamicAnalysisEngine for async initialized.
+2025-07-11 17:08:09,958 - app                       - INFO     - [수정] 모든 S-Class 비동기 컴포넌트 초기화 완료
+2025-07-11 17:08:09,958 - systems.performance       - INFO     - PerformanceOptimizer 초기화 완료
+2025-07-11 17:08:09,967 - systems.mediapipe_manager - INFO     - Windows/개발 환경 감지: models/face_landmarker.task에 CPU 모드 적용
+2025-07-11 17:08:10,025 - systems.mediapipe_manager - INFO     - ✅ FaceLandmarker 초기화 완료
+2025-07-11 17:08:10,025 - systems.mediapipe_manager - INFO     - Windows/개발 환경 감지: models/pose_landmarker_full.task에 CPU 모드 적용
+2025-07-11 17:08:10,292 - systems.mediapipe_manager - INFO     - ✅ PoseLandmarker 초기화 완료
+2025-07-11 17:08:10,292 - systems.mediapipe_manager - INFO     - Windows/개발 환경 감지: models/hand_landmarker.task에 CPU 모드 적용
+2025-07-11 17:08:10,476 - systems.mediapipe_manager - INFO     - ✅ HandLandmarker 초기화 완료
+2025-07-11 17:08:10,476 - systems.mediapipe_manager - INFO     - Windows/개발 환경 감지: models/efficientdet_lite0.tflite에 CPU 모드 적용
+2025-07-11 17:08:10,593 - systems.mediapipe_manager - INFO     - ✅ ObjectDetector 초기화 완료
+2025-07-11 17:08:10,593 - systems.mediapipe_manager - INFO     - MediaPipe 태스크 초기화 완료: 4/4 성공
+2025-07-11 17:08:10,593 - app                       - INFO     - IntegratedCallbackAdapter 초기화 완료
+2025-07-11 17:08:10,593 - io_handler.video_input    - INFO     - [진단] video_input.initialize 진입
+2025-07-11 17:08:10,593 - io_handler.video_input    - INFO     - [진단] video_input.initialize - self.input_source=0
+2025-07-11 17:08:10,593 - io_handler.video_input    - INFO     - 웹캠 모드 - 디바이스 0
+2025-07-11 17:08:10,593 - io_handler.video_input    - INFO     - Windows/개발 환경: 표준 웹캠 캡처 사용 (디바이스: 0)
+2025-07-11 17:08:32,754 - io_handler.video_input    - INFO     - 웹캠 테스트 성공: (480, 640, 3)
+2025-07-11 17:08:32,754 - io_handler.video_input    - INFO     - VideoCapture 객체 성공적으로 생성됨
+2025-07-11 17:08:32,754 - io_handler.video_input    - INFO     - [진단] VideoCapture backend: MSMF, codec:    , 총 프레임: -1
+2025-07-11 17:08:32,754 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 진입
+2025-07-11 17:08:32,754 - io_handler.video_input    - INFO     - 리더 스레드 시작 대기 중...
+2025-07-11 17:08:32,763 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:32,763 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:32,773 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:32,773 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:32,791 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:32,792 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:32,823 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:32,823 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:32,855 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:32,856 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:32,886 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:32,886 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:32,918 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:32,918 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:32,950 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:32,950 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:32,997 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:32,997 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,031 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,031 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,063 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,064 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,095 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,096 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,128 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,129 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,161 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,162 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,191 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,192 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,223 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,225 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,255 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,256 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,260 - io_handler.video_input    - INFO     - 첫 번째 프레임 대기 중 (최대 5.0초)...
+2025-07-11 17:08:33,260 - io_handler.video_input    - INFO     - ✅ 첫 번째 프레임 수신 성공
+2025-07-11 17:08:33,260 - io_handler.video_input    - INFO     - ✅ 입력 소스 초기화 및 스레드 시작 완료
+2025-07-11 17:08:33,262 - app                       - INFO     - [수정] S-Class DMS 시스템 v18+ (통합 수정) 초기화 완료
+2025-07-11 17:08:33,262 - app                       - INFO     - [수정] S-Class 통합 시스템 시작
+2025-07-11 17:08:33,286 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,286 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,318 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,318 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,350 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,350 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,399 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,399 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,433 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,434 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,464 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,464 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,475 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:33,490 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:33,498 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,499 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,515 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:33,531 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,532 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,536 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:33,562 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:33,564 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,564 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,595 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,596 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,599 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:33,601 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:33,620 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,620 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,645 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:33,654 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:33,655 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,656 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,688 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,690 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,694 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:33,709 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:33,721 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,724 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,741 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:33,751 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,751 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,784 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,785 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,794 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:33,794 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:33,805 - app                       - INFO     - Frame 10: Face=YES, Pose=YES, Hand=NO | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:08:33,809 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:33,833 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,833 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,864 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:33,868 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,870 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:33,870 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,898 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,900 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:33,901 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,929 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,941 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,947 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:33,965 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:33,966 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:33,970 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:33,995 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,005 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,033 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,036 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,040 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,057 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,059 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,064 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,080 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,095 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,107 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,125 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,130 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,144 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,159 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,170 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,201 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,204 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,206 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,219 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,240 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,240 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,244 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,268 - app                       - INFO     - Frame 20: Face=YES, Pose=YES, Hand=NO | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:08:34,269 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,274 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,296 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,298 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,302 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,303 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,328 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,329 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,331 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,351 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,364 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,366 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,388 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,393 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,394 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,400 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,424 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,424 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,449 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,457 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,464 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,474 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,490 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,532 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,532 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,549 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,566 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,566 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,582 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,582 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,588 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,593 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,598 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,617 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,618 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,624 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,654 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,668 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,668 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,684 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,701 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,702 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,709 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,732 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,735 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,754 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,762 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,767 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,774 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,779 - app                       - INFO     - Frame 30: Face=YES, Pose=YES, Hand=NO | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:08:34,796 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,797 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,806 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,822 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,829 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,840 - systems.performance       - WARNING  - 성능 최적화 모드 활성화
+2025-07-11 17:08:34,840 - systems.performance       - INFO     - 적용 전략: 프레임 스키핑 증가
+2025-07-11 17:08:34,840 - systems.performance       - INFO     - 적용 전략: 분석 해상도 감소
+2025-07-11 17:08:34,853 - systems.performance       - INFO     - 적용 전략: 일부 분석 기능 비활성화
+2025-07-11 17:08:34,857 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,857 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,857 - systems.performance       - INFO     - 적용 전략: 메모리 정리 강화
+2025-07-11 17:08:34,857 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,880 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,888 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,898 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,898 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,922 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,927 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,937 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,955 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,965 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,984 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:34,986 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:34,986 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:34,994 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,020 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,020 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:35,031 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:35,060 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,068 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:35,070 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:35,084 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,099 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,099 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:35,099 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:35,132 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:35,134 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:35,154 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,162 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:35,162 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:35,170 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,194 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:35,203 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,204 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:35,224 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:35,224 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:35,232 - app                       - INFO     - Frame 40: Face=YES, Pose=YES, Hand=NO | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:08:35,237 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,254 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:35,254 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:35,255 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,288 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:35,290 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:35,300 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,321 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:35,325 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:35,334 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,336 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,351 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:35,352 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:35,357 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,384 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:35,385 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:35,387 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,388 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,417 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:35,418 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:35,421 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,452 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:35,453 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:35,455 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,472 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,499 - systems.performance       - INFO     - 성능 최적화 모드 비활성화 - 정상 성능 복구
+2025-07-11 17:08:35,499 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:35,499 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:35,516 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,529 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:35,529 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,529 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:35,563 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:35,563 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:35,569 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,570 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,590 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:35,590 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:35,604 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,617 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,624 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:35,624 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:35,654 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:35,654 - app                       - INFO     - Frame 50: Face=YES, Pose=YES, Hand=NO | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:08:35,654 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,654 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:35,668 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,687 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:35,687 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:35,717 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,720 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:35,720 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:35,722 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,750 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:35,750 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:35,753 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,782 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,784 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,785 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:35,785 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:35,813 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,814 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:35,814 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:35,821 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,848 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:35,849 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:35,855 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,871 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,899 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:35,934 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:35,963 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:35,978 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,018 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:36,090 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,117 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:36,122 - app                       - INFO     - Frame 60: Face=YES, Pose=YES, Hand=NO | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:08:36,138 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,149 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,152 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,153 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,153 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:36,158 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,159 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:36,182 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:36,183 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:36,187 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,212 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=NO, count=0
+2025-07-11 17:08:36,217 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:36,271 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,293 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:36,326 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:36,331 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,332 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:36,343 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:36,345 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:36,350 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:36,351 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:36,366 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,368 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:36,373 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,373 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:36,393 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:36,394 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:36,400 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,424 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,426 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:36,427 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:36,434 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,446 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,455 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:36,457 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:36,487 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:36,488 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:36,493 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,493 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,518 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:36,518 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:36,538 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,546 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,551 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:36,552 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:36,582 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,582 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:36,582 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:36,595 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,616 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:36,617 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:36,628 - app                       - INFO     - Frame 70: Face=YES, Pose=YES, Hand=NO | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:08:36,636 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,647 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:36,648 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:36,657 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,680 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:36,680 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:36,684 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,704 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,735 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,751 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,761 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:36,764 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:36,769 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:36,769 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:36,793 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,794 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:36,794 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:36,809 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,822 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:36,824 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:36,844 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,855 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:36,855 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:36,865 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,882 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,887 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:36,888 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:36,920 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,920 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:36,920 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:36,926 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,952 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:36,970 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:36,980 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:36,984 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:36,985 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:36,995 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,018 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,019 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,025 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,048 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,049 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,051 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,062 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,078 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,079 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,102 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,108 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,111 - app                       - INFO     - Frame 80: Face=YES, Pose=YES, Hand=NO | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:08:37,142 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,162 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,163 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,170 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,171 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,174 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,196 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,197 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,214 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,218 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,224 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,225 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,254 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,255 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,255 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,259 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,287 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,287 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,300 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,320 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,322 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,327 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,330 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,351 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,352 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,376 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,382 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,382 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,382 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,408 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,415 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,416 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,433 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,446 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,449 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,450 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,479 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,480 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,481 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,505 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,526 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,544 - app                       - INFO     - Frame 90: Face=YES, Pose=YES, Hand=NO | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:08:37,561 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,564 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,564 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,582 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,592 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,593 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,598 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,598 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,607 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,622 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,623 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,634 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,657 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,659 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,659 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,688 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,690 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,696 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,712 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,718 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,718 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,746 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,750 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,752 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,757 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,785 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,785 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,785 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,802 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,818 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,819 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,821 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,849 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,850 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,855 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,862 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,879 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,881 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,911 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,912 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,948 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,950 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,957 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,958 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,978 - app                       - INFO     - Frame 100: Face=YES, Pose=YES, Hand=NO | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:08:37,991 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:37,992 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,993 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:37,997 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:37,998 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,009 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,025 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,026 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,035 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,059 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,060 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,066 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,071 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,087 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,088 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,116 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,121 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,121 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,130 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,151 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,152 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,154 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,182 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,185 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,185 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,186 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,217 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,218 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,228 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,250 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,253 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,254 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,269 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,281 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,281 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,301 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,327 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,328 - app                       - INFO     - Frame 110: Face=YES, Pose=YES, Hand=NO | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:08:38,328 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,350 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,363 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,363 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,374 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,390 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,392 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,393 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,400 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,401 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,410 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,421 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,421 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,444 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,454 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,455 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,457 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,478 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,484 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,484 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,502 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,519 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,520 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,521 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,551 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,553 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,565 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,577 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,586 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,586 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,609 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,616 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,617 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,619 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,648 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,650 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,650 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,674 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,678 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,681 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,682 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,712 - app                       - INFO     - Frame 120: Face=YES, Pose=YES, Hand=NO | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:08:38,721 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,727 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,741 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,743 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,767 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,768 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,793 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,795 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,814 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,821 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,821 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,831 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,832 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,832 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,854 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,855 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,858 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,883 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,887 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,887 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,911 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,918 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,918 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,937 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,952 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,954 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:38,954 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,984 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:38,985 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:38,996 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,002 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,019 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,020 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,031 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,048 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,050 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,060 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,074 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,080 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,081 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,098 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,128 - app                       - INFO     - Frame 130: Face=YES, Pose=YES, Hand=NO | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:08:39,128 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,141 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,146 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,147 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,175 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,185 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,191 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,192 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,214 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,221 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,221 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,228 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,229 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,232 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,255 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,256 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,259 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,285 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,296 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,297 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,315 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,320 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,321 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,345 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,352 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,353 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,362 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,367 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,383 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,384 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,416 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,416 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,416 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,416 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,448 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,449 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,450 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,466 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,480 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,481 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,483 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,509 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,527 - app                       - INFO     - Frame 140: Face=YES, Pose=YES, Hand=NO | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:08:39,531 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,541 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,542 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,563 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,568 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,575 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,576 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,603 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,611 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,621 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,621 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,655 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,656 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,660 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,662 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,664 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,664 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,687 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,689 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,697 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,717 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,719 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,719 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,738 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,751 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,751 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,778 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,779 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,782 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,783 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,816 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,818 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,819 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,826 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,849 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,849 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,852 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,881 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,882 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,883 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,893 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,926 - app                       - INFO     - Frame 150: Face=YES, Pose=YES, Hand=NO | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:08:39,931 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,933 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,945 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,946 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,978 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:39,980 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:39,984 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:39,993 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,026 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,027 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,028 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,039 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,057 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,059 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,065 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,067 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,078 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,089 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,092 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,115 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,116 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,118 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,118 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,150 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,152 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,152 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,164 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,183 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,185 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,189 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,212 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,215 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,215 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,241 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,249 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,250 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,262 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,281 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,282 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,301 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,329 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,330 - app                       - INFO     - Frame 160: Face=YES, Pose=YES, Hand=NO | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:08:40,344 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,345 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,345 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,351 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,372 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,374 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,378 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,393 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,409 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,410 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,426 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,446 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,457 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,461 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,467 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,468 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,476 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,487 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,487 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,511 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,512 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,519 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,519 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,551 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,552 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,557 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,568 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,585 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,586 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,597 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,617 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,618 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,629 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,634 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,649 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,649 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,668 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,680 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,681 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,692 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,714 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,744 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,745 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,745 - app                       - INFO     - Frame 170: Face=YES, Pose=YES, Hand=NO | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:08:40,745 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,749 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,775 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,780 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,793 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,808 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,809 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,810 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,833 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,844 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,854 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,854 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,881 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,888 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,888 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,895 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,895 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,896 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,920 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,920 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,927 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,954 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,955 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,961 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,965 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:40,985 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:40,987 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:40,997 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,016 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:41,017 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:41,022 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,033 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,047 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:41,047 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:41,079 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,080 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:41,080 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,080 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:41,126 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,128 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,142 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:41,143 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:41,160 - app                       - INFO     - Frame 180: Face=YES, Pose=YES, Hand=NO | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:08:41,166 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,174 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,175 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:41,175 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:41,206 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,208 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:41,209 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:41,211 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,253 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,254 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:41,254 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:41,260 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,291 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:41,292 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:41,297 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:41,298 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:41,307 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,322 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:41,324 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:41,341 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,344 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,352 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:41,353 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:41,369 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,382 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:41,383 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:41,403 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,416 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,416 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:41,416 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:41,448 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:41,450 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,450 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:41,453 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,481 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:41,481 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:41,484 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,508 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,533 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,545 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:41,550 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:41,564 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,564 - app                       - INFO     - Frame 190: Face=YES, Pose=YES, Hand=NO | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:08:41,577 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,578 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:41,579 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:41,609 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:41,610 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:41,613 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,626 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,640 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:41,641 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:41,647 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,690 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:41,695 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,715 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:41,742 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,744 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:41,745 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:41,751 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:41,756 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,772 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:41,779 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,813 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:41,856 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,922 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:41,928 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,933 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,933 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:41,933 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:41,941 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:41,941 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:41,945 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,945 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,973 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:41,974 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:41,975 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:41,997 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,007 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,023 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,042 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,043 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,055 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,070 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,071 - app                       - INFO     - Frame 200: Face=YES, Pose=YES, Hand=NO | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:08:42,086 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,088 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,088 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,119 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,119 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,122 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,126 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,127 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,130 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,150 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,150 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,169 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,183 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,183 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,188 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,215 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,216 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,217 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,250 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,252 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,265 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,265 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,285 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,286 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,310 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,335 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,336 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,345 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,345 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,363 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,374 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,376 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,392 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,402 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,408 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,408 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,437 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,438 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,439 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,453 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,473 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,474 - app                       - INFO     - Frame 210: Face=YES, Pose=YES, Hand=NO | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:08:42,476 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,491 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,518 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,519 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,519 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,529 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,529 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,543 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,551 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,551 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,585 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,585 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,599 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,600 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,616 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,617 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,626 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,651 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,651 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,678 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,679 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,679 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,684 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,725 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,738 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,746 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,747 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,773 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,775 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,775 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,808 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,809 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,809 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,823 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,837 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,837 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,872 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,876 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,876 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,876 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,917 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,920 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,920 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,931 - app                       - INFO     - Frame 220: Face=YES, Pose=YES, Hand=NO | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:08:42,954 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,955 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,956 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,963 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,965 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:42,971 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:42,987 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:42,987 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:43,002 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:43,016 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:43,016 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:43,034 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:43,049 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:43,050 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:43,052 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:43,083 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:43,083 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:43,084 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:43,125 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:43,125 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:43,146 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:43,148 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:43,171 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:43,176 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:43,176 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:43,201 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:43,209 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:43,216 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:43,222 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:43,241 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:43,248 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:43,262 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:43,272 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:43,273 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:43,287 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:43,292 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:43,321 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:43,321 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:43,334 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:43,343 - app                       - INFO     - Frame 230: Face=YES, Pose=YES, Hand=NO | Fatigue=0.00, Distraction=0.00, Confidence=0.00
+2025-07-11 17:08:43,354 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:43,355 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:43,362 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:43,365 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:43,367 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:43,368 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:43,385 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:43,385 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:43,408 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:43,415 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:43,415 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:43,447 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:43,449 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:43,449 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 17:08:43,449 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:43,482 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 17:08:43,483 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 17:08:43,492 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 17:08:43,499 - events.event_bus          - INFO     - CRITICAL 우선순위 큐 처리 취소됨
+2025-07-11 17:08:43,501 - events.event_bus          - INFO     - MEDIUM 우선순위 큐 처리 취소됨
+2025-07-11 17:08:43,504 - events.event_bus          - INFO     - EMERGENCY 우선순위 큐 처리 취소됨
+2025-07-11 17:08:43,513 - events.event_bus          - INFO     - HIGH 우선순위 큐 처리 취소됨
+2025-07-11 17:08:43,515 - events.event_bus          - INFO     - LOW 우선순위 큐 처리 취소됨

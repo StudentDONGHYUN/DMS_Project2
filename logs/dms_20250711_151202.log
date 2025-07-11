@@ -1,0 +1,1440 @@
+2025-07-11 15:12:17,706 - __main__                  - INFO     - [진단] main.py: main() 진입
+2025-07-11 15:12:22,570 - __main__                  - INFO     - S-Class 설정 완료: {'input_source': 0, 'user_id': 'default', 'camera_position': <CameraPosition.REARVIEW_MIRROR: '백미러 위치'>, 'enable_calibration': False, 'is_same_driver': True, 'system_type': <AnalysisSystemType.STANDARD: 'standard'>, 'use_legacy_engine': False, 'sclass_features': {'enable_rppg': True, 'enable_saccade': True, 'enable_spinal_analysis': True, 'enable_tremor_fft': True, 'enable_bayesian_prediction': True}}
+2025-07-11 15:12:22,575 - app                       - INFO     - [진단] app.py: DMSApp.__init__ 진입
+2025-07-11 15:12:22,576 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - input_source=0
+2025-07-11 15:12:22,577 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.input_source=0
+2025-07-11 15:12:22,578 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - user_id=default
+2025-07-11 15:12:22,580 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.user_id=default
+2025-07-11 15:12:22,582 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - camera_position=백미러 위치
+2025-07-11 15:12:22,586 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.camera_position=백미러 위치
+2025-07-11 15:12:22,592 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - enable_calibration=False
+2025-07-11 15:12:22,595 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.enable_calibration=False
+2025-07-11 15:12:22,596 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - is_same_driver=True
+2025-07-11 15:12:22,597 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.is_same_driver=True
+2025-07-11 15:12:22,597 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - system_type=AnalysisSystemType.STANDARD
+2025-07-11 15:12:22,597 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.system_type=AnalysisSystemType.STANDARD
+2025-07-11 15:12:22,598 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - use_legacy_engine=False
+2025-07-11 15:12:22,599 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.use_legacy_engine=False
+2025-07-11 15:12:22,600 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - sclass_features={'enable_rppg': True, 'enable_saccade': True, 'enable_spinal_analysis': True, 'enable_tremor_fft': True, 'enable_bayesian_prediction': True}
+2025-07-11 15:12:22,600 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.sclass_features={'enable_rppg': True, 'enable_saccade': True, 'enable_spinal_analysis': True, 'enable_tremor_fft': True, 'enable_bayesian_prediction': True}
+2025-07-11 15:12:22,602 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.running=False
+2025-07-11 15:12:22,604 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.paused=False
+2025-07-11 15:12:22,610 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.current_processed_frame=None
+2025-07-11 15:12:22,614 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.initialization_completed=False
+2025-07-11 15:12:22,618 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.safe_mode=False
+2025-07-11 15:12:22,627 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.error_count=0
+2025-07-11 15:12:22,629 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - S-Class 시스템 초기화 시작
+2025-07-11 15:12:22,636 - systems.performance       - INFO     - PerformanceOptimizer 초기화 완료
+2025-07-11 15:12:22,637 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.performance_monitor=<systems.performance.PerformanceOptimizer object at 0x000001AD4809E990>
+2025-07-11 15:12:22,643 - systems.personalization   - INFO     - 사용자 프로필 로드됨: default
+2025-07-11 15:12:22,644 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.personalization_engine=<systems.personalization.PersonalizationEngine object at 0x000001AD59A5D2D0>
+2025-07-11 15:12:22,646 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-11 15:12:22,648 - systems.dynamic           - INFO     - DynamicAnalysisEngine 초기화 완료
+2025-07-11 15:12:22,649 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.dynamic_analysis=<systems.dynamic.DynamicAnalysisEngine object at 0x000001AD49742490>
+2025-07-11 15:12:22,651 - systems.backup            - INFO     - SensorBackupManager 초기화 완료
+2025-07-11 15:12:22,653 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.backup_manager=<systems.backup.SensorBackupManager object at 0x000001AD5832EB50>
+2025-07-11 15:12:22,664 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - self.calibration_manager=<io_handler.video_input.MultiVideoCalibrationManager object at 0x000001AD59ADAFD0>
+2025-07-11 15:12:22,669 - app                       - INFO     - [진단] app.py: DMSApp.__init__ - 캘리브레이션 매니저 초기화 완료
+2025-07-11 15:12:22,670 - app                       - INFO     - [진단] app.py: run 진입
+2025-07-11 15:12:22,670 - app                       - INFO     - [진단] app.py: run - asyncio import 완료
+2025-07-11 15:12:22,672 - app                       - INFO     - [진단] app.py: run - frame_queue 생성, maxsize=5
+2025-07-11 15:12:22,672 - app                       - INFO     - [진단] app.py: run - stop_event 생성
+2025-07-11 15:12:22,673 - app                       - INFO     - [진단] app.py: run - display_thread 생성
+2025-07-11 15:12:22,679 - app                       - INFO     - [진단] app.py: run - opencv_display_loop 진입
+2025-07-11 15:12:22,679 - app                       - INFO     - [진단] app.py: run - display_thread 시작
+2025-07-11 15:12:22,680 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame=None 초기화
+2025-07-11 15:12:22,684 - app                       - INFO     - [진단] app.py: run - async_frame_producer 진입
+2025-07-11 15:12:22,684 - app                       - INFO     - [진단] app.py: initialize 진입
+2025-07-11 15:12:22,685 - app                       - INFO     - [진단] app.py: initialize - S-Class DMS 시스템 초기화 시작...
+2025-07-11 15:12:22,686 - app                       - INFO     - [진단] app.py: initialize - self.state_manager=<core.state_manager.EnhancedStateManager object at 0x000001AD59D020D0>
+2025-07-11 15:12:22,690 - systems.metrics_manager   - INFO     - MetricsManager 초기화 완료 - 히스토리 크기: 900
+2025-07-11 15:12:22,691 - integration.integrated_system - INFO     - 새로운 시스템 초기화 시작 - 성능 우선 전략
+2025-07-11 15:12:22,692 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 시작: standard
+2025-07-11 15:12:22,694 - analysis.factory.analysis_factory - INFO     - 지원 기능: advanced_drowsiness_detection, multi_level_distraction_detection, precise_head_pose_tracking, gaze_zone_classification, emotion_recognition...
+2025-07-11 15:12:22,695 - analysis.factory.analysis_factory - INFO     - 표준 성능 DMS 시스템 생성 중...
+2025-07-11 15:12:22,697 - analysis.fusion.fusion_engine_advanced - INFO     - MultiModalFusionEngine (S-Class) 초기화 완료 - 디지털 신경과학자 준비됨
+2025-07-11 15:12:22,865 - analysis.drowsiness       - INFO     - EnhancedDrowsinessDetector 초기화 완료
+2025-07-11 15:12:22,866 - analysis.emotion          - INFO     - EmotionRecognitionSystem 초기화 완료
+2025-07-11 15:12:22,868 - analysis.gaze             - INFO     - EnhancedSphericalGazeClassifier 초기화: 11개 구역 정의됨
+2025-07-11 15:12:22,895 - analysis.identity         - INFO     - 1명의 운전자 프로필 로드됨
+2025-07-11 15:12:22,896 - analysis.identity         - INFO     - DriverIdentificationSystem 초기화 완료
+2025-07-11 15:12:22,897 - analysis.processors.face_processor_s_class - INFO     - FaceDataProcessor (S-Class) 초기화 완료 - 디지털 심리학자 준비됨
+2025-07-11 15:12:22,898 - analysis.processors.pose_processor_s_class - INFO     - PoseDataProcessor (S-Class) 초기화 완료 - 자세 분석 전문가 준비됨
+2025-07-11 15:12:22,898 - analysis.processors.hand_processor_s_class - INFO     - HandDataProcessor (S-Class, 인터페이스 통합) 초기화 완료
+2025-07-11 15:12:22,899 - analysis.processors.object_processor_s_class - INFO     - ObjectDataProcessor (S-Class) 초기화 완료 - 행동 예측 전문가 준비됨
+2025-07-11 15:12:22,899 - analysis.orchestrator.orchestrator_advanced - INFO     - AnalysisOrchestrator (S-Class) 초기화 완료 - 지능형 지휘자 준비됨
+2025-07-11 15:12:22,899 - analysis.factory.analysis_factory - INFO     - 표준 DMS 시스템 생성 완료 - 균형 모드 활성화
+2025-07-11 15:12:22,900 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 완료: standard
+2025-07-11 15:12:22,900 - integration.integrated_system - INFO     - ✅ 새로운 standard 시스템 생성 완료
+2025-07-11 15:12:22,900 - integration.integrated_system - INFO     - IntegratedDMSSystem 초기화 완료 - 타입: standard, 레거시: False
+2025-07-11 15:12:22,901 - app                       - INFO     - [진단] app.py: initialize - self.integrated_system=<integration.integrated_system.IntegratedDMSSystem object at 0x000001AD59D02290>
+2025-07-11 15:12:22,901 - app                       - INFO     - [진단] app.py: initialize - 비동기 컴포넌트 초기화 await 전
+2025-07-11 15:12:22,901 - app                       - INFO     - [진단] app.py: _initialize_async_components 진입
+2025-07-11 15:12:22,902 - app                       - INFO     - [진단] app.py: _initialize_async_components - init_tasks 리스트 생성 전
+2025-07-11 15:12:22,902 - app                       - INFO     - [진단] app.py: _initialize_async_components - init_tasks=[<coroutine object IntegratedDMSSystem.initialize at 0x000001AD59CC5BE0>, <coroutine object PersonalizationEngine.initialize at 0x000001AD5A873920>, <coroutine object DynamicAnalysisEngine.initialize at 0x000001AD5A8631D0>]
+2025-07-11 15:12:22,902 - app                       - INFO     - [진단] app.py: _initialize_async_components - asyncio.gather await 전
+2025-07-11 15:12:22,903 - events.event_bus          - INFO     - EventBus 초기화 완료 - 중추 신경계 가동 시작
+2025-07-11 15:12:22,903 - events.event_bus          - INFO     - EventBus 시작됨 - 모든 우선순위 큐 처리 시작
+2025-07-11 15:12:22,904 - events.event_bus          - INFO     - 글로벌 이벤트 시스템 초기화 완료
+2025-07-11 15:12:22,905 - events.handlers           - INFO     - SafetyEventHandler 초기화 완료 - 안전 모니터링 시작
+2025-07-11 15:12:22,905 - events.event_bus          - INFO     - 글로벌 핸들러 등록: SafetyEventHandler
+2025-07-11 15:12:22,906 - events.handlers           - INFO     - AnalyticsEventHandler 초기화 완료 - 성능 모니터링 시작
+2025-07-11 15:12:22,906 - events.event_bus          - INFO     - 글로벌 핸들러 등록: AnalyticsEventHandler
+2025-07-11 15:12:22,907 - systems.metrics_manager   - INFO     - StateManager와 연결됨
+2025-07-11 15:12:22,908 - core.state_manager        - INFO     - MetricsManager와 연결됨
+2025-07-11 15:12:22,909 - integration.integrated_system - INFO     - IntegratedDMSSystem 비동기 초기화 완료
+2025-07-11 15:12:22,912 - systems.personalization   - INFO     - 사용자 프로필 로드됨: default
+2025-07-11 15:12:22,912 - systems.personalization   - INFO     - PersonalizationEngine for default initialized.
+2025-07-11 15:12:22,913 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-11 15:12:22,913 - systems.dynamic           - INFO     - DynamicAnalysisEngine for async initialized.
+2025-07-11 15:12:22,915 - app                       - INFO     - [진단] app.py: _initialize_async_components - 모든 S-Class 비동기 컴포넌트 초기화 완료
+2025-07-11 15:12:22,916 - app                       - INFO     - [진단] app.py: initialize - 비동기 컴포넌트 초기화 완료
+2025-07-11 15:12:22,918 - systems.performance       - INFO     - PerformanceOptimizer 초기화 완료
+2025-07-11 15:12:22,919 - systems.mediapipe_manager - INFO     - Windows/개발 환경 감지: models/face_landmarker.task에 CPU 모드 적용
+2025-07-11 15:12:23,123 - systems.mediapipe_manager - INFO     - ✅ FaceLandmarker 초기화 완료
+2025-07-11 15:12:23,124 - systems.mediapipe_manager - INFO     - Windows/개발 환경 감지: models/pose_landmarker_full.task에 CPU 모드 적용
+2025-07-11 15:12:23,412 - systems.mediapipe_manager - INFO     - ✅ PoseLandmarker 초기화 완료
+2025-07-11 15:12:23,412 - systems.mediapipe_manager - INFO     - Windows/개발 환경 감지: models/hand_landmarker.task에 CPU 모드 적용
+2025-07-11 15:12:23,531 - systems.mediapipe_manager - INFO     - ✅ HandLandmarker 초기화 완료
+2025-07-11 15:12:23,532 - systems.mediapipe_manager - INFO     - Windows/개발 환경 감지: models/efficientdet_lite0.tflite에 CPU 모드 적용
+2025-07-11 15:12:23,675 - systems.mediapipe_manager - INFO     - ✅ ObjectDetector 초기화 완료
+2025-07-11 15:12:23,675 - systems.mediapipe_manager - INFO     - MediaPipe 태스크 초기화 완료: 4/4 성공
+2025-07-11 15:12:23,676 - app                       - INFO     - [진단] app.py: initialize - self.mediapipe_manager(더미)=<systems.mediapipe_manager.EnhancedMediaPipeManager object at 0x000001AD5A8C6490>
+2025-07-11 15:12:23,676 - app                       - INFO     - [진단] app.py: initialize - callback_adapter=<app.SafeOrchestratorCallbackAdapter object at 0x000001AD58318B10>
+2025-07-11 15:12:23,676 - app                       - INFO     - [진단] app.py: initialize - self.mediapipe_manager.analysis_engine=<app.SafeOrchestratorCallbackAdapter object at 0x000001AD58318B10>
+2025-07-11 15:12:23,677 - app                       - INFO     - [진단] app.py: initialize - 콜백 재설정 전
+2025-07-11 15:12:23,677 - app                       - INFO     - [진단] app.py: initialize - 콜백 재설정 완료
+2025-07-11 15:12:23,677 - app                       - INFO     - [진단] app.py: initialize - self.video_input_manager=<io_handler.video_input.VideoInputManager object at 0x000001AD482B3310>
+2025-07-11 15:12:23,678 - io_handler.video_input    - INFO     - [진단] video_input.initialize 진입
+2025-07-11 15:12:23,678 - io_handler.video_input    - INFO     - [진단] video_input.initialize - self.input_source=0
+2025-07-11 15:12:23,678 - io_handler.video_input    - INFO     - 웹캠 모드 - 디바이스 0
+2025-07-11 15:12:23,678 - io_handler.video_input    - INFO     - Windows/개발 환경: 표준 웹캠 캡처 사용 (디바이스: 0)
+2025-07-11 15:12:49,192 - io_handler.video_input    - INFO     - 웹캠 테스트 성공: (480, 640, 3)
+2025-07-11 15:12:49,192 - io_handler.video_input    - INFO     - VideoCapture 객체 성공적으로 생성됨
+2025-07-11 15:12:49,206 - io_handler.video_input    - INFO     - [진단] VideoCapture backend: MSMF, codec:    , 총 프레임: -1
+2025-07-11 15:12:49,208 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 진입
+2025-07-11 15:12:49,208 - io_handler.video_input    - INFO     - 리더 스레드 시작 대기 중...
+2025-07-11 15:12:49,212 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:49,213 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:49,219 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:49,220 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:49,226 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:49,227 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:49,238 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:49,241 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:49,268 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:49,268 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:49,301 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:49,301 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:49,332 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:49,332 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:49,366 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:49,366 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:49,418 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:49,418 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:49,451 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:49,452 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:49,475 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:49,478 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:49,505 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:49,505 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:49,537 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:49,538 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:49,570 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:49,571 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:49,602 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:49,602 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:49,636 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:49,639 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:49,669 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:49,669 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:49,700 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:49,700 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:49,709 - io_handler.video_input    - INFO     - 첫 번째 프레임 대기 중 (최대 5.0초)...
+2025-07-11 15:12:49,710 - io_handler.video_input    - INFO     - ✅ 첫 번째 프레임 수신 성공
+2025-07-11 15:12:49,710 - io_handler.video_input    - INFO     - ✅ 입력 소스 초기화 및 스레드 시작 완료
+2025-07-11 15:12:49,710 - app                       - INFO     - [진단] app.py: initialize - S-Class DMS 시스템 v18+ (연구 결과 통합) 초기화 완료
+2025-07-11 15:12:49,711 - app                       - INFO     - [진단] app.py: initialize - S-Class 기능/어텐션/인지 부하/적응형 파이프라인 활성화
+2025-07-11 15:12:49,711 - app                       - INFO     - [진단] app.py: initialize - self.initialization_completed=True
+2025-07-11 15:12:49,712 - app                       - INFO     - [진단] app.py: run - S-Class DMS 시스템 초기화 완료
+2025-07-11 15:12:49,713 - app                       - INFO     - [진단] app.py: run - S-Class 기능/어텐션/인지 부하/적응형 파이프라인 활성화
+2025-07-11 15:12:49,713 - app                       - INFO     - [진단] app.py: run - S-Class DMS v18+ 시스템 시작 안내
+2025-07-11 15:12:49,733 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:49,734 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:49,767 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:49,767 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:49,816 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:49,816 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:49,821 - app                       - INFO     - [진단] app.py: run - 초기 대기 완료
+2025-07-11 15:12:49,822 - app                       - INFO     - [진단] app.py: run - frame_count 초기화: 0
+2025-07-11 15:12:49,833 - app                       - INFO     - [진단] app.py: _create_basic_info_overlay 진입
+2025-07-11 15:12:49,844 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:49,845 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:49,852 - app                       - INFO     - [진단] app.py: _create_basic_info_overlay 진입
+2025-07-11 15:12:49,853 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:49,854 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:49,856 - app                       - INFO     - [진단] app.py: _create_basic_info_overlay 진입
+2025-07-11 15:12:49,885 - app                       - INFO     - [진단] app.py: _create_basic_info_overlay 진입
+2025-07-11 15:12:49,887 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:49,895 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:49,899 - app                       - INFO     - [진단] app.py: _create_basic_info_overlay 진입
+2025-07-11 15:12:49,910 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:49,926 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:49,926 - app                       - INFO     - [진단] app.py: _create_basic_info_overlay 진입
+2025-07-11 15:12:49,940 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:49,953 - app                       - INFO     - [진단] app.py: _create_basic_info_overlay 진입
+2025-07-11 15:12:49,954 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:49,966 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:49,969 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:49,973 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:49,982 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:49,987 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:50,000 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:50,000 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:50,003 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:50,007 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,007 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:50,007 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,023 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:50,023 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:50,029 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:50,038 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,039 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,043 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:50,054 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:50,068 - app                       - INFO     - Frame 10: Face=YES, Pose=NO, Hand=NO
+2025-07-11 15:12:50,069 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:50,070 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:50,072 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,074 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,085 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:50,090 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:50,111 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:50,113 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:50,116 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:50,118 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:50,119 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,120 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,140 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,147 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,154 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:50,166 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:50,189 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,190 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:50,201 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:50,205 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,235 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:50,246 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:50,247 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,251 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:50,257 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:50,264 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,268 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:50,270 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:50,273 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,303 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:50,304 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,305 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:50,306 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:50,319 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,319 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:50,322 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,337 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:50,346 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:50,347 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,348 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:50,356 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,362 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:50,372 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,373 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,390 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:50,391 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,393 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:50,394 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:50,395 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,396 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:50,406 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,408 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,411 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:50,422 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:50,424 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:50,428 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:50,436 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:50,441 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,443 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:50,449 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,468 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:50,470 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:50,472 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,477 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,483 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:50,497 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:50,502 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:50,504 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,504 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:50,506 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,528 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:50,538 - app                       - INFO     - Frame 20: Face=YES, Pose=NO, Hand=NO
+2025-07-11 15:12:50,540 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,541 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:50,543 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:50,546 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,548 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:50,551 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:50,553 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:50,573 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,584 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,585 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:50,586 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:50,589 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:50,620 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:50,635 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,636 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:50,636 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,638 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:50,654 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:50,654 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,655 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:50,663 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,669 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:50,671 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:50,690 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,691 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:50,694 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,699 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:50,717 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:50,718 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,719 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:50,719 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:50,721 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,725 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:50,729 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:50,741 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:50,742 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:50,743 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,743 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:50,752 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:50,752 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,755 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:50,757 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:50,764 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:50,774 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:50,774 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,776 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:50,783 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:50,783 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,788 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:50,789 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:50,794 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:50,807 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:50,813 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:50,815 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,815 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:50,819 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:50,820 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,836 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:50,837 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:50,839 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:50,843 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:50,843 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,846 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:50,846 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:50,850 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,867 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:50,869 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:50,877 - app                       - INFO     - Frame 30: Face=YES, Pose=NO, Hand=NO
+2025-07-11 15:12:50,878 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,880 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:50,881 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,884 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:50,884 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:50,885 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:50,890 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:50,902 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:50,903 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:50,905 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:50,905 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:50,906 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:50,906 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,926 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:50,926 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:50,926 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:50,947 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,950 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:50,950 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:50,954 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:50,960 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,968 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:50,968 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:50,975 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:50,975 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:50,982 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:50,986 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:50,993 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:50,993 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:50,998 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:51,000 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:51,000 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:51,009 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:51,017 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:51,018 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:51,018 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:51,023 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:51,023 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:51,023 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:51,041 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:51,052 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:51,053 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:51,073 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:51,075 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:51,077 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:51,077 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:51,077 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:51,087 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:51,102 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:51,115 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:51,119 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:51,136 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:51,137 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:51,137 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:51,152 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:51,153 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:51,168 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:51,174 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:51,177 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:51,180 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:51,186 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:51,187 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:51,202 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:51,203 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:51,209 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:51,212 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:51,214 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:51,229 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:51,233 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:51,234 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:51,235 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:51,236 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:51,244 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:51,248 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:51,251 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:51,252 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:51,280 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:51,282 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:51,282 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:51,287 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:51,293 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:51,310 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:51,311 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:51,314 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:51,324 - systems.performance       - WARNING  - 성능 최적화 모드 활성화
+2025-07-11 15:12:51,335 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:51,335 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:51,348 - systems.performance       - INFO     - 적용 전략: 프레임 스키핑 증가
+2025-07-11 15:12:51,350 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:51,350 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:51,352 - systems.performance       - INFO     - 적용 전략: 분석 해상도 감소
+2025-07-11 15:12:51,352 - systems.performance       - INFO     - 적용 전략: 일부 분석 기능 비활성화
+2025-07-11 15:12:51,352 - systems.performance       - INFO     - 적용 전략: 메모리 정리 강화
+2025-07-11 15:12:51,359 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:51,362 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:51,368 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:51,369 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:51,369 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:51,375 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:51,383 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:51,387 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:51,394 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:51,404 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:51,405 - app                       - INFO     - Frame 40: Face=YES, Pose=NO, Hand=NO
+2025-07-11 15:12:51,407 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:51,410 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:51,414 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:51,420 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:51,423 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:51,425 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:51,431 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:51,433 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:51,433 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:51,438 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:51,446 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:51,447 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:51,449 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:51,450 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:51,458 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:51,462 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:51,464 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:51,465 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:51,486 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:51,486 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:51,487 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:51,488 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:51,499 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:51,500 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:51,500 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:51,501 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:51,517 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:51,518 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:51,519 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:51,521 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:51,526 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:51,527 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:51,531 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:51,543 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:51,555 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:51,570 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:51,576 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:51,578 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:51,589 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:51,605 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:51,609 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:51,611 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:51,616 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:51,618 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:51,619 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:51,621 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:51,709 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:51,767 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:51,831 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:51,832 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:51,836 - systems.performance       - INFO     - 성능 최적화 모드 비활성화 - 정상 성능 복구
+2025-07-11 15:12:51,837 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:51,839 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:51,843 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:51,843 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:51,843 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:51,846 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:51,846 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:51,846 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:51,856 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:51,862 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:51,864 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:51,864 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:51,864 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:51,864 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:51,871 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:51,882 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:51,883 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:51,884 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:51,885 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:51,885 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:51,885 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:51,895 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:51,895 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:51,897 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:51,899 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:51,900 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:51,904 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:51,908 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:51,912 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:51,914 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:51,916 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:51,918 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:51,934 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:51,958 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:51,968 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:51,968 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:51,971 - app                       - INFO     - Frame 50: Face=YES, Pose=NO, Hand=NO
+2025-07-11 15:12:51,981 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:51,983 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:51,984 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:51,988 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:51,998 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:51,998 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:51,998 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:52,007 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,007 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,019 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:52,019 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,020 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,034 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:52,040 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,043 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:52,046 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:52,049 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:52,058 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,060 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,061 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,064 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:52,064 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,064 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,069 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,072 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:52,079 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:52,083 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:52,084 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,085 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:52,085 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,096 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,098 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,103 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,104 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,112 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,116 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,118 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:52,119 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,121 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,121 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:52,129 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,132 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,137 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,144 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,151 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,151 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,151 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,153 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,164 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,170 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,170 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,176 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:52,177 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,177 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,182 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:52,184 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,199 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,199 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,204 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,210 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,211 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:52,215 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,215 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,227 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:52,236 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:52,244 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,247 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:52,248 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,248 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,254 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,268 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,273 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,278 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:52,282 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:52,286 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,287 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,297 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,297 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,306 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,311 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,319 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,323 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,328 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:52,337 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,341 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,345 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,347 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:52,351 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,353 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,368 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,369 - app                       - INFO     - Frame 60: Face=YES, Pose=NO, Hand=NO
+2025-07-11 15:12:52,370 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,370 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:52,371 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,373 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:52,382 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:52,383 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,385 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:52,386 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,396 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,402 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,402 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,404 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,409 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,411 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,429 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,429 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,429 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,429 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,440 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:52,443 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,445 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:52,447 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,457 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,458 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,460 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,461 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,477 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,481 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,481 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,485 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:52,485 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,486 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,486 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:52,490 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,506 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,506 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:52,507 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,510 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,510 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:52,510 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,518 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,518 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,533 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:52,537 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,537 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,537 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:52,542 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,548 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,548 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,551 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,567 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,569 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,570 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,572 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,573 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,574 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,585 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,589 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:52,590 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,591 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,594 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:52,601 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,603 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,606 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,619 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,621 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,630 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,633 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,634 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,636 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,645 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:52,648 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:52,651 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:52,652 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,653 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:52,666 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,668 - app                       - INFO     - Frame 70: Face=YES, Pose=NO, Hand=NO
+2025-07-11 15:12:52,668 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,671 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,675 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,675 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,675 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,675 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,690 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,696 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:52,696 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,703 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:52,713 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,713 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,723 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,725 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,725 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,731 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,738 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,745 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:52,745 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,745 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,745 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:52,745 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,758 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,758 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:52,758 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,764 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,767 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:52,770 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,775 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,778 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,791 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,795 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,803 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:52,804 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,805 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:52,806 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,808 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,812 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,821 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,827 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,827 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,836 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,841 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:52,843 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,845 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,848 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:52,848 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,851 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,859 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:52,866 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,866 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:52,867 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,876 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,876 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:52,889 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,892 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,892 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:52,892 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,908 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,908 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,908 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,908 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,908 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,917 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,924 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:52,931 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:52,935 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,942 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,944 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,944 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,950 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,950 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,959 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,962 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:52,968 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:52,970 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:52,977 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:52,979 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:52,980 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:52,981 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:52,987 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:52,987 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:52,990 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:52,990 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:53,001 - app                       - INFO     - Frame 80: Face=YES, Pose=NO, Hand=NO
+2025-07-11 15:12:53,008 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:53,014 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:53,014 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:53,015 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:53,023 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:53,023 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:53,031 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:53,039 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:53,040 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:53,042 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:53,042 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:53,042 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:53,056 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:53,056 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:53,063 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:53,066 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:53,069 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:53,073 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:53,073 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:53,076 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:53,090 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:53,090 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:53,090 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:53,096 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:53,115 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:53,118 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:53,120 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:53,129 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:53,129 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:53,131 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:53,142 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:53,145 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:53,148 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:53,149 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:53,150 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:53,151 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:53,152 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:53,155 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:53,170 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:53,172 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:53,173 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:53,174 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:53,176 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:53,176 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:53,188 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:53,207 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:53,207 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:53,213 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:53,214 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:53,214 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:53,216 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:53,217 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:53,234 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:53,235 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:53,236 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:53,237 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:53,240 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:53,240 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:53,240 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:53,252 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:53,257 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:53,266 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:53,273 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:53,273 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:53,273 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:53,276 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:53,276 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:53,276 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:53,276 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:53,286 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:53,289 - app                       - INFO     - Frame 90: Face=YES, Pose=NO, Hand=NO
+2025-07-11 15:12:53,289 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:53,301 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:53,304 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:53,305 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:53,313 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:53,314 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:53,315 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:53,317 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:53,322 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:53,324 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:53,334 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:53,335 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:53,335 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:53,335 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:53,335 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:53,348 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:53,358 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:53,365 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:53,367 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:53,368 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:53,368 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:53,380 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:53,382 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:53,384 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:53,393 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:53,395 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:53,398 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:53,398 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:53,404 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:53,404 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:53,404 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:53,414 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:53,416 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:53,428 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:53,436 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:53,437 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:53,440 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:53,451 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:53,452 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:53,453 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:53,458 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:53,462 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:53,469 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:53,474 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:53,476 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:53,476 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:53,478 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:53,480 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:53,496 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:53,499 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:53,501 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:53,501 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:53,505 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:53,506 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:53,506 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:53,506 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:53,522 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:53,523 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:53,536 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:53,537 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:53,538 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:53,540 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:53,540 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:53,553 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:53,561 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:53,561 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:53,573 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:53,573 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:53,577 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:53,579 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:53,589 - app                       - INFO     - Frame 100: Face=YES, Pose=NO, Hand=NO
+2025-07-11 15:12:53,589 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:53,590 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:53,592 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:53,592 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:53,609 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:53,609 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:53,624 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:53,626 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:53,630 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:53,630 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:53,630 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:53,630 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:53,640 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:53,650 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:53,652 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:53,652 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:53,660 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:53,666 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:53,669 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:53,686 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:53,686 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:53,689 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:53,693 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:53,699 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:53,701 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:53,702 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:53,703 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:53,709 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:53,711 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:53,712 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:53,719 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:53,720 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:53,720 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:53,720 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:53,721 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:53,723 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:53,737 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:53,738 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:53,751 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:53,751 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:53,752 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:53,752 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:53,767 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:53,767 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:53,767 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:53,767 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:53,767 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:53,767 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:53,772 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:53,777 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:53,790 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:53,803 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:54,258 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,259 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:54,260 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:54,260 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,261 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:54,262 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:54,263 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:54,264 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:54,267 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,268 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:54,269 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:54,270 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,271 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:54,278 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:54,280 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:54,281 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:54,282 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:54,286 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:54,290 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,291 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:54,292 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:54,296 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,296 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:54,296 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:54,296 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:54,296 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:54,305 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:54,310 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:54,313 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:54,318 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:54,322 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,323 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,330 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:54,331 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:54,331 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:54,331 - app                       - INFO     - Frame 110: Face=YES, Pose=NO, Hand=NO
+2025-07-11 15:12:54,332 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:54,333 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:54,335 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:54,344 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,346 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,348 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:54,350 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:54,352 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:54,356 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,357 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:54,364 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,365 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:54,369 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:54,372 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:54,374 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:54,375 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:54,384 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,385 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:54,386 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:54,387 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,389 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:54,391 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:54,395 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:54,397 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:54,398 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:54,402 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,403 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:54,404 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:54,406 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,409 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:54,409 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:54,413 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:54,415 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:54,418 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:54,421 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:54,425 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,430 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,430 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:54,430 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:54,444 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,448 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,450 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:54,452 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:54,453 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:54,454 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:54,459 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,461 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:54,466 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,469 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:54,470 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:54,472 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:54,473 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:54,475 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:54,476 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:54,484 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:54,490 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:54,491 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:54,496 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,497 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:54,498 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:54,499 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,501 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:54,503 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:54,509 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:54,514 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:54,514 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:54,518 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:54,518 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,518 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:54,518 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:54,518 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,538 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:54,540 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,540 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:54,540 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:54,540 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:54,540 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:54,540 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,540 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:54,552 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:54,554 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:54,568 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:54,570 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:54,570 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:54,572 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:54,572 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:54,573 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,573 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:54,573 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:54,573 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:54,580 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,588 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,589 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:54,603 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:54,605 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,607 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:54,610 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:54,614 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:54,617 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,617 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:54,621 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,629 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,630 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:54,638 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,641 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:54,644 - app                       - INFO     - Frame 120: Face=YES, Pose=NO, Hand=NO
+2025-07-11 15:12:54,645 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:54,652 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,652 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:54,653 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:54,657 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,669 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:54,670 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,670 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:54,671 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:54,672 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,680 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:54,684 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:54,697 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:54,713 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:54,715 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:54,716 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:54,721 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,721 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:54,722 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:54,723 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:54,723 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,732 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:54,735 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,737 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,739 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,739 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,739 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,739 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,755 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,756 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:54,757 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,758 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:54,759 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,769 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:54,769 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,769 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:54,773 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,783 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,783 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:54,783 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,783 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:54,788 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,789 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:54,792 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,792 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:54,792 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,801 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:54,802 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:54,810 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,810 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:54,810 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,810 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:54,810 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:54,822 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,823 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:54,826 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:54,831 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,833 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:54,833 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:54,841 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,841 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:54,841 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,854 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,855 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,857 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,857 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:54,868 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,868 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:54,869 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:54,869 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:54,869 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:54,870 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:54,876 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:54,882 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,884 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:54,885 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,890 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:54,890 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:54,890 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:54,890 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:54,907 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:54,918 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:54,918 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:54,920 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:54,920 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:54,921 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:54,940 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,942 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:54,945 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:54,946 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:54,952 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:54,953 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:54,953 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:54,954 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:54,959 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:54,963 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:54,975 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:54,981 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:54,983 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:54,983 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:54,993 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:54,993 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:55,006 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:55,007 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:55,013 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:55,014 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:55,015 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:55,015 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:55,025 - app                       - INFO     - Frame 130: Face=YES, Pose=NO, Hand=NO
+2025-07-11 15:12:55,030 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:55,030 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:55,033 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:55,033 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:55,037 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:55,042 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:55,046 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:55,046 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:55,056 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:55,067 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:55,070 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:55,071 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:55,072 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:55,078 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:55,087 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:55,088 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:55,089 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:55,096 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:55,102 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:55,115 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:55,120 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:55,128 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:55,141 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:55,143 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:55,145 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:55,145 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:55,157 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:55,166 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:55,166 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:55,166 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:55,173 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:55,174 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:55,174 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:55,175 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:55,188 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:55,188 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:55,201 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:55,207 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:55,209 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:55,210 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:55,210 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:55,217 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:55,223 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:55,225 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:55,232 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:55,241 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:55,244 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:55,250 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:55,250 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:55,252 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:55,266 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:55,266 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:55,278 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:55,279 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:55,282 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:55,283 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:55,284 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:55,285 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:55,297 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:55,300 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:55,304 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:55,306 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 15:12:55,306 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:55,317 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:55,322 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:55,329 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:55,331 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:55,336 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:55,339 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:55,340 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:55,353 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:55,355 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:55,356 - app                       - INFO     - Frame 140: Face=YES, Pose=YES, Hand=NO
+2025-07-11 15:12:55,360 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:55,363 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:55,363 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:55,373 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:55,381 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:55,384 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:55,384 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:55,384 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:55,385 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:55,385 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:55,390 - app                       - INFO     - [진단] Pose landmarks 그리기 시작
+2025-07-11 15:12:55,404 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:55,404 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:55,408 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:55,408 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:55,412 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:55,417 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:55,420 - app                       - INFO     - [진단] Pose landmarks 그리기 시작
+2025-07-11 15:12:55,437 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:55,438 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:55,450 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:55,451 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:55,451 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:55,452 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:55,453 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:55,455 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=NO, count=0
+2025-07-11 15:12:55,464 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:55,467 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:55,474 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:55,476 - app                       - INFO     - [진단] Pose landmarks 그리기 시작
+2025-07-11 15:12:55,476 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:55,483 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:55,483 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:55,487 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:55,496 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:55,498 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:55,498 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:55,502 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:55,503 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:55,511 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:55,520 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:55,521 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:55,522 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:55,523 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:55,524 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:55,537 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:55,539 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:55,539 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:55,545 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:55,545 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:55,547 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:55,558 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:55,558 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:55,559 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:55,559 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:55,659 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:55,660 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:55,661 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:55,661 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:55,662 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:55,663 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:55,664 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:55,665 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:55,666 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 15:12:55,671 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:55,672 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:55,676 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:55,677 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:55,678 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:55,729 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:55,738 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:55,739 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 15:12:55,739 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:55,740 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:55,741 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:55,742 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:55,748 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:55,755 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:55,759 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:55,760 - app                       - INFO     - [진단] Pose landmarks 그리기 시작
+2025-07-11 15:12:55,765 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:55,766 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:55,767 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:55,769 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:55,770 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:55,775 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:55,775 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:55,778 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:55,824 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:55,835 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:55,835 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 15:12:55,835 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:55,838 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:55,839 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:55,848 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:55,849 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:55,849 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:55,854 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:55,855 - app                       - INFO     - [진단] Pose landmarks 그리기 시작
+2025-07-11 15:12:55,863 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:55,866 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:55,867 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:55,868 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:55,869 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:55,877 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:55,877 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:55,937 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:55,939 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:55,945 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1
+2025-07-11 15:12:55,946 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:55,950 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:55,951 - systems.mediapipe_manager - ERROR    - Pose callback error: no running event loop
+2025-07-11 15:12:55,954 - app                       - INFO     - [진단] Pose landmarks 그리기 시작
+2025-07-11 15:12:55,956 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:55,961 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:55,962 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:55,964 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:55,965 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - last_frame 갱신
+2025-07-11 15:12:55,970 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:55,976 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:56,052 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:56,052 - app                       - INFO     - Frame 150: Face=YES, Pose=YES, Hand=NO
+2025-07-11 15:12:56,052 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:56,057 - app                       - INFO     - [진단] app.py: _annotate_frame_with_results 진입
+2025-07-11 15:12:56,061 - app                       - INFO     - [진단] Face landmarks 그리기 시작
+2025-07-11 15:12:56,066 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread cap.read(): ret=True, frame type=<class 'numpy.ndarray'>, shape=(480, 640, 3)
+2025-07-11 15:12:56,072 - systems.mediapipe_manager - INFO     - [진단] Face result callback: landmarks=YES, count=1
+2025-07-11 15:12:56,077 - app                       - INFO     - [진단] Pose landmarks 그리기 시작
+2025-07-11 15:12:56,080 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread self.current_frame 갱신: shape=(480, 640, 3)
+2025-07-11 15:12:56,081 - systems.mediapipe_manager - ERROR    - Face callback error: no running event loop
+2025-07-11 15:12:56,085 - app                       - INFO     - [진단] app.py: run - opencv_display_loop - frame_queue.get 성공, frame type: <class 'numpy.ndarray'>
+2025-07-11 15:12:56,087 - systems.mediapipe_manager - INFO     - [진단] Pose result callback: landmarks=YES, count=1

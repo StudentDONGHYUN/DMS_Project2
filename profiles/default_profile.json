@@ -1,0 +1,13 @@
+{
+  "user_id": "default",
+  "thresholds": {
+    "blink_rate_normal": 20.0,
+    "yawn_threshold": 0.6,
+    "perclos_critical": 0.8,
+    "gaze_deviation_limit": 3.0,
+    "ear_threshold": 0.25,
+    "emotion_sensitivity": 0.7,
+    "distraction_tolerance": 0.5
+  },
+  "last_updated": "2025-07-10T18:20:38.050016"
+}
