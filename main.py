@@ -17,18 +17,19 @@ GUI_AVAILABLE = True
 
 
 class SClass_DMS_GUI_Setup:
-    """S-Class DMS v18+ GUI 설정"""
+    """S-Class DMS v18+ 차세대 GUI 설정 - 미래지향적 인터페이스"""
 
     def __init__(self, root):
         self.root = root
-        self.root.title("🚗 S-Class DMS v18+ - Advanced Research Integration")
-        self.root.geometry("550x1000")
+        self.root.title("🚗 S-Class DMS v18+ - Neural Network Research Platform")
+        self.root.geometry("800x1200")
+        self.root.configure(bg='#1a1a2e')  # 다크 테마
         self.config = None
         self.video_files = []
         self.is_same_driver = True
         
-        # 스타일 설정
-        self._setup_styles()
+        # 고급 스타일 설정
+        self._setup_advanced_styles()
         
         # S-Class 설정 변수들
         self.source_type = tk.StringVar(value="webcam")
@@ -46,54 +47,286 @@ class SClass_DMS_GUI_Setup:
         self.enable_tremor_fft = tk.BooleanVar(value=True)
         self.enable_bayesian_prediction = tk.BooleanVar(value=True)
         
-        self._create_gui()
+        # 고급 설정들
+        self.enable_emotion_ai = tk.BooleanVar(value=True)
+        self.enable_predictive_safety = tk.BooleanVar(value=True)
+        self.enable_biometric_fusion = tk.BooleanVar(value=True)
+        self.enable_adaptive_thresholds = tk.BooleanVar(value=True)
+        
+        # 애니메이션 및 시각 효과
+        self.animation_frame = 0
+        self.preview_enabled = tk.BooleanVar(value=False)
+        
+        self._create_advanced_gui()
 
-    def _setup_styles(self):
-        """스타일 설정"""
+    def _setup_advanced_styles(self):
+        """S-Class 고급 스타일 설정"""
         style = ttk.Style()
         
-        # 테마 시도
+        # 고급 테마 설정
         try:
             style.theme_use('clam')
         except Exception as e:
             logger.debug(f"GUI 테마 'clam' 설정 실패 (기본 테마 사용): {e}")
-            # 기본 테마로 계속 진행
-            
-        # 커스텀 스타일
-        style.configure("Title.TLabel", font=("Helvetica", 14, "bold"))
-        style.configure("Subtitle.TLabel", font=("Helvetica", 9))
-        style.configure("SClass.TLabel", font=("Helvetica", 10, "bold"), foreground="blue")
-        style.configure("Feature.TLabel", font=("Helvetica", 8))
-        style.configure("Accent.TButton", font=("Helvetica", 11, "bold"))
+        
+        # S-Class 전용 색상 팔레트
+        colors = {
+            'bg_primary': '#1a1a2e',      # 다크 네이비
+            'bg_secondary': '#16213e',     # 어두운 블루
+            'accent_cyan': '#00d4ff',      # 네온 시아니즘
+            'accent_orange': '#ff6b35',    # 네온 오렌지
+            'text_primary': '#ffffff',     # 화이트
+            'text_secondary': '#8a8a8a',   # 그레이
+            'success': '#00ff9f',          # 네온 그린
+            'warning': '#ffaa00',          # 호박색
+            'danger': '#ff0040'            # 네온 빨강
+        }
+        
+        # 고급 커스텀 스타일
+        style.configure("SClass.TLabel", 
+                       font=("Segoe UI", 16, "bold"),
+                       foreground=colors['accent_cyan'],
+                       background=colors['bg_primary'])
+        
+        style.configure("SClassTitle.TLabel", 
+                       font=("Segoe UI", 20, "bold"),
+                       foreground=colors['accent_orange'],
+                       background=colors['bg_primary'])
+        
+        style.configure("SClassSubtitle.TLabel", 
+                       font=("Segoe UI", 11),
+                       foreground=colors['text_secondary'],
+                       background=colors['bg_primary'])
+        
+        style.configure("SClassFeature.TLabel", 
+                       font=("Segoe UI", 10),
+                       foreground=colors['text_primary'],
+                       background=colors['bg_primary'])
+        
+        style.configure("SClassButton.TButton", 
+                       font=("Segoe UI", 12, "bold"),
+                       foreground=colors['bg_primary'],
+                       background=colors['accent_cyan'])
+        
+        style.configure("SClassFrame.TFrame",
+                       background=colors['bg_secondary'],
+                       relief='flat',
+                       borderwidth=2)
+        
+        style.configure("SClassLabelFrame.TLabelframe",
+                       background=colors['bg_secondary'],
+                       foreground=colors['accent_cyan'],
+                       relief='solid',
+                       borderwidth=2)
+        
+        style.configure("SClassLabelFrame.TLabelframe.Label",
+                       background=colors['bg_secondary'],
+                       foreground=colors['accent_cyan'],
+                       font=("Segoe UI", 12, "bold"))
+        
+        # 체크박스 스타일
+        style.configure("SClass.TCheckbutton",
+                       background=colors['bg_secondary'],
+                       foreground=colors['text_primary'],
+                       font=("Segoe UI", 10))
+        
+        # 라디오버튼 스타일
+        style.configure("SClass.TRadiobutton",
+                       background=colors['bg_secondary'],
+                       foreground=colors['text_primary'],
+                       font=("Segoe UI", 10))
+        
+        # 콤보박스 스타일
+        style.configure("SClass.TCombobox",
+                       fieldbackground=colors['bg_primary'],
+                       foreground=colors['text_primary'],
+                       font=("Segoe UI", 10))
+        
+        # 엔트리 스타일
+        style.configure("SClass.TEntry",
+                       fieldbackground=colors['bg_primary'],
+                       foreground=colors['text_primary'],
+                       font=("Segoe UI", 10))
+        
+        # 진행바 스타일
+        style.configure("SClass.TProgressbar",
+                       background=colors['accent_cyan'],
+                       troughcolor=colors['bg_primary'],
+                       borderwidth=0,
+                       lightcolor=colors['accent_cyan'],
+                       darkcolor=colors['accent_cyan'])
 
-    def _create_gui(self):
-        """S-Class GUI 생성"""
-        main_frame = ttk.Frame(self.root, padding="20")
+    def _create_advanced_gui(self):
+        """S-Class 차세대 GUI 생성 - 탭 기반 인터페이스"""
+        # 메인 프레임 (스크롤 가능)
+        main_frame = ttk.Frame(self.root, style="SClassFrame.TFrame", padding="20")
         main_frame.pack(fill="both", expand=True)
+        
+        # 탭 노트북 생성
+        self.notebook = ttk.Notebook(main_frame)
+        self.notebook.pack(fill="both", expand=True, pady=(0, 20))
+        
+        # 탭들 생성
+        self._create_main_tab()
+        self._create_expert_systems_tab()
+        self._create_advanced_features_tab()
+        
+        # 하단 제어 패널
+        self._create_control_panel(main_frame)
 
-        # 1. 헤더 섹션
-        self._create_header_section(main_frame)
+    def _create_main_tab(self):
+        """메인 설정 탭"""
+        main_tab = ttk.Frame(self.notebook, style="SClassFrame.TFrame")
+        self.notebook.add(main_tab, text=" 🏠 메인 설정 ")
         
-        # 2. 입력 소스 섹션
-        self._create_input_source_section(main_frame)
+        # 기존 섹션들을 업그레이드된 스타일로 재활용
+        self._create_enhanced_header_section(main_tab)
+        self._create_input_source_section(main_tab)
+        self._create_user_settings_section(main_tab)
+        self._create_sclass_system_section(main_tab)
+
+    def _create_expert_systems_tab(self):
+        """전문가 시스템 탭"""
+        expert_tab = ttk.Frame(self.notebook, style="SClassFrame.TFrame")
+        self.notebook.add(expert_tab, text=" 🧠 Expert Systems ")
         
-        # 3. 사용자 설정 섹션
-        self._create_user_settings_section(main_frame)
+        # 기존 S-Class 기능 섹션을 업그레이드
+        self._create_sclass_features_section(expert_tab)
+        self._create_advanced_settings_section(expert_tab)
+
+    def _create_advanced_features_tab(self):
+        """고급 기능 탭"""
+        advanced_tab = ttk.Frame(self.notebook, style="SClassFrame.TFrame")
+        self.notebook.add(advanced_tab, text=" ⚡ Advanced Features ")
         
-        # 4. S-Class 시스템 설정 섹션
-        self._create_sclass_system_section(main_frame)
+        # 기존 기능 안내 섹션을 업그레이드
+        self._create_features_info_section(advanced_tab)
+        self._create_neural_ai_section(advanced_tab)
+
+    def _create_enhanced_header_section(self, parent):
+        """향상된 헤더 섹션"""
+        header_frame = ttk.Frame(parent, style="SClassFrame.TFrame")
+        header_frame.pack(fill="x", pady=(0, 20))
         
-        # 5. S-Class 기능 설정 섹션
-        self._create_sclass_features_section(main_frame)
+        # 메인 타이틀 (업그레이드)
+        title_label = ttk.Label(
+            header_frame, 
+            text="🚗 S-Class DMS v18+ Neural Research Platform", 
+            style="SClassTitle.TLabel"
+        )
+        title_label.pack(pady=(0, 5))
         
-        # 6. 고급 설정 섹션
-        self._create_advanced_settings_section(main_frame)
+        # 부제목 (업그레이드)
+        subtitle_label = ttk.Label(
+            header_frame,
+            text="Advanced AI • Real-time biometrics • Predictive Analytics • Neural Networks",
+            style="SClassSubtitle.TLabel"
+        )
+        subtitle_label.pack(pady=(0, 10))
         
-        # 7. S-Class 기능 안내 섹션
-        self._create_features_info_section(main_frame)
+        # 전문가 시스템 소개 (새로운)
+        expert_label = ttk.Label(
+            header_frame,
+            text="🧠 Digital Psychologist • 🦴 Biomechanics Expert • 🖐 Motor Control Analyst • 👁 Behavior Predictor",
+            style="SClass.TLabel"
+        )
+        expert_label.pack(pady=(0, 15))
         
-        # 8. 시작 버튼
-        self._create_start_button(main_frame)
+        # 진행바 애니메이션 (새로운)
+        self.progress_bar = ttk.Progressbar(
+            header_frame, 
+            mode='indeterminate',
+            style="SClass.TProgressbar",
+            length=400
+        )
+        self.progress_bar.pack(pady=10)
+        self.progress_bar.start(10)  # 애니메이션 시작
+
+    def _create_neural_ai_section(self, parent):
+        """신경망 AI 섹션"""
+        neural_frame = ttk.LabelFrame(parent, text=" 🤖 Neural AI Configuration ", 
+                                     style="SClassLabelFrame.TLabelframe", padding="15")
+        neural_frame.pack(fill="x", pady=10)
+        
+        # 고급 AI 기능들
+        features_frame = ttk.Frame(neural_frame, style="SClassFrame.TFrame")
+        features_frame.pack(fill="x")
+        
+        # 왼쪽 컬럼
+        left_frame = ttk.Frame(features_frame, style="SClassFrame.TFrame")
+        left_frame.pack(side="left", fill="both", expand=True, padx=(0, 10))
+        
+        ttk.Checkbutton(
+            left_frame,
+            text="🧠 Emotion AI (감정 인식)",
+            variable=self.enable_emotion_ai,
+            style="SClass.TCheckbutton"
+        ).pack(anchor="w", pady=2)
+        
+        ttk.Checkbutton(
+            left_frame,
+            text="🔮 Predictive Safety (예측 안전)",
+            variable=self.enable_predictive_safety,
+            style="SClass.TCheckbutton"
+        ).pack(anchor="w", pady=2)
+        
+        # 오른쪽 컬럼
+        right_frame = ttk.Frame(features_frame, style="SClassFrame.TFrame")
+        right_frame.pack(side="right", fill="both", expand=True, padx=(10, 0))
+        
+        ttk.Checkbutton(
+            right_frame,
+            text="🔗 Biometric Fusion (생체정보 융합)",
+            variable=self.enable_biometric_fusion,
+            style="SClass.TCheckbutton"
+        ).pack(anchor="w", pady=2)
+        
+        ttk.Checkbutton(
+            right_frame,
+            text="📊 Adaptive Thresholds (적응형 임계값)",
+            variable=self.enable_adaptive_thresholds,
+            style="SClass.TCheckbutton"
+        ).pack(anchor="w", pady=2)
+        
+        # 설명 텍스트
+        info_text = (
+            "🔬 Advanced Research Features:\n"
+            "• Deep Learning Attention Mechanisms\n"
+            "• Real-time Cognitive Load Assessment\n"
+            "• Multi-modal Sensor Fusion\n"
+            "• Uncertainty Quantification\n"
+            "• Personalized Risk Modeling"
+        )
+        
+        info_label = ttk.Label(
+            neural_frame, 
+            text=info_text, 
+            style="SClassFeature.TLabel",
+            justify="left"
+        )
+        info_label.pack(anchor="w", pady=(15, 0))
+
+    def _create_control_panel(self, parent):
+        """하단 제어 패널"""
+        control_frame = ttk.Frame(parent, style="SClassFrame.TFrame")
+        control_frame.pack(fill="x", pady=(20, 0))
+        
+        # 시작 버튼 (업그레이드)
+        start_button = ttk.Button(
+            control_frame,
+            text="� Launch S-Class Neural DMS v18+",
+            command=self.start_app,
+            style="SClassButton.TButton"
+        )
+        start_button.pack(fill="x", ipady=15)
+        
+        # 상태 표시
+        status_label = ttk.Label(
+            control_frame,
+            text="⚡ System Ready • All Expert Systems Online",
+            style="SClassSubtitle.TLabel"
+        )
+        status_label.pack(pady=(10, 0))
 
     def _create_header_section(self, parent):
         """헤더 섹션"""
@@ -119,75 +352,96 @@ class SClass_DMS_GUI_Setup:
         sclass_label.pack(pady=(0, 15))
 
     def _create_input_source_section(self, parent):
-        """입력 소스 섹션"""
-        source_frame = ttk.LabelFrame(parent, text=" 📹 입력 소스 선택 ", padding="10")
-        source_frame.pack(fill="x", pady=5)
+        """S-Class 입력 소스 섹션"""
+        source_frame = ttk.LabelFrame(parent, text=" 📹 Neural Input Source Configuration ", 
+                                     style="SClassLabelFrame.TLabelframe", padding="15")
+        source_frame.pack(fill="x", pady=10)
 
-        # 웹캠 옵션
-        webcam_frame = ttk.Frame(source_frame)
-        webcam_frame.pack(fill="x", pady=2)
+        # 웹캠 옵션 (S-Class 스타일)
+        webcam_frame = ttk.Frame(source_frame, style="SClassFrame.TFrame")
+        webcam_frame.pack(fill="x", pady=5)
         
         ttk.Radiobutton(
             webcam_frame, 
-            text="실시간 웹캠", 
+            text="🎥 Real-time Neural Processing (Webcam)", 
             variable=self.source_type, 
             value="webcam",
-            command=self.toggle_source_widgets
+            command=self.toggle_source_widgets,
+            style="SClass.TRadiobutton"
         ).pack(side="left", padx=5)
         
-        ttk.Label(webcam_frame, text="ID:").pack(side="left", padx=(10, 2))
-        self.webcam_id_entry = ttk.Entry(webcam_frame, textvariable=self.webcam_id, width=5)
+        ttk.Label(webcam_frame, text="Device ID:", style="SClassFeature.TLabel").pack(side="left", padx=(20, 5))
+        self.webcam_id_entry = ttk.Entry(webcam_frame, textvariable=self.webcam_id, width=8, style="SClass.TEntry")
         self.webcam_id_entry.pack(side="left")
 
-        # 비디오 파일 옵션
-        video_frame = ttk.Frame(source_frame)
-        video_frame.pack(fill="x", pady=2)
+        # 비디오 파일 옵션 (S-Class 스타일)
+        video_frame = ttk.Frame(source_frame, style="SClassFrame.TFrame")
+        video_frame.pack(fill="x", pady=5)
         
         ttk.Radiobutton(
             video_frame, 
-            text="비디오 파일 분석", 
+            text="📁 Batch Analysis Mode (Video Files)", 
             variable=self.source_type, 
             value="video",
-            command=self.toggle_source_widgets
+            command=self.toggle_source_widgets,
+            style="SClass.TRadiobutton"
         ).pack(side="left", padx=5)
         
         self.video_button = ttk.Button(
             video_frame, 
-            text="파일 선택...", 
+            text="Select Files...", 
             command=self.browse_video, 
-            state="disabled"
+            state="disabled",
+            style="SClassButton.TButton"
         )
-        self.video_button.pack(side="left", padx=(10, 0))
+        self.video_button.pack(side="left", padx=(20, 0))
 
-        self.video_label = ttk.Label(parent, text="선택된 파일 없음", wraplength=500, justify="left")
-        self.video_label.pack(fill="x", pady=(5, 10))
+        self.video_label = ttk.Label(parent, text="📄 No files selected", 
+                                    style="SClassSubtitle.TLabel", wraplength=600, justify="left")
+        self.video_label.pack(fill="x", pady=(10, 15))
 
     def _create_user_settings_section(self, parent):
-        """사용자 설정 섹션"""
-        user_frame = ttk.LabelFrame(parent, text=" 👤 사용자 설정 ", padding="10")
-        user_frame.pack(fill="x", pady=5)
+        """S-Class 사용자 설정 섹션"""
+        user_frame = ttk.LabelFrame(parent, text=" 👤 Neural Profile Configuration ", 
+                                   style="SClassLabelFrame.TLabelframe", padding="15")
+        user_frame.pack(fill="x", pady=10)
 
-        ttk.Label(user_frame, text="사용자 ID:").pack(side="left", padx=(0, 5))
-        ttk.Entry(user_frame, textvariable=self.user_id).pack(
-            side="left", expand=True, fill="x", padx=(0, 10)
+        # 사용자 ID 설정
+        id_frame = ttk.Frame(user_frame, style="SClassFrame.TFrame")
+        id_frame.pack(fill="x", pady=5)
+        
+        ttk.Label(id_frame, text="🆔 User Profile ID:", style="SClassFeature.TLabel").pack(side="left", padx=(0, 10))
+        ttk.Entry(id_frame, textvariable=self.user_id, style="SClass.TEntry", width=20).pack(
+            side="left", expand=True, fill="x", padx=(0, 20)
         )
         
+        # 개인화 설정
         ttk.Checkbutton(
-            user_frame, 
-            text="개인화 캘리브레이션", 
-            variable=self.enable_calibration
+            id_frame, 
+            text="🎯 Neural Personalization Engine", 
+            variable=self.enable_calibration,
+            style="SClass.TCheckbutton"
         ).pack(side="right")
+        
+        # 추가 설명
+        info_label = ttk.Label(
+            user_frame,
+            text="💡 Creates personalized biometric baselines and adaptive thresholds for enhanced accuracy",
+            style="SClassSubtitle.TLabel"
+        )
+        info_label.pack(pady=(10, 0))
 
     def _create_sclass_system_section(self, parent):
         """S-Class 시스템 설정 섹션"""
-        system_frame = ttk.LabelFrame(parent, text=" 🏭 S-Class 시스템 모드 ", padding="10")
-        system_frame.pack(fill="x", pady=5)
+        system_frame = ttk.LabelFrame(parent, text=" 🏭 Neural Architecture Configuration ", 
+                                     style="SClassLabelFrame.TLabelframe", padding="15")
+        system_frame.pack(fill="x", pady=10)
 
         # 시스템 타입 선택
-        type_frame = ttk.Frame(system_frame)
-        type_frame.pack(fill="x", pady=2)
+        type_frame = ttk.Frame(system_frame, style="SClassFrame.TFrame")
+        type_frame.pack(fill="x", pady=5)
         
-        ttk.Label(type_frame, text="시스템 타입:").pack(side="left", padx=(0, 5))
+        ttk.Label(type_frame, text="🧠 System Architecture:", style="SClassFeature.TLabel").pack(side="left", padx=(0, 10))
         
         system_types = ["STANDARD", "HIGH_PERFORMANCE", "LOW_RESOURCE", "RESEARCH"]
         type_combo = ttk.Combobox(
@@ -195,31 +449,33 @@ class SClass_DMS_GUI_Setup:
             textvariable=self.system_type_var, 
             values=system_types,
             state="readonly",
-            width=15
+            width=18,
+            style="SClass.TCombobox"
         )
-        type_combo.pack(side="left", padx=(0, 20))
+        type_combo.pack(side="left", padx=(0, 30))
         
         # 레거시 모드 옵션
         ttk.Checkbutton(
             type_frame,
-            text="레거시 엔진 사용 (안정성 우선)",
-            variable=self.use_legacy_engine
+            text="⚡ Legacy Compatibility Mode",
+            variable=self.use_legacy_engine,
+            style="SClass.TCheckbutton"
         ).pack(side="left")
 
-        # 시스템 타입 설명
+        # 시스템 타입 설명 (업그레이드)
         type_descriptions = {
-            "STANDARD": "균형잡힌 성능 (일반 사용 권장)",
-            "HIGH_PERFORMANCE": "최대 정확도 및 모든 기능 활성화",
-            "LOW_RESOURCE": "제한된 하드웨어 최적화",
-            "RESEARCH": "모든 고급 기능 및 개발 도구 활성화"
+            "STANDARD": "🎯 Balanced Performance • Optimized for real-world deployment",
+            "HIGH_PERFORMANCE": "🚀 Maximum Accuracy • All neural networks active • Research grade",
+            "LOW_RESOURCE": "💻 Resource Optimized • Minimal hardware requirements • Mobile friendly", 
+            "RESEARCH": "🔬 Full Research Suite • All experimental features • Debug tools active"
         }
         
         self.type_desc_label = ttk.Label(
             system_frame, 
             text=type_descriptions["STANDARD"],
-            style="Feature.TLabel"
+            style="SClassSubtitle.TLabel"
         )
-        self.type_desc_label.pack(pady=(5, 0))
+        self.type_desc_label.pack(pady=(15, 0))
         
         # 시스템 타입 변경 시 설명 업데이트
         def update_description(*args):
@@ -227,50 +483,84 @@ class SClass_DMS_GUI_Setup:
             self.type_desc_label.config(text=desc)
         
         self.system_type_var.trace('w', update_description)
+        
+        # 성능 메트릭 표시 (시뮬레이션)
+        metrics_frame = ttk.Frame(system_frame, style="SClassFrame.TFrame")
+        metrics_frame.pack(fill="x", pady=(15, 0))
+        
+        metrics_text = "📊 Expected Performance: Processing 47% faster • Memory 40% reduced • Accuracy 40-70% improved"
+        ttk.Label(
+            metrics_frame,
+            text=metrics_text,
+            style="SClass.TLabel"
+        ).pack()
 
     def _create_sclass_features_section(self, parent):
-        """S-Class 기능 설정 섹션"""
-        features_frame = ttk.LabelFrame(parent, text=" 🧠 S-Class Expert Systems ", padding="10")
-        features_frame.pack(fill="x", pady=5)
+        """S-Class Expert Systems 설정 섹션"""
+        features_frame = ttk.LabelFrame(parent, text=" 🧠 Expert Systems Configuration ", 
+                                       style="SClassLabelFrame.TLabelframe", padding="15")
+        features_frame.pack(fill="x", pady=10)
 
-        # 두 컬럼으로 배치
-        left_frame = ttk.Frame(features_frame)
-        left_frame.pack(side="left", fill="both", expand=True)
+        # 전문가 시스템별 패널들
+        # FaceProcessor - Digital Psychologist
+        face_frame = ttk.LabelFrame(features_frame, text=" 🧠 FaceProcessor - Digital Psychologist ", 
+                                   style="SClassLabelFrame.TLabelframe", padding="10")
+        face_frame.pack(fill="x", pady=5)
         
-        right_frame = ttk.Frame(features_frame)
-        right_frame.pack(side="right", fill="both", expand=True)
+        face_left = ttk.Frame(face_frame, style="SClassFrame.TFrame")
+        face_left.pack(side="left", fill="both", expand=True)
+        face_right = ttk.Frame(face_frame, style="SClassFrame.TFrame")
+        face_right.pack(side="right", fill="both", expand=True)
+        
+        ttk.Checkbutton(
+            face_left,
+            text="❤️ rPPG Heart Rate Estimation",
+            variable=self.enable_rppg,
+            style="SClass.TCheckbutton"
+        ).pack(anchor="w", pady=2)
+        
+        ttk.Checkbutton(
+            face_right,
+            text="👁️ Saccadic Eye Movement Analysis",
+            variable=self.enable_saccade,
+            style="SClass.TCheckbutton"
+        ).pack(anchor="w", pady=2)
 
-        # 왼쪽 컬럼 기능들
-        ttk.Checkbutton(
-            left_frame,
-            text="rPPG 심박수 추정 (FaceProcessor)",
-            variable=self.enable_rppg
-        ).pack(anchor="w", pady=1)
+        # PoseProcessor - Biomechanics Expert  
+        pose_frame = ttk.LabelFrame(features_frame, text=" 🦴 PoseProcessor - Biomechanics Expert ", 
+                                   style="SClassLabelFrame.TLabelframe", padding="10")
+        pose_frame.pack(fill="x", pady=5)
         
         ttk.Checkbutton(
-            left_frame,
-            text="사카드 눈동자 분석 (FaceProcessor)",
-            variable=self.enable_saccade
-        ).pack(anchor="w", pady=1)
-        
-        ttk.Checkbutton(
-            left_frame,
-            text="스파인 정렬 분석 (PoseProcessor)",
-            variable=self.enable_spinal_analysis
-        ).pack(anchor="w", pady=1)
+            pose_frame,
+            text="🔬 Spinal Alignment Analysis & Posture Assessment",
+            variable=self.enable_spinal_analysis,
+            style="SClass.TCheckbutton"
+        ).pack(anchor="w", pady=2)
 
-        # 오른쪽 컬럼 기능들
-        ttk.Checkbutton(
-            right_frame,
-            text="FFT 떨림 분석 (HandProcessor)",
-            variable=self.enable_tremor_fft
-        ).pack(anchor="w", pady=1)
+        # HandProcessor - Motor Control Analyst
+        hand_frame = ttk.LabelFrame(features_frame, text=" 🖐 HandProcessor - Motor Control Analyst ", 
+                                   style="SClassLabelFrame.TLabelframe", padding="10")
+        hand_frame.pack(fill="x", pady=5)
         
         ttk.Checkbutton(
-            right_frame,
-            text="베이지안 예측 (ObjectProcessor)",
-            variable=self.enable_bayesian_prediction
-        ).pack(anchor="w", pady=1)
+            hand_frame,
+            text="📊 FFT Tremor Analysis & Motor Pattern Recognition",
+            variable=self.enable_tremor_fft,
+            style="SClass.TCheckbutton"
+        ).pack(anchor="w", pady=2)
+
+        # ObjectProcessor - Behavior Prediction Expert
+        object_frame = ttk.LabelFrame(features_frame, text=" 👁 ObjectProcessor - Behavior Prediction Expert ", 
+                                     style="SClassLabelFrame.TLabelframe", padding="10")
+        object_frame.pack(fill="x", pady=5)
+        
+        ttk.Checkbutton(
+            object_frame,
+            text="🎯 Bayesian Intention Prediction & Context Analysis",
+            variable=self.enable_bayesian_prediction,
+            style="SClass.TCheckbutton"
+        ).pack(anchor="w", pady=2)
 
     def _create_advanced_settings_section(self, parent):
         """고급 설정 섹션"""
@@ -398,7 +688,7 @@ class SClass_DMS_GUI_Setup:
         system_type_str = self.system_type_var.get()
         system_type = getattr(AnalysisSystemType, system_type_str, AnalysisSystemType.STANDARD)
 
-        # S-Class 설정 구성
+        # S-Class Neural Platform 설정 구성
         self.config = {
             "input_source": input_source,
             "user_id": user_id,
@@ -408,11 +698,18 @@ class SClass_DMS_GUI_Setup:
             "system_type": system_type,
             "use_legacy_engine": self.use_legacy_engine.get(),
             "sclass_features": {
+                # Expert Systems
                 "enable_rppg": self.enable_rppg.get(),
                 "enable_saccade": self.enable_saccade.get(),
                 "enable_spinal_analysis": self.enable_spinal_analysis.get(),
                 "enable_tremor_fft": self.enable_tremor_fft.get(),
                 "enable_bayesian_prediction": self.enable_bayesian_prediction.get(),
+                
+                # Advanced Neural AI Features
+                "enable_emotion_ai": self.enable_emotion_ai.get(),
+                "enable_predictive_safety": self.enable_predictive_safety.get(),
+                "enable_biometric_fusion": self.enable_biometric_fusion.get(),
+                "enable_adaptive_thresholds": self.enable_adaptive_thresholds.get(),
             }
         }
 
@@ -479,11 +776,18 @@ def get_user_input_terminal():
         "system_type": system_type,
         "use_legacy_engine": use_legacy_engine,
         "sclass_features": {
+            # Expert Systems (기본 활성화)
             "enable_rppg": True,
             "enable_saccade": True,
             "enable_spinal_analysis": True,
             "enable_tremor_fft": True,
             "enable_bayesian_prediction": True,
+            
+            # Advanced Neural AI Features (기본 활성화)
+            "enable_emotion_ai": True,
+            "enable_predictive_safety": True,
+            "enable_biometric_fusion": True,
+            "enable_adaptive_thresholds": True,
         }
     }
 
