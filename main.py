@@ -55,8 +55,9 @@ class SClass_DMS_GUI_Setup:
         # 테마 시도
         try:
             style.theme_use('clam')
-        except:
-            pass
+        except Exception as e:
+            logger.debug(f"GUI 테마 'clam' 설정 실패 (기본 테마 사용): {e}")
+            # 기본 테마로 계속 진행
             
         # 커스텀 스타일
         style.configure("Title.TLabel", font=("Helvetica", 14, "bold"))

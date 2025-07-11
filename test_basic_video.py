@@ -2,6 +2,7 @@
 
 import cv2
 import os
+import time
 import logging
 
 # 로깅 설정
@@ -47,21 +48,37 @@ def test_video_playback():
         cv2.namedWindow(window_name, cv2.WINDOW_AUTOSIZE)
         
         frame_num = 0
-        while True:
+        max_frames_to_test = min(300, frame_count)  # 최대 300프레임 또는 전체 프레임 수
+        start_time = time.time()
+        max_test_duration = 30.0  # 최대 30초 테스트
+        
+        logger.info(f"최대 {max_frames_to_test}프레임 또는 {max_test_duration}초 동안 테스트")
+        
+        while frame_num < max_frames_to_test:
+            # 타임아웃 체크
+            if time.time() - start_time > max_test_duration:
+                logger.info(f"테스트 시간 초과 ({max_test_duration}초) - 다음 비디오로 이동")
+                break
+            
             ret, frame = cap.read()
             if not ret:
-                logger.info(f"비디오 {i+1} 재생 완료")
+                logger.info(f"비디오 {i+1} 재생 완료 (프레임 {frame_num})")
                 break
             
             frame_num += 1
             
             # 기본 정보 오버레이
-            cv2.putText(frame, f"Video {i+1}/{len(video_files)} - Frame {frame_num}/{frame_count}", 
+            cv2.putText(frame, f"Video {i+1}/{len(video_files)} - Frame {frame_num}/{max_frames_to_test}", 
                        (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
             cv2.putText(frame, f"File: {os.path.basename(video_path)}", 
                        (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
             cv2.putText(frame, "Press 'n' for next video, 'q' to quit", 
                        (10, height-20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 255), 1)
+            
+            elapsed_time = time.time() - start_time
+            remaining_time = max_test_duration - elapsed_time
+            cv2.putText(frame, f"Time: {elapsed_time:.1f}s / {max_test_duration}s", 
+                       (10, 90), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 0), 1)
             
             cv2.imshow(window_name, frame)
             

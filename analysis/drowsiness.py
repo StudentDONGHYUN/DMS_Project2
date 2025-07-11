@@ -93,7 +93,13 @@ class EnhancedDrowsinessDetector:
             ear_center_y = (left_ear.y + right_ear.y) / 2
             pitch = math.degrees(math.atan2(nose.y - ear_center_y, 0.5))
             return {"yaw": yaw, "pitch": pitch, "roll": 0.0}
-        except:
+        except (IndexError, AttributeError) as e:
+            # 랜드마크 인덱스 오류 또는 속성 접근 오류
+            logger.debug(f"헤드 포즈 추정 실패 (랜드마크 문제): {e}")
+            return {"yaw": 0.0, "pitch": 0.0, "roll": 0.0}
+        except Exception as e:
+            # 기타 예상치 못한 오류
+            logger.warning(f"헤드 포즈 추정 중 예상치 못한 오류: {e}")
             return {"yaw": 0.0, "pitch": 0.0, "roll": 0.0}
 
     def _correct_for_head_pose(self, ear, head_pose):

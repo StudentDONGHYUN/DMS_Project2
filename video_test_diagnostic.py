@@ -46,7 +46,9 @@ def test_opencv_installation():
                 if cap.open(0, backend_id):
                     backends.append(name)
                     cap.release()
-            except:
+            except Exception as e:
+                # 백엔드 테스트 실패는 정상적인 상황 (지원하지 않는 백엔드)
+                logger.debug(f"백엔드 {name} 테스트 실패 (지원되지 않음): {e}")
                 pass
         
         logger.info(f"지원되는 백엔드: {', '.join(backends) if backends else '없음'}")
@@ -124,7 +126,11 @@ def test_video_file_properties(video_path: str):
                         fourcc = int(cap.get(cv2.CAP_PROP_FOURCC))
                         codec = "".join([chr((fourcc >> 8 * i) & 0xFF) for i in range(4)])
                         logger.info(f"코덱: {codec}")
-                    except:
+                    except (ValueError, TypeError) as e:
+                        logger.debug(f"코덱 정보 읽기 실패 (데이터 변환 오류): {e}")
+                        logger.info("코덱 정보 읽기 실패")
+                    except Exception as e:
+                        logger.debug(f"코덱 정보 읽기 실패 (예상치 못한 오류): {e}")
                         logger.info("코덱 정보 읽기 실패")
                     
                     # 첫 번째 프레임 읽기 테스트
