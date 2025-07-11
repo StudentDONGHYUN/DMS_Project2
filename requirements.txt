@@ -1,7 +1,21 @@
-opencv-python
-numpy
-mediapipe
-scipy
-scikit-learn
-cachetools
-psutil
+opencv-python>=4.9.0
+numpy>=1.24.0
+mediapipe>=0.10.9
+scipy>=1.11.0
+scikit-learn>=1.3.0
+cachetools>=5.3.0
+psutil>=5.9.0
+# MediaPipe Tasks 의존성
+flatbuffers>=23.5.26
+protobuf>=4.25.0
+# 추가 AI/ML 라이브러리
+tensorflow>=2.15.0
+torch>=2.1.0
+# 성능 최적화
+numba>=0.58.0
+# GUI 및 시각화
+matplotlib>=3.7.0
+Pillow>=10.0.0
+# 기타 유틸리티
+attrs>=23.1.0
+absl-py>=2.0.0
