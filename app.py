@@ -73,27 +73,42 @@ class IntegratedCallbackAdapter:
     async def _on_result(self, result_type, result, timestamp):
         ts = timestamp or int(time.time() * 1000)
         try:
-            # 타임아웃이 있는 Lock 획득 (데드락 방지)
-            await asyncio.wait_for(self.processing_lock.acquire(), timeout=2.0)
+            # Use async context manager for safer lock handling with timeout
+            lock_acquisition_task = asyncio.create_task(self.processing_lock.acquire())
             try:
-                # 버퍼 크기 관리
-                if len(self.result_buffer) >= self.MAX_BUFFER_SIZE:
-                    await self._emergency_buffer_cleanup()
+                await asyncio.wait_for(lock_acquisition_task, timeout=2.0)
                 
-                if ts not in self.result_buffer:
-                    self.result_buffer[ts] = {'timestamp': time.time()}
-                self.result_buffer[ts][result_type] = result
-                logger.debug(f"Received {result_type} for ts {ts}. Buffer has keys: {list(self.result_buffer[ts].keys())}")
+                try:
+                    # 버퍼 크기 관리
+                    if len(self.result_buffer) >= self.MAX_BUFFER_SIZE:
+                        await self._emergency_buffer_cleanup()
+                    
+                    if ts not in self.result_buffer:
+                        self.result_buffer[ts] = {'timestamp': time.time()}
+                    self.result_buffer[ts][result_type] = result
+                    logger.debug(f"Received {result_type} for ts {ts}. Buffer has keys: {list(self.result_buffer[ts].keys())}")
+                    
+                    # 주기적 정리
+                    self.buffer_cleanup_counter += 1
+                    if self.buffer_cleanup_counter % 10 == 0:
+                        await self._prune_buffer()
+                    
+                    if 'face' in self.result_buffer[ts] and 'pose' in self.result_buffer[ts]:
+                        await self._process_results(ts)
+                finally:
+                    # Ensure lock is always released
+                    self.processing_lock.release()
+                    
+            except asyncio.TimeoutError:
+                # Cancel the acquisition task if it's still pending
+                if not lock_acquisition_task.done():
+                    lock_acquisition_task.cancel()
+                    try:
+                        await lock_acquisition_task
+                    except asyncio.CancelledError:
+                        pass
+                raise
                 
-                # 주기적 정리
-                self.buffer_cleanup_counter += 1
-                if self.buffer_cleanup_counter % 10 == 0:
-                    await self._prune_buffer()
-                
-                if 'face' in self.result_buffer[ts] and 'pose' in self.result_buffer[ts]:
-                    await self._process_results(ts)
-            finally:
-                self.processing_lock.release()
         except asyncio.TimeoutError:
             logger.warning(f"Lock 획득 타임아웃 - {result_type} 결과 무시됨 (ts: {ts})")
         except Exception as e:
