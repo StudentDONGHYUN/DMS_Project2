@@ -758,6 +758,7 @@ class AnalyticsEventHandler(IEventHandler):
 _global_handlers: List[IEventHandler] = []
 _event_queue = asyncio.Queue()
 _event_processor_task = None
+_shutdown_event = asyncio.Event()  # 종료 신호 이벤트 추가
 
 
 async def register_handler(handler: IEventHandler):
@@ -770,17 +771,30 @@ async def register_handler(handler: IEventHandler):
 async def publish_event(event: SafetyEvent):
     """이벤트를 발행하여 모든 관련 핸들러에 전달"""
     global _event_queue
+    # 종료 신호 확인
+    if _shutdown_event.is_set():
+        logger.warning("시스템 종료 중이므로 이벤트 발행 차단")
+        return
     await _event_queue.put(event)
 
 
 async def _process_events():
-    """백그라운드에서 이벤트 큐를 처리하는 워커"""
-    global _event_queue, _global_handlers
+    """백그라운드에서 이벤트 큐를 처리하는 워커 - 종료 신호 지원"""
+    global _event_queue, _global_handlers, _shutdown_event
     
-    while True:
+    while not _shutdown_event.is_set():
         try:
-            # 이벤트 대기
-            event = await _event_queue.get()
+            # 종료 신호와 함께 타임아웃 설정으로 이벤트 대기
+            try:
+                event = await asyncio.wait_for(_event_queue.get(), timeout=1.0)
+            except asyncio.TimeoutError:
+                # 타임아웃 발생 시 종료 신호 다시 확인
+                continue
+            
+            # 종료 신호가 설정되었다면 처리 중단
+            if _shutdown_event.is_set():
+                logger.info("이벤트 처리 중단 - 종료 신호 감지")
+                break
             
             # 적절한 핸들러들에게 전달
             for handler in _global_handlers:
@@ -794,29 +808,56 @@ async def _process_events():
             
             _event_queue.task_done()
             
+        except asyncio.CancelledError:
+            logger.info("이벤트 처리 작업 취소됨")
+            break
         except Exception as e:
             logger.error(f"이벤트 처리 중 오류: {e}")
+            # 심각한 오류 발생 시 짧은 대기 후 재시도
+            await asyncio.sleep(0.1)
+    
+    logger.info("이벤트 처리 루프 종료")
 
 
 async def start_event_processing():
     """이벤트 처리 시스템 시작"""
-    global _event_processor_task
+    global _event_processor_task, _shutdown_event
     if _event_processor_task is None:
+        _shutdown_event.clear()  # 종료 신호 초기화
         _event_processor_task = asyncio.create_task(_process_events())
         logger.info("이벤트 처리 시스템 시작됨")
 
 
 async def stop_event_processing():
-    """이벤트 처리 시스템 종료"""
-    global _event_processor_task
+    """이벤트 처리 시스템 종료 - 개선된 종료 처리"""
+    global _event_processor_task, _shutdown_event
+    
     if _event_processor_task:
-        _event_processor_task.cancel()
+        # 종료 신호 설정
+        _shutdown_event.set()
+        logger.info("이벤트 처리 시스템 종료 신호 전송")
+        
+        # 작업 완료 대기 (최대 5초)
         try:
-            await _event_processor_task
-        except asyncio.CancelledError:
-            pass
+            await asyncio.wait_for(_event_processor_task, timeout=5.0)
+        except asyncio.TimeoutError:
+            logger.warning("이벤트 처리 시스템 종료 타임아웃 - 강제 취소")
+            _event_processor_task.cancel()
+            try:
+                await _event_processor_task
+            except asyncio.CancelledError:
+                pass
+        
         _event_processor_task = None
-        logger.info("이벤트 처리 시스템 종료됨")
+        logger.info("이벤트 처리 시스템 종료 완료")
+    
+    # 대기 중인 이벤트 정리
+    try:
+        while not _event_queue.empty():
+            _event_queue.get_nowait()
+            _event_queue.task_done()
+    except asyncio.QueueEmpty:
+        pass
 
 
 # === 편의 함수들 ===
