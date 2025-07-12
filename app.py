@@ -136,13 +136,30 @@ class IntegratedCallbackAdapter:
         
         # 타임스탬프 순으로 정렬하여 오래된 것부터 제거
         sorted_timestamps = sorted(self.result_buffer.keys())
-        items_to_remove = len(self.result_buffer) - self.MAX_BUFFER_SIZE // 2
         
-        for i in range(min(items_to_remove, len(sorted_timestamps))):
-            ts = sorted_timestamps[i]
-            del self.result_buffer[ts]
+        # Calculate target size (keep half of max buffer size)
+        target_size = max(self.MAX_BUFFER_SIZE // 2, 1)  # Ensure at least 1 item remains
+        current_size = len(self.result_buffer)
         
-        logger.info(f"긴급 정리 완료 - 새 크기: {len(self.result_buffer)}")
+        if current_size <= target_size:
+            # Buffer is already within target size, no cleanup needed
+            logger.info(f"버퍼 크기가 이미 목표 크기 이하입니다: {current_size} <= {target_size}")
+            return
+        
+        items_to_remove = current_size - target_size
+        
+        # Safety check to prevent removing more items than available
+        items_to_remove = min(items_to_remove, len(sorted_timestamps))
+        
+        removed_count = 0
+        for i in range(items_to_remove):
+            if i < len(sorted_timestamps):
+                ts = sorted_timestamps[i]
+                if ts in self.result_buffer:  # Double-check key exists
+                    del self.result_buffer[ts]
+                    removed_count += 1
+        
+        logger.info(f"긴급 정리 완료 - 제거된 항목: {removed_count}, 새 크기: {len(self.result_buffer)}")
 
     def get_latest_integrated_results(self):
         return self.last_integrated_results

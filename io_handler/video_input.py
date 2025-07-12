@@ -153,22 +153,62 @@ class VideoInputManager:
             first_frame_timeout = 5.0
             start_time = time.time()
             logger.info(f"첫 번째 프레임 대기 중 (최대 {first_frame_timeout}초)...")
+            
+            # Initialize thread health check variables
+            consecutive_failures = 0
+            max_consecutive_failures = 3
+            
             while time.time() - start_time < first_frame_timeout:
+                # Check for first frame in thread-safe manner
+                frame_received = False
+                thread_alive = False
+                stopped_flag = False
+                
                 with self.frame_lock:
                     if self.current_frame is not None:
-                        logger.info("✅ 첫 번째 프레임 수신 성공")
-                        logger.info("✅ 입력 소스 초기화 및 스레드 시작 완료")
-                        return True
-                if self.stopped:
+                        frame_received = True
+                
+                # Check thread status outside of frame lock to avoid deadlock
+                if self.capture_thread:
+                    thread_alive = self.capture_thread.is_alive()
+                stopped_flag = self.stopped
+                
+                if frame_received:
+                    logger.info("✅ 첫 번째 프레임 수신 성공")
+                    logger.info("✅ 입력 소스 초기화 및 스레드 시작 완료")
+                    return True
+                
+                if stopped_flag:
                     logger.error("리더 스레드가 예상치 못하게 중단됨")
                     self.init_error_message = "리더 스레드가 예상치 못하게 중단됨"
                     return False
+                
+                # Check thread health
+                if not thread_alive:
+                    consecutive_failures += 1
+                    logger.warning(f"리더 스레드 비활성 감지 ({consecutive_failures}/{max_consecutive_failures})")
+                    if consecutive_failures >= max_consecutive_failures:
+                        logger.error("리더 스레드가 반복적으로 실패함")
+                        self.init_error_message = "리더 스레드가 반복적으로 실패함"
+                        return False
+                else:
+                    consecutive_failures = 0  # Reset counter if thread is alive
+                
                 time.sleep(0.1)
+            
             # 타임아웃 발생
             logger.warning(f"첫 번째 프레임 대기 타임아웃 ({first_frame_timeout}초)")
             logger.warning("프레임 대기 시간을 초과했지만 계속 시도...")
-            # 리더 스레드가 아직 실행 중이면 성공으로 간주
-            if not self.stopped and self.capture_thread.is_alive():
+            
+            # Final thread health check with proper synchronization
+            thread_alive = False
+            stopped_flag = False
+            
+            if self.capture_thread:
+                thread_alive = self.capture_thread.is_alive()
+            stopped_flag = self.stopped
+            
+            if not stopped_flag and thread_alive:
                 logger.info("리더 스레드가 실행 중이므로 계속 진행")
                 return True
             else:
