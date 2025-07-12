@@ -397,8 +397,10 @@ class VideoInputManager:
                         fourcc = int(cap.get(cv2.CAP_PROP_FOURCC))
                         codec = "".join([chr((fourcc >> 8 * i) & 0xFF) for i in range(4)])
                         logger.info(f"비디오 코덱: {codec}")
-                    except:
-                        pass
+                    except (ValueError, TypeError, AttributeError) as e:
+                        logger.debug(f"코덱 정보 추출 실패: {e}")
+                    except Exception as e:
+                        logger.warning(f"코덱 정보 추출 중 예상치 못한 오류: {e}")
                 
                 return cap
                 
@@ -510,7 +512,10 @@ class VideoInputManager:
         """Context Manager 종료 (예외 발생 시에도 리소스 정리 보장)"""
         try:
             self.release()
-        except Exception as e:
+        except (OSError, RuntimeError) as e:
             logger.error(f"Context Manager 종료 중 오류: {e}")
+        except Exception as e:
+            # KeyboardInterrupt, SystemExit 등은 여기서 잡히지 않음
+            logger.error(f"Context Manager 종료 중 예상치 못한 오류: {e}")
         # 예외를 다시 발생시키지 않음 (리소스 정리가 우선)
         return False
