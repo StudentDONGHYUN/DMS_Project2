@@ -14,7 +14,7 @@ from collections import deque, defaultdict
 from pathlib import Path
 import random
 import uuid
-import pickle
+# import pickle  # 보안 취약점으로 인해 제거됨
 from abc import ABC, abstractmethod
 
 from config.settings import get_config
@@ -508,16 +508,60 @@ class DigitalTwinPlatform:
         return [max(0, min(1, baseline + np.random.normal(0, reactivity))) for _ in range(length)]
 
     async def _save_digital_twin(self, twin: DigitalTwin):
-        """디지털 트윈 저장"""
+        """디지털 트윈 저장 - 보안 강화 JSON 직렬화"""
         twins_dir = Path("digital_twins")
         twins_dir.mkdir(exist_ok=True)
         
-        twin_file = twins_dir / f"{twin.twin_id}.pkl"
+        # 보안 취약점 해결: pickle 대신 JSON 사용
+        twin_file = twins_dir / f"{twin.twin_id}.json"
         
-        with open(twin_file, 'wb') as f:
-            pickle.dump(twin, f)
+        # 직렬화 가능한 형태로 데이터 변환
+        serializable_twin = {
+            "twin_id": twin.twin_id,
+            "real_driver_id": twin.real_driver_id,
+            "behavior_profile": {
+                "personality": twin.behavior_profile.personality.value,
+                "reaction_time_mean": twin.behavior_profile.reaction_time_mean,
+                "reaction_time_std": twin.behavior_profile.reaction_time_std,
+                "preferred_speed_offset": twin.behavior_profile.preferred_speed_offset,
+                "following_distance_preference": twin.behavior_profile.following_distance_preference,
+                "lane_change_frequency": twin.behavior_profile.lane_change_frequency,
+                "attention_span_minutes": twin.behavior_profile.attention_span_minutes,
+                "distraction_susceptibility": twin.behavior_profile.distraction_susceptibility,
+                "stress_threshold": twin.behavior_profile.stress_threshold,
+                "stress_recovery_rate": twin.behavior_profile.stress_recovery_rate,
+                "fatigue_accumulation_rate": twin.behavior_profile.fatigue_accumulation_rate,
+                "fatigue_resistance": twin.behavior_profile.fatigue_resistance,
+            },
+            "physical_characteristics": {
+                "age": twin.physical_characteristics.age,
+                "gender": twin.physical_characteristics.gender,
+                "height_cm": twin.physical_characteristics.height_cm,
+                "weight_kg": twin.physical_characteristics.weight_kg,
+                "visual_acuity": twin.physical_characteristics.visual_acuity,
+                "night_vision_capability": twin.physical_characteristics.night_vision_capability,
+                "peripheral_vision_range": twin.physical_characteristics.peripheral_vision_range,
+                "processing_speed": twin.physical_characteristics.processing_speed,
+                "working_memory_capacity": twin.physical_characteristics.working_memory_capacity,
+                "cardiovascular_health": twin.physical_characteristics.cardiovascular_health,
+                "neurological_health": twin.physical_characteristics.neurological_health,
+                "medication_effects": twin.physical_characteristics.medication_effects,
+            },
+            "driving_patterns": twin.driving_patterns,
+            "emotional_patterns": twin.emotional_patterns,
+            "physiological_patterns": twin.physiological_patterns,
+            "created_at": twin.created_at,
+            "data_source_sessions": twin.data_source_sessions,
+            "accuracy_score": twin.accuracy_score,
+            "total_simulations": twin.total_simulations,
+            # 신경망 가중치는 numpy 배열이므로 별도 처리
+            "neural_weights": self._serialize_neural_weights(twin.neural_weights) if twin.neural_weights else None
+        }
         
-        # 메타데이터 JSON 저장
+        with open(twin_file, 'w', encoding='utf-8') as f:
+            json.dump(serializable_twin, f, ensure_ascii=False, indent=2)
+        
+        # 메타데이터 JSON 저장 (기존과 동일)
         metadata_file = twins_dir / f"{twin.twin_id}_metadata.json"
         metadata = {
             "twin_id": twin.twin_id,
@@ -530,6 +574,30 @@ class DigitalTwinPlatform:
         
         with open(metadata_file, 'w', encoding='utf-8') as f:
             json.dump(metadata, f, ensure_ascii=False, indent=2)
+    
+    def _serialize_neural_weights(self, neural_weights: Dict[str, np.ndarray]) -> Dict[str, list]:
+        """신경망 가중치를 JSON 직렬화 가능한 형태로 변환"""
+        if not neural_weights:
+            return {}
+        
+        serialized = {}
+        for key, array in neural_weights.items():
+            # numpy 배열을 리스트로 변환
+            serialized[key] = array.tolist()
+        
+        return serialized
+    
+    def _deserialize_neural_weights(self, serialized_weights: Dict[str, list]) -> Dict[str, np.ndarray]:
+        """직렬화된 신경망 가중치를 numpy 배열로 복원"""
+        if not serialized_weights:
+            return {}
+        
+        deserialized = {}
+        for key, array_list in serialized_weights.items():
+            # 리스트를 numpy 배열로 변환
+            deserialized[key] = np.array(array_list)
+        
+        return deserialized
 
     async def generate_simulation_scenarios(self, count: int = 1000, 
                                           difficulty_range: Tuple[int, int] = (1, 10),
@@ -633,16 +701,41 @@ class DigitalTwinPlatform:
         return result
 
     async def _save_simulation_results(self, results: List[SimulationResult]):
-        """시뮬레이션 결과 저장"""
+        """시뮬레이션 결과 저장 - 보안 강화 JSON 직렬화"""
         results_dir = Path("simulation_results")
         results_dir.mkdir(exist_ok=True)
         
-        # 일괄 저장
+        # 일괄 저장 - 보안 취약점 해결: pickle 대신 JSON 사용
         batch_id = f"batch_{int(time.time())}"
-        batch_file = results_dir / f"{batch_id}.pkl"
+        batch_file = results_dir / f"{batch_id}.json"
         
-        with open(batch_file, 'wb') as f:
-            pickle.dump(results, f)
+        # 직렬화 가능한 형태로 결과 변환
+        serializable_results = []
+        for result in results:
+            serializable_result = {
+                "simulation_id": result.simulation_id,
+                "twin_id": result.twin_id,
+                "scenario_id": result.scenario_id,
+                "start_time": result.start_time,
+                "end_time": result.end_time,
+                "success": result.success,
+                "safety_score": result.safety_score,
+                "efficiency_score": result.efficiency_score,
+                "comfort_score": result.comfort_score,
+                "reaction_times": result.reaction_times,
+                "decision_points": result.decision_points,
+                "errors_made": result.errors_made,
+                "near_misses": result.near_misses,
+                # state_action_pairs와 reward_signals는 복잡한 구조이므로 별도 처리
+                "state_action_pairs": self._serialize_state_action_pairs(result.state_action_pairs),
+                "reward_signals": result.reward_signals
+            }
+            serializable_results.append(serializable_result)
+        
+        with open(batch_file, 'w', encoding='utf-8') as f:
+            json.dump(serializable_results, f, ensure_ascii=False, indent=2)
+        
+        logger.info(f"시뮬레이션 결과 안전하게 저장됨: {batch_file}")
         
         # 요약 통계 저장
         summary = self._generate_results_summary(results)
@@ -650,6 +743,22 @@ class DigitalTwinPlatform:
         
         with open(summary_file, 'w', encoding='utf-8') as f:
             json.dump(summary, f, ensure_ascii=False, indent=2)
+    
+    def _serialize_state_action_pairs(self, state_action_pairs: List[Tuple[Any, Any]]) -> List[Dict[str, Any]]:
+        """상태-행동 쌍을 JSON 직렬화 가능한 형태로 변환"""
+        if not state_action_pairs:
+            return []
+        
+        serialized_pairs = []
+        for state, action in state_action_pairs:
+            # 복잡한 객체들을 문자열이나 딕셔너리로 변환
+            serialized_pair = {
+                "state": str(state) if not isinstance(state, (dict, list, str, int, float, bool)) else state,
+                "action": str(action) if not isinstance(action, (dict, list, str, int, float, bool)) else action
+            }
+            serialized_pairs.append(serialized_pair)
+        
+        return serialized_pairs
 
     def _generate_results_summary(self, results: List[SimulationResult]) -> Dict[str, Any]:
         """결과 요약 생성"""
