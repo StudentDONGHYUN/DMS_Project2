@@ -73,27 +73,42 @@ class IntegratedCallbackAdapter:
     async def _on_result(self, result_type, result, timestamp):
         ts = timestamp or int(time.time() * 1000)
         try:
-            # 타임아웃이 있는 Lock 획득 (데드락 방지)
-            await asyncio.wait_for(self.processing_lock.acquire(), timeout=2.0)
+            # Use async context manager for safer lock handling with timeout
+            lock_acquisition_task = asyncio.create_task(self.processing_lock.acquire())
             try:
-                # 버퍼 크기 관리
-                if len(self.result_buffer) >= self.MAX_BUFFER_SIZE:
-                    await self._emergency_buffer_cleanup()
+                await asyncio.wait_for(lock_acquisition_task, timeout=2.0)
                 
-                if ts not in self.result_buffer:
-                    self.result_buffer[ts] = {'timestamp': time.time()}
-                self.result_buffer[ts][result_type] = result
-                logger.debug(f"Received {result_type} for ts {ts}. Buffer has keys: {list(self.result_buffer[ts].keys())}")
+                try:
+                    # 버퍼 크기 관리
+                    if len(self.result_buffer) >= self.MAX_BUFFER_SIZE:
+                        await self._emergency_buffer_cleanup()
+                    
+                    if ts not in self.result_buffer:
+                        self.result_buffer[ts] = {'timestamp': time.time()}
+                    self.result_buffer[ts][result_type] = result
+                    logger.debug(f"Received {result_type} for ts {ts}. Buffer has keys: {list(self.result_buffer[ts].keys())}")
+                    
+                    # 주기적 정리
+                    self.buffer_cleanup_counter += 1
+                    if self.buffer_cleanup_counter % 10 == 0:
+                        await self._prune_buffer()
+                    
+                    if 'face' in self.result_buffer[ts] and 'pose' in self.result_buffer[ts]:
+                        await self._process_results(ts)
+                finally:
+                    # Ensure lock is always released
+                    self.processing_lock.release()
+                    
+            except asyncio.TimeoutError:
+                # Cancel the acquisition task if it's still pending
+                if not lock_acquisition_task.done():
+                    lock_acquisition_task.cancel()
+                    try:
+                        await lock_acquisition_task
+                    except asyncio.CancelledError:
+                        pass
+                raise
                 
-                # 주기적 정리
-                self.buffer_cleanup_counter += 1
-                if self.buffer_cleanup_counter % 10 == 0:
-                    await self._prune_buffer()
-                
-                if 'face' in self.result_buffer[ts] and 'pose' in self.result_buffer[ts]:
-                    await self._process_results(ts)
-            finally:
-                self.processing_lock.release()
         except asyncio.TimeoutError:
             logger.warning(f"Lock 획득 타임아웃 - {result_type} 결과 무시됨 (ts: {ts})")
         except Exception as e:
@@ -136,13 +151,30 @@ class IntegratedCallbackAdapter:
         
         # 타임스탬프 순으로 정렬하여 오래된 것부터 제거
         sorted_timestamps = sorted(self.result_buffer.keys())
-        items_to_remove = len(self.result_buffer) - self.MAX_BUFFER_SIZE // 2
         
-        for i in range(min(items_to_remove, len(sorted_timestamps))):
-            ts = sorted_timestamps[i]
-            del self.result_buffer[ts]
+        # Calculate target size (keep half of max buffer size)
+        target_size = max(self.MAX_BUFFER_SIZE // 2, 1)  # Ensure at least 1 item remains
+        current_size = len(self.result_buffer)
         
-        logger.info(f"긴급 정리 완료 - 새 크기: {len(self.result_buffer)}")
+        if current_size <= target_size:
+            # Buffer is already within target size, no cleanup needed
+            logger.info(f"버퍼 크기가 이미 목표 크기 이하입니다: {current_size} <= {target_size}")
+            return
+        
+        items_to_remove = current_size - target_size
+        
+        # Safety check to prevent removing more items than available
+        items_to_remove = min(items_to_remove, len(sorted_timestamps))
+        
+        removed_count = 0
+        for i in range(items_to_remove):
+            if i < len(sorted_timestamps):
+                ts = sorted_timestamps[i]
+                if ts in self.result_buffer:  # Double-check key exists
+                    del self.result_buffer[ts]
+                    removed_count += 1
+        
+        logger.info(f"긴급 정리 완료 - 제거된 항목: {removed_count}, 새 크기: {len(self.result_buffer)}")
 
     def get_latest_integrated_results(self):
         return self.last_integrated_results

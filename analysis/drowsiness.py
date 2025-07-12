@@ -188,24 +188,64 @@ class MicrosleepDetector:
         self.microsleep_threshold = 0.15
         self.min_duration = 0.5
         self.max_duration = 3.0
+        self.min_frames = int(self.min_duration * 30)  # 프레임 단위로 계산
+        self.max_frames = int(self.max_duration * 30)
 
     def detect(self, ear_history):
-        if len(ear_history) < 15:
+        if len(ear_history) < self.min_frames:
             return {"detected": False, "duration": 0.0, "confidence": 0.0}
-        recent_data = list(ear_history)[-90:]
-        for i in range(len(recent_data) - 15):
-            low_ear_duration = 0
-            start_idx = i
-            for j in range(i, min(i + 90, len(recent_data))):
-                if recent_data[j]["ear"] < self.microsleep_threshold:
-                    low_ear_duration = (j - start_idx) / 30.0
-                else:
-                    break
-            if self.min_duration <= low_ear_duration <= self.max_duration:
-                confidence = min(1.0, low_ear_duration / self.max_duration)
+        
+        recent_data = list(ear_history)[-90:]  # 최근 90프레임 (약 3초)
+        
+        # 최적화된 슬라이딩 윈도우 알고리즘 - O(n) 복잡도
+        return self._sliding_window_detection(recent_data)
+    
+    def _sliding_window_detection(self, data):
+        """슬라이딩 윈도우를 이용한 최적화된 마이크로슬립 감지"""
+        if len(data) < self.min_frames:
+            return {"detected": False, "duration": 0.0, "confidence": 0.0}
+        
+        # 연속된 낮은 EAR 값의 시작점을 찾기
+        consecutive_low_start = -1
+        consecutive_low_count = 0
+        
+        for i, frame in enumerate(data):
+            if frame["ear"] < self.microsleep_threshold:
+                if consecutive_low_start == -1:
+                    consecutive_low_start = i
+                consecutive_low_count += 1
+            else:
+                # 연속된 낮은 EAR 구간이 끝남
+                if consecutive_low_start != -1:
+                    # 마이크로슬립 기준 확인
+                    if self.min_frames <= consecutive_low_count <= self.max_frames:
+                        duration = consecutive_low_count / 30.0  # 초 단위 변환
+                        confidence = min(1.0, duration / self.max_duration)
+                        
+                        return {
+                            "detected": True,
+                            "duration": duration,
+                            "confidence": confidence,
+                            "start_frame": consecutive_low_start,
+                            "end_frame": i - 1
+                        }
+                
+                # 상태 초기화
+                consecutive_low_start = -1
+                consecutive_low_count = 0
+        
+        # 마지막까지 연속된 낮은 EAR 구간이 있는 경우
+        if consecutive_low_start != -1:
+            if self.min_frames <= consecutive_low_count <= self.max_frames:
+                duration = consecutive_low_count / 30.0
+                confidence = min(1.0, duration / self.max_duration)
+                
                 return {
                     "detected": True,
-                    "duration": low_ear_duration,
+                    "duration": duration,
                     "confidence": confidence,
+                    "start_frame": consecutive_low_start,
+                    "end_frame": len(data) - 1
                 }
+        
         return {"detected": False, "duration": 0.0, "confidence": 0.0}

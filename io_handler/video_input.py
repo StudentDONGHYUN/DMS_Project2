@@ -153,22 +153,79 @@ class VideoInputManager:
             first_frame_timeout = 5.0
             start_time = time.time()
             logger.info(f"첫 번째 프레임 대기 중 (최대 {first_frame_timeout}초)...")
+            
+            # Initialize thread health check variables
+            consecutive_failures = 0
+            max_consecutive_failures = 3
+            last_health_check = time.time()
+            health_check_interval = 0.5  # Check every 0.5 seconds
+            
             while time.time() - start_time < first_frame_timeout:
+                current_time = time.time()
+                
+                # Check for first frame in thread-safe manner
+                frame_received = False
+                thread_alive = False
+                stopped_flag = False
+                
+                # Lock-protected frame check
                 with self.frame_lock:
                     if self.current_frame is not None:
-                        logger.info("✅ 첫 번째 프레임 수신 성공")
-                        logger.info("✅ 입력 소스 초기화 및 스레드 시작 완료")
-                        return True
-                if self.stopped:
+                        frame_received = True
+                
+                # Check thread status with proper timing
+                if current_time - last_health_check >= health_check_interval:
+                    if self.capture_thread:
+                        thread_alive = self.capture_thread.is_alive()
+                    stopped_flag = self.stopped
+                    last_health_check = current_time
+                    
+                    # Thread health monitoring
+                    if not thread_alive and not stopped_flag:
+                        consecutive_failures += 1
+                        logger.warning(f"리더 스레드 비활성 감지 ({consecutive_failures}/{max_consecutive_failures})")
+                        
+                        if consecutive_failures >= max_consecutive_failures:
+                            logger.error("리더 스레드가 반복적으로 실패함")
+                            self.init_error_message = "리더 스레드가 반복적으로 실패함"
+                            return False
+                    else:
+                        consecutive_failures = 0  # Reset counter if thread is alive
+                
+                if frame_received:
+                    logger.info("✅ 첫 번째 프레임 수신 성공")
+                    logger.info("✅ 입력 소스 초기화 및 스레드 시작 완료")
+                    return True
+                
+                if stopped_flag:
                     logger.error("리더 스레드가 예상치 못하게 중단됨")
                     self.init_error_message = "리더 스레드가 예상치 못하게 중단됨"
                     return False
+                
                 time.sleep(0.1)
-            # 타임아웃 발생
+            
+            # 타임아웃 발생 - 최종 상태 검사
             logger.warning(f"첫 번째 프레임 대기 타임아웃 ({first_frame_timeout}초)")
-            logger.warning("프레임 대기 시간을 초과했지만 계속 시도...")
-            # 리더 스레드가 아직 실행 중이면 성공으로 간주
-            if not self.stopped and self.capture_thread.is_alive():
+            
+            # Final comprehensive state check
+            final_frame_check = False
+            final_thread_alive = False
+            final_stopped_flag = False
+            
+            # One final frame check
+            with self.frame_lock:
+                if self.current_frame is not None:
+                    final_frame_check = True
+            
+            # Thread status check
+            if self.capture_thread:
+                final_thread_alive = self.capture_thread.is_alive()
+            final_stopped_flag = self.stopped
+            
+            if final_frame_check:
+                logger.info("타임아웃 후 프레임 발견됨 - 정상 진행")
+                return True
+            elif not final_stopped_flag and final_thread_alive:
                 logger.info("리더 스레드가 실행 중이므로 계속 진행")
                 return True
             else:
@@ -357,8 +414,10 @@ class VideoInputManager:
                         fourcc = int(cap.get(cv2.CAP_PROP_FOURCC))
                         codec = "".join([chr((fourcc >> 8 * i) & 0xFF) for i in range(4)])
                         logger.info(f"비디오 코덱: {codec}")
-                    except:
-                        pass
+                    except (ValueError, TypeError, AttributeError) as e:
+                        logger.debug(f"코덱 정보 추출 실패: {e}")
+                    except Exception as e:
+                        logger.warning(f"코덱 정보 추출 중 예상치 못한 오류: {e}")
                 
                 return cap
                 
@@ -470,7 +529,10 @@ class VideoInputManager:
         """Context Manager 종료 (예외 발생 시에도 리소스 정리 보장)"""
         try:
             self.release()
-        except Exception as e:
+        except (OSError, RuntimeError) as e:
             logger.error(f"Context Manager 종료 중 오류: {e}")
+        except Exception as e:
+            # KeyboardInterrupt, SystemExit 등은 여기서 잡히지 않음
+            logger.error(f"Context Manager 종료 중 예상치 못한 오류: {e}")
         # 예외를 다시 발생시키지 않음 (리소스 정리가 우선)
         return False

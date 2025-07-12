@@ -717,18 +717,28 @@ class IntentionPredictor:
 
 
 class ARRenderer:
-    """AR 렌더링 엔진"""
+    """AR 렌더링 엔진 - 메모리 최적화"""
     
     def __init__(self, screen_width: int, screen_height: int):
         self.screen_width = screen_width
         self.screen_height = screen_height
+        
+        # 프레임 버퍼 재사용을 위한 영구 할당
         self.frame_buffer = np.zeros((screen_height, screen_width, 4), dtype=np.uint8)
+        self._buffer_initialized = True
+        
+        # 성능 추적
+        self._render_count = 0
+        self._last_cleanup_time = time.time()
+        self._cleanup_interval = 300.0  # 5분마다 정리
     
     async def render_frame(self, ar_objects: Dict[str, ARObject], 
                           gaze_state: DriverGazeState,
                           adaptive_brightness: bool = True) -> np.ndarray:
-        """AR 프레임 렌더링"""
-        # 프레임 버퍼 초기화
+        """AR 프레임 렌더링 - 메모리 최적화"""
+        self._render_count += 1
+        
+        # 프레임 버퍼 초기화 (재할당 없이 제로화)
         self.frame_buffer.fill(0)
         
         # 우선순위 순으로 객체 렌더링
@@ -745,12 +755,55 @@ class ARRenderer:
         if False:  # 디버그 모드에서만
             await self._render_gaze_indicator(gaze_state)
         
+        # 주기적 메모리 정리
+        current_time = time.time()
+        if current_time - self._last_cleanup_time > self._cleanup_interval:
+            self._perform_memory_cleanup()
+            self._last_cleanup_time = current_time
+        
         return self.frame_buffer
+    
+    def _perform_memory_cleanup(self):
+        """주기적 메모리 정리"""
+        try:
+            # 프레임 버퍼 크기 확인 및 필요시 재할당
+            expected_size = (self.screen_height, self.screen_width, 4)
+            if self.frame_buffer.shape != expected_size:
+                logger.warning(f"프레임 버퍼 크기 불일치 감지: {self.frame_buffer.shape} != {expected_size}")
+                self.frame_buffer = np.zeros(expected_size, dtype=np.uint8)
+                logger.info("프레임 버퍼 재할당 완료")
+            
+            # 가비지 컬렉션 강제 실행 (주의: 성능에 영향)
+            import gc
+            collected = gc.collect()
+            
+            logger.debug(f"AR 렌더러 메모리 정리 완료 - 렌더링 횟수: {self._render_count}, "
+                        f"수집된 객체: {collected}개")
+            
+        except Exception as e:
+            logger.error(f"AR 렌더러 메모리 정리 중 오류: {e}")
+    
+    def resize_buffer(self, new_width: int, new_height: int):
+        """프레임 버퍼 크기 변경 - 메모리 효율적"""
+        if new_width != self.screen_width or new_height != self.screen_height:
+            logger.info(f"AR 렌더러 버퍼 크기 변경: {self.screen_width}x{self.screen_height} -> {new_width}x{new_height}")
+            
+            self.screen_width = new_width
+            self.screen_height = new_height
+            
+            # 새로운 크기로 버퍼 재할당
+            self.frame_buffer = np.zeros((new_height, new_width, 4), dtype=np.uint8)
+            
+            logger.info("AR 렌더러 버퍼 크기 변경 완료")
     
     async def _render_object(self, ar_obj: ARObject, adaptive_brightness: bool):
         """개별 AR 객체 렌더링"""
         x, y = ar_obj.screen_position
         w, h = ar_obj.size
+        
+        # 화면 경계 검사
+        if x < 0 or y < 0 or x >= self.screen_width or y >= self.screen_height:
+            return  # 화면 밖 객체는 렌더링 생략
         
         # 깜빡임 처리
         if ar_obj.blink_rate > 0:
@@ -820,13 +873,21 @@ class ARRenderer:
     
     async def _draw_lane_highlight(self, x: int, y: int, w: int, h: int, 
                                   color: Tuple[int, int, int, int]):
-        """차선 하이라이트 그리기"""
-        # 반투명 사각형
-        overlay = self.frame_buffer.copy()
-        cv2.rectangle(overlay, (x-w//2, y-h//2), (x+w//2, y+h//2), color[:3], -1)
+        """차선 하이라이트 그리기 - 메모리 최적화"""
+        # 임시 오버레이를 위한 작은 영역만 복사
+        x1, y1 = max(0, x-w//2), max(0, y-h//2)
+        x2, y2 = min(self.screen_width, x+w//2), min(self.screen_height, y+h//2)
+        
+        if x2 <= x1 or y2 <= y1:
+            return  # 유효하지 않은 영역
+        
+        # 작은 영역만 처리하여 메모리 사용량 감소
+        region = self.frame_buffer[y1:y2, x1:x2].copy()
+        cv2.rectangle(region, (0, 0), (x2-x1, y2-y1), color[:3], -1)
         
         alpha = color[3] / 255.0
-        cv2.addWeighted(overlay, alpha, self.frame_buffer, 1-alpha, 0, self.frame_buffer)
+        cv2.addWeighted(region, alpha, self.frame_buffer[y1:y2, x1:x2], 1-alpha, 0, 
+                       self.frame_buffer[y1:y2, x1:x2])
     
     async def _draw_hazard_marker(self, x: int, y: int, w: int, h: int, 
                                  color: Tuple[int, int, int, int], text: str):
@@ -870,3 +931,15 @@ class ARRenderer:
             b = min(255, int(b * 1.3))
         
         return (r, g, b, a)
+    
+    def get_memory_stats(self) -> Dict[str, Any]:
+        """메모리 사용량 통계"""
+        buffer_size_mb = self.frame_buffer.nbytes / (1024 * 1024)
+        
+        return {
+            "frame_buffer_size_mb": buffer_size_mb,
+            "buffer_shape": self.frame_buffer.shape,
+            "render_count": self._render_count,
+            "last_cleanup": self._last_cleanup_time,
+            "cleanup_interval": self._cleanup_interval
+        }

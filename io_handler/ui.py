@@ -441,7 +441,7 @@ class SClassAdvancedUIManager:
             EmotionState.FATIGUE: self.colors["warning_amber"],
             EmotionState.DROWSY: self.colors["danger_red"],
         }
-                 return color_map.get(emotion_state, self.colors["text_white"])
+        return color_map.get(emotion_state, self.colors["text_white"])
     
     def _draw_attention_warning(self, frame, ui_state: UIState):
         """주의집중도 경고"""
@@ -458,8 +458,10 @@ class SClassAdvancedUIManager:
                        cv2.FONT_HERSHEY_SIMPLEX, 0.8, self.colors["warning_amber"], 2)
          
     def draw_enhanced_results(self, frame, metrics, state, results, gaze_classifier, dynamic_analyzer, sensor_backup, perf_stats, playback_info, driver_identifier, predictive_safety, emotion_recognizer):
-        """S-Class 메인 렌더링 함수"""
-        annotated_frame = frame.copy()
+        """S-Class 메인 렌더링 함수 - 최적화된 버전"""
+        # Performance optimization: modify frame in-place instead of copying
+        # Only copy if the original frame needs to be preserved
+        annotated_frame = frame  # Work directly on the frame
         self._update_animation_state()
         
         # 메인 패널들 그리기
@@ -494,15 +496,18 @@ class SClassAdvancedUIManager:
         h, w = frame.shape[:2]
         panel_w, panel_h = 420, 320
         
-        # 글래스모피즘 패널 배경
-        overlay = frame.copy()
-        panel_points = np.array([[10, 10], [panel_w, 10], [panel_w, panel_h], [10, panel_h]], np.int32)
-        cv2.fillPoly(overlay, [panel_points], self.colors["bg_panel"])
-        cv2.addWeighted(overlay, 0.7, frame, 0.3, 0, frame)
+        # 최적화된 패널 배경 (부분 영역만 처리)
+        panel_region = frame[10:10+panel_h, 10:10+panel_w].copy()
+        panel_points = np.array([[0, 0], [panel_w, 0], [panel_w, panel_h], [0, panel_h]], np.int32)
+        cv2.fillPoly(panel_region, [panel_points], self.colors["bg_panel"])
         
-        # 네온 테두리
-        cv2.polylines(frame, [panel_points], True, self.colors["border_glow"], 2)
-        cv2.polylines(frame, [panel_points], True, self.colors["primary_blue"], 1)
+        # 알파 블렌딩을 panel 영역에만 적용
+        cv2.addWeighted(panel_region, 0.7, frame[10:10+panel_h, 10:10+panel_w], 0.3, 0, frame[10:10+panel_h, 10:10+panel_w])
+        
+        # 네온 테두리 (전체 프레임 좌표계로 복원)
+        full_panel_points = np.array([[10, 10], [10+panel_w, 10], [10+panel_w, 10+panel_h], [10, 10+panel_h]], np.int32)
+        cv2.polylines(frame, [full_panel_points], True, self.colors["border_glow"], 2)
+        cv2.polylines(frame, [full_panel_points], True, self.colors["primary_blue"], 1)
         
         # S-Class 로고 헤더
         cv2.putText(frame, "S-CLASS DMS v18+", (20, 35), 
@@ -860,7 +865,7 @@ class SClassAdvancedUIManager:
                 self.data_history[key] = self.data_history[key][-self.max_history:]
 
     def _draw_line_chart(self, frame, title, data, pos, size, color):
-        """라인 차트 그리기"""
+        """라인 차트 그리기 - 안전한 division by zero 방지"""
         if len(data) < 2:
             return
             
@@ -878,7 +883,15 @@ class SClassAdvancedUIManager:
         if data:
             max_val = max(data) if max(data) > 0 else 1.0
             min_val = min(data)
-            val_range = max_val - min_val if max_val != min_val else 1.0
+            val_range = max_val - min_val
+            
+            # Division by zero 방지 - 모든 값이 같을 때
+            if val_range == 0:
+                val_range = 1.0
+                # 모든 값이 같으면 중앙에 수평선 그리기
+                y_center = y + h // 2
+                cv2.line(frame, (x, y_center), (x + w, y_center), color, 2)
+                return
             
             points = []
             for i, value in enumerate(data):

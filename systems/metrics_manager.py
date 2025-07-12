@@ -121,6 +121,7 @@ class MetricsManager(IAdvancedMetricsUpdater):
     
     def _initialize_trend_analyzers(self):
         """트렌드 분석기들 초기화"""
+        # MetricSnapshot 속성명과 일치하는 메트릭만 분석
         metrics_to_analyze = [
             'drowsiness_score', 'distraction_score', 'gaze_focus',
             'heart_rate', 'cognitive_load', 'saccade_frequency'
@@ -438,34 +439,46 @@ class MetricsManager(IAdvancedMetricsUpdater):
         values = []
         
         for snapshot in recent_snapshots:
+            # 속성 존재 확인 및 안전한 접근
             if hasattr(snapshot, metric_name):
-                values.append(getattr(snapshot, metric_name))
+                try:
+                    value = getattr(snapshot, metric_name)
+                    if value is not None:
+                        values.append(value)
+                except (AttributeError, TypeError) as e:
+                    logger.debug(f"메트릭 '{metric_name}' 접근 실패: {e}")
+                    continue
         
         if len(values) < config['min_samples']:
+            logger.debug(f"메트릭 '{metric_name}' 샘플 수 부족: {len(values)} < {config['min_samples']}")
             return None
         
-        # 선형 회귀를 통한 트렌드 분석
-        x = np.arange(len(values))
-        z = np.polyfit(x, values, 1)
-        slope = z[0]
-        
-        # 트렌드 방향 및 강도 계산
-        if abs(slope) < config['sensitivity']:
-            direction = 'stable'
-        elif slope > 0:
-            direction = 'increasing'
-        else:
-            direction = 'decreasing'
-        
-        strength = min(1.0, abs(slope) / config['sensitivity'])
-        
-        return TrendAnalysis(
-            metric_name=metric_name,
-            trend_direction=direction,
-            trend_strength=strength,
-            prediction_window=window_size / 30.0,  # 30fps 가정
-            confidence=0.8 if len(values) >= config['window_size'] else 0.6
-        )
+        try:
+            # 선형 회귀를 통한 트렌드 분석
+            x = np.arange(len(values))
+            z = np.polyfit(x, values, 1)
+            slope = z[0]
+            
+            # 트렌드 방향 및 강도 계산
+            if abs(slope) < config['sensitivity']:
+                direction = 'stable'
+            elif slope > 0:
+                direction = 'increasing'
+            else:
+                direction = 'decreasing'
+            
+            strength = min(1.0, abs(slope) / config['sensitivity'])
+            
+            return TrendAnalysis(
+                metric_name=metric_name,
+                trend_direction=direction,
+                trend_strength=strength,
+                prediction_window=window_size / 30.0,  # 30fps 가정
+                confidence=0.8 if len(values) >= config['window_size'] else 0.6
+            )
+        except Exception as e:
+            logger.error(f"트렌드 분석 실패 - {metric_name}: {e}")
+            return None
     
     def _check_drowsiness_alerts(self, score: float):
         """졸음 경고 체크"""
@@ -512,11 +525,30 @@ class MetricsManager(IAdvancedMetricsUpdater):
         
         self.last_alerts[alert_key] = current_time
         
+        # 오래된 경고 엔트리 정리 (메모리 누수 방지)
+        self._cleanup_old_alerts(current_time)
+        
         logger.warning(f"경고 발생 - {alert_type}: {severity} (값: {value:.3f})")
         
         # StateManager에 경고 전달 (연결되어 있다면)
         if self.state_manager:
             self.state_manager.handle_alert(alert_type, severity, value)
+    
+    def _cleanup_old_alerts(self, current_time: float):
+        """오래된 경고 엔트리 정리 (메모리 누수 방지)"""
+        # 5분 이상 된 경고 엔트리 제거
+        cleanup_threshold = 300.0  # 5분
+        
+        keys_to_remove = []
+        for alert_key, timestamp in self.last_alerts.items():
+            if current_time - timestamp > cleanup_threshold:
+                keys_to_remove.append(alert_key)
+        
+        for key in keys_to_remove:
+            del self.last_alerts[key]
+        
+        if keys_to_remove:
+            logger.debug(f"오래된 경고 엔트리 {len(keys_to_remove)}개 정리됨")
     
     # === StateManager와의 연동 ===
     

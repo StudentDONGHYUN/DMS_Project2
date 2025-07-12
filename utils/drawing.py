@@ -78,7 +78,8 @@ def draw_landmarks_on_image(
     landmark_color: Tuple[int, int, int] = (0, 255, 0),
     connection_color: Tuple[int, int, int] = (255, 255, 255),
     landmark_radius: int = 3,
-    connection_thickness: int = 2
+    connection_thickness: int = 2,
+    in_place: bool = False
 ) -> np.ndarray:
     """
     최신 MediaPipe Tasks API용 범용 랜드마크 그리기 함수
@@ -86,7 +87,8 @@ def draw_landmarks_on_image(
     if not landmarks:
         return image
     
-    annotated_image = image.copy()
+    # 성능 최적화: in_place 플래그로 복사 여부 결정
+    annotated_image = image if in_place else image.copy()
     height, width = image.shape[:2]
     
     # 랜드마크 점들 그리기
@@ -117,20 +119,22 @@ def draw_face_landmarks_on_image(rgb_image: np.ndarray, detection_result) -> np.
     if not detection_result or not hasattr(detection_result, 'face_landmarks') or not detection_result.face_landmarks:
         return rgb_image
     
+    # 한 번만 복사하여 성능 최적화
     annotated_image = rgb_image.copy()
     
     try:
         for face_landmarks in detection_result.face_landmarks:
-            # Face mesh tesselation (가장 세밀한 연결)
+            # Face mesh tesselation (가장 세밀한 연결) - in_place로 성능 최적화
             annotated_image = draw_landmarks_on_image(
                 annotated_image,
                 face_landmarks,
                 connections=None,  # 너무 복잡하므로 점만 표시
                 landmark_color=DrawingColors.FACE_MESH,
-                landmark_radius=1
+                landmark_radius=1,
+                in_place=True  # 추가 복사 방지
             )
             
-            # Face contours (윤곽선)
+            # Face contours (윤곽선) - in_place로 성능 최적화
             annotated_image = draw_landmarks_on_image(
                 annotated_image,
                 face_landmarks,
@@ -138,7 +142,8 @@ def draw_face_landmarks_on_image(rgb_image: np.ndarray, detection_result) -> np.
                 landmark_color=DrawingColors.FACE_CONTOURS,
                 connection_color=DrawingColors.FACE_CONTOURS,
                 landmark_radius=2,
-                connection_thickness=2
+                connection_thickness=2,
+                in_place=True  # 추가 복사 방지
             )
             
             # 눈 영역 강조 (iris landmarks)
@@ -169,11 +174,12 @@ def draw_pose_landmarks_on_image(rgb_image: np.ndarray, detection_result) -> np.
     if not detection_result or not hasattr(detection_result, 'pose_landmarks') or not detection_result.pose_landmarks:
         return rgb_image
     
+    # 한 번만 복사하여 성능 최적화
     annotated_image = rgb_image.copy()
     
     try:
         for pose_landmarks in detection_result.pose_landmarks:
-            # Pose landmarks와 connections 그리기
+            # Pose landmarks와 connections 그리기 - in_place로 성능 최적화
             annotated_image = draw_landmarks_on_image(
                 annotated_image,
                 pose_landmarks,
@@ -181,7 +187,8 @@ def draw_pose_landmarks_on_image(rgb_image: np.ndarray, detection_result) -> np.
                 landmark_color=DrawingColors.POSE_LANDMARKS,
                 connection_color=DrawingColors.POSE_CONNECTIONS,
                 landmark_radius=4,
-                connection_thickness=3
+                connection_thickness=3,
+                in_place=True  # 추가 복사 방지
             )
             
     except Exception as e:
@@ -196,6 +203,7 @@ def draw_hand_landmarks_on_image(rgb_image: np.ndarray, detection_result) -> np.
     if not detection_result or not hasattr(detection_result, 'hand_landmarks') or not detection_result.hand_landmarks:
         return rgb_image
     
+    # 한 번만 복사하여 성능 최적화
     annotated_image = rgb_image.copy()
     
     try:
@@ -210,7 +218,7 @@ def draw_hand_landmarks_on_image(rgb_image: np.ndarray, detection_result) -> np.
             else:
                 hand_color = DrawingColors.HAND_LANDMARKS
             
-            # Hand landmarks와 connections 그리기
+            # Hand landmarks와 connections 그리기 - in_place로 성능 최적화
             annotated_image = draw_landmarks_on_image(
                 annotated_image,
                 hand_landmarks,
@@ -218,7 +226,8 @@ def draw_hand_landmarks_on_image(rgb_image: np.ndarray, detection_result) -> np.
                 landmark_color=hand_color,
                 connection_color=hand_color,
                 landmark_radius=3,
-                connection_thickness=2
+                connection_thickness=2,
+                in_place=True  # 추가 복사 방지
             )
             
             # 손 라벨 표시
@@ -262,6 +271,7 @@ def draw_detection_boxes(
     if not detections:
         return image
     
+    # 한 번만 복사하여 성능 최적화
     annotated_image = image.copy()
     height, width = image.shape[:2]
     
@@ -319,21 +329,128 @@ def create_comprehensive_visualization(
 ) -> np.ndarray:
     """
     모든 MediaPipe Tasks 결과를 종합적으로 시각화
+    성능 최적화: 단일 복사본으로 모든 그리기 작업 수행
     """
+    # 한 번만 복사하고 모든 작업을 이 복사본에서 수행
     annotated_image = image.copy()
     
     # 순서대로 그리기 (겹치는 부분 고려)
     if object_result:
-        annotated_image = draw_detection_boxes(annotated_image, object_result.detections)
+        # 이미 복사본이므로 원본 전달하고 제자리 수정
+        height, width = annotated_image.shape[:2]
+        
+        try:
+            for detection in object_result.detections:
+                # Bounding box 좌표 (normalized coordinates)
+                bbox = detection.bounding_box
+                
+                # 픽셀 좌표로 변환
+                left = int(bbox.origin_x * width)
+                top = int(bbox.origin_y * height)
+                right = int((bbox.origin_x + bbox.width) * width)
+                bottom = int((bbox.origin_y + bbox.height) * height)
+                
+                # 바운딩 박스 그리기 (제자리 수정)
+                cv2.rectangle(annotated_image, (left, top), (right, bottom), (0, 255, 0), 2)
+                
+                # 카테고리와 신뢰도 표시
+                if hasattr(detection, 'categories') and detection.categories:
+                    category = detection.categories[0]
+                    label = f"{category.category_name}: {category.score:.2f}"
+                    
+                    # 라벨 배경
+                    label_size = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.6, 1)[0]
+                    cv2.rectangle(
+                        annotated_image, 
+                        (left, top - label_size[1] - 10), 
+                        (left + label_size[0], top), 
+                        (0, 255, 0), 
+                        -1
+                    )
+                    
+                    # 라벨 텍스트
+                    cv2.putText(
+                        annotated_image, 
+                        label, 
+                        (left, top - 5), 
+                        cv2.FONT_HERSHEY_SIMPLEX, 
+                        0.6, 
+                        (255, 255, 255), 
+                        1
+                    )
+        except Exception as e:
+            logger.warning(f"Object detection 시각화 중 오류 (무시하고 계속): {e}")
     
+    # 나머지 그리기 작업들도 같은 이미지에서 수행
     if pose_result:
-        annotated_image = draw_pose_landmarks_on_image(annotated_image, pose_result)
+        try:
+            for pose_landmarks in pose_result.pose_landmarks:
+                # 제자리 수정으로 성능 최적화
+                draw_landmarks_on_image(
+                    annotated_image,
+                    pose_landmarks,
+                    connections=TasksConnections.POSE_CONNECTIONS,
+                    landmark_color=DrawingColors.POSE_LANDMARKS,
+                    connection_color=DrawingColors.POSE_CONNECTIONS,
+                    landmark_radius=4,
+                    connection_thickness=3,
+                    in_place=True
+                )
+        except Exception as e:
+            logger.warning(f"Pose landmark 시각화 중 오류 (무시하고 계속): {e}")
     
     if face_result:
-        annotated_image = draw_face_landmarks_on_image(annotated_image, face_result)
+        try:
+            for face_landmarks in face_result.face_landmarks:
+                # 제자리 수정으로 성능 최적화
+                draw_landmarks_on_image(
+                    annotated_image,
+                    face_landmarks,
+                    connections=None,
+                    landmark_color=DrawingColors.FACE_MESH,
+                    landmark_radius=1,
+                    in_place=True
+                )
+                
+                draw_landmarks_on_image(
+                    annotated_image,
+                    face_landmarks,
+                    connections=TasksConnections.FACE_OVAL,
+                    landmark_color=DrawingColors.FACE_CONTOURS,
+                    connection_color=DrawingColors.FACE_CONTOURS,
+                    landmark_radius=2,
+                    connection_thickness=2,
+                    in_place=True
+                )
+        except Exception as e:
+            logger.warning(f"Face landmark 시각화 중 오류 (무시하고 계속): {e}")
     
     if hand_result:
-        annotated_image = draw_hand_landmarks_on_image(annotated_image, hand_result)
+        try:
+            hand_landmarks_list = hand_result.hand_landmarks
+            handedness_list = getattr(hand_result, 'handedness', [])
+            
+            for idx, hand_landmarks in enumerate(hand_landmarks_list):
+                # 손이 왼손인지 오른손인지 구분
+                if idx < len(handedness_list) and handedness_list[idx]:
+                    handedness_category = handedness_list[idx][0].category_name
+                    hand_color = DrawingColors.LEFT_HAND if handedness_category == "Left" else DrawingColors.RIGHT_HAND
+                else:
+                    hand_color = DrawingColors.HAND_LANDMARKS
+                
+                # 제자리 수정으로 성능 최적화
+                draw_landmarks_on_image(
+                    annotated_image,
+                    hand_landmarks,
+                    connections=TasksConnections.HAND_CONNECTIONS,
+                    landmark_color=hand_color,
+                    connection_color=hand_color,
+                    landmark_radius=3,
+                    connection_thickness=2,
+                    in_place=True
+                )
+        except Exception as e:
+            logger.warning(f"Hand landmark 시각화 중 오류 (무시하고 계속): {e}")
     
     return annotated_image
 

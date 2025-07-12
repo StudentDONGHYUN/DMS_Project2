@@ -11,13 +11,14 @@ import logging
 import time
 from typing import Dict, Optional, Callable
 from threading import Thread, Event
+from collections import deque
 import asyncio
 
 logger = logging.getLogger(__name__)
 
 
 class MemoryMonitor:
-    """메모리 사용량 모니터링 클래스"""
+    """메모리 사용량 모니터링 클래스 - 성능 최적화"""
     
     def __init__(self, 
                  warning_threshold_mb: float = 800,
@@ -43,8 +44,8 @@ class MemoryMonitor:
         self.warning_interval = 30  # 30초마다 경고
         self.cleanup_interval = 60  # 60초마다 정리
         
-        self.memory_history = []
-        self.max_history_size = 100
+        # 성능 최적화: list 대신 deque 사용 (O(1) append/popleft)
+        self.memory_history = deque(maxlen=100)
         
         logger.info(f"MemoryMonitor 초기화 - 경고: {warning_threshold_mb}MB, 위험: {critical_threshold_mb}MB")
 
@@ -62,10 +63,8 @@ class MemoryMonitor:
                 'timestamp': time.time()
             }
             
-            # 히스토리에 추가
+            # 히스토리에 추가 (deque는 자동으로 maxlen 관리)
             self.memory_history.append(usage)
-            if len(self.memory_history) > self.max_history_size:
-                self.memory_history.pop(0)
             
             return usage
             
@@ -79,8 +78,8 @@ class MemoryMonitor:
                 'timestamp': time.time()
             }
 
-    def check_memory_status(self) -> str:
-        """메모리 상태 확인 및 처리"""
+    def check_memory_status(self) -> tuple[str, dict]:
+        """메모리 상태 확인 및 처리 - 성능 최적화된 버전"""
         usage = self.get_memory_usage()
         memory_mb = usage['rss_mb']
         current_time = time.time()
@@ -91,7 +90,7 @@ class MemoryMonitor:
                 logger.critical(f"메모리 사용량 위험 수준: {memory_mb:.1f}MB")
                 self._perform_emergency_cleanup()
                 self.last_cleanup_time = current_time
-            return "critical"
+            return "critical", usage
             
         elif memory_mb >= self.warning_threshold:
             # 경고 수준
@@ -104,9 +103,17 @@ class MemoryMonitor:
                     self._perform_cleanup()
                     self.last_cleanup_time = current_time
                     
-            return "warning"
+            return "warning", usage
         else:
-            return "normal"
+            return "normal", usage
+
+    def get_memory_status_simple(self) -> str:
+        """
+        Backward compatibility method that returns only the status
+        Use check_memory_status() for better performance
+        """
+        status, _ = self.check_memory_status()
+        return status
 
     def _perform_cleanup(self):
         """일반적인 정리 작업"""
@@ -165,10 +172,9 @@ class MemoryMonitor:
             
             while not self.stop_event.wait(interval):
                 try:
-                    status = self.check_memory_status()
+                    status, usage = self.check_memory_status()
                     
-                    # 상태별 로깅 (normal은 debug 레벨)
-                    usage = self.get_memory_usage()
+                    # 상태별 로깅 (normal은 debug 레벨) - 이미 usage 정보를 가지고 있음
                     if status == "normal":
                         logger.debug(f"메모리 상태: {status} ({usage['rss_mb']:.1f}MB)")
                     else:
@@ -196,11 +202,15 @@ class MemoryMonitor:
                 logger.warning("메모리 모니터링 스레드가 2초 내에 종료되지 않음")
 
     def get_memory_report(self) -> Dict:
-        """메모리 사용량 리포트 생성"""
+        """메모리 사용량 리포트 생성 - 안전한 division by zero 방지"""
         if not self.memory_history:
             return {"error": "메모리 히스토리 없음"}
         
-        recent_usage = [entry['rss_mb'] for entry in self.memory_history[-10:]]
+        recent_usage = [entry['rss_mb'] for entry in self.memory_history]
+        
+        # Division by zero 방지
+        if not recent_usage:
+            return {"error": "메모리 데이터 없음"}
         
         report = {
             'current_mb': self.memory_history[-1]['rss_mb'],
@@ -304,21 +314,26 @@ def async_monitor_memory_usage(func):
 
 if __name__ == "__main__":
     # 테스트 코드
-    import time
+    import asyncio
     
     def test_cleanup():
         print("정리 작업 실행됨")
     
-    # 메모리 모니터 테스트
-    with MemoryMonitor(warning_threshold_mb=100, cleanup_callback=test_cleanup) as monitor:
-        print("메모리 모니터링 테스트 시작...")
-        
-        for i in range(5):
-            usage = monitor.get_memory_usage()
-            print(f"메모리 사용량: {usage['rss_mb']:.1f}MB")
-            time.sleep(2)
-        
-        print("메모리 리포트:")
-        report = monitor.get_memory_report()
-        for key, value in report.items():
-            print(f"  {key}: {value}")
+    async def run_test():
+        """비동기 테스트 함수"""
+        # 메모리 모니터 테스트
+        with MemoryMonitor(warning_threshold_mb=100, cleanup_callback=test_cleanup) as monitor:
+            print("메모리 모니터링 테스트 시작...")
+            
+            for i in range(5):
+                usage = monitor.get_memory_usage()
+                print(f"메모리 사용량: {usage['rss_mb']:.1f}MB")
+                await asyncio.sleep(0.5)  # 비동기 슬립으로 변경
+            
+            print("메모리 리포트:")
+            report = monitor.get_memory_report()
+            for key, value in report.items():
+                print(f"  {key}: {value}")
+    
+    # 비동기 테스트 실행
+    asyncio.run(run_test())

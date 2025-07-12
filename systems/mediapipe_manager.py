@@ -33,6 +33,7 @@ class EnhancedMediaPipeManager:
         self.last_object_result = None
 
         self.result_queue = queue.Queue()
+        self._shutdown_requested = False  # Initialize shutdown flag
         self._initialize_tasks()
         
         self.callback_thread = threading.Thread(target=self._process_callbacks, daemon=True)
@@ -48,10 +49,15 @@ class EnhancedMediaPipeManager:
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
         
-        while True:
+        # Add shutdown flag for safer exit
+        self._shutdown_requested = False
+        
+        while not self._shutdown_requested:
             try:
-                result_type, result, timestamp = self.result_queue.get()
+                # Add timeout to prevent infinite blocking
+                result_type, result, timestamp = self.result_queue.get(timeout=1.0)
                 if result_type == 'shutdown':
+                    self._shutdown_requested = True
                     break
                 
                 if self.analysis_engine:
@@ -63,8 +69,17 @@ class EnhancedMediaPipeManager:
                         loop.run_until_complete(self.analysis_engine.on_hand_result(result, timestamp=timestamp))
                     elif result_type == 'object' and hasattr(self.analysis_engine, 'on_object_result'):
                         loop.run_until_complete(self.analysis_engine.on_object_result(result, timestamp=timestamp))
+            except queue.Empty:
+                # Timeout occurred, check if shutdown was requested
+                continue
             except Exception as e:
                 logger.error(f"Callback 처리 중 오류: {e}")
+                # On critical errors, consider shutting down gracefully
+                if isinstance(e, (KeyboardInterrupt, SystemExit)):
+                    self._shutdown_requested = True
+                    break
+        
+        logger.info("Callback processing loop exiting gracefully")
         loop.close()
 
     def _on_face_result(self, result, output_image, timestamp_ms):
@@ -171,9 +186,28 @@ class EnhancedMediaPipeManager:
 
     def close(self):
         logger.info("MediaPipe Task 리소스 정리 시작...")
-        self.result_queue.put(('shutdown', None, None))
-        self.callback_thread.join()
+        
+        # Set shutdown flag first
+        self._shutdown_requested = True
+        
+        # Send shutdown signal to queue
+        try:
+            self.result_queue.put(('shutdown', None, None))
+        except Exception as e:
+            logger.warning(f"Shutdown signal 전송 실패: {e}")
+        
+        # Wait for callback thread to finish with timeout
+        if self.callback_thread and self.callback_thread.is_alive():
+            self.callback_thread.join(timeout=2.0)
+            if self.callback_thread.is_alive():
+                logger.warning("Callback thread가 정상적으로 종료되지 않았습니다.")
+        
+        # Close MediaPipe tasks
         for task in [self.face_landmarker, self.pose_landmarker, self.hand_landmarker, self.object_detector]:
             if task:
-                task.close()
+                try:
+                    task.close()
+                except Exception as e:
+                    logger.warning(f"MediaPipe task 종료 중 오류: {e}")
+        
         logger.info("MediaPipe Task 리소스 정리 완료.")

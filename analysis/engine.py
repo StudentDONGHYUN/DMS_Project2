@@ -157,16 +157,49 @@ class EnhancedAnalysisEngine:
         pose_result = results.get("pose")
         hand_result = results.get("hand")
         object_result = results.get("object")
-        face_task = asyncio.create_task(self._process_face_data_async(face_result, timestamp))
-        pose_task = asyncio.create_task(self._process_pose_data_async(pose_result))
-        hand_task = asyncio.create_task(self._process_hand_data_async(hand_result))
-        hand_positions = await hand_task
-        await self._process_object_data_async(object_result, hand_positions, timestamp)
-        await asyncio.gather(face_task, pose_task)
+        
+        # 비동기 작업 생성 및 예외 처리 강화
+        created_tasks = []
+        try:
+            face_task = asyncio.create_task(self._process_face_data_async(face_result, timestamp))
+            pose_task = asyncio.create_task(self._process_pose_data_async(pose_result))
+            hand_task = asyncio.create_task(self._process_hand_data_async(hand_result))
+            created_tasks = [face_task, pose_task, hand_task]
+            
+            # 손 처리 완료 대기 (객체 처리에 필요)
+            hand_positions = await hand_task
+            
+            # 객체 처리 (손 위치 정보 필요)
+            await self._process_object_data_async(object_result, hand_positions, timestamp)
+            
+            # 나머지 얼굴 및 자세 처리 완료 대기
+            await asyncio.gather(face_task, pose_task, return_exceptions=True)
+            
+        except Exception as e:
+            logger.error(f"비동기 작업 처리 중 오류: {e}")
+            # 실패한 작업들 정리
+            for task in created_tasks:
+                if not task.done():
+                    task.cancel()
+                    try:
+                        await task
+                    except asyncio.CancelledError:
+                        pass
+                    except Exception as task_error:
+                        logger.error(f"작업 정리 중 오류: {task_error}")
+            
+            # 폴백 처리 - 동기 방식으로 기본 처리
+            await self._process_face_data_async(face_result, timestamp)
+            await self._process_pose_data_async(pose_result)
+            hand_positions = await self._process_hand_data_async(hand_result)
+            await self._process_object_data_async(object_result, hand_positions, timestamp)
+        
+        # 나머지 처리 과정
         self._perform_multimodal_fusion_analysis(timestamp)
         self._run_predictive_analysis(timestamp)
         self._update_driver_state()
         self.memory_manager.check_and_cleanup()
+        
         annotated_frame = self.ui_manager.draw_enhanced_results(
             frame,
             self.get_latest_metrics(),
@@ -656,17 +689,20 @@ class EnhancedMultiModalAnalyzer:
         
         # 기본적인 객체 신호들 확인
         if object_data:
-            if object_data.get("distraction_score", 0) > 0:
-                fallback_signals.append(object_data["distraction_score"])
-            if object_data.get("phone_usage_score", 0) > 0:
-                fallback_signals.append(object_data["phone_usage_score"])
+            distraction_score = object_data.get("distraction_score", 0.0)
+            if distraction_score > 0:
+                fallback_signals.append(distraction_score)
+            phone_usage = object_data.get("phone_usage_score", 0.0)
+            if phone_usage > 0:
+                fallback_signals.append(phone_usage)
         
         # 기본적인 감정 신호들 확인
         if emotion_data:
-            confidence = emotion_data.get("confidence", 0.0)
             emotion_state = emotion_data.get("emotion")
-            if emotion_state in [EmotionState.STRESS, EmotionState.ANGER] and confidence > 0.1:
-                fallback_signals.append(confidence)
+            if emotion_state in [EmotionState.STRESS, EmotionState.ANGER]:
+                confidence = emotion_data.get("confidence", 0.0)
+                if confidence > 0:
+                    fallback_signals.append(confidence)
         
         # 신호가 있으면 평균값 반환, 없으면 0.0
         if fallback_signals:
