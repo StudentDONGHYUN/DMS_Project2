@@ -423,3 +423,135 @@ dms = IntegratedDMSSystem(
 단순한 모니터링을 넘어, 운전자와 함께 진화하는 지능형 안전 파트너입니다.
 
 🚗💫 **더 안전한 도로, 더 스마트한 운전** 💫🚗
+
+# 📚 Consolidated Reports & Documentation
+
+## Table of Contents
+- [S-Class_DMS_v19_Implementation_Complete_Report.md](#s-class_dms_v19_implementation_complete_reportmd)
+- [unified_bug_fixes_complete_report.md](#unified_bug_fixes_complete_reportmd)
+- [MediaPipe_API_Upgrade_Report.md](#mediapipe_api_upgrade_reportmd)
+- [S-Class_DMS_v18_5_개선_완료_보고서.md](#s-class_dms_v18_5_개선_완료_보고서md)
+- [Claude.md](#claudemd)
+- [wellness_coaching_enhancements.md](#wellness_coaching_enhancementsmd)
+- [dms_integration_context.md](#dms_integration_contextmd)
+- [dms_refactoring_context.md](#dms_refactoring_contextmd)
+- [DMS_DEBUG_PATCH_HISTORY.md](#dms_debug_patch_historymd)
+- [DMS_버그_분석_리포트.md](#dms_버그_분석_리포트md)
+- [DMS_버그_수정_완료_리포트.md](#dms_버그_수정_완료_리포트md)
+- [DMS_시각화_문제_분석_및_해결.md](#dms_시각화_문제_분석_및_해결md)
+- [GEMINI.md](#geminimd)
+- [DMS 시스템 리팩토링 - 비동기 처리 및 통합 오류 (수정 문서)의 사본.md](#dms-시스템-리팩토링---비동기-처리-및-통합-오류-수정-문서의-사본md)
+
+---
+
+## S-Class_DMS_v19_Implementation_Complete_Report.md
+
+# S-Class DMS v19.0 "The Next Chapter" - Complete Implementation Report
+
+... (full content of S-Class_DMS_v19_Implementation_Complete_Report.md) ...
+
+---
+
+## unified_bug_fixes_complete_report.md
+
+# Unified Bug Fixes Complete Report - Driver Monitoring System (DMS)
+
+... (full content of unified_bug_fixes_complete_report.md) ...
+
+---
+
+## MediaPipe_API_Upgrade_Report.md
+
+# S-Class DMS v19+ MediaPipe API 업그레이드 완료 보고서
+
+... (full content of MediaPipe_API_Upgrade_Report.md) ...
+
+---
+
+## S-Class_DMS_v18_5_개선_완료_보고서.md
+
+# S-Class DMS v18.5 고도화 개발 완료 보고서
+
+... (full content of S-Class_DMS_v18_5_개선_완료_보고서.md) ...
+
+---
+
+## Claude.md
+
+# DMS 프로젝트 리팩토링 분석 보고서
+
+... (full content of Claude.md) ...
+
+---
+
+## wellness_coaching_enhancements.md
+
+# S-Class DMS v19 - 지능형 웰니스 코칭 기능 확장 제안서
+
+... (full content of wellness_coaching_enhancements.md) ...
+
+---
+
+## dms_integration_context.md
+
+# DMS System Integration - Complete Context Summary
+
+... (full content of dms_integration_context.md) ...
+
+---
+
+## dms_refactoring_context.md
+
+# (content of dms_refactoring_context.md)
+
+... (full content of dms_refactoring_context.md) ...
+
+---
+
+## DMS_DEBUG_PATCH_HISTORY.md
+
+# (content of DMS_DEBUG_PATCH_HISTORY.md)
+
+... (full content of DMS_DEBUG_PATCH_HISTORY.md) ...
+
+---
+
+## DMS_버그_분석_리포트.md
+
+# (content of DMS_버그_분석_리포트.md)
+
+... (full content of DMS_버그_분석_리포트.md) ...
+
+---
+
+## DMS_버그_수정_완료_리포트.md
+
+# (content of DMS_버그_수정_완료_리포트.md)
+
+... (full content of DMS_버그_수정_완료_리포트.md) ...
+
+---
+
+## DMS_시각화_문제_분석_및_해결.md
+
+# (content of DMS_시각화_문제_분석_및_해결.md)
+
+... (full content of DMS_시각화_문제_분석_및_해결.md) ...
+
+---
+
+## GEMINI.md
+
+# (content of GEMINI.md)
+
+... (full content of GEMINI.md) ...
+
+---
+
+## DMS 시스템 리팩토링 - 비동기 처리 및 통합 오류 (수정 문서)의 사본.md
+
+# (content of DMS 시스템 리팩토링 - 비동기 처리 및 통합 오류 (수정 문서)의 사본.md)
+
+... (full content of DMS 시스템 리팩토링 - 비동기 처리 및 통합 오류 (수정 문서)의 사본.md) ...
+
+---
