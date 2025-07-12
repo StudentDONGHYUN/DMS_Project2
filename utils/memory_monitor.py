@@ -11,13 +11,14 @@ import logging
 import time
 from typing import Dict, Optional, Callable
 from threading import Thread, Event
+from collections import deque
 import asyncio
 
 logger = logging.getLogger(__name__)
 
 
 class MemoryMonitor:
-    """메모리 사용량 모니터링 클래스"""
+    """메모리 사용량 모니터링 클래스 - 성능 최적화"""
     
     def __init__(self, 
                  warning_threshold_mb: float = 800,
@@ -43,8 +44,8 @@ class MemoryMonitor:
         self.warning_interval = 30  # 30초마다 경고
         self.cleanup_interval = 60  # 60초마다 정리
         
-        self.memory_history = []
-        self.max_history_size = 100
+        # 성능 최적화: list 대신 deque 사용 (O(1) append/popleft)
+        self.memory_history = deque(maxlen=100)
         
         logger.info(f"MemoryMonitor 초기화 - 경고: {warning_threshold_mb}MB, 위험: {critical_threshold_mb}MB")
 
@@ -62,10 +63,8 @@ class MemoryMonitor:
                 'timestamp': time.time()
             }
             
-            # 히스토리에 추가
+            # 히스토리에 추가 (deque는 자동으로 maxlen 관리)
             self.memory_history.append(usage)
-            if len(self.memory_history) > self.max_history_size:
-                self.memory_history.pop(0)
             
             return usage
             
@@ -203,11 +202,15 @@ class MemoryMonitor:
                 logger.warning("메모리 모니터링 스레드가 2초 내에 종료되지 않음")
 
     def get_memory_report(self) -> Dict:
-        """메모리 사용량 리포트 생성"""
+        """메모리 사용량 리포트 생성 - 안전한 division by zero 방지"""
         if not self.memory_history:
             return {"error": "메모리 히스토리 없음"}
         
-        recent_usage = [entry['rss_mb'] for entry in self.memory_history[-10:]]
+        recent_usage = [entry['rss_mb'] for entry in self.memory_history]
+        
+        # Division by zero 방지
+        if not recent_usage:
+            return {"error": "메모리 데이터 없음"}
         
         report = {
             'current_mb': self.memory_history[-1]['rss_mb'],

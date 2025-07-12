@@ -15,7 +15,10 @@ from typing import List, Dict, Optional, Callable, Any
 from pathlib import Path
 from dataclasses import dataclass
 from enum import Enum
-
+from collections import deque
+import time
+import cv2
+import mediapipe as mp
 # MediaPipe Tasks API imports
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision, audio, text
@@ -52,7 +55,7 @@ class TaskConfig:
 
 class AdvancedMediaPipeManager:
     """
-    차세대 MediaPipe Tasks Manager
+    차세대 MediaPipe Tasks Manager - 성능 최적화
     - 최신 Tasks API 완전 활용
     - 동적 모델 로딩/언로딩
     - 성능 최적화 및 메모리 관리
@@ -66,11 +69,11 @@ class AdvancedMediaPipeManager:
         self.result_callbacks: Dict[TaskType, Callable] = {}
         self.task_health: Dict[TaskType, bool] = {}
         
-        # 성능 모니터링
+        # 성능 모니터링 - 최적화된 deque 사용
         self.fps_counter = 0
         self.fps_start_time = time.time()
         self.current_fps = 0.0
-        self.frame_processing_times = []
+        self.frame_processing_times = deque(maxlen=100)  # O(1) operations
         
         # 결과 관리
         self.latest_results: Dict[TaskType, Any] = {}
@@ -93,7 +96,7 @@ class AdvancedMediaPipeManager:
         if config_file:
             self._load_config_file(config_file)
         
-        logger.info("AdvancedMediaPipeManager v2.0 초기화 완료")
+        logger.info("AdvancedMediaPipeManager v2.0 (최적화) 초기화 완료")
 
     def ensure_model_directory(self):
         """모델 디렉토리 존재 확인"""
@@ -427,9 +430,7 @@ class AdvancedMediaPipeManager:
             processing_time = time.time() - start_time
             self.frame_processing_times.append(processing_time)
             
-            # 최근 100프레임 평균 유지
-            if len(self.frame_processing_times) > 100:
-                self.frame_processing_times.pop(0)
+            # deque가 자동으로 maxlen 관리하므로 수동 제거 불필요
             
         except Exception as e:
             logger.error(f"프레임 처리 오류: {e}")

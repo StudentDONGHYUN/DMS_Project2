@@ -865,7 +865,7 @@ class SClassAdvancedUIManager:
                 self.data_history[key] = self.data_history[key][-self.max_history:]
 
     def _draw_line_chart(self, frame, title, data, pos, size, color):
-        """라인 차트 그리기"""
+        """라인 차트 그리기 - 안전한 division by zero 방지"""
         if len(data) < 2:
             return
             
@@ -883,7 +883,15 @@ class SClassAdvancedUIManager:
         if data:
             max_val = max(data) if max(data) > 0 else 1.0
             min_val = min(data)
-            val_range = max_val - min_val if max_val != min_val else 1.0
+            val_range = max_val - min_val
+            
+            # Division by zero 방지 - 모든 값이 같을 때
+            if val_range == 0:
+                val_range = 1.0
+                # 모든 값이 같으면 중앙에 수평선 그리기
+                y_center = y + h // 2
+                cv2.line(frame, (x, y_center), (x + w, y_center), color, 2)
+                return
             
             points = []
             for i, value in enumerate(data):

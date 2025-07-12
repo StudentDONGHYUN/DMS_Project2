@@ -717,55 +717,145 @@ class SClass_DMS_GUI_Setup:
 
 
 def get_user_input_terminal():
-    """터미널 모드 입력"""
+    """터미널 모드 입력 - 보안 강화된 입력 검증"""
+    import re
+    import os
+    
+    def sanitize_input(input_str: str, max_length: int = 100) -> str:
+        """입력 문자열 검증 및 소독"""
+        if not input_str:
+            return ""
+        
+        # 길이 제한
+        input_str = input_str[:max_length]
+        
+        # 위험한 문자 제거 (보안 강화)
+        # 허용: 알파벳, 숫자, 하이픈, 언더스코어, 슬래시, 점, 공백, 한글
+        safe_pattern = re.compile(r'[^a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ\-_/.\s\\:]')
+        sanitized = safe_pattern.sub('', input_str)
+        
+        return sanitized.strip()
+    
+    def validate_file_path(path: str) -> bool:
+        """파일 경로 유효성 검증"""
+        try:
+            # 상대 경로 공격 방지
+            if '..' in path or path.startswith('/'):
+                return False
+            
+            # 실제 파일 존재 확인
+            return os.path.exists(path) and os.path.isfile(path)
+        except (OSError, ValueError):
+            return False
+    
+    def get_safe_integer_input(prompt: str, default: int = 0, min_val: int = 0, max_val: int = 10) -> int:
+        """안전한 정수 입력"""
+        try:
+            user_input = input(prompt).strip()
+            if not user_input:
+                return default
+            
+            # 숫자만 허용
+            if not re.match(r'^\d+$', user_input):
+                logger.warning(f"Invalid input detected: {user_input[:20]}...")
+                return default
+                
+            value = int(user_input)
+            return max(min_val, min(max_val, value))
+        except (ValueError, KeyboardInterrupt):
+            return default
+    
+    def get_safe_choice_input(prompt: str, valid_choices: list, default: str = 'n') -> str:
+        """안전한 선택지 입력"""
+        try:
+            user_input = input(prompt).strip().lower()
+            if not user_input:
+                return default
+            
+            # 허용된 선택지만 허용
+            sanitized = sanitize_input(user_input, 5)
+            return sanitized if sanitized in valid_choices else default
+        except KeyboardInterrupt:
+            return default
+    
     print("\n" + "=" * 80)
     print(" S-Class DMS v18+ - Advanced Research Integration (터미널 모드)")
     print("=" * 80)
     
-    # 기본 입력
+    # 기본 입력 - 보안 강화
     input_source, is_same_driver = None, True
     while input_source is None:
-        choice = input("\n📹 입력 소스 선택 (1: 웹캠, 2: 비디오 파일): ").strip()
-        if choice == "1":
-            cam_id = input("웹캠 번호 입력 (기본값 0): ").strip()
-            input_source = int(cam_id) if cam_id.isdigit() else 0
-        elif choice == "2":
-            path = input("비디오 파일 경로 입력 (여러 파일은 쉼표로 구분): ").strip()
-            paths = [p.strip() for p in path.split(",")]
-            valid_paths = [p for p in paths if os.path.exists(p)]
-            if not valid_paths:
-                print("❌ 유효한 파일을 찾을 수 없습니다.")
-                continue
-            input_source = valid_paths if len(valid_paths) > 1 else valid_paths[0]
-            if len(valid_paths) > 1:
-                same_driver_choice = input("같은 운전자입니까? (y/n, 기본값 y): ").strip().lower()
-                is_same_driver = same_driver_choice != "n"
+        choice = get_safe_integer_input("\n📹 입력 소스 선택 (1: 웹캠, 2: 비디오 파일): ", 1, 1, 2)
+        
+        if choice == 1:
+            cam_id = get_safe_integer_input("웹캠 번호 입력 (기본값 0): ", 0, 0, 10)
+            input_source = cam_id
+        elif choice == 2:
+            try:
+                path_input = input("비디오 파일 경로 입력 (여러 파일은 쉼표로 구분): ").strip()
+                
+                # 입력 길이 제한
+                if len(path_input) > 1000:
+                    print("❌ 경로가 너무 깁니다.")
+                    continue
+                
+                # 경로 검증
+                paths = [sanitize_input(p.strip(), 500) for p in path_input.split(",")]
+                valid_paths = [p for p in paths if validate_file_path(p)]
+                
+                if not valid_paths:
+                    print("❌ 유효한 파일을 찾을 수 없습니다.")
+                    continue
+                    
+                input_source = valid_paths if len(valid_paths) > 1 else valid_paths[0]
+                
+                if len(valid_paths) > 1:
+                    same_driver_choice = get_safe_choice_input(
+                        "같은 운전자입니까? (y/n, 기본값 y): ", 
+                        ['y', 'n', 'yes', 'no'], 'y'
+                    )
+                    is_same_driver = same_driver_choice not in ['n', 'no']
+            except KeyboardInterrupt:
+                print("\n사용자에 의해 취소되었습니다.")
+                return None
 
-    user_id = input("\n👤 사용자 ID 입력 (기본값 default): ").strip() or "default"
+    # 사용자 ID 입력 - 보안 강화
+    try:
+        user_id_raw = input("\n👤 사용자 ID 입력 (기본값 default): ").strip()
+        user_id = sanitize_input(user_id_raw, 50) or "default"
+        
+        # 사용자 ID 형식 검증
+        if not re.match(r'^[a-zA-Z0-9가-힣_-]+$', user_id):
+            logger.warning(f"Invalid user ID format, using default")
+            user_id = "default"
+            
+    except KeyboardInterrupt:
+        print("\n사용자에 의해 취소되었습니다.")
+        return None
     
-    # S-Class 시스템 설정
+    # S-Class 시스템 설정 - 보안 강화
     print("\n🏭 S-Class 시스템 모드 선택:")
     system_types = ["STANDARD", "HIGH_PERFORMANCE", "LOW_RESOURCE", "RESEARCH"]
     for i, st in enumerate(system_types, 1):
         print(f"{i}. {st}")
     
-    sys_choice = input(f"선택 (1-{len(system_types)}, 기본값 1): ").strip()
-    system_type_str = system_types[int(sys_choice) - 1] if sys_choice.isdigit() and 0 < int(sys_choice) <= len(system_types) else "STANDARD"
+    sys_choice = get_safe_integer_input(f"선택 (1-{len(system_types)}, 기본값 1): ", 1, 1, len(system_types))
+    system_type_str = system_types[sys_choice - 1]
     system_type = getattr(AnalysisSystemType, system_type_str, AnalysisSystemType.STANDARD)
     
-    legacy_choice = input("\n🔧 레거시 엔진 사용? (y/n, 기본값 n): ").strip().lower()
-    use_legacy_engine = legacy_choice == "y"
+    legacy_choice = get_safe_choice_input("\n🔧 레거시 엔진 사용? (y/n, 기본값 n): ", ['y', 'n'], 'n')
+    use_legacy_engine = legacy_choice == 'y'
     
-    calib_choice = input("\n⚙️ 개인화 캘리브레이션 수행? (y/n, 기본값 y): ").strip().lower()
-    enable_calibration = calib_choice != "n"
+    calib_choice = get_safe_choice_input("\n⚙️ 개인화 캘리브레이션 수행? (y/n, 기본값 y): ", ['y', 'n'], 'y')
+    enable_calibration = calib_choice != 'n'
 
     print("\n📍 카메라 위치 선택:")
     positions = list(CameraPosition)
     for i, pos in enumerate(positions, 1):
         print(f"{i}. {pos.value}")
     
-    pos_choice = input(f"선택 (1-{len(positions)}, 기본값 1): ").strip()
-    camera_position = positions[int(pos_choice) - 1] if pos_choice.isdigit() and 0 < int(pos_choice) <= len(positions) else positions[0]
+    pos_choice = get_safe_integer_input(f"선택 (1-{len(positions)}, 기본값 1): ", 1, 1, len(positions))
+    camera_position = positions[pos_choice - 1]
 
     return {
         "input_source": input_source,
