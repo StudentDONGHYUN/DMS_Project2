@@ -311,21 +311,26 @@ def async_monitor_memory_usage(func):
 
 if __name__ == "__main__":
     # 테스트 코드
-    import time
+    import asyncio
     
     def test_cleanup():
         print("정리 작업 실행됨")
     
-    # 메모리 모니터 테스트
-    with MemoryMonitor(warning_threshold_mb=100, cleanup_callback=test_cleanup) as monitor:
-        print("메모리 모니터링 테스트 시작...")
-        
-        for i in range(5):
-            usage = monitor.get_memory_usage()
-            print(f"메모리 사용량: {usage['rss_mb']:.1f}MB")
-            time.sleep(2)
-        
-        print("메모리 리포트:")
-        report = monitor.get_memory_report()
-        for key, value in report.items():
-            print(f"  {key}: {value}")
+    async def run_test():
+        """비동기 테스트 함수"""
+        # 메모리 모니터 테스트
+        with MemoryMonitor(warning_threshold_mb=100, cleanup_callback=test_cleanup) as monitor:
+            print("메모리 모니터링 테스트 시작...")
+            
+            for i in range(5):
+                usage = monitor.get_memory_usage()
+                print(f"메모리 사용량: {usage['rss_mb']:.1f}MB")
+                await asyncio.sleep(0.5)  # 비동기 슬립으로 변경
+            
+            print("메모리 리포트:")
+            report = monitor.get_memory_report()
+            for key, value in report.items():
+                print(f"  {key}: {value}")
+    
+    # 비동기 테스트 실행
+    asyncio.run(run_test())
