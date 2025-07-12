@@ -79,8 +79,8 @@ class MemoryMonitor:
                 'timestamp': time.time()
             }
 
-    def check_memory_status(self) -> str:
-        """메모리 상태 확인 및 처리"""
+    def check_memory_status(self) -> tuple[str, dict]:
+        """메모리 상태 확인 및 처리 - 성능 최적화된 버전"""
         usage = self.get_memory_usage()
         memory_mb = usage['rss_mb']
         current_time = time.time()
@@ -91,7 +91,7 @@ class MemoryMonitor:
                 logger.critical(f"메모리 사용량 위험 수준: {memory_mb:.1f}MB")
                 self._perform_emergency_cleanup()
                 self.last_cleanup_time = current_time
-            return "critical"
+            return "critical", usage
             
         elif memory_mb >= self.warning_threshold:
             # 경고 수준
@@ -104,9 +104,17 @@ class MemoryMonitor:
                     self._perform_cleanup()
                     self.last_cleanup_time = current_time
                     
-            return "warning"
+            return "warning", usage
         else:
-            return "normal"
+            return "normal", usage
+
+    def get_memory_status_simple(self) -> str:
+        """
+        Backward compatibility method that returns only the status
+        Use check_memory_status() for better performance
+        """
+        status, _ = self.check_memory_status()
+        return status
 
     def _perform_cleanup(self):
         """일반적인 정리 작업"""
@@ -165,10 +173,9 @@ class MemoryMonitor:
             
             while not self.stop_event.wait(interval):
                 try:
-                    status = self.check_memory_status()
+                    status, usage = self.check_memory_status()
                     
-                    # 상태별 로깅 (normal은 debug 레벨)
-                    usage = self.get_memory_usage()
+                    # 상태별 로깅 (normal은 debug 레벨) - 이미 usage 정보를 가지고 있음
                     if status == "normal":
                         logger.debug(f"메모리 상태: {status} ({usage['rss_mb']:.1f}MB)")
                     else:

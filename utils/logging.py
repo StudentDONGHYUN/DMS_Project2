@@ -44,9 +44,18 @@ class TerminalLogManager:
 
     def clear_terminal(self):
         try:
-            os.system("cls" if os.name == "nt" else "clear")
+            # Use subprocess for safer command execution
+            import subprocess
+            if os.name == "nt":
+                # Windows
+                subprocess.run(["cls"], shell=True, check=False, 
+                              stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            else:
+                # Unix/Linux/macOS
+                subprocess.run(["clear"], check=False,
+                              stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             print("=== 터미널 로그 정리됨 (메모리 관리) ===")
-        except OSError as e:
+        except (OSError, subprocess.SubprocessError) as e:
             # 터미널 명령 실행 실패는 치명적이지 않음
             print(f"터미널 정리 실패 (계속 진행): {e}")
         except Exception as e:
