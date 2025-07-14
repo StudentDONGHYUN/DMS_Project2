@@ -283,11 +283,16 @@ class DMSApp:
                     await asyncio.sleep(0.01)
                     continue
                 frame_count += 1
+                # GEMINI.md 성능 최적화: MediaPipe 처리 전 writeable=False 적용
+                if hasattr(frame, 'flags'):
+                    frame.flags.writeable = False
+                # (여기서 MediaPipe 처리/분석이 실제로 일어나는 경우에만 적용)
                 annotated_frame = self._create_basic_info_overlay(frame, frame_count)
                 if annotated_frame is not None:
                     try:
                         frame_queue.put_nowait(annotated_frame)
                     except queue.Full:
+                        # 프레임 드롭/스킵: 가장 오래된 프레임을 버리고 최신 프레임만 유지
                         try:
                             frame_queue.get_nowait()
                             frame_queue.put_nowait(annotated_frame)
