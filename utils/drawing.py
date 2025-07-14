@@ -71,6 +71,15 @@ class TasksConnections:
         (0, 17), (17, 18), (18, 19), (19, 20)
     ]
 
+# --- UMat utility ---
+def ensure_umat(image):
+    if isinstance(image, cv2.UMat):
+        return image
+    try:
+        return cv2.UMat(image)
+    except Exception:
+        return image  # fallback to numpy if UMat not available
+
 def draw_landmarks_on_image(
     image: np.ndarray,
     landmarks: List,
@@ -117,7 +126,7 @@ def draw_face_landmarks_on_image(rgb_image: np.ndarray, detection_result) -> np.
         return rgb_image
     
     # 한 번만 복사하여 성능 최적화
-    annotated_image = rgb_image.copy()
+    annotated_image = ensure_umat(rgb_image)
     
     try:
         for face_landmarks in detection_result.face_landmarks:
@@ -172,7 +181,7 @@ def draw_pose_landmarks_on_image(rgb_image: np.ndarray, detection_result) -> np.
         return rgb_image
     
     # 한 번만 복사하여 성능 최적화
-    annotated_image = rgb_image.copy()
+    annotated_image = ensure_umat(rgb_image)
     
     try:
         for pose_landmarks in detection_result.pose_landmarks:
@@ -201,7 +210,7 @@ def draw_hand_landmarks_on_image(rgb_image: np.ndarray, detection_result) -> np.
         return rgb_image
     
     # 한 번만 복사하여 성능 최적화
-    annotated_image = rgb_image.copy()
+    annotated_image = ensure_umat(rgb_image)
     
     try:
         hand_landmarks_list = detection_result.hand_landmarks
@@ -269,8 +278,8 @@ def draw_detection_boxes(
         return image
     
     # 한 번만 복사하여 성능 최적화
-    annotated_image = image.copy()
-    height, width = image.shape[:2]
+    annotated_image = ensure_umat(image)
+    height, width = annotated_image.shape[:2]
     
     try:
         for detection in detections:
@@ -329,7 +338,7 @@ def create_comprehensive_visualization(
     성능 최적화: 단일 복사본으로 모든 그리기 작업 수행
     """
     # 한 번만 복사하고 모든 작업을 이 복사본에서 수행
-    annotated_image = image.copy()
+    annotated_image = ensure_umat(image)
     
     # 순서대로 그리기 (겹치는 부분 고려)
     if object_result:

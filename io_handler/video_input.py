@@ -461,12 +461,18 @@ class VideoInputManager:
             return True
         return False
 
-    def get_frame(self):
-        """리더 스레드에서 저장한 최신 프레임 반환 (스레드 안전)"""
+    def get_frame(self, as_numpy: bool = False):
+        """리더 스레드에서 저장한 최신 프레임 반환 (스레드 안전, UMat 지원)"""
         try:
             with self.frame_lock:
                 if self.current_frame is not None:
-                    return self.current_frame.copy()  # 복사본 반환으로 스레드 안전성 보장
+                    frame = self.current_frame.copy()
+                    if as_numpy:
+                        return frame
+                    try:
+                        return cv2.UMat(frame)
+                    except Exception:
+                        return frame  # fallback to numpy if UMat not available
                 else:
                     return None
         except Exception as e:

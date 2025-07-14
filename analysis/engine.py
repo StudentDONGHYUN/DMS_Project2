@@ -151,7 +151,11 @@ class EnhancedAnalysisEngine:
                         self.emotion_recognizer,
                     )
                     logger.info("[진단] engine._try_queue_results: draw_enhanced_results 호출 완료")
-                    cv2.imshow("DMS", annotated)
+                    try:
+                        frame_to_show = cv2.UMat(annotated) if not isinstance(annotated, cv2.UMat) else annotated
+                    except Exception:
+                        frame_to_show = annotated
+                    cv2.imshow("DMS", frame_to_show)
                     logger.info("[진단] engine._try_queue_results: cv2.imshow 호출 완료")
                 except Exception as e:
                     logger.error(f"[진단] engine._try_queue_results: 시각화 예외: {e}")

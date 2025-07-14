@@ -398,11 +398,19 @@ class AdvancedMediaPipeManager:
 
     async def process_frame(self, frame: np.ndarray) -> Dict[TaskType, Any]:
         """
-        프레임 처리 - 모든 활성 Task에서 동시 처리
+        프레임 처리 - 모든 활성 Task에서 동시 처리 (UMat 지원)
         """
         start_time = time.time()
         # FPS 계산
         self._calculate_fps()
+        # UMat → numpy 변환 (MediaPipe는 numpy만 지원)
+        if isinstance(frame, cv2.UMat):
+            try:
+                frame_np = frame.get()
+            except Exception:
+                frame_np = frame
+        else:
+            frame_np = frame
         # 동적 리소스 관리: 30프레임마다 자동 호출
         if self.fps_counter % 30 == 0:
             self.adjust_dynamic_resources()
@@ -413,7 +421,7 @@ class AdvancedMediaPipeManager:
         self.last_timestamp = timestamp_ms
         try:
             # BGR to RGB 변환
-            rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            rgb_frame = cv2.cvtColor(frame_np, cv2.COLOR_BGR2RGB)
             mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb_frame)
             # 모든 활성 Task에서 비동기 처리
             processing_tasks = []
@@ -430,7 +438,6 @@ class AdvancedMediaPipeManager:
             # 처리 시간 기록
             processing_time = time.time() - start_time
             self.frame_processing_times.append(processing_time)
-            # deque가 자동으로 maxlen 관리하므로 수동 제거 불필요
         except Exception as e:
             logger.error(f"프레임 처리 오류: {e}")
         return self.latest_results.copy()

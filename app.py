@@ -262,7 +262,11 @@ class DMSApp:
                 except queue.Empty:
                     pass
                 if last_frame is not None:
-                    cv2.imshow("S-Class DMS v18+ - Research Integrated", last_frame)
+                    try:
+                        frame_to_show = cv2.UMat(last_frame) if not isinstance(last_frame, cv2.UMat) else last_frame
+                    except Exception:
+                        frame_to_show = last_frame
+                    cv2.imshow("S-Class DMS v18+ - Research Integrated", frame_to_show)
                 key = cv2.waitKey(1) & 0xFF
                 if key == ord('q'):
                     stop_event.set()
@@ -270,7 +274,11 @@ class DMSApp:
                 elif key == ord('s'):
                     if last_frame is not None:
                         filename = f"screenshot_{int(time.time())}.png"
-                        cv2.imwrite(filename, last_frame)
+                        try:
+                            frame_to_save = cv2.UMat(last_frame) if not isinstance(last_frame, cv2.UMat) else last_frame
+                        except Exception:
+                            frame_to_save = last_frame
+                        cv2.imwrite(filename, frame_to_save)
             cv2.destroyAllWindows()
         async def async_frame_producer():
             logger.info("[수정] app.py: run - async_frame_producer 진입")
@@ -321,12 +329,18 @@ class DMSApp:
         display_thread.join()
 
     def _create_basic_info_overlay(self, frame, frame_count, perf_stats=None):
+        # Ensure overlay is drawn on UMat
+        try:
+            annotated_frame = frame if isinstance(frame, cv2.UMat) else cv2.UMat(frame)
+        except Exception:
+            annotated_frame = frame
+        height, width = annotated_frame.get().shape[:2] if isinstance(annotated_frame, cv2.UMat) else annotated_frame.shape[:2]
         # 예시: 프레임 번호 및 FPS 표시
-        cv2.putText(frame, f"Frame: {frame_count}", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+        cv2.putText(annotated_frame, f"Frame: {frame_count}", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
         if perf_stats is not None:
             fps = perf_stats.get("fps", 0.0)
-            cv2.putText(frame, f"FPS: {fps:.1f}", (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 0), 2)
-        return frame
+            cv2.putText(annotated_frame, f"FPS: {fps:.1f}", (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 0), 2)
+        return annotated_frame
 
     def _perform_memory_cleanup(self):
         logger.info("메모리 정리 실행")
