@@ -204,8 +204,6 @@ class AdvancedMediaPipeManager:
                 return False
 
             # delegate 자동 분기 (공식 지원: CPU/GPU만)
-            import platform
-            from mediapipe.tasks.python.core.base_options import BaseOptions
             system = platform.system()
             # GPU delegate는 Linux, macOS에서만 공식 지원
             if system in ["Linux", "Darwin"]:
