@@ -10,12 +10,14 @@ class EnhancedDrowsinessDetector:
 
     def __init__(self):
         self.ear_history = deque(maxlen=900)
+        self.pitch_history = deque(maxlen=900)
         self.personalized_threshold = None
         self.calibration_frames = 300
         self.temporal_attention = TemporalAttentionModel()
         self.microsleep_detector = MicrosleepDetector()
         self.calibration_ears = deque(maxlen=300)
         self.is_calibrated = False
+        self.correlation_skip_enabled = True  # 상관관계 기반 분석 스킵 활성화
         logger.info("EnhancedDrowsinessDetector 초기화 완료")
 
     def detect_drowsiness(self, face_landmarks, timestamp):
@@ -27,6 +29,7 @@ class EnhancedDrowsinessDetector:
         avg_ear = (left_ear + right_ear) / 2.0
         head_pose = self._estimate_head_pose_simple(face_landmarks)
         corrected_ear = self._correct_for_head_pose(avg_ear, head_pose)
+        pitch = head_pose["pitch"]
 
         self.ear_history.append(
             {
@@ -36,6 +39,36 @@ class EnhancedDrowsinessDetector:
                 "head_pose": head_pose,
             }
         )
+        self.pitch_history.append(pitch)
+
+        # --- 상관관계 기반 분석 스킵 로직 ---
+        skip_analysis = False
+        correlation = 0.0
+        if self.correlation_skip_enabled and len(self.ear_history) >= 300:
+            # 최근 5분(900프레임) 중 300프레임(10초) 이상일 때 rolling window 상관계수 계산
+            recent_ears = [frame["ear"] for frame in list(self.ear_history)[-300:]]
+            recent_pitch = list(self.pitch_history)[-300:]
+            if np.std(recent_ears) > 1e-4 and np.std(recent_pitch) > 1e-4:
+                correlation = np.corrcoef(recent_ears, recent_pitch)[0, 1]
+                # 강한 양의 상관관계(0.7 이상)가 지속될 때, 한 신호가 강하면 다른 신호 분석 스킵
+                if correlation > 0.7:
+                    # EAR이 매우 낮거나(눈 감김) Pitch가 매우 크면(고개 숙임) 둘 중 하나만 분석
+                    if corrected_ear < (self.personalized_threshold or 0.2) or abs(pitch) > 20:
+                        skip_analysis = True
+                        logger.info(f"상관관계 기반 분석 스킵: EAR-Pitch corr={correlation:.2f}, EAR={corrected_ear:.3f}, Pitch={pitch:.2f}")
+
+        if skip_analysis:
+            # EAR 기반 졸음 분석을 스킵하고, 간단 신호만 반환
+            return {
+                "status": "correlation_skip",
+                "confidence": 0.0,
+                "enhanced_ear": corrected_ear,
+                "threshold": self.personalized_threshold or 0.25,
+                "microsleep": {"detected": False, "duration": 0.0, "confidence": 0.0},
+                "perclos": 0.0,
+                "temporal_attention_score": 0.0,
+                "correlation": correlation,
+            }
 
         # --- 개선: 변화 감지 기반 임계값 재캘리브레이션 ---
         if len(self.ear_history) >= self.calibration_frames and not self.is_calibrated:
