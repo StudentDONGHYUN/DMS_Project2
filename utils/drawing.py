@@ -82,21 +82,21 @@ def draw_landmarks_on_image(
     in_place: bool = False
 ) -> np.ndarray:
     """
-    최신 MediaPipe Tasks API용 범용 랜드마크 그리기 함수
+    최신 MediaPipe Tasks API용 범용 랜드마크 그리기 함수 (UMat 적용)
     """
     if not landmarks:
         return image
-    
-    # 성능 최적화: in_place 플래그로 복사 여부 결정
-    annotated_image = image if in_place else image.copy()
-    height, width = image.shape[:2]
-    
+    # UMat 변환 (GPU 오프로드)
+    if not isinstance(image, cv2.UMat):
+        annotated_image = cv2.UMat(image) if not in_place else cv2.UMat(image)
+    else:
+        annotated_image = image
+    height, width = annotated_image.get().shape[:2] if isinstance(annotated_image, cv2.UMat) else annotated_image.shape[:2]
     # 랜드마크 점들 그리기
     for landmark in landmarks:
         x = int(landmark.x * width)
         y = int(landmark.y * height)
         cv2.circle(annotated_image, (x, y), landmark_radius, landmark_color, -1)
-    
     # 연결선 그리기
     if connections:
         for connection in connections:
@@ -104,12 +104,9 @@ def draw_landmarks_on_image(
             if start_idx < len(landmarks) and end_idx < len(landmarks):
                 start_landmark = landmarks[start_idx]
                 end_landmark = landmarks[end_idx]
-                
                 start_point = (int(start_landmark.x * width), int(start_landmark.y * height))
                 end_point = (int(end_landmark.x * width), int(end_landmark.y * height))
-                
                 cv2.line(annotated_image, start_point, end_point, connection_color, connection_thickness)
-    
     return annotated_image
 
 def draw_face_landmarks_on_image(rgb_image: np.ndarray, detection_result) -> np.ndarray:
