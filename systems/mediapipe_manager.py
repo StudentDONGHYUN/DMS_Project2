@@ -23,6 +23,7 @@ from collections import deque
 import time
 import cv2
 import mediapipe as mp
+import platform
 # MediaPipe Tasks API imports
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision, audio, text
@@ -174,29 +175,52 @@ class AdvancedMediaPipeManager:
         except Exception as e:
             logger.warning(f"설정 파일 로드 실패: {e}")
 
+    def _detect_dsp(self):
+        """RB2 등 DSP(Hexagon) 감지: 실제 환경에 맞게 확장 필요"""
+        # 예시: /proc/cpuinfo, lscpu, 환경변수 등으로 DSP 감지
+        try:
+            with open('/proc/cpuinfo', 'r') as f:
+                cpuinfo = f.read().lower()
+                if 'hexagon' in cpuinfo or 'dsp' in cpuinfo:
+                    return 'HEXAGON'
+        except Exception:
+            pass
+        # 환경변수 등 추가 감지 로직 필요시 확장
+        return None
+
     async def initialize_task(self, task_type: TaskType) -> bool:
-        """개별 Task 초기화"""
+        """개별 Task 초기화 (DSP 감지 및 delegate 적용)"""
         if task_type in self.active_tasks:
             logger.warning(f"{task_type.value} 이미 초기화됨")
             return True
-        
         config = self.task_configs.get(task_type)
         if not config:
             logger.error(f"{task_type.value} 설정 없음")
             return False
-        
         try:
             # 모델 파일 존재 확인
             if not Path(config.model_path).exists():
                 logger.warning(f"모델 파일 없음: {config.model_path}")
                 return False
-            
-            # Base options 설정
-            base_options = python.BaseOptions(
-                model_asset_path=config.model_path
-            )
-            
-            # Task별 초기화
+
+            # DSP 감지
+            dsp_type = self._detect_dsp()
+            base_options_kwargs = dict(model_asset_path=config.model_path)
+            if dsp_type == 'HEXAGON':
+                # MediaPipe Python API에서 공식 지원 여부 확인 필요
+                try:
+                    # 예시: Delegate 옵션이 존재할 경우 적용
+                    from mediapipe.tasks.python.core.base_options import BaseOptions
+                    if hasattr(BaseOptions, 'Delegate') and hasattr(BaseOptions.Delegate, 'HEXAGON'):
+                        base_options_kwargs['delegate'] = BaseOptions.Delegate.HEXAGON
+                        logger.info("Hexagon DSP 감지됨: delegate=HEXAGON 적용")
+                    else:
+                        logger.warning("Python API에서 HEXAGON delegate 미지원. 최신 MediaPipe/TF Lite 설치 필요.")
+                except Exception as e:
+                    logger.warning(f"Delegate 옵션 적용 실패: {e}")
+            base_options = python.BaseOptions(**base_options_kwargs)
+
+            # Task별 초기화 (이하 기존 코드)
             if task_type == TaskType.FACE_LANDMARKER:
                 task = await self._initialize_face_landmarker(base_options, config)
             elif task_type == TaskType.POSE_LANDMARKER:
@@ -212,17 +236,14 @@ class AdvancedMediaPipeManager:
             else:
                 logger.error(f"지원되지 않는 Task 타입: {task_type}")
                 return False
-            
             if task:
                 self.active_tasks[task_type] = task
                 self.task_health[task_type] = True
                 logger.info(f"✅ {task_type.value} 초기화 완료")
                 return True
-                
         except Exception as e:
             logger.error(f"❌ {task_type.value} 초기화 실패: {e}")
             self.task_health[task_type] = False
-            
         return False
 
     async def _initialize_face_landmarker(self, base_options, config):
