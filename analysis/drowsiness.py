@@ -37,9 +37,21 @@ class EnhancedDrowsinessDetector:
             }
         )
 
+        # --- 개선: 변화 감지 기반 임계값 재캘리브레이션 ---
         if len(self.ear_history) >= self.calibration_frames and not self.is_calibrated:
             self._update_personalized_threshold()
             self.is_calibrated = True
+        elif self.is_calibrated and len(self.ear_history) >= 1800:  # 10분 이상 데이터가 쌓였을 때만
+            # 최근 5분(900프레임)과 그 이전 5분(900프레임) 분포 비교
+            recent_ears = [frame["ear"] for frame in list(self.ear_history)[-900:]]
+            prev_ears = [frame["ear"] for frame in list(self.ear_history)[-1800:-900]]
+            if len(prev_ears) == 900:
+                mean_recent, std_recent = np.mean(recent_ears), np.std(recent_ears)
+                mean_prev, std_prev = np.mean(prev_ears), np.std(prev_ears)
+                # 변화 임계값: 평균 0.03, 표준편차 0.02
+                if abs(mean_recent - mean_prev) > 0.03 or abs(std_recent - std_prev) > 0.02:
+                    self._update_personalized_threshold()
+                    logger.info(f"EAR 분포 변화 감지: 재캘리브레이션 수행 (mean {mean_prev:.3f}->{mean_recent:.3f}, std {std_prev:.3f}->{std_recent:.3f})")
 
         drowsiness_probability = self.temporal_attention.predict(
             self.ear_history, self.personalized_threshold or 0.25
