@@ -20,10 +20,10 @@ from core.interfaces import (
 )
 
 # 실제 구현 클래스들 import (예시)
-from analysis.processors.face_processor_s_class import FaceDataProcessor
-from analysis.processors.pose_processor_s_class import PoseDataProcessor
-from analysis.processors.hand_processor_s_class import HandDataProcessor
-from analysis.processors.object_processor_s_class import ObjectDataProcessor
+from analysis.processors.face_processor import FaceDataProcessor
+from analysis.processors.pose_processor import PoseDataProcessor
+from analysis.processors.hand_processor import HandDataProcessor
+from analysis.processors.object_processor import ObjectDataProcessor
 from analysis.fusion.multimodal_fusion import MultiModalFusionEngine
 from analysis.orchestrator.analysis_orchestrator import AnalysisOrchestrator
 
