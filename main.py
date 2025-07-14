@@ -13,6 +13,8 @@ from core.definitions import CameraPosition
 from integration.integrated_system import AnalysisSystemType
 import logging
 
+from app import DMSApp
+
 # S-Class v19.0 혁신 기능 Import
 from systems.ai_driving_coach import AIDrivingCoach
 from systems.v2d_healthcare import V2DHealthcareSystem
@@ -1095,14 +1097,11 @@ def main():
     try:
         if GUI_AVAILABLE:
             root = tk.Tk()
-            
-            # 테마 설정 시도
             try:
                 root.tk.call("source", "azure.tcl")
                 root.tk.call("set_theme", "light")
             except tk.TclError:
                 pass
-            
             gui_setup = SClass_DMS_GUI_Setup(root)
             root.mainloop()
             config = gui_setup.config
@@ -1116,10 +1115,8 @@ def main():
             print(f" 시스템 모드: {config['system_type'].value}")
             print(f" 레거시 엔진: {'활성화' if config['use_legacy_engine'] else '비활성화'}")
             print("=" * 70)
-            edition = config["edition"]  # 항상 config에서만 읽음
-            app = SClassDMSv19Enhanced(user_id=config["user_id"], edition=edition)
-            # 실행 메서드 없음. 필요시 안내 메시지 출력
-            print("✅ S-Class DMS v19.0 시스템이 성공적으로 초기화되었습니다. (실행 루프는 GUI에서만 지원됩니다.)")
+            app = DMSApp(**config)
+            app.run()
         else:
             print("\n❌ 설정이 취소되어 프로그램을 종료합니다.")
 
