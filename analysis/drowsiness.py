@@ -111,12 +111,48 @@ class EnhancedDrowsinessDetector:
             "temporal_attention_score": drowsiness_probability,
         }
 
+    def _euclidean_distance_3d(self, p1, p2):
+        return ((p1.x - p2.x)**2 + (p1.y - p2.y)**2 + (p1.z - p2.z)**2)**0.5
+
+    def _euclidean_distance_3d_sq(self, p1, p2):
+        return (p1.x - p2.x)**2 + (p1.y - p2.y)**2 + (p1.z - p2.z)**2
+
+    def is_eye_closed_enhanced_fast(self, landmarks, eye_side, threshold):
+        """
+        3쌍의 수직거리를 사용하는 Enhanced EAR 공식을 최적화하여 눈 감김을 빠르게 판정합니다.
+        (v1+v2+v3)^2 < 9 * h^2 * threshold^2
+        """
+        # 예시 인덱스: 실제 모델에 맞게 조정 필요
+        if eye_side == "left":
+            p_h_1, p_h_2 = landmarks[33], landmarks[133]  # 수평선
+            p_v1_1, p_v1_2 = landmarks[159], landmarks[145]  # 수직선 1
+            p_v2_1, p_v2_2 = landmarks[160], landmarks[144]  # 수직선 2 (가운데)
+            p_v3_1, p_v3_2 = landmarks[161], landmarks[143]  # 수직선 3
+        else:  # 오른쪽 눈
+            p_h_1, p_h_2 = landmarks[362], landmarks[263]  # 수평선
+            p_v1_1, p_v1_2 = landmarks[386], landmarks[374]  # 수직선 1
+            p_v2_1, p_v2_2 = landmarks[387], landmarks[373]  # 수직선 2 (가운데)
+            p_v3_1, p_v3_2 = landmarks[388], landmarks[372]  # 수직선 3
+        try:
+            vertical_1 = self._euclidean_distance_3d(p_v1_1, p_v1_2)
+            vertical_2 = self._euclidean_distance_3d(p_v2_1, p_v2_2)
+            vertical_3 = self._euclidean_distance_3d(p_v3_1, p_v3_2)
+            horizontal_sq = self._euclidean_distance_3d_sq(p_h_1, p_h_2)
+            if horizontal_sq > 1e-6:
+                numerator_sq = (vertical_1 + vertical_2 + vertical_3) ** 2
+                rhs = 9.0 * horizontal_sq * (threshold ** 2)
+                return numerator_sq < rhs
+            else:
+                return False
+        except (IndexError, TypeError):
+            return False
+
     def _calculate_enhanced_ear(self, landmarks, eye_side):
+        # 기존 방식(EAR 값 자체 반환, 하위 호환)
         if eye_side == "left":
             eye_points = [33, 7, 163, 144, 145, 153]
         else:
             eye_points = [362, 382, 381, 380, 374, 373]
-
         try:
             eye_landmarks = [landmarks[i] for i in eye_points]
             vertical_1 = self._euclidean_distance(eye_landmarks[1], eye_landmarks[5])
