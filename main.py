@@ -25,7 +25,6 @@ from systems.digital_twin_platform import DigitalTwinPlatform
 # S-Class v19.0 관련 Import
 from config.settings import get_config, FeatureFlagConfig
 from models.data_structures import UIState
-from io_handler.ui import UIHandler
 
 # 로깅 시스템 설정
 setup_logging_system()
