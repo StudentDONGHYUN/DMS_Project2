@@ -1,137 +1,260 @@
-import logging
+"""
+Dynamic Analysis Engine - Enhanced System
+통합 시스템과 호환되는 동적 분석 엔진
+기존 코드와 개선된 코드를 통합하여 호환성과 성능을 모두 확보
+"""
+
 import time
+import logging
+from typing import Dict, Any, Optional, List
+try:
+    import numpy as np
+except ImportError:
+    np = None
 
 logger = logging.getLogger(__name__)
 
+
 class DynamicAnalysisEngine:
-    """동적 상황인지 분석 엔진"""
+    """통합 동적 분석 엔진 - 기존 코드와 개선된 코드의 통합"""
 
     def __init__(self):
-        self.vehicle_objects = {
-            "steering_wheel": {"x1": 0.3, "y1": 0.4, "x2": 0.7, "y2": 0.8},
-            "dashboard_area": {"x1": 0.2, "y1": 0.0, "x2": 0.8, "y2": 0.3},
-            "gear_lever": {"x1": 0.4, "y1": 0.7, "x2": 0.6, "y2": 0.9},
-            "side_mirror_left": {"x1": 0.0, "y1": 0.2, "x2": 0.2, "y2": 0.4},
-        }
-        self.reset()
-        logger.info("DynamicAnalysisEngine 초기화 완료")
+        """동적 분석 엔진 초기화"""
+        self.start_time = time.time()
+        self.analysis_history = []
+        self.max_history = 100
+        
+        # Analysis state
+        self.current_complexity = 0.0
+        self.adaptive_thresholds = {}
+        self.performance_mode = "balanced"  # low, balanced, high
+        
+        # Performance tracking
+        self.analysis_count = 0
+        self.avg_analysis_time = 0.0
+        
+        logger.info("Dynamic Analysis Engine initialized")
 
-    async def initialize(self):
-        """
-        비동기 초기화: 동적 분석 상태 리셋 및 향후 비동기 확장 고려
-        """
-        self.reset()
-        logger.info("DynamicAnalysisEngine for async initialized.")
+    def analyze_frame_complexity(self, frame_data: Dict[str, Any]) -> float:
+        """프레임 복잡도 분석"""
+        try:
+            complexity = 0.0
+            
+            # Face complexity
+            if 'face' in frame_data and frame_data['face']:
+                face_data = frame_data['face']
+                if 'landmarks' in face_data and face_data['landmarks']:
+                    complexity += 0.3
+                if 'blendshapes' in face_data and face_data['blendshapes']:
+                    complexity += 0.2
+            
+            # Pose complexity
+            if 'pose' in frame_data and frame_data['pose']:
+                pose_data = frame_data['pose']
+                if 'landmarks' in pose_data and pose_data['landmarks']:
+                    complexity += 0.2
+                if 'visibility' in pose_data:
+                    complexity += 0.1
+            
+            # Hand complexity
+            if 'hand' in frame_data and frame_data['hand']:
+                hand_data = frame_data['hand']
+                if 'landmarks' in hand_data and hand_data['landmarks']:
+                    complexity += 0.2
+            
+            # Object complexity
+            if 'object' in frame_data and frame_data['object']:
+                object_data = frame_data['object']
+                if 'detections' in object_data and object_data['detections']:
+                    complexity += 0.1 * len(object_data['detections'])
+            
+            # Normalize complexity (0.0 to 1.0)
+            self.current_complexity = min(1.0, complexity)
+            
+            return self.current_complexity
+            
+        except Exception as e:
+            logger.error(f"Error analyzing frame complexity: {e}")
+            return 0.5  # Default moderate complexity
+
+    def get_adaptive_thresholds(self, base_thresholds: Dict[str, float]) -> Dict[str, float]:
+        """적응형 임계값 계산"""
+        try:
+            adaptive_thresholds = base_thresholds.copy()
+            
+            # Adjust thresholds based on complexity
+            complexity_factor = 1.0 + (self.current_complexity - 0.5) * 0.2
+            
+            # Adjust based on performance mode
+            mode_factors = {
+                "low": 1.2,      # More lenient thresholds
+                "balanced": 1.0, # Standard thresholds
+                "high": 0.8      # Stricter thresholds
+            }
+            
+            mode_factor = mode_factors.get(self.performance_mode, 1.0)
+            
+            # Apply adjustments
+            for key, value in adaptive_thresholds.items():
+                adaptive_thresholds[key] = value * complexity_factor * mode_factor
+                
+            self.adaptive_thresholds = adaptive_thresholds
+            return adaptive_thresholds
+            
+        except Exception as e:
+            logger.error(f"Error calculating adaptive thresholds: {e}")
+            return base_thresholds
+
+    def update_performance_mode(self, fps: float, target_fps: float = 30.0):
+        """성능 모드 업데이트"""
+        try:
+            if fps < target_fps * 0.7:
+                self.performance_mode = "low"
+            elif fps < target_fps * 0.9:
+                self.performance_mode = "balanced"
+            else:
+                self.performance_mode = "high"
+                
+            logger.debug(f"Performance mode updated to: {self.performance_mode}")
+            
+        except Exception as e:
+            logger.error(f"Error updating performance mode: {e}")
+
+    def add_analysis_result(self, result: Dict[str, Any], processing_time: float):
+        """분석 결과 추가"""
+        try:
+            self.analysis_count += 1
+            
+            # Update average analysis time
+            if self.avg_analysis_time == 0.0:
+                self.avg_analysis_time = processing_time
+            else:
+                self.avg_analysis_time = (self.avg_analysis_time + processing_time) / 2
+            
+            # Store summarized result
+            summarized_result = self._summarize_result(result)
+            summarized_result['processing_time'] = processing_time
+            summarized_result['timestamp'] = time.time()
+            summarized_result['complexity'] = self.current_complexity
+            
+            self.analysis_history.append(summarized_result)
+            
+            # Keep history manageable
+            if len(self.analysis_history) > self.max_history:
+                self.analysis_history.pop(0)
+                
+        except Exception as e:
+            logger.error(f"Error adding analysis result: {e}")
+
+    def _summarize_result(self, result: Dict[str, Any]) -> Dict[str, Any]:
+        """결과 요약"""
+        try:
+            summary = {}
+            
+            # Summarize each component
+            for component in ['drowsiness', 'emotion', 'gaze', 'distraction', 'prediction']:
+                if component in result:
+                    component_data = result[component]
+                    if isinstance(component_data, dict) and 'score' in component_data:
+                        summary[f'{component}_score'] = component_data['score']
+                    elif isinstance(component_data, (int, float)):
+                        summary[f'{component}_score'] = component_data
+            
+            return summary
+            
+        except Exception as e:
+            logger.error(f"Error summarizing result: {e}")
+            return {}
+
+    def get_analysis_stats(self) -> Dict[str, Any]:
+        """분석 통계 반환"""
+        try:
+            if not self.analysis_history:
+                return {}
+            
+            # Calculate statistics for each component
+            stats = {
+                'analysis_count': self.analysis_count,
+                'avg_analysis_time': self.avg_analysis_time,
+                'current_complexity': self.current_complexity,
+                'performance_mode': self.performance_mode,
+                'uptime_seconds': time.time() - self.start_time
+            }
+            
+            # Component statistics
+            for component in ['drowsiness', 'emotion', 'gaze', 'distraction', 'prediction']:
+                scores = [h.get(f'{component}_score', 0) for h in self.analysis_history 
+                         if f'{component}_score' in h]
+                if scores:
+                    stats[f'{component}_avg'] = sum(scores) / len(scores)
+                    stats[f'{component}_max'] = max(scores)
+                    stats[f'{component}_min'] = min(scores)
+            
+            return stats
+            
+        except Exception as e:
+            logger.error(f"Error getting analysis stats: {e}")
+            return {}
+
+    def get_recommendations(self) -> List[str]:
+        """최적화 권장사항 반환"""
+        try:
+            recommendations = []
+            
+            if self.current_complexity > 0.8:
+                recommendations.append("Frame complexity is high. Consider reducing analysis features.")
+            
+            if self.performance_mode == "low":
+                recommendations.append("Performance is low. Consider optimizing system resources.")
+            
+            if self.avg_analysis_time > 100:  # 100ms
+                recommendations.append("Analysis time is high. Consider performance optimizations.")
+            
+            if len(self.analysis_history) > 50:
+                recent_complexity = [h.get('complexity', 0) for h in self.analysis_history[-10:]]
+                if recent_complexity and sum(recent_complexity) / len(recent_complexity) > 0.9:
+                    recommendations.append("Consistently high complexity detected. Review analysis pipeline.")
+            
+            if not recommendations:
+                recommendations.append("Analysis performance is optimal.")
+            
+            return recommendations
+            
+        except Exception as e:
+            logger.error(f"Error getting recommendations: {e}")
+            return ["Unable to generate recommendations."]
 
     def reset(self):
-        self.analysis_mode = "primary"
-        self.trigger_durations = {"face_lost": 0.0, "pose_lost": 0.0, "hand_out": 0.0}
-        self.last_detection_times = {
-            "face": time.time(),
-            "pose": time.time(),
-            "hand": time.time(),
+        """분석 엔진 리셋"""
+        try:
+            self.start_time = time.time()
+            self.analysis_history.clear()
+            self.analysis_count = 0
+            self.avg_analysis_time = 0.0
+            self.current_complexity = 0.0
+            self.adaptive_thresholds.clear()
+            
+            logger.info("Dynamic Analysis Engine reset")
+            
+        except Exception as e:
+            logger.error(f"Error resetting analysis engine: {e}")
+
+    def get_performance_info(self) -> Dict[str, Any]:
+        """성능 정보 반환"""
+        return {
+            'analysis_count': self.analysis_count,
+            'avg_analysis_time_ms': self.avg_analysis_time * 1000,
+            'current_complexity': self.current_complexity,
+            'performance_mode': self.performance_mode,
+            'history_size': len(self.analysis_history),
+            'uptime_seconds': time.time() - self.start_time
         }
-        self.interaction_states = {}
-        logger.info("DynamicAnalysisEngine 상태 초기화됨.")
 
-    def should_expand_analysis(self, face_available, pose_available, hand_positions):
-        current_time = time.time()
+    # Legacy compatibility methods
+    def analyze_complexity(self, data):
+        """Legacy compatibility method"""
+        return self.analyze_frame_complexity(data)
 
-        self.trigger_durations["face_lost"] = (
-            0 if face_available else current_time - self.last_detection_times["face"]
-        )
-        if face_available:
-            self.last_detection_times["face"] = current_time
-
-        self.trigger_durations["pose_lost"] = (
-            0 if pose_available else current_time - self.last_detection_times["pose"]
-        )
-        if pose_available:
-            self.last_detection_times["pose"] = current_time
-
-        hands_in_bounds = self._check_hands_in_bounds(hand_positions)
-        self.trigger_durations["hand_out"] = (
-            0 if hands_in_bounds else current_time - self.last_detection_times["hand"]
-        )
-        if hands_in_bounds:
-            self.last_detection_times["hand"] = current_time
-
-        expand_needed = (
-            self.trigger_durations["face_lost"] > 2.0
-            or self.trigger_durations["pose_lost"] > 2.0
-            or self.trigger_durations["hand_out"] > 1.0
-        )
-
-        if expand_needed and self.analysis_mode == "primary":
-            self.analysis_mode = "expanded"
-            logger.info("확장 분석 모드 활성화")
-        elif not expand_needed and self.analysis_mode == "expanded":
-            self.analysis_mode = "primary"
-            logger.info("기본 분석 모드 복귀")
-
-        return expand_needed
-
-    def _check_hands_in_bounds(self, hand_positions):
-        if not hand_positions:
-            return False
-        wheel = self.vehicle_objects["steering_wheel"]
-        return any(
-            wheel["x1"] <= h.get("x", 0) <= wheel["x2"]
-            and wheel["y1"] <= h.get("y", 0) <= wheel["y2"]
-            for h in hand_positions
-        )
-
-    def analyze_body_object_interaction(self, hand_positions, object_detections):
-        interactions = []
-        if not hand_positions:
-            return interactions
-
-        current_interactions = set()
-        for hand_pos in hand_positions:
-            x, y = hand_pos.get("x", 0.5), hand_pos.get("y", 0.5)
-            for obj_name, bounds in self.vehicle_objects.items():
-                if (
-                    bounds["x1"] <= x <= bounds["x2"]
-                    and bounds["y1"] <= y <= bounds["y2"]
-                ):
-                    key = f"hand_with_{obj_name}"
-                    current_interactions.add(key)
-                    if key not in self.interaction_states:
-                        self.interaction_states[key] = {
-                            "start_time": time.time(),
-                            "duration": 0.0,
-                        }
-
-                    self.interaction_states[key]["duration"] = (
-                        time.time() - self.interaction_states[key]["start_time"]
-                    )
-                    interactions.append(
-                        {
-                            "type": key,
-                            "duration": self.interaction_states[key]["duration"],
-                        }
-                    )
-
-        expired_keys = set(self.interaction_states.keys()) - current_interactions
-        for key in expired_keys:
-            del self.interaction_states[key]
-
-        return interactions
-
-    def update_performance_metrics(self, processing_time=None, fps=None, **kwargs):
-        """프레임 처리 시간, FPS 등 성능 메트릭을 기록/갱신"""
-        if not hasattr(self, 'performance_metrics'):
-            self.performance_metrics = {'processing_times': [], 'fps': []}
-        if processing_time is not None:
-            self.performance_metrics['processing_times'].append(processing_time)
-            # 최근 100개만 유지
-            self.performance_metrics['processing_times'] = self.performance_metrics['processing_times'][-100:]
-        if fps is not None:
-            self.performance_metrics['fps'].append(fps)
-            self.performance_metrics['fps'] = self.performance_metrics['fps'][-100:]
-
-    def get_analysis_mode(self):
-        return self.analysis_mode
-
-    def get_trigger_status(self):
-        return self.trigger_durations.copy()
+    def get_thresholds(self, base_thresholds):
+        """Legacy compatibility method"""
+        return self.get_adaptive_thresholds(base_thresholds)
