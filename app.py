@@ -277,6 +277,7 @@ class DMSApp:
             logger.info("[수정] app.py: run - S-Class DMS 시스템 초기화 완료")
             await asyncio.sleep(0.1)
             frame_count = 0
+            last_perf_log_time = time.time()
             while not stop_event.is_set():
                 frame = self.video_input_manager.get_frame()
                 if frame is None:
@@ -287,7 +288,9 @@ class DMSApp:
                 if hasattr(frame, 'flags'):
                     frame.flags.writeable = False
                 # (여기서 MediaPipe 처리/분석이 실제로 일어나는 경우에만 적용)
-                annotated_frame = self._create_basic_info_overlay(frame, frame_count)
+                # --- [성능 통계 수집] ---
+                perf_stats = self.mediapipe_manager.get_performance_stats()
+                annotated_frame = self._create_basic_info_overlay(frame, frame_count, perf_stats)
                 if annotated_frame is not None:
                     try:
                         frame_queue.put_nowait(annotated_frame)
@@ -298,6 +301,13 @@ class DMSApp:
                             frame_queue.put_nowait(annotated_frame)
                         except queue.Empty:
                             pass
+                # --- [성능 최적화 자동 호출] ---
+                if frame_count % 30 == 0:
+                    processing_time = 0.0  # 실제 처리 시간 측정 필요시 측정값 사용
+                    fps = perf_stats.get("fps", 0.0)
+                    self.performance_monitor.log_performance(processing_time, fps)
+                    self.mediapipe_manager.adjust_dynamic_resources()
+                    self._perform_memory_cleanup()
                 await asyncio.sleep(0.010)
             try:
                 frame_queue.put(None, timeout=0.1)
@@ -309,9 +319,12 @@ class DMSApp:
         stop_event.set()
         display_thread.join()
 
-    def _create_basic_info_overlay(self, frame, frame_count):
-        # 예시: 프레임 번호만 표시
+    def _create_basic_info_overlay(self, frame, frame_count, perf_stats=None):
+        # 예시: 프레임 번호 및 FPS 표시
         cv2.putText(frame, f"Frame: {frame_count}", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+        if perf_stats is not None:
+            fps = perf_stats.get("fps", 0.0)
+            cv2.putText(frame, f"FPS: {fps:.1f}", (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 0), 2)
         return frame
 
     def _perform_memory_cleanup(self):

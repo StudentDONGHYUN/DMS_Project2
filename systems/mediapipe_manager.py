@@ -401,24 +401,22 @@ class AdvancedMediaPipeManager:
         프레임 처리 - 모든 활성 Task에서 동시 처리
         """
         start_time = time.time()
-        
         # FPS 계산
         self._calculate_fps()
-        
+        # 동적 리소스 관리: 30프레임마다 자동 호출
+        if self.fps_counter % 30 == 0:
+            self.adjust_dynamic_resources()
         # 타임스탬프 생성
         timestamp_ms = int(time.time() * 1000)
         if timestamp_ms <= self.last_timestamp:
             timestamp_ms = self.last_timestamp + 1
         self.last_timestamp = timestamp_ms
-        
         try:
             # BGR to RGB 변환
             rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb_frame)
-            
             # 모든 활성 Task에서 비동기 처리
             processing_tasks = []
-            
             for task_type, task in self.active_tasks.items():
                 if self.task_health.get(task_type, False):
                     try:
@@ -429,16 +427,12 @@ class AdvancedMediaPipeManager:
                     except Exception as e:
                         logger.warning(f"{task_type.value} 처리 오류: {e}")
                         self.task_health[task_type] = False
-            
             # 처리 시간 기록
             processing_time = time.time() - start_time
             self.frame_processing_times.append(processing_time)
-            
             # deque가 자동으로 maxlen 관리하므로 수동 제거 불필요
-            
         except Exception as e:
             logger.error(f"프레임 처리 오류: {e}")
-        
         return self.latest_results.copy()
 
     def _calculate_fps(self):
