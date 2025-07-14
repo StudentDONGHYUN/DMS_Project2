@@ -102,6 +102,8 @@ class AdvancedMediaPipeManager:
         if config_file:
             self._load_config_file(config_file)
         
+        self.is_embedded = self._detect_dsp() == 'HEXAGON'
+        
         logger.info("AdvancedMediaPipeManager v2.0 (최적화) 초기화 완료")
 
     def ensure_model_directory(self):
@@ -415,9 +417,8 @@ class AdvancedMediaPipeManager:
             logger.error(f"Analysis engine 전달 오류 ({task_type.value}): {e}")
 
     async def process_frame(self, frame: np.ndarray) -> Dict[TaskType, Any]:
-        """
-        프레임 처리 - 입력은 반드시 numpy(ndarray)여야 함 (UMat 금지)
-        """
+        if self.is_embedded:
+            return await self.process_frame_embedded(frame)
         if isinstance(frame, cv2.UMat):
             try:
                 frame = frame.get()
@@ -451,6 +452,104 @@ class AdvancedMediaPipeManager:
         except Exception as e:
             logger.error(f"프레임 처리 오류: {e}")
         return self.latest_results.copy()
+
+    async def process_frame_embedded(self, frame: np.ndarray) -> Dict[TaskType, Any]:
+        # 1. PoseLandmarker 먼저 실행 (동기/await)
+        pose_task = self.active_tasks.get(TaskType.POSE_LANDMARKER)
+        if not pose_task:
+            logger.error("PoseLandmarker가 초기화되지 않음")
+            return {}
+        rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb_frame)
+        timestamp_ms = int(time.time() * 1000)
+        pose_result = await asyncio.get_event_loop().run_in_executor(
+            None, lambda: pose_task.detect(mp_image)
+        )
+        # 2. ROI 추출 (얼굴/손)
+        face_roi = self.extract_face_roi(pose_result, frame)
+        hand_roi = self.extract_hand_roi(pose_result, frame)
+        # 3. ROI crop & mp.Image 변환
+        face_mp_image = self.crop_and_convert_to_mp_image(frame, face_roi)
+        hand_mp_image = self.crop_and_convert_to_mp_image(frame, hand_roi)
+        # 4. Face/Hand Landmarker 비동기 실행
+        face_task = self.active_tasks.get(TaskType.FACE_LANDMARKER)
+        hand_task = self.active_tasks.get(TaskType.HAND_LANDMARKER)
+        results = {}
+        async def run_landmarker(task, mp_img, task_type):
+            if not task or mp_img is None:
+                return None
+            try:
+                return await asyncio.get_event_loop().run_in_executor(
+                    None, lambda: task.detect(mp_img)
+                )
+            except Exception as e:
+                logger.error(f"{task_type.value} ROI 추론 오류: {e}")
+                return None
+        face_result, hand_result = await asyncio.gather(
+            run_landmarker(face_task, face_mp_image, TaskType.FACE_LANDMARKER),
+            run_landmarker(hand_task, hand_mp_image, TaskType.HAND_LANDMARKER)
+        )
+        results[TaskType.POSE_LANDMARKER] = pose_result
+        results[TaskType.FACE_LANDMARKER] = face_result
+        results[TaskType.HAND_LANDMARKER] = hand_result
+        return results
+
+    def extract_face_roi(self, pose_result, frame):
+        # 예시: 코, 눈, 귀 등 keypoint 평균으로 얼굴 bbox 산출
+        # 실제 구현은 pose_result의 landmark 구조에 맞게 보정 필요
+        try:
+            if not hasattr(pose_result, 'pose_landmarks') or not pose_result.pose_landmarks:
+                return None
+            landmarks = pose_result.pose_landmarks[0]  # 첫 번째 사람
+            # 코(0), 왼눈(1), 오른눈(2), 왼귀(3), 오른귀(4) 등 사용
+            xs = [l.x for l in landmarks[:5]]
+            ys = [l.y for l in landmarks[:5]]
+            h, w = frame.shape[:2]
+            x_min = max(0, int(min(xs) * w) - 20)
+            x_max = min(w, int(max(xs) * w) + 20)
+            y_min = max(0, int(min(ys) * h) - 20)
+            y_max = min(h, int(max(ys) * h) + 20)
+            return (x_min, y_min, x_max, y_max)
+        except Exception as e:
+            logger.error(f"얼굴 ROI 추출 오류: {e}")
+            return None
+
+    def extract_hand_roi(self, pose_result, frame):
+        # 예시: 왼손(15), 오른손(16) keypoint 기준
+        try:
+            if not hasattr(pose_result, 'pose_landmarks') or not pose_result.pose_landmarks:
+                return None
+            landmarks = pose_result.pose_landmarks[0]
+            h, w = frame.shape[:2]
+            # 왼손
+            lx, ly = landmarks[15].x, landmarks[15].y
+            # 오른손
+            rx, ry = landmarks[16].x, landmarks[16].y
+            size = 60  # ROI 크기(픽셀)
+            rois = []
+            for x, y in [(lx, ly), (rx, ry)]:
+                cx, cy = int(x * w), int(y * h)
+                x_min = max(0, cx - size)
+                x_max = min(w, cx + size)
+                y_min = max(0, cy - size)
+                y_max = min(h, cy + size)
+                rois.append((x_min, y_min, x_max, y_max))
+            # 두 손 중 프레임 내에 있는 손만 반환(여기선 첫 번째 손만 예시)
+            return rois[0] if rois else None
+        except Exception as e:
+            logger.error(f"손 ROI 추출 오류: {e}")
+            return None
+
+    def crop_and_convert_to_mp_image(self, frame, roi):
+        # ROI 영역 crop 후 mp.Image로 변환
+        if roi is None:
+            return None
+        x_min, y_min, x_max, y_max = roi
+        crop = frame[y_min:y_max, x_min:x_max]
+        if crop.size == 0:
+            return None
+        rgb_crop = cv2.cvtColor(crop, cv2.COLOR_BGR2RGB)
+        return mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb_crop)
 
     def _calculate_fps(self):
         """FPS 계산"""
