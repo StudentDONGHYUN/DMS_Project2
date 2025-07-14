@@ -28,10 +28,18 @@ class EmotionRecognitionSystem:
 
         blendshapes_dict = {cat.category_name: cat.score for cat in face_blendshapes}
         au_features = self._map_blendshapes_to_aus(blendshapes_dict)
-        emotion_result = self.emotion_classifier.classify(au_features)
-        stress_level = self.stress_detector.detect(au_features, blendshapes_dict)
         arousal = self._calculate_arousal(au_features, blendshapes_dict)
         valence = self._calculate_valence(au_features, blendshapes_dict)
+        stress_level = self.stress_detector.detect(au_features, blendshapes_dict)
+
+        # --- 계층적(2단계) 감정 분석 구조 적용 ---
+        # 1단계: Valence/Arousal만으로 중립/안정 판단 (0.4~0.6 범위)
+        if 0.4 < valence < 0.6 and 0.4 < arousal < 0.6:
+            # 중립/안정 상태로 간주, 세부 감정 분석 생략
+            emotion_result = {"emotion": EmotionState.NEUTRAL, "confidence": 1.0}
+        else:
+            # 2단계: 세부 감정 분석
+            emotion_result = self.emotion_classifier.classify(au_features)
 
         self.emotion_history.append(
             {
