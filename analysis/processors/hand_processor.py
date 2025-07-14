@@ -107,7 +107,11 @@ class HandDataProcessor(IHandDataProcessor):
             handedness = hand_results.handedness[i][0].category_name
 
             kinematics = self._analyze_hand_kinematics(landmarks, handedness, timestamp)
-            tremor_analysis = self._analyze_tremor_frequency(handedness)
+            # 손이 정지 상태(velocity_magnitude < 0.01)일 때만 FFT 분석
+            if kinematics['velocity_magnitude'] < 0.01:
+                tremor_analysis = self._analyze_tremor_frequency(handedness)
+            else:
+                tremor_analysis = {'dominant_frequency_hz': 0.0, 'fatigue_tremor_power': 0.0, 'tremor_severity': 'none'}
             zone_analysis = self._analyze_hand_zone(landmarks[0]) # Based on wrist
             grip_analysis = self._analyze_grip_type_and_quality(landmarks)
             gesture = self._infer_hand_gesture(kinematics, zone_analysis, grip_analysis)
