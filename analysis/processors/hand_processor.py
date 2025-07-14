@@ -187,16 +187,26 @@ class HandDataProcessor(IHandDataProcessor):
         }
 
     def _analyze_tremor_frequency(self, handedness: str) -> Dict[str, Any]:
-        """Advanced: FFT-based hand tremor frequency analysis"""
+        """Advanced: FFT-based hand tremor frequency analysis with time interval downsampling (0.1s, 10Hz)"""
         hand_config = self.config.hand
         history = self.hand_kinematics_history[handedness]
         if len(history) < hand_config.fft_min_samples:
             return {'dominant_frequency_hz': 0.0, 'fatigue_tremor_power': 0.0, 'tremor_severity': 'none'}
 
-        y_positions = np.array([h[1][1] for h in history])
-        timestamps = np.array([h[0] for h in history])
+        # 시간 간격 기반 다운 샘플링 (0.1초 이상 차이날 때만 샘플)
+        min_interval = 0.1  # 0.1초(10Hz)
+        downsampled_y = []
+        downsampled_t = []
+        last_t = None
+        for t, pos, *_ in history:
+            if last_t is None or t - last_t >= min_interval:
+                downsampled_t.append(t)
+                downsampled_y.append(pos[1])  # y좌표
+                last_t = t
+        y_positions = np.array(downsampled_y)
+        timestamps = np.array(downsampled_t)
 
-        time_delta = timestamps[-1] - timestamps[0]
+        time_delta = timestamps[-1] - timestamps[0] if len(timestamps) > 1 else 0.0
         if len(timestamps) < 2 or time_delta < MathConstants.EPSILON:
             return {'dominant_frequency_hz': 0.0, 'fatigue_tremor_power': 0.0, 'tremor_severity': 'none'}
 
