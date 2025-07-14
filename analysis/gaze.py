@@ -6,8 +6,8 @@ from core.definitions import GazeZone
 
 logger = logging.getLogger(__name__)
 
-class EnhancedSphericalGazeClassifier:
-    """향상된 3D 구 형상 시선 분석 모델 (동적 분류 방식 지원)"""
+class GazeZoneClassifier:
+    """시선 구역 분류기 (3D/LUT/BBox 동적 지원)"""
 
     def __init__(self, mode='3d'):
         # mode: '3d', 'lut', 'bbox' 중 선택
@@ -32,7 +32,7 @@ class EnhancedSphericalGazeClassifier:
         self.lut = self._build_lut()
         # BBox(경계상자) 예시: (yaw_min, yaw_max, pitch_min, pitch_max, zone)
         self.bboxes = self._define_bboxes()
-        logger.info(f"EnhancedSphericalGazeClassifier 초기화: {len(self.zones)}개 구역 정의됨, mode={self.mode}")
+        logger.info(f"GazeZoneClassifier 초기화: {len(self.zones)}개 구역 정의됨, mode={self.mode}")
 
     def set_mode(self, mode):
         assert mode in ('3d', 'lut', 'bbox')

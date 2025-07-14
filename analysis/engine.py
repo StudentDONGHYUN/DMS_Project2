@@ -8,6 +8,7 @@ from mediapipe.framework.formats import landmark_pb2
 
 from mediapipe import solutions
 import math
+from enum import Enum
 
 from core.definitions import (
     CameraPosition, AdvancedMetrics, TimeWindowConfig, GazeZone,
@@ -17,7 +18,7 @@ from utils.memory import MemoryManager
 from systems.personalization import PersonalizationEngine
 from systems.dynamic import DynamicAnalysisEngine
 from systems.backup import SensorBackupManager
-from analysis.gaze import EnhancedSphericalGazeClassifier
+from analysis.gaze import GazeZoneClassifier
 from analysis.drowsiness import EnhancedDrowsinessDetector
 from analysis.emotion import EmotionRecognitionSystem
 from analysis.distraction import DistractionObjectDetector
@@ -49,7 +50,23 @@ class EnhancedAnalysisEngine:
         self.dynamic_analyzer = DynamicAnalysisEngine()
         self.sensor_backup = SensorBackupManager()
         self.counter_analyzer = CounterBasedAnalyzer(TimeWindowConfig())
-        self.gaze_classifier = EnhancedSphericalGazeClassifier()
+        # 시스템 사양에 따라 시선 분류 모드 자동 설정
+        mode_map = {
+            'HIGH_PERFORMANCE': '3d',
+            'RESEARCH': '3d',
+            'STANDARD': 'lut',
+            'LOW_RESOURCE': 'bbox',
+        }
+        # system_type이 문자열 또는 Enum일 수 있음
+        stype = getattr(self, 'system_type', 'STANDARD')
+        if isinstance(stype, Enum):
+            stype_str = stype.name
+        elif isinstance(stype, str):
+            stype_str = stype
+        else:
+            stype_str = str(stype)
+        gaze_mode = mode_map.get(stype_str.upper(), 'lut')
+        self.gaze_classifier = GazeZoneClassifier(mode=gaze_mode)
         self.drowsiness_detector = EnhancedDrowsinessDetector()
         self.emotion_recognizer = EmotionRecognitionSystem()
         self.distraction_detector = DistractionObjectDetector()
