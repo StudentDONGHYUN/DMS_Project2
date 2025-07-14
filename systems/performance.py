@@ -20,6 +20,8 @@ class PerformanceOptimizer:
         self.total_frame_count = 0
         self._last_log_time = 0
         self._log_interval = 0.03
+        self.frame_sampling_ratio = 1  # 1: 모든 프레임 처리, 2: 2프레임 중 1프레임만 처리 등
+        self._sampling_counter = 0
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         self.csv_path = f"performance_v6_{timestamp}.csv"
         self._init_csv()
@@ -60,16 +62,28 @@ class PerformanceOptimizer:
             if self.optimization_active:
                 self._deactivate_optimization()
 
+    def should_process_frame(self):
+        """
+        동적 프레임 샘플링: 최적화 모드일 때 일정 비율로 프레임을 스킵
+        예: frame_sampling_ratio=2이면 2프레임 중 1프레임만 처리
+        """
+        if self.frame_sampling_ratio <= 1:
+            return True
+        self._sampling_counter = (self._sampling_counter + 1) % self.frame_sampling_ratio
+        return self._sampling_counter == 0
+
     def _activate_optimization(self):
         self.optimization_active = True
-        logger.warning("성능 최적화 모드 활성화")
+        self.frame_sampling_ratio = min(self.frame_sampling_ratio + 1, 4)  # 최대 1/4만 처리
+        logger.warning(f"성능 최적화 모드 활성화 (프레임 샘플링 비율: {self.frame_sampling_ratio})")
         strategies = ["프레임 스키핑 증가", "분석 해상도 감소", "일부 분석 기능 비활성화", "메모리 정리 강화"]
         for strategy in strategies:
             logger.info(f"적용 전략: {strategy}")
 
     def _deactivate_optimization(self):
         self.optimization_active = False
-        logger.info("성능 최적화 모드 비활성화 - 정상 성능 복구")
+        self.frame_sampling_ratio = 1
+        logger.info("성능 최적화 모드 비활성화 - 정상 성능 복구 (프레임 샘플링 비율: 1)")
 
     def get_optimization_status(self):
         if len(self.performance_history) < 10:
