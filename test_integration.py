@@ -80,10 +80,10 @@ class DMSSystemIntegrationTest:
         
         try:
             # === S-Class 프로세서들 ===
-            from analysis.processors.face_processor_s_class import FaceDataProcessor
-            from analysis.processors.pose_processor_s_class import PoseDataProcessor
-            from analysis.processors.hand_processor_s_class import HandDataProcessor
-            from analysis.processors.object_processor_s_class import ObjectDataProcessor
+            from analysis.processors.face_processor import FaceDataProcessor
+            from analysis.processors.pose_processor import PoseDataProcessor
+            from analysis.processors.hand_processor import HandDataProcessor
+            from analysis.processors.object_processor import ObjectDataProcessor
             logger.info("✅ S-Class 프로세서들 로딩 성공")
             
             # === 융합 엔진 ===

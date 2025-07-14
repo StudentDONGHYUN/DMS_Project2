@@ -175,10 +175,10 @@ class LowResourceSystemFactory(IAnalysisSystemFactory):
         fusion_engine = MultiModalFusionEngine()
         
         # 최소 기능 오케스트레이터 생성
-        from analysis.processors.face_processor_s_class import FaceDataProcessor
-        from analysis.processors.pose_processor_s_class import PoseDataProcessor
-        from analysis.processors.hand_processor_s_class import HandDataProcessor
-        from analysis.processors.object_processor_s_class import ObjectDataProcessor
+        from analysis.processors.face_processor import FaceDataProcessor
+        from analysis.processors.pose_processor import PoseDataProcessor
+        from analysis.processors.hand_processor import HandDataProcessor
+        from analysis.processors.object_processor import ObjectDataProcessor
         from analysis.drowsiness import EnhancedDrowsinessDetector
         from analysis.emotion import EmotionRecognitionSystem
         from analysis.gaze import EnhancedSphericalGazeClassifier
@@ -309,10 +309,10 @@ class StandardSystemFactory(IAnalysisSystemFactory):
         fusion_engine = MultiModalFusionEngine()
         
         # 적응형 오케스트레이터
-        from analysis.processors.face_processor_s_class import FaceDataProcessor
-        from analysis.processors.pose_processor_s_class import PoseDataProcessor
-        from analysis.processors.hand_processor_s_class import HandDataProcessor
-        from analysis.processors.object_processor_s_class import ObjectDataProcessor
+        from analysis.processors.face_processor import FaceDataProcessor
+        from analysis.processors.pose_processor import PoseDataProcessor
+        from analysis.processors.hand_processor import HandDataProcessor
+        from analysis.processors.object_processor import ObjectDataProcessor
         from analysis.drowsiness import EnhancedDrowsinessDetector
         from analysis.emotion import EmotionRecognitionSystem
         from analysis.gaze import EnhancedSphericalGazeClassifier
@@ -454,10 +454,10 @@ class HighPerformanceSystemFactory(IAnalysisSystemFactory):
         fusion_engine = MultiModalFusionEngine()
         
         # 최고 성능 오케스트레이터
-        from analysis.processors.face_processor_s_class import FaceDataProcessor
-        from analysis.processors.pose_processor_s_class import PoseDataProcessor
-        from analysis.processors.hand_processor_s_class import HandDataProcessor
-        from analysis.processors.object_processor_s_class import ObjectDataProcessor
+        from analysis.processors.face_processor import FaceDataProcessor
+        from analysis.processors.pose_processor import PoseDataProcessor
+        from analysis.processors.hand_processor import HandDataProcessor
+        from analysis.processors.object_processor import ObjectDataProcessor
         from analysis.drowsiness import EnhancedDrowsinessDetector
         from analysis.emotion import EmotionRecognitionSystem
         from analysis.gaze import EnhancedSphericalGazeClassifier
@@ -620,10 +620,10 @@ class ResearchSystemFactory(IAnalysisSystemFactory):
         fusion_engine = MultiModalFusionEngine()
         
         # 연구용 특수 오케스트레이터
-        from analysis.processors.face_processor_s_class import FaceDataProcessor
-        from analysis.processors.pose_processor_s_class import PoseDataProcessor
-        from analysis.processors.hand_processor_s_class import HandDataProcessor
-        from analysis.processors.object_processor_s_class import ObjectDataProcessor
+        from analysis.processors.face_processor import FaceDataProcessor
+        from analysis.processors.pose_processor import PoseDataProcessor
+        from analysis.processors.hand_processor import HandDataProcessor
+        from analysis.processors.object_processor import ObjectDataProcessor
         from analysis.drowsiness import EnhancedDrowsinessDetector
         from analysis.emotion import EmotionRecognitionSystem
         from analysis.gaze import EnhancedSphericalGazeClassifier
