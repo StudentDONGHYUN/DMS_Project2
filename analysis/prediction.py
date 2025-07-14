@@ -126,9 +126,10 @@ class TrendAnalyzer:
         if len(data) < 10:
             return 0.0
 
-        x = np.arange(len(data))
-        coeffs = np.polyfit(x, data, 1)
-        slope = coeffs[0]
+        # polyfit 대신 이동 평균 기반 추세 분석
+        short_term_avg = np.mean(data[-10:])  # 최근 10개 평균
+        long_term_avg = np.mean(data)         # 전체 평균
+        slope = short_term_avg - long_term_avg
 
         if len(data) >= 20:
             first_half = np.mean(data[: len(data) // 2])
