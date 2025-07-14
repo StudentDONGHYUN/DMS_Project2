@@ -150,3 +150,24 @@ cat performance_logs/summary_*.json
 - `t`: 시스템 모드 전환 (테스트용)
 - `d`: 동적 분석 정보 출력
 - `m`: 적응형 UI 모드 순환 (MINIMAL → STANDARD → ALERT)
+
+---
+
+### Newly Discovered Issues (2025-07-14)
+
+#### **Bug #6: Broad Exception Handling**
+- **문제**: except Exception as e:로 모든 예외를 잡고, 실제로는 무시하거나 로그만 남기는 경우가 많음.
+- **증상**: 치명적 예외가 조용히 무시되어 디버깅이 어려움
+- **해결**: 구체적 예외만 처리하고, 치명적 예외는 상위로 전달하도록 수정 필요
+
+#### **Bug #7: Input Validation Consistency**
+- **문제**: 일부 경로에서 input() 사용 시 sanitize_input 등 검증이 누락될 수 있음
+- **해결**: 모든 입력 경로에서 일관된 검증 함수 사용 보장
+
+#### **Bug #8: Dead Code / Unused Imports**
+- **문제**: main.py 등에서 미사용 import가 남아있었음(이미 수정)
+- **해결**: dead code, 미사용 import 주기적 정리
+
+#### **Bug #9: Thread Safety in Minor Utilities**
+- **문제**: 일부 유틸리티 함수에서 thread-unsafe 코드 가능성
+- **해결**: 필요시 락 추가, thread-safe 구조로 개선
