@@ -203,21 +203,19 @@ class AdvancedMediaPipeManager:
                 logger.warning(f"모델 파일 없음: {config.model_path}")
                 return False
 
-            # DSP 감지
-            dsp_type = self._detect_dsp()
-            base_options_kwargs = dict(model_asset_path=config.model_path)
-            if dsp_type == 'HEXAGON':
-                # MediaPipe Python API에서 공식 지원 여부 확인 필요
-                try:
-                    # 예시: Delegate 옵션이 존재할 경우 적용
-                    from mediapipe.tasks.python.core.base_options import BaseOptions
-                    if hasattr(BaseOptions, 'Delegate') and hasattr(BaseOptions.Delegate, 'HEXAGON'):
-                        base_options_kwargs['delegate'] = BaseOptions.Delegate.HEXAGON
-                        logger.info("Hexagon DSP 감지됨: delegate=HEXAGON 적용")
-                    else:
-                        logger.warning("Python API에서 HEXAGON delegate 미지원. 최신 MediaPipe/TF Lite 설치 필요.")
-                except Exception as e:
-                    logger.warning(f"Delegate 옵션 적용 실패: {e}")
+            # delegate 자동 분기 (공식 지원: CPU/GPU만)
+            import platform
+            from mediapipe.tasks.python.core.base_options import BaseOptions
+            system = platform.system()
+            # GPU delegate는 Linux, macOS에서만 공식 지원
+            if system in ["Linux", "Darwin"]:
+                base_options_kwargs = dict(model_asset_path=config.model_path)
+                base_options_kwargs['delegate'] = BaseOptions.Delegate.GPU
+                logger.info(f"GPU delegate 적용: {system}")
+            else:
+                base_options_kwargs = dict(model_asset_path=config.model_path)
+                base_options_kwargs['delegate'] = BaseOptions.Delegate.CPU
+                logger.info(f"CPU delegate 적용: {system}")
             base_options = python.BaseOptions(**base_options_kwargs)
 
             # Task별 초기화 (이하 기존 코드)
