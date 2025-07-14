@@ -69,21 +69,41 @@ class EnhancedSphericalGazeClassifier:
         return self.lut.get((y, p), GazeZone.UNKNOWN)
 
     def _define_bboxes(self):
-        # 예시: (yaw_min, yaw_max, pitch_min, pitch_max, zone)
-        # 실제 구역별로 조정 필요
+        # 실제 차량 환경에 맞춘 yaw/pitch 경계값 (단위: 도)
+        # (yaw_min, yaw_max, pitch_min, pitch_max, zone, priority)
+        # priority: 낮을수록 우선 적용
+        # 참고: yaw=0은 정면, pitch=0은 수평, pitch>0은 위, pitch<0은 아래
         return [
-            (-15, 15, -10, 10, GazeZone.FRONT),
-            (-40, -16, -10, 10, GazeZone.LEFT_SIDE_MIRROR),
-            (16, 40, -10, 10, GazeZone.RIGHT_SIDE_MIRROR),
-            (-90, -41, -20, 20, GazeZone.DRIVER_WINDOW),
-            (41, 90, -20, 20, GazeZone.PASSENGER),
-            (-15, 15, 11, 40, GazeZone.ROOF),
-            (-15, 15, -40, -11, GazeZone.FLOOR),
-            # ... 기타 구역 추가
+            # 1. 정면 (가장 우선)
+            (-15, 15, -10, 10, GazeZone.FRONT, 1),
+            # 2. 계기판 (정면보다 약간 아래)
+            (-20, 20, -25, -11, GazeZone.INSTRUMENT_CLUSTER, 2),
+            # 3. 센터스택 (정면보다 약간 오른쪽, 아래)
+            (16, 40, -25, -5, GazeZone.CENTER_STACK, 3),
+            # 4. 룸미러 (정면보다 약간 위)
+            (-15, 15, 11, 25, GazeZone.REARVIEW_MIRROR, 2),
+            # 5. 루프 (룸미러보다 더 위)
+            (-20, 20, 26, 50, GazeZone.ROOF, 3),
+            # 6. 바닥 (정면보다 아래)
+            (-20, 20, -50, -26, GazeZone.FLOOR, 3),
+            # 7. 좌측 사이드미러
+            (-50, -16, -15, 15, GazeZone.LEFT_SIDE_MIRROR, 2),
+            # 8. 우측 사이드미러
+            (16, 50, -15, 15, GazeZone.RIGHT_SIDE_MIRROR, 2),
+            # 9. 운전석 창문 (좌측 끝)
+            (-90, -51, -30, 30, GazeZone.DRIVER_WINDOW, 2),
+            # 10. 조수석 (우측 끝)
+            (51, 90, -30, 30, GazeZone.PASSENGER, 2),
+            # 11. 블라인드 스팟(좌)
+            (-90, -51, -90, -31, GazeZone.BLIND_SPOT_LEFT, 3),
+            # 12. 블라인드 스팟(우)
+            (51, 90, -90, -31, GazeZone.BLIND_SPOT_LEFT, 3),
+            # 기타: UNKNOWN (catch-all)
         ]
 
     def _bbox_lookup(self, yaw, pitch):
-        for (ymin, ymax, pmin, pmax, zone) in self.bboxes:
+        # 우선순위(priority) 순서대로 탐색
+        for (ymin, ymax, pmin, pmax, zone, priority) in sorted(self.bboxes, key=lambda x: x[5]):
             if ymin <= yaw <= ymax and pmin <= pitch <= pmax:
                 return zone
         return GazeZone.UNKNOWN
