@@ -80,6 +80,8 @@ def ensure_umat(image):
     except Exception:
         return image  # fallback to numpy if UMat not available
 
+# MediaPipe 이전에는 numpy만 사용, 시각화/렌더링 단계에서만 UMat 변환
+# draw_landmarks_on_image 등은 입력이 numpy면 UMat으로 변환, 이미 UMat이면 그대로 사용
 def draw_landmarks_on_image(
     image: np.ndarray,
     landmarks: List,
@@ -91,13 +93,13 @@ def draw_landmarks_on_image(
     in_place: bool = False
 ) -> np.ndarray:
     """
-    최신 MediaPipe Tasks API용 범용 랜드마크 그리기 함수 (UMat 적용)
+    최신 MediaPipe Tasks API용 범용 랜드마크 그리기 함수 (시각화 단계에서만 UMat 변환)
     """
     if not landmarks:
         return image
-    # UMat 변환 (GPU 오프로드)
+    # 시각화 단계에서만 UMat 변환 (입력이 numpy면 변환, 이미 UMat이면 그대로)
     if not isinstance(image, cv2.UMat):
-        annotated_image = cv2.UMat(image) if not in_place else cv2.UMat(image)
+        annotated_image = cv2.UMat(image)
     else:
         annotated_image = image
     height, width = annotated_image.get().shape[:2] if isinstance(annotated_image, cv2.UMat) else annotated_image.shape[:2]
