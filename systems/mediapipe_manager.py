@@ -1,6 +1,10 @@
 """
 S-Class DMS v19+ 차세대 MediaPipe Tasks Manager
 최신 MediaPipe Tasks API (0.10.9+) 적용
+
+NOTE: Python API에서는 GPU delegate를 명시적으로 지정할 수 없습니다.
+시스템에 CUDA/TF Lite delegate가 설치되어 있으면 자동 활용됩니다.
+최대 성능을 원할 경우, CUDA/TF Lite delegate가 설치된 환경에서 실행하세요.
 """
 
 import cv2
@@ -494,6 +498,23 @@ class AdvancedMediaPipeManager:
         self.latest_results.clear()
         
         logger.info("MediaPipe Manager 정리 완료")
+
+    def adjust_dynamic_resources(self):
+        """
+        동적 리소스 관리: FPS, 처리시간, 큐 크기 등 실시간 성능 통계 기반으로
+        frame_queue/result_queue/deque의 maxlen을 동적으로 조정
+        """
+        stats = self.get_performance_stats()
+        fps = stats.get("fps", 0)
+        avg_processing_time = stats.get("avg_processing_time_ms", 0)
+        queue_size = stats.get("queue_size", 0)
+        # 예시: FPS가 10 이하로 떨어지면 큐/버퍼 크기 축소, 30 이상이면 확대
+        if fps < 10 or avg_processing_time > 100:
+            self.result_queue.maxsize = max(3, self.result_queue.maxsize // 2)
+        elif fps > 30 and avg_processing_time < 40:
+            self.result_queue.maxsize = min(100, self.result_queue.maxsize * 2)
+        # 필요시 각종 deque의 maxlen도 조정 가능
+        # (실제 적용은 각 버퍼/큐의 구조에 맞게 추가 구현)
 
     # 레거시 호환성 메소드들
     def run_tasks(self, frame):
