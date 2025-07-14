@@ -180,6 +180,7 @@ class DMSApp:
         system_type: AnalysisSystemType = AnalysisSystemType.STANDARD,
         use_legacy_engine: bool = False,
         sclass_features: dict = None,
+        enable_performance_optimization: bool = True,
     ):
         logger.info("[수정] app_fixed.py: DMSApp.__init__ 진입")
         self.input_source = input_source
@@ -196,7 +197,8 @@ class DMSApp:
         self.initialization_completed = False
         self.safe_mode = False
         self.error_count = 0
-        self.performance_monitor = PerformanceOptimizer()
+        # GUI/설정에서 enable_performance_optimization 값을 받아서 전달
+        self.performance_monitor = PerformanceOptimizer(enable_optimization=enable_performance_optimization)
         self.personalization_engine = PersonalizationEngine(user_id)
         self.dynamic_analysis = DynamicAnalysisEngine()
         self.backup_manager = SensorBackupManager()

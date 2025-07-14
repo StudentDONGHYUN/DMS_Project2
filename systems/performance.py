@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 class PerformanceOptimizer:
     """실시간 성능 최적화 시스템"""
 
-    def __init__(self):
+    def __init__(self, enable_optimization=True):
         self.performance_history = deque(maxlen=300)
         self.optimization_active = False
         self.target_fps = 30
@@ -22,6 +22,7 @@ class PerformanceOptimizer:
         self._log_interval = 0.03
         self.frame_sampling_ratio = 1  # 1: 모든 프레임 처리, 2: 2프레임 중 1프레임만 처리 등
         self._sampling_counter = 0
+        self.enable_optimization = enable_optimization  # 사용자가 GUI에서 켜고 끌 수 있음
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         self.csv_path = f"performance_v6_{timestamp}.csv"
         self._init_csv()
@@ -52,6 +53,10 @@ class PerformanceOptimizer:
         self._log_to_csv(processing_time, fps)
 
     def _check_performance_issues(self):
+        if not self.enable_optimization:
+            if self.optimization_active:
+                self._deactivate_optimization()
+            return
         recent_performance = list(self.performance_history)[-30:]
         avg_fps = np.mean([p["fps"] for p in recent_performance])
         avg_processing_time = np.mean([p["processing_time"] for p in recent_performance])

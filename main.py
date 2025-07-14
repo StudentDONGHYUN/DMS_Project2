@@ -225,6 +225,7 @@ class SClass_DMS_GUI_Setup:
         self.webcam_id = tk.StringVar(value="0")
         self.user_id = tk.StringVar(value="default")
         self.enable_calibration = tk.BooleanVar(value=True)
+        self.enable_performance_optimization = tk.BooleanVar(value=True)  # 성능 최적화 모드 옵션
         self.camera_position_var = tk.StringVar(value=str(CameraPosition.REARVIEW_MIRROR))
         
         # S-Class 시스템 설정
@@ -694,6 +695,16 @@ class SClass_DMS_GUI_Setup:
             style="SClass.TLabel"
         ).pack()
 
+        # 성능 최적화 모드 옵션 체크박스 (고급 설정/시스템 설정 섹션에 추가)
+        perf_opt_frame = ttk.Frame(system_frame, style="SClassFrame.TFrame")
+        perf_opt_frame.pack(fill="x", pady=5)
+        ttk.Checkbutton(
+            perf_opt_frame,
+            text="⚡ Enable Performance Optimization Mode (Dynamic Frame Skipping)",
+            variable=self.enable_performance_optimization,
+            style="SClass.TCheckbutton"
+        ).pack(side="left")
+
     def _create_sclass_features_section(self, parent):
         """S-Class Expert Systems 설정 섹션"""
         features_frame = ttk.LabelFrame(parent, text=" 🧠 Expert Systems Configuration ", 
@@ -917,7 +928,8 @@ class SClass_DMS_GUI_Setup:
                 "enable_predictive_safety": self.enable_predictive_safety.get(),
                 "enable_biometric_fusion": self.enable_biometric_fusion.get(),
                 "enable_adaptive_thresholds": self.enable_adaptive_thresholds.get(),
-            }
+            },
+            "enable_performance_optimization": self.enable_performance_optimization.get()
         }
         # 혁신 엔진에 에디션 반영
         self.innovation_engine = SClassDMSv19Enhanced(user_id, edition)
@@ -1086,7 +1098,8 @@ def get_user_input_terminal():
             "enable_predictive_safety": True,
             "enable_biometric_fusion": True,
             "enable_adaptive_thresholds": True,
-        }
+        },
+        "enable_performance_optimization": True # 터미널 모드에서는 기본적으로 활성화
     }
 
 
