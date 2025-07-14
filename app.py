@@ -26,7 +26,7 @@ from systems.backup import SensorBackupManager
 
 # io_handler 모듈
 from io_handler.video_input import VideoInputManager, MultiVideoCalibrationManager
-from io_handler.ui import EnhancedUIManager
+from io_handler.ui import SClassAdvancedUIManager
 
 # utils 모듈 - 랜드마크 그리기 함수들
 from utils.drawing import draw_face_landmarks_on_image, draw_pose_landmarks_on_image, draw_hand_landmarks_on_image
@@ -206,6 +206,7 @@ class DMSApp:
             critical_threshold_mb=1000,
             cleanup_callback=self._perform_memory_cleanup
         )
+        self.ui_manager = SClassAdvancedUIManager()
         if isinstance(input_source, (list, tuple)) and len(input_source) > 1:
             self.calibration_manager.set_driver_continuity(self.is_same_driver)
         logger.info("[수정] S-Class 시스템 초기화 완료")

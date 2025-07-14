@@ -23,7 +23,7 @@ from analysis.emotion import EmotionRecognitionSystem
 from analysis.distraction import DistractionObjectDetector
 from analysis.identity import DriverIdentificationSystem
 from analysis.prediction import PredictiveSafetySystem
-from io_handler.ui import EnhancedUIManager
+from io_handler.ui import SClassAdvancedUIManager
 
 logger = logging.getLogger(__name__)
 
@@ -59,7 +59,7 @@ class EnhancedAnalysisEngine:
         self.current_gaze_zone, self.gaze_zone_start_time = GazeZone.FRONT, time.time()
         self.frame_buffer, self.result_buffer = {}, {}
         self.processed_data_queue = deque(maxlen=5)
-        self.ui_manager = EnhancedUIManager()
+        self.ui_manager = SClassAdvancedUIManager()
         self.calibration_mode = enable_calibration
         if (
             self.enable_calibration
@@ -134,10 +134,22 @@ class EnhancedAnalysisEngine:
             if frame is not None and results is not None:
                 self.processed_data_queue.append((frame, results))
                 try:
-                    from io_handler.ui import EnhancedUIManager
+                    ui_manager = SClassAdvancedUIManager()
                     import cv2
-                    ui_manager = EnhancedUIManager()
-                    annotated = ui_manager.draw_enhanced_results(frame, results, None, None)
+                    annotated = ui_manager.draw_enhanced_results(
+                        frame,
+                        self.get_latest_metrics(),
+                        self.state_manager.get_current_state(),
+                        results,
+                        self.gaze_classifier,
+                        self.dynamic_analyzer,
+                        self.sensor_backup,
+                        None,  # perf_stats (None 또는 실제 값)
+                        None,  # playback_info (None 또는 실제 값)
+                        self.driver_identifier,
+                        self.predictive_safety,
+                        self.emotion_recognizer,
+                    )
                     logger.info("[진단] engine._try_queue_results: draw_enhanced_results 호출 완료")
                     cv2.imshow("DMS", annotated)
                     logger.info("[진단] engine._try_queue_results: cv2.imshow 호출 완료")
