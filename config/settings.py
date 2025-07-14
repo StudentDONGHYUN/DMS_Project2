@@ -312,7 +312,37 @@ class FeatureFlagConfig:
     enable_v2d_healthcare_platform: bool = True
     
     def __post_init__(self):
-        """에디션별 기능 제한 적용"""
+        """에디션별 기능 제한 적용 - Bug fix: Add missing properties"""
+        # Bug fix: Define convenient property aggregates for main.py compatibility
+        self.basic_expert_systems = (
+            self.enable_face_processor and 
+            self.enable_pose_processor and 
+            self.enable_hand_processor and 
+            self.enable_object_processor
+        )
+        
+        self.s_class_advanced_features = (
+            self.enable_rppg_heart_rate and
+            self.enable_saccade_analysis and
+            self.enable_spinal_alignment and
+            self.enable_fft_tremor_analysis and
+            self.enable_bayesian_prediction
+        )
+        
+        self.neural_ai_features = (
+            self.enable_emotion_ai and
+            self.enable_predictive_safety and
+            self.enable_biometric_fusion and
+            self.enable_uncertainty_quantification
+        )
+        
+        self.innovation_research_features = (
+            self.enable_digital_twin_simulation and
+            self.enable_advanced_cognitive_modeling and
+            self.enable_experimental_algorithms and
+            self.enable_detailed_logging
+        )
+        
         if self.system_edition == "COMMUNITY":
             # 커뮤니티 에디션: 기본 기능만
             self._disable_advanced_features()
@@ -329,6 +359,9 @@ class FeatureFlagConfig:
         elif self.system_edition == "ENTERPRISE":
             # 엔터프라이즈 에디션: Neural AI 포함, 연구 기능 제외
             self._disable_research_features()
+        
+        # Bug fix: Recalculate property aggregates after edition-based disabling
+        self._update_property_aggregates()
     
     def _disable_advanced_features(self):
         """고급 기능 비활성화"""
@@ -359,6 +392,37 @@ class FeatureFlagConfig:
         self.enable_multimodal_sensor_fusion = False
         self.enable_adaptive_ui_modes = False
         self.enable_v2d_healthcare_platform = False
+    
+    def _update_property_aggregates(self):
+        """Bug fix: Update property aggregates after feature changes"""
+        self.basic_expert_systems = (
+            self.enable_face_processor and 
+            self.enable_pose_processor and 
+            self.enable_hand_processor and 
+            self.enable_object_processor
+        )
+        
+        self.s_class_advanced_features = (
+            self.enable_rppg_heart_rate and
+            self.enable_saccade_analysis and
+            self.enable_spinal_alignment and
+            self.enable_fft_tremor_analysis and
+            self.enable_bayesian_prediction
+        )
+        
+        self.neural_ai_features = (
+            self.enable_emotion_ai and
+            self.enable_predictive_safety and
+            self.enable_biometric_fusion and
+            self.enable_uncertainty_quantification
+        )
+        
+        self.innovation_research_features = (
+            self.enable_digital_twin_simulation and
+            self.enable_advanced_cognitive_modeling and
+            self.enable_experimental_algorithms and
+            self.enable_detailed_logging
+        )
     
     def is_feature_enabled(self, feature_name: str) -> bool:
         """특정 기능의 활성화 상태 확인"""

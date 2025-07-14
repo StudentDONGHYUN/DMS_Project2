@@ -262,52 +262,101 @@ def test_threading_video_reader(video_path: str):
             self.cap = None
             self.current_frame = None
             self.frame_lock = threading.Lock()
+            self.stopped_lock = threading.Lock()  # Bug fix: Add lock for stopped variable
             self.stopped = True
             self.thread = None
             
         def start(self):
-            self.cap = cv2.VideoCapture(self.video_path)
-            if not self.cap.isOpened():
-                logger.error("VideoCapture 열기 실패")
+            try:
+                self.cap = cv2.VideoCapture(self.video_path)
+                if not self.cap.isOpened():
+                    logger.error("VideoCapture 열기 실패")
+                    self._safe_cleanup()  # Bug fix: Ensure cleanup on failure
+                    return False
+                    
+                with self.stopped_lock:  # Bug fix: Thread-safe access to stopped
+                    self.stopped = False
+                self.thread = threading.Thread(target=self._reader_loop, daemon=True)
+                self.thread.start()
+                logger.info("리더 스레드 시작됨")
+                return True
+            except Exception as e:
+                logger.error(f"ThreadedVideoReader 시작 실패: {e}")
+                self._safe_cleanup()
                 return False
-                
-            self.stopped = False
-            self.thread = threading.Thread(target=self._reader_loop, daemon=True)
-            self.thread.start()
-            logger.info("리더 스레드 시작됨")
-            return True
             
         def _reader_loop(self):
             frame_count = 0
-            while not self.stopped:
-                ret, frame = self.cap.read()
-                if not ret:
-                    logger.warning(f"프레임 {frame_count} 읽기 실패 - 스레드 종료")
+            try:
+                while True:
+                    with self.stopped_lock:  # Bug fix: Thread-safe check
+                        if self.stopped:
+                            break
+                            
+                    if not self.cap or not self.cap.isOpened():  # Bug fix: Additional safety check
+                        logger.warning("VideoCapture가 닫혀있음 - 스레드 종료")
+                        break
+                        
+                    ret, frame = self.cap.read()
+                    if not ret or frame is None:  # Bug fix: Check for None frame
+                        logger.warning(f"프레임 {frame_count} 읽기 실패 - 스레드 종료")
+                        break
+                        
+                    with self.frame_lock:
+                        self.current_frame = frame.copy()
+                        
+                    frame_count += 1
+                    if frame_count % 30 == 0:
+                        logger.info(f"스레드에서 {frame_count} 프레임 처리됨")
+                        
+                    time.sleep(1/30)  # 30 FPS 시뮬레이션
+            except Exception as e:
+                logger.error(f"_reader_loop에서 예외 발생: {e}")
+            finally:
+                with self.stopped_lock:
                     self.stopped = True
-                    break
-                    
-                with self.frame_lock:
-                    self.current_frame = frame.copy()
-                    
-                frame_count += 1
-                if frame_count % 30 == 0:
-                    logger.info(f"스레드에서 {frame_count} 프레임 처리됨")
-                    
-                time.sleep(1/30)  # 30 FPS 시뮬레이션
+                logger.info("_reader_loop 종료")
                 
         def get_frame(self):
             with self.frame_lock:
-                return self.current_frame
+                return self.current_frame.copy() if self.current_frame is not None else None  # Bug fix: Safe copy
                 
         def stop(self):
-            self.stopped = True
+            """Bug fix: Improved stop method with better resource management"""
+            logger.info("ThreadedVideoReader 중단 시작")
+            
+            with self.stopped_lock:
+                self.stopped = True
+                
             if self.thread and self.thread.is_alive():
-                self.thread.join(timeout=1)
-            if self.cap:
-                self.cap.release()
+                self.thread.join(timeout=2.0)  # Bug fix: Longer timeout
+                if self.thread.is_alive():
+                    logger.warning("스레드가 제한 시간 내에 종료되지 않음")
+                    
+            self._safe_cleanup()
+            logger.info("ThreadedVideoReader 중단 완료")
+            
+        def _safe_cleanup(self):
+            """Bug fix: Safe cleanup method"""
+            try:
+                if self.cap:
+                    self.cap.release()
+                    self.cap = None
+                with self.frame_lock:
+                    self.current_frame = None
+            except Exception as e:
+                logger.error(f"cleanup 중 오류: {e}")
                 
         def is_running(self):
-            return not self.stopped and self.thread and self.thread.is_alive()
+            with self.stopped_lock:  # Bug fix: Thread-safe access
+                return not self.stopped and self.thread and self.thread.is_alive()
+                
+        def __del__(self):
+            """Bug fix: Add destructor to ensure cleanup"""
+            try:
+                self.stop()
+            except Exception:
+                pass
     
     try:
         reader = ThreadedVideoReader(video_path)
@@ -315,13 +364,17 @@ def test_threading_video_reader(video_path: str):
         if not reader.start():
             return False
             
-        # 첫 프레임 대기
+        # 첫 프레임 대기 - Bug fix: Improved frame waiting logic
         logger.info("첫 프레임 대기 중...")
         wait_time = 0
+        frame = None
         while wait_time < 5.0:  # 최대 5초 대기
             frame = reader.get_frame()
             if frame is not None:
                 logger.info(f"✅ 첫 프레임 수신: {frame.shape}")
+                break
+            if not reader.is_running():  # Bug fix: Check if reader is still running
+                logger.warning("리더가 중단되어 첫 프레임 대기 종료")
                 break
             time.sleep(0.1)
             wait_time += 0.1
@@ -375,9 +428,18 @@ def test_threading_video_reader(video_path: str):
             
     except Exception as e:
         logger.error(f"❌ 스레드 테스트 실패: {e}")
-        if 'reader' in locals():
-            reader.stop()
-        cv2.destroyAllWindows()
+        # Bug fix: Improved exception handling
+        try:
+            if 'reader' in locals() and reader is not None:
+                reader.stop()
+        except Exception as cleanup_error:
+            logger.error(f"리더 정리 중 오류: {cleanup_error}")
+        
+        try:
+            cv2.destroyAllWindows()
+        except Exception as cv_error:
+            logger.error(f"OpenCV 창 정리 중 오류: {cv_error}")
+        
         return False
 
 
