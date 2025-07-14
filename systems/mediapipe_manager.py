@@ -1,6 +1,10 @@
 """
 S-Class DMS v19+ 차세대 MediaPipe Tasks Manager
 최신 MediaPipe Tasks API (0.10.9+) 적용
+
+NOTE: Python API에서는 GPU delegate를 명시적으로 지정할 수 없습니다.
+시스템에 CUDA/TF Lite delegate가 설치되어 있으면 자동 활용됩니다.
+최대 성능을 원할 경우, CUDA/TF Lite delegate가 설치된 환경에서 실행하세요.
 """
 
 import cv2
@@ -19,6 +23,8 @@ from collections import deque
 import time
 import cv2
 import mediapipe as mp
+import platform
+from mediapipe.tasks.python.core.base_options import BaseOptions
 # MediaPipe Tasks API imports
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision, audio, text
@@ -96,6 +102,8 @@ class AdvancedMediaPipeManager:
         if config_file:
             self._load_config_file(config_file)
         
+        self.is_embedded = self._detect_dsp() == 'HEXAGON'
+        
         logger.info("AdvancedMediaPipeManager v2.0 (최적화) 초기화 완료")
 
     def ensure_model_directory(self):
@@ -170,29 +178,48 @@ class AdvancedMediaPipeManager:
         except Exception as e:
             logger.warning(f"설정 파일 로드 실패: {e}")
 
+    def _detect_dsp(self):
+        """RB2 등 DSP(Hexagon) 감지: 실제 환경에 맞게 확장 필요"""
+        # 예시: /proc/cpuinfo, lscpu, 환경변수 등으로 DSP 감지
+        try:
+            with open('/proc/cpuinfo', 'r') as f:
+                cpuinfo = f.read().lower()
+                if 'hexagon' in cpuinfo or 'dsp' in cpuinfo:
+                    return 'HEXAGON'
+        except Exception:
+            pass
+        # 환경변수 등 추가 감지 로직 필요시 확장
+        return None
+
     async def initialize_task(self, task_type: TaskType) -> bool:
-        """개별 Task 초기화"""
+        """개별 Task 초기화 (DSP 감지 및 delegate 적용)"""
         if task_type in self.active_tasks:
             logger.warning(f"{task_type.value} 이미 초기화됨")
             return True
-        
         config = self.task_configs.get(task_type)
         if not config:
             logger.error(f"{task_type.value} 설정 없음")
             return False
-        
         try:
             # 모델 파일 존재 확인
             if not Path(config.model_path).exists():
                 logger.warning(f"모델 파일 없음: {config.model_path}")
                 return False
-            
-            # Base options 설정
-            base_options = python.BaseOptions(
-                model_asset_path=config.model_path
-            )
-            
-            # Task별 초기화
+
+            # delegate 자동 분기 (공식 지원: CPU/GPU만)
+            system = platform.system()
+            # GPU delegate는 Linux, macOS에서만 공식 지원
+            if system in ["Linux", "Darwin"]:
+                base_options_kwargs = dict(model_asset_path=config.model_path)
+                base_options_kwargs['delegate'] = BaseOptions.Delegate.GPU
+                logger.info(f"GPU delegate 적용: {system}")
+            else:
+                base_options_kwargs = dict(model_asset_path=config.model_path)
+                base_options_kwargs['delegate'] = BaseOptions.Delegate.CPU
+                logger.info(f"CPU delegate 적용: {system}")
+            base_options = python.BaseOptions(**base_options_kwargs)
+
+            # Task별 초기화 (이하 기존 코드)
             if task_type == TaskType.FACE_LANDMARKER:
                 task = await self._initialize_face_landmarker(base_options, config)
             elif task_type == TaskType.POSE_LANDMARKER:
@@ -208,17 +235,14 @@ class AdvancedMediaPipeManager:
             else:
                 logger.error(f"지원되지 않는 Task 타입: {task_type}")
                 return False
-            
             if task:
                 self.active_tasks[task_type] = task
                 self.task_health[task_type] = True
                 logger.info(f"✅ {task_type.value} 초기화 완료")
                 return True
-                
         except Exception as e:
             logger.error(f"❌ {task_type.value} 초기화 실패: {e}")
             self.task_health[task_type] = False
-            
         return False
 
     async def _initialize_face_landmarker(self, base_options, config):
@@ -393,28 +417,26 @@ class AdvancedMediaPipeManager:
             logger.error(f"Analysis engine 전달 오류 ({task_type.value}): {e}")
 
     async def process_frame(self, frame: np.ndarray) -> Dict[TaskType, Any]:
-        """
-        프레임 처리 - 모든 활성 Task에서 동시 처리
-        """
+        if self.is_embedded:
+            return await self.process_frame_embedded(frame)
+        if isinstance(frame, cv2.UMat):
+            try:
+                frame = frame.get()
+            except Exception:
+                pass
+        # 이하 기존 numpy 처리 로직 유지
         start_time = time.time()
-        
-        # FPS 계산
         self._calculate_fps()
-        
-        # 타임스탬프 생성
+        if self.fps_counter % 30 == 0:
+            self.adjust_dynamic_resources()
         timestamp_ms = int(time.time() * 1000)
         if timestamp_ms <= self.last_timestamp:
             timestamp_ms = self.last_timestamp + 1
         self.last_timestamp = timestamp_ms
-        
         try:
-            # BGR to RGB 변환
             rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb_frame)
-            
-            # 모든 활성 Task에서 비동기 처리
             processing_tasks = []
-            
             for task_type, task in self.active_tasks.items():
                 if self.task_health.get(task_type, False):
                     try:
@@ -425,17 +447,109 @@ class AdvancedMediaPipeManager:
                     except Exception as e:
                         logger.warning(f"{task_type.value} 처리 오류: {e}")
                         self.task_health[task_type] = False
-            
-            # 처리 시간 기록
             processing_time = time.time() - start_time
             self.frame_processing_times.append(processing_time)
-            
-            # deque가 자동으로 maxlen 관리하므로 수동 제거 불필요
-            
         except Exception as e:
             logger.error(f"프레임 처리 오류: {e}")
-        
         return self.latest_results.copy()
+
+    async def process_frame_embedded(self, frame: np.ndarray) -> Dict[TaskType, Any]:
+        # 1. PoseLandmarker 먼저 실행 (동기/await)
+        pose_task = self.active_tasks.get(TaskType.POSE_LANDMARKER)
+        if not pose_task:
+            logger.error("PoseLandmarker가 초기화되지 않음")
+            return {}
+        rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb_frame)
+        timestamp_ms = int(time.time() * 1000)
+        pose_result = await asyncio.get_event_loop().run_in_executor(
+            None, lambda: pose_task.detect(mp_image)
+        )
+        # 2. ROI 추출 (얼굴/손)
+        face_roi = self.extract_face_roi(pose_result, frame)
+        hand_roi = self.extract_hand_roi(pose_result, frame)
+        # 3. ROI crop & mp.Image 변환
+        face_mp_image = self.crop_and_convert_to_mp_image(frame, face_roi)
+        hand_mp_image = self.crop_and_convert_to_mp_image(frame, hand_roi)
+        # 4. Face/Hand Landmarker 비동기 실행
+        face_task = self.active_tasks.get(TaskType.FACE_LANDMARKER)
+        hand_task = self.active_tasks.get(TaskType.HAND_LANDMARKER)
+        results = {}
+        async def run_landmarker(task, mp_img, task_type):
+            if not task or mp_img is None:
+                return None
+            try:
+                return await asyncio.get_event_loop().run_in_executor(
+                    None, lambda: task.detect(mp_img)
+                )
+            except Exception as e:
+                logger.error(f"{task_type.value} ROI 추론 오류: {e}")
+                return None
+        face_result, hand_result = await asyncio.gather(
+            run_landmarker(face_task, face_mp_image, TaskType.FACE_LANDMARKER),
+            run_landmarker(hand_task, hand_mp_image, TaskType.HAND_LANDMARKER)
+        )
+        results[TaskType.POSE_LANDMARKER] = pose_result
+        results[TaskType.FACE_LANDMARKER] = face_result
+        results[TaskType.HAND_LANDMARKER] = hand_result
+        return results
+
+    def extract_face_roi(self, pose_result, frame):
+        # 예시: 코, 눈, 귀 등 keypoint 평균으로 얼굴 bbox 산출
+        # 실제 구현은 pose_result의 landmark 구조에 맞게 보정 필요
+        try:
+            if not hasattr(pose_result, 'pose_landmarks') or not pose_result.pose_landmarks:
+                return None
+            landmarks = pose_result.pose_landmarks[0]  # 첫 번째 사람
+            # 코(0), 왼눈(1), 오른눈(2), 왼귀(3), 오른귀(4) 등 사용
+            xs = [l.x for l in landmarks[:5]]
+            ys = [l.y for l in landmarks[:5]]
+            h, w = frame.shape[:2]
+            x_min = max(0, int(min(xs) * w) - 20)
+            x_max = min(w, int(max(xs) * w) + 20)
+            y_min = max(0, int(min(ys) * h) - 20)
+            y_max = min(h, int(max(ys) * h) + 20)
+            return (x_min, y_min, x_max, y_max)
+        except Exception as e:
+            logger.error(f"얼굴 ROI 추출 오류: {e}")
+            return None
+
+    def extract_hand_roi(self, pose_result, frame):
+        # 예시: 왼손(15), 오른손(16) keypoint 기준
+        try:
+            if not hasattr(pose_result, 'pose_landmarks') or not pose_result.pose_landmarks:
+                return None
+            landmarks = pose_result.pose_landmarks[0]
+            h, w = frame.shape[:2]
+            # 왼손
+            lx, ly = landmarks[15].x, landmarks[15].y
+            # 오른손
+            rx, ry = landmarks[16].x, landmarks[16].y
+            size = 60  # ROI 크기(픽셀)
+            rois = []
+            for x, y in [(lx, ly), (rx, ry)]:
+                cx, cy = int(x * w), int(y * h)
+                x_min = max(0, cx - size)
+                x_max = min(w, cx + size)
+                y_min = max(0, cy - size)
+                y_max = min(h, cy + size)
+                rois.append((x_min, y_min, x_max, y_max))
+            # 두 손 중 프레임 내에 있는 손만 반환(여기선 첫 번째 손만 예시)
+            return rois[0] if rois else None
+        except Exception as e:
+            logger.error(f"손 ROI 추출 오류: {e}")
+            return None
+
+    def crop_and_convert_to_mp_image(self, frame, roi):
+        # ROI 영역 crop 후 mp.Image로 변환
+        if roi is None:
+            return None
+        x_min, y_min, x_max, y_max = roi
+        crop = frame[y_min:y_max, x_min:x_max]
+        if crop.size == 0:
+            return None
+        rgb_crop = cv2.cvtColor(crop, cv2.COLOR_BGR2RGB)
+        return mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb_crop)
 
     def _calculate_fps(self):
         """FPS 계산"""
@@ -494,6 +608,23 @@ class AdvancedMediaPipeManager:
         self.latest_results.clear()
         
         logger.info("MediaPipe Manager 정리 완료")
+
+    def adjust_dynamic_resources(self):
+        """
+        동적 리소스 관리: FPS, 처리시간, 큐 크기 등 실시간 성능 통계 기반으로
+        frame_queue/result_queue/deque의 maxlen을 동적으로 조정
+        """
+        stats = self.get_performance_stats()
+        fps = stats.get("fps", 0)
+        avg_processing_time = stats.get("avg_processing_time_ms", 0)
+        queue_size = stats.get("queue_size", 0)
+        # 예시: FPS가 10 이하로 떨어지면 큐/버퍼 크기 축소, 30 이상이면 확대
+        if fps < 10 or avg_processing_time > 100:
+            self.result_queue.maxsize = max(3, self.result_queue.maxsize // 2)
+        elif fps > 30 and avg_processing_time < 40:
+            self.result_queue.maxsize = min(100, self.result_queue.maxsize * 2)
+        # 필요시 각종 deque의 maxlen도 조정 가능
+        # (실제 적용은 각 버퍼/큐의 구조에 맞게 추가 구현)
 
     # 레거시 호환성 메소드들
     def run_tasks(self, frame):

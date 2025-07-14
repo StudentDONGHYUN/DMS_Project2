@@ -13,6 +13,8 @@ from core.definitions import CameraPosition
 from integration.integrated_system import AnalysisSystemType
 import logging
 
+from app import DMSApp
+
 # S-Class v19.0 혁신 기능 Import
 from systems.ai_driving_coach import AIDrivingCoach
 from systems.v2d_healthcare import V2DHealthcareSystem
@@ -23,7 +25,6 @@ from systems.digital_twin_platform import DigitalTwinPlatform
 # S-Class v19.0 관련 Import
 from config.settings import get_config, FeatureFlagConfig
 from models.data_structures import UIState
-from io_handler.ui import UIHandler
 
 # 로깅 시스템 설정
 setup_logging_system()
@@ -224,6 +225,7 @@ class SClass_DMS_GUI_Setup:
         self.webcam_id = tk.StringVar(value="0")
         self.user_id = tk.StringVar(value="default")
         self.enable_calibration = tk.BooleanVar(value=True)
+        self.enable_performance_optimization = tk.BooleanVar(value=True)  # 성능 최적화 모드 옵션
         self.camera_position_var = tk.StringVar(value=str(CameraPosition.REARVIEW_MIRROR))
         
         # S-Class 시스템 설정
@@ -693,6 +695,16 @@ class SClass_DMS_GUI_Setup:
             style="SClass.TLabel"
         ).pack()
 
+        # 성능 최적화 모드 옵션 체크박스 (고급 설정/시스템 설정 섹션에 추가)
+        perf_opt_frame = ttk.Frame(system_frame, style="SClassFrame.TFrame")
+        perf_opt_frame.pack(fill="x", pady=5)
+        ttk.Checkbutton(
+            perf_opt_frame,
+            text="⚡ Enable Performance Optimization Mode (Dynamic Frame Skipping)",
+            variable=self.enable_performance_optimization,
+            style="SClass.TCheckbutton"
+        ).pack(side="left")
+
     def _create_sclass_features_section(self, parent):
         """S-Class Expert Systems 설정 섹션"""
         features_frame = ttk.LabelFrame(parent, text=" 🧠 Expert Systems Configuration ", 
@@ -916,7 +928,8 @@ class SClass_DMS_GUI_Setup:
                 "enable_predictive_safety": self.enable_predictive_safety.get(),
                 "enable_biometric_fusion": self.enable_biometric_fusion.get(),
                 "enable_adaptive_thresholds": self.enable_adaptive_thresholds.get(),
-            }
+            },
+            "enable_performance_optimization": self.enable_performance_optimization.get()
         }
         # 혁신 엔진에 에디션 반영
         self.innovation_engine = SClassDMSv19Enhanced(user_id, edition)
@@ -1085,7 +1098,8 @@ def get_user_input_terminal():
             "enable_predictive_safety": True,
             "enable_biometric_fusion": True,
             "enable_adaptive_thresholds": True,
-        }
+        },
+        "enable_performance_optimization": True # 터미널 모드에서는 기본적으로 활성화
     }
 
 
@@ -1095,14 +1109,11 @@ def main():
     try:
         if GUI_AVAILABLE:
             root = tk.Tk()
-            
-            # 테마 설정 시도
             try:
                 root.tk.call("source", "azure.tcl")
                 root.tk.call("set_theme", "light")
             except tk.TclError:
                 pass
-            
             gui_setup = SClass_DMS_GUI_Setup(root)
             root.mainloop()
             config = gui_setup.config
@@ -1116,10 +1127,8 @@ def main():
             print(f" 시스템 모드: {config['system_type'].value}")
             print(f" 레거시 엔진: {'활성화' if config['use_legacy_engine'] else '비활성화'}")
             print("=" * 70)
-            edition = config["edition"]  # 항상 config에서만 읽음
-            app = SClassDMSv19Enhanced(user_id=config["user_id"], edition=edition)
-            # 실행 메서드 없음. 필요시 안내 메시지 출력
-            print("✅ S-Class DMS v19.0 시스템이 성공적으로 초기화되었습니다. (실행 루프는 GUI에서만 지원됩니다.)")
+            app = DMSApp(**config)
+            app.run()
         else:
             print("\n❌ 설정이 취소되어 프로그램을 종료합니다.")
 

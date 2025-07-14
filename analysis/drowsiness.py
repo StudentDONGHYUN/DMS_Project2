@@ -10,12 +10,14 @@ class EnhancedDrowsinessDetector:
 
     def __init__(self):
         self.ear_history = deque(maxlen=900)
+        self.pitch_history = deque(maxlen=900)
         self.personalized_threshold = None
         self.calibration_frames = 300
         self.temporal_attention = TemporalAttentionModel()
         self.microsleep_detector = MicrosleepDetector()
         self.calibration_ears = deque(maxlen=300)
         self.is_calibrated = False
+        self.correlation_skip_enabled = True  # 상관관계 기반 분석 스킵 활성화
         logger.info("EnhancedDrowsinessDetector 초기화 완료")
 
     def detect_drowsiness(self, face_landmarks, timestamp):
@@ -27,6 +29,7 @@ class EnhancedDrowsinessDetector:
         avg_ear = (left_ear + right_ear) / 2.0
         head_pose = self._estimate_head_pose_simple(face_landmarks)
         corrected_ear = self._correct_for_head_pose(avg_ear, head_pose)
+        pitch = head_pose["pitch"]
 
         self.ear_history.append(
             {
@@ -36,10 +39,61 @@ class EnhancedDrowsinessDetector:
                 "head_pose": head_pose,
             }
         )
+        self.pitch_history.append(pitch)
 
+        # --- 상관관계 기반 분석 스킵 로직 ---
+        skip_analysis = False
+        correlation = 0.0
+        if self.correlation_skip_enabled and len(self.ear_history) >= 300:
+            # 최근 5분(900프레임) 중 300프레임(10초) 이상일 때 rolling window 상관계수 계산
+            recent_ears = [frame["ear"] for frame in list(self.ear_history)[-300:]]
+            recent_pitch = list(self.pitch_history)[-300:]
+            if np.std(recent_ears) > 1e-4 and np.std(recent_pitch) > 1e-4:
+                correlation = np.corrcoef(recent_ears, recent_pitch)[0, 1]
+                # 강한 양의 상관관계(0.7 이상)가 지속될 때, 한 신호가 강하면 다른 신호 분석 스킵
+                if correlation > 0.7:
+                    # EAR이 매우 낮거나(눈 감김) Pitch가 매우 크면(고개 숙임) 둘 중 하나만 분석
+                    if corrected_ear < (self.personalized_threshold or 0.2) or abs(pitch) > 20:
+                        skip_analysis = True
+                        logger.info(f"상관관계 기반 분석 스킵: EAR-Pitch corr={correlation:.2f}, EAR={corrected_ear:.3f}, Pitch={pitch:.2f}")
+
+        if skip_analysis:
+            # EAR 기반 졸음 분석을 스킵하고, 간단 신호만 반환
+            return {
+                "status": "correlation_skip",
+                "confidence": 0.0,
+                "enhanced_ear": corrected_ear,
+                "threshold": self.personalized_threshold or 0.25,
+                "microsleep": {"detected": False, "duration": 0.0, "confidence": 0.0},
+                "perclos": 0.0,
+                "temporal_attention_score": 0.0,
+                "correlation": correlation,
+            }
+
+        # --- 개선: 변화 감지 기반 임계값 재캘리브레이션 ---
         if len(self.ear_history) >= self.calibration_frames and not self.is_calibrated:
             self._update_personalized_threshold()
             self.is_calibrated = True
+        elif self.is_calibrated and len(self.ear_history) >= 1800:  # 10분 이상 데이터가 쌓였을 때만
+            # 최근 5분(900프레임)과 그 이전 5분(900프레임) 분포 비교
+            recent_ears = [frame["ear"] for frame in list(self.ear_history)[-900:]]
+            prev_ears = [frame["ear"] for frame in list(self.ear_history)[-1800:-900]]
+            if len(prev_ears) == 900:
+                mean_recent, std_recent, var_recent = np.mean(recent_ears), np.std(recent_ears), np.var(recent_ears)
+                mean_prev, std_prev, var_prev = np.mean(prev_ears), np.std(prev_ears), np.var(prev_ears)
+                # 변화 임계값: 평균 0.03, 표준편차 0.02, 분산 0.001
+                if (
+                    abs(mean_recent - mean_prev) > 0.03 or
+                    abs(std_recent - std_prev) > 0.02 or
+                    abs(var_recent - var_prev) > 0.001
+                ):
+                    self._update_personalized_threshold()
+                    logger.info(
+                        f"EAR 분포 변화 감지: 재캘리브레이션 수행 "
+                        f"(mean {mean_prev:.3f}->{mean_recent:.3f}, "
+                        f"std {std_prev:.3f}->{std_recent:.3f}, "
+                        f"var {var_prev:.4f}->{var_recent:.4f})"
+                    )
 
         drowsiness_probability = self.temporal_attention.predict(
             self.ear_history, self.personalized_threshold or 0.25
@@ -57,12 +111,48 @@ class EnhancedDrowsinessDetector:
             "temporal_attention_score": drowsiness_probability,
         }
 
+    def _euclidean_distance_3d(self, p1, p2):
+        return ((p1.x - p2.x)**2 + (p1.y - p2.y)**2 + (p1.z - p2.z)**2)**0.5
+
+    def _euclidean_distance_3d_sq(self, p1, p2):
+        return (p1.x - p2.x)**2 + (p1.y - p2.y)**2 + (p1.z - p2.z)**2
+
+    def is_eye_closed_enhanced_fast(self, landmarks, eye_side, threshold):
+        """
+        3쌍의 수직거리를 사용하는 Enhanced EAR 공식을 최적화하여 눈 감김을 빠르게 판정합니다.
+        (v1+v2+v3)^2 < 9 * h^2 * threshold^2
+        """
+        # 예시 인덱스: 실제 모델에 맞게 조정 필요
+        if eye_side == "left":
+            p_h_1, p_h_2 = landmarks[33], landmarks[133]  # 수평선
+            p_v1_1, p_v1_2 = landmarks[159], landmarks[145]  # 수직선 1
+            p_v2_1, p_v2_2 = landmarks[160], landmarks[144]  # 수직선 2 (가운데)
+            p_v3_1, p_v3_2 = landmarks[161], landmarks[143]  # 수직선 3
+        else:  # 오른쪽 눈
+            p_h_1, p_h_2 = landmarks[362], landmarks[263]  # 수평선
+            p_v1_1, p_v1_2 = landmarks[386], landmarks[374]  # 수직선 1
+            p_v2_1, p_v2_2 = landmarks[387], landmarks[373]  # 수직선 2 (가운데)
+            p_v3_1, p_v3_2 = landmarks[388], landmarks[372]  # 수직선 3
+        try:
+            vertical_1 = self._euclidean_distance_3d(p_v1_1, p_v1_2)
+            vertical_2 = self._euclidean_distance_3d(p_v2_1, p_v2_2)
+            vertical_3 = self._euclidean_distance_3d(p_v3_1, p_v3_2)
+            horizontal_sq = self._euclidean_distance_3d_sq(p_h_1, p_h_2)
+            if horizontal_sq > 1e-6:
+                numerator_sq = (vertical_1 + vertical_2 + vertical_3) ** 2
+                rhs = 9.0 * horizontal_sq * (threshold ** 2)
+                return numerator_sq < rhs
+            else:
+                return False
+        except (IndexError, TypeError):
+            return False
+
     def _calculate_enhanced_ear(self, landmarks, eye_side):
+        # 기존 방식(EAR 값 자체 반환, 하위 호환)
         if eye_side == "left":
             eye_points = [33, 7, 163, 144, 145, 153]
         else:
             eye_points = [362, 382, 381, 380, 374, 373]
-
         try:
             eye_landmarks = [landmarks[i] for i in eye_points]
             vertical_1 = self._euclidean_distance(eye_landmarks[1], eye_landmarks[5])

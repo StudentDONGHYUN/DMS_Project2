@@ -462,11 +462,11 @@ class VideoInputManager:
         return False
 
     def get_frame(self):
-        """리더 스레드에서 저장한 최신 프레임 반환 (스레드 안전)"""
+        """리더 스레드에서 저장한 최신 프레임 반환 (스레드 안전, 항상 numpy)"""
         try:
             with self.frame_lock:
                 if self.current_frame is not None:
-                    return self.current_frame.copy()  # 복사본 반환으로 스레드 안전성 보장
+                    return self.current_frame.copy()
                 else:
                     return None
         except Exception as e:

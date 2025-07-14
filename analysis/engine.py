@@ -8,6 +8,7 @@ from mediapipe.framework.formats import landmark_pb2
 
 from mediapipe import solutions
 import math
+from enum import Enum
 
 from core.definitions import (
     CameraPosition, AdvancedMetrics, TimeWindowConfig, GazeZone,
@@ -17,13 +18,13 @@ from utils.memory import MemoryManager
 from systems.personalization import PersonalizationEngine
 from systems.dynamic import DynamicAnalysisEngine
 from systems.backup import SensorBackupManager
-from analysis.gaze import EnhancedSphericalGazeClassifier
+from analysis.gaze import GazeZoneClassifier
 from analysis.drowsiness import EnhancedDrowsinessDetector
 from analysis.emotion import EmotionRecognitionSystem
 from analysis.distraction import DistractionObjectDetector
 from analysis.identity import DriverIdentificationSystem
 from analysis.prediction import PredictiveSafetySystem
-from io_handler.ui import EnhancedUIManager
+from io_handler.ui import SClassAdvancedUIManager
 
 logger = logging.getLogger(__name__)
 
@@ -49,7 +50,23 @@ class EnhancedAnalysisEngine:
         self.dynamic_analyzer = DynamicAnalysisEngine()
         self.sensor_backup = SensorBackupManager()
         self.counter_analyzer = CounterBasedAnalyzer(TimeWindowConfig())
-        self.gaze_classifier = EnhancedSphericalGazeClassifier()
+        # 시스템 사양에 따라 시선 분류 모드 자동 설정
+        mode_map = {
+            'HIGH_PERFORMANCE': '3d',
+            'RESEARCH': '3d',
+            'STANDARD': 'lut',
+            'LOW_RESOURCE': 'bbox',
+        }
+        # system_type이 문자열 또는 Enum일 수 있음
+        stype = getattr(self, 'system_type', 'STANDARD')
+        if isinstance(stype, Enum):
+            stype_str = stype.name
+        elif isinstance(stype, str):
+            stype_str = stype
+        else:
+            stype_str = str(stype)
+        gaze_mode = mode_map.get(stype_str.upper(), 'lut')
+        self.gaze_classifier = GazeZoneClassifier(mode=gaze_mode)
         self.drowsiness_detector = EnhancedDrowsinessDetector()
         self.emotion_recognizer = EmotionRecognitionSystem()
         self.distraction_detector = DistractionObjectDetector()
@@ -59,7 +76,7 @@ class EnhancedAnalysisEngine:
         self.current_gaze_zone, self.gaze_zone_start_time = GazeZone.FRONT, time.time()
         self.frame_buffer, self.result_buffer = {}, {}
         self.processed_data_queue = deque(maxlen=5)
-        self.ui_manager = EnhancedUIManager()
+        self.ui_manager = SClassAdvancedUIManager()
         self.calibration_mode = enable_calibration
         if (
             self.enable_calibration
@@ -134,12 +151,28 @@ class EnhancedAnalysisEngine:
             if frame is not None and results is not None:
                 self.processed_data_queue.append((frame, results))
                 try:
-                    from io_handler.ui import EnhancedUIManager
+                    ui_manager = SClassAdvancedUIManager()
                     import cv2
-                    ui_manager = EnhancedUIManager()
-                    annotated = ui_manager.draw_enhanced_results(frame, results, None, None)
+                    annotated = ui_manager.draw_enhanced_results(
+                        frame,
+                        self.get_latest_metrics(),
+                        self.state_manager.get_current_state(),
+                        results,
+                        self.gaze_classifier,
+                        self.dynamic_analyzer,
+                        self.sensor_backup,
+                        None,  # perf_stats (None 또는 실제 값)
+                        None,  # playback_info (None 또는 실제 값)
+                        self.driver_identifier,
+                        self.predictive_safety,
+                        self.emotion_recognizer,
+                    )
                     logger.info("[진단] engine._try_queue_results: draw_enhanced_results 호출 완료")
-                    cv2.imshow("DMS", annotated)
+                    try:
+                        frame_to_show = cv2.UMat(annotated) if not isinstance(annotated, cv2.UMat) else annotated
+                    except Exception:
+                        frame_to_show = annotated
+                    cv2.imshow("DMS", frame_to_show)
                     logger.info("[진단] engine._try_queue_results: cv2.imshow 호출 완료")
                 except Exception as e:
                     logger.error(f"[진단] engine._try_queue_results: 시각화 예외: {e}")

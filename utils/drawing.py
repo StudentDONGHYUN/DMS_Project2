@@ -71,6 +71,17 @@ class TasksConnections:
         (0, 17), (17, 18), (18, 19), (19, 20)
     ]
 
+# --- UMat utility ---
+def ensure_umat(image):
+    if isinstance(image, cv2.UMat):
+        return image
+    try:
+        return cv2.UMat(image)
+    except Exception:
+        return image  # fallback to numpy if UMat not available
+
+# MediaPipe 이전에는 numpy만 사용, 시각화/렌더링 단계에서만 UMat 변환
+# draw_landmarks_on_image 등은 입력이 numpy면 UMat으로 변환, 이미 UMat이면 그대로 사용
 def draw_landmarks_on_image(
     image: np.ndarray,
     landmarks: List,
@@ -82,21 +93,21 @@ def draw_landmarks_on_image(
     in_place: bool = False
 ) -> np.ndarray:
     """
-    최신 MediaPipe Tasks API용 범용 랜드마크 그리기 함수
+    최신 MediaPipe Tasks API용 범용 랜드마크 그리기 함수 (시각화 단계에서만 UMat 변환)
     """
     if not landmarks:
         return image
-    
-    # 성능 최적화: in_place 플래그로 복사 여부 결정
-    annotated_image = image if in_place else image.copy()
-    height, width = image.shape[:2]
-    
+    # 시각화 단계에서만 UMat 변환 (입력이 numpy면 변환, 이미 UMat이면 그대로)
+    if not isinstance(image, cv2.UMat):
+        annotated_image = cv2.UMat(image)
+    else:
+        annotated_image = image
+    height, width = annotated_image.get().shape[:2] if isinstance(annotated_image, cv2.UMat) else annotated_image.shape[:2]
     # 랜드마크 점들 그리기
     for landmark in landmarks:
         x = int(landmark.x * width)
         y = int(landmark.y * height)
         cv2.circle(annotated_image, (x, y), landmark_radius, landmark_color, -1)
-    
     # 연결선 그리기
     if connections:
         for connection in connections:
@@ -104,12 +115,9 @@ def draw_landmarks_on_image(
             if start_idx < len(landmarks) and end_idx < len(landmarks):
                 start_landmark = landmarks[start_idx]
                 end_landmark = landmarks[end_idx]
-                
                 start_point = (int(start_landmark.x * width), int(start_landmark.y * height))
                 end_point = (int(end_landmark.x * width), int(end_landmark.y * height))
-                
                 cv2.line(annotated_image, start_point, end_point, connection_color, connection_thickness)
-    
     return annotated_image
 
 def draw_face_landmarks_on_image(rgb_image: np.ndarray, detection_result) -> np.ndarray:
@@ -120,7 +128,7 @@ def draw_face_landmarks_on_image(rgb_image: np.ndarray, detection_result) -> np.
         return rgb_image
     
     # 한 번만 복사하여 성능 최적화
-    annotated_image = rgb_image.copy()
+    annotated_image = ensure_umat(rgb_image)
     
     try:
         for face_landmarks in detection_result.face_landmarks:
@@ -175,7 +183,7 @@ def draw_pose_landmarks_on_image(rgb_image: np.ndarray, detection_result) -> np.
         return rgb_image
     
     # 한 번만 복사하여 성능 최적화
-    annotated_image = rgb_image.copy()
+    annotated_image = ensure_umat(rgb_image)
     
     try:
         for pose_landmarks in detection_result.pose_landmarks:
@@ -204,7 +212,7 @@ def draw_hand_landmarks_on_image(rgb_image: np.ndarray, detection_result) -> np.
         return rgb_image
     
     # 한 번만 복사하여 성능 최적화
-    annotated_image = rgb_image.copy()
+    annotated_image = ensure_umat(rgb_image)
     
     try:
         hand_landmarks_list = detection_result.hand_landmarks
@@ -272,8 +280,8 @@ def draw_detection_boxes(
         return image
     
     # 한 번만 복사하여 성능 최적화
-    annotated_image = image.copy()
-    height, width = image.shape[:2]
+    annotated_image = ensure_umat(image)
+    height, width = annotated_image.shape[:2]
     
     try:
         for detection in detections:
@@ -332,7 +340,7 @@ def create_comprehensive_visualization(
     성능 최적화: 단일 복사본으로 모든 그리기 작업 수행
     """
     # 한 번만 복사하고 모든 작업을 이 복사본에서 수행
-    annotated_image = image.copy()
+    annotated_image = ensure_umat(image)
     
     # 순서대로 그리기 (겹치는 부분 고려)
     if object_result:

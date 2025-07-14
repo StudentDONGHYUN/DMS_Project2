@@ -181,12 +181,12 @@ class LowResourceSystemFactory(IAnalysisSystemFactory):
         from analysis.processors.object_processor import ObjectDataProcessor
         from analysis.drowsiness import EnhancedDrowsinessDetector
         from analysis.emotion import EmotionRecognitionSystem
-        from analysis.gaze import EnhancedSphericalGazeClassifier
+        from analysis.gaze import GazeZoneClassifier
         from analysis.identity import DriverIdentificationSystem
 
         drowsiness_detector = EnhancedDrowsinessDetector()
         emotion_recognizer = EmotionRecognitionSystem()
-        gaze_classifier = EnhancedSphericalGazeClassifier()
+        gaze_classifier = GazeZoneClassifier()
         driver_identifier = DriverIdentificationSystem()
 
         face_processor = FaceDataProcessor(
@@ -315,12 +315,12 @@ class StandardSystemFactory(IAnalysisSystemFactory):
         from analysis.processors.object_processor import ObjectDataProcessor
         from analysis.drowsiness import EnhancedDrowsinessDetector
         from analysis.emotion import EmotionRecognitionSystem
-        from analysis.gaze import EnhancedSphericalGazeClassifier
+        from analysis.gaze import GazeZoneClassifier
         from analysis.identity import DriverIdentificationSystem
 
         drowsiness_detector = EnhancedDrowsinessDetector()
         emotion_recognizer = EmotionRecognitionSystem()
-        gaze_classifier = EnhancedSphericalGazeClassifier()
+        gaze_classifier = GazeZoneClassifier()
         driver_identifier = DriverIdentificationSystem()
 
         face_processor = FaceDataProcessor(
@@ -460,12 +460,12 @@ class HighPerformanceSystemFactory(IAnalysisSystemFactory):
         from analysis.processors.object_processor import ObjectDataProcessor
         from analysis.drowsiness import EnhancedDrowsinessDetector
         from analysis.emotion import EmotionRecognitionSystem
-        from analysis.gaze import EnhancedSphericalGazeClassifier
+        from analysis.gaze import GazeZoneClassifier
         from analysis.identity import DriverIdentificationSystem
 
         drowsiness_detector = EnhancedDrowsinessDetector()
         emotion_recognizer = EmotionRecognitionSystem()
-        gaze_classifier = EnhancedSphericalGazeClassifier()
+        gaze_classifier = GazeZoneClassifier()
         driver_identifier = DriverIdentificationSystem()
 
         face_processor = FaceDataProcessor(
@@ -626,12 +626,12 @@ class ResearchSystemFactory(IAnalysisSystemFactory):
         from analysis.processors.object_processor import ObjectDataProcessor
         from analysis.drowsiness import EnhancedDrowsinessDetector
         from analysis.emotion import EmotionRecognitionSystem
-        from analysis.gaze import EnhancedSphericalGazeClassifier
+        from analysis.gaze import GazeZoneClassifier
         from analysis.identity import DriverIdentificationSystem
 
         drowsiness_detector = EnhancedDrowsinessDetector()
         emotion_recognizer = EmotionRecognitionSystem()
-        gaze_classifier = EnhancedSphericalGazeClassifier()
+        gaze_classifier = GazeZoneClassifier()
         driver_identifier = DriverIdentificationSystem()
 
         face_processor = FaceDataProcessor(
