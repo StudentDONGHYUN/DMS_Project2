@@ -20,11 +20,11 @@ from config.settings import get_config, FeatureFlagConfig
 from models.data_structures import UIState
 
 # System imports
-from systems.mediapipe_manager import MediaPipeManager
-from systems.performance import PerformanceOptimizer
-from systems.personalization import PersonalizationEngine
-from systems.dynamic import DynamicAnalysisEngine
-from systems.backup import SensorBackupManager
+from systems.mediapipe_manager_v2 import MediaPipeManager
+from systems.performance_v2 import PerformanceOptimizer
+from systems.personalization_v2 import PersonalizationEngine
+from systems.dynamic_v2 import DynamicAnalysisEngine
+from systems.backup_v2 import SensorBackupManager
 
 # IO Handler imports
 from io_handler.video_input_v2 import VideoInputManager

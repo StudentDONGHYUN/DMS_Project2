@@ -1,25 +1,12 @@
-"""
-Video Input Manager - Enhanced System
-통합 시스템과 호환되는 비디오 입력 관리자
-기존 코드와 개선된 코드를 통합하여 호환성과 성능을 모두 확보
-"""
-
 import cv2
-import asyncio
 import threading
 import time
-import logging
 import os
+import logging
 import contextlib
-from typing import Optional, List, Dict, Any
-from pathlib import Path
-try:
-    import numpy as np
-except ImportError:
-    np = None
+from typing import Optional, Dict
 
 logger = logging.getLogger(__name__)
-
 
 @contextlib.contextmanager
 def video_capture_context(source):
@@ -61,449 +48,491 @@ async def async_video_capture_context(source):
             except Exception as e:
                 logger.warning(f"Async VideoCapture 정리 중 오류: {e}")
 
+class MultiVideoCalibrationManager:
+    """다중 비디오 캘리브레이션 관리"""
 
-class ContinuityManager:
-    """운전자 연속성 관리"""
     def __init__(self, user_id: str):
-        self.user_id = user_id
         self.is_same_driver = True
+        self.shared_calibration_data = None
 
     def set_driver_continuity(self, is_same: bool):
         self.is_same_driver = is_same
+        logger.info(f"운전자 연속성 설정됨: {'동일 운전자' if is_same else '다른 운전자'}")
 
     def should_skip_calibration(self) -> bool:
-        return self.is_same_driver
+        return self.is_same_driver and self.shared_calibration_data is not None
 
     def save_calibration_data(self, data: Dict):
-        logger.debug(f"캘리브레이션 데이터 저장: {self.user_id}")
+        if self.is_same_driver:
+            self.shared_calibration_data = data.copy()
 
     def get_shared_calibration_data(self) -> Optional[Dict]:
-        return None
-
+        return self.shared_calibration_data
 
 class VideoInputManager:
-    """통합 비디오 입력 관리자 - 기존 코드와 개선된 코드의 통합"""
+    """비동기 입력 관리자"""
 
-    def __init__(
-        self,
-        source_type: str = "webcam",
-        webcam_id: int = 0,
-        video_files: List[str] = None,
-        enable_calibration: bool = True,
-        input_source=None  # Legacy compatibility
-    ):
-        """
-        비디오 입력 관리자 초기화
-        
-        Args:
-            source_type: 입력 소스 타입 ("webcam" 또는 "video")
-            webcam_id: 웹캠 ID
-            video_files: 비디오 파일 목록
-            enable_calibration: 캘리브레이션 활성화 여부
-            input_source: Legacy compatibility parameter
-        """
-        # Legacy compatibility
-        if input_source is not None:
-            if isinstance(input_source, int):
-                self.source_type = "webcam"
-                self.webcam_id = input_source
-            el            elif isinstance(input_source, (str, list)):
-                self.source_type = "video"
-                self.video_files = [input_source] if isinstance(input_source, str) else list(input_source)
-                self.webcam_id = 0
-            else:
-                self.source_type = source_type
-                self.webcam_id = webcam_id
-                self.video_files = video_files if video_files is not None else []
-        else:
-            self.source_type = source_type
-            self.webcam_id = webcam_id
-            self.video_files = video_files or []
-        
-        self.enable_calibration = enable_calibration
-        
-        # Video capture
+    def __init__(self, input_source):
+        self.input_source = input_source
         self.cap = None
-        self.is_initialized = False
-        self._is_running = False
-        
-        # Frame management
-        self.current_frame = None
-        self.frame_count = 0
-        self.last_frame_time = 0.0
-        self.fps = 30.0
-        
-        # Threading
-        self.capture_thread = None
-        self.stop_event = threading.Event()
-        self.frame_lock = threading.Lock()
-        
-        # Video file management
-        self.current_video_index = 0
-        self.video_changed = False
+        self.is_video_mode = isinstance(input_source, (str, list, tuple))
+        self.video_playlist = []
+        self.current_video_index = -1
         self.playback_speed = 1.0
-        
-        # Error handling
-        self.last_error = None
-        self.consecutive_failures = 0
-        self.max_consecutive_failures = 10
-
-    async def start(self) -> bool:
-        """비디오 입력 시작"""
-        try:
-            if self._is_running:
-                logger.warning("Video input is already running")
-                return True
-            
-            success = await self._initialize_capture()
-            if success:
-                self._is_running = True
-                logger.info(f"Video input started - Type: {self.source_type}")
-            
-            return success
-            
-        except Exception as e:
-            self.last_error = str(e)
-            logger.error(f"Failed to start video input: {e}")
-            return False
+        self.current_frame = None
+        self.frame_lock = threading.Lock()
+        self.capture_thread = None
+        self.stopped = True
+        self.video_changed_flag = False
+        self.init_error_message = None  # 에러 메시지 저장용
+        self.fps = 30 # 프레임 속도 저장용
 
     def initialize(self) -> bool:
-        """동기 초기화 (레거시 호환성)"""
+        """비디오 입력 초기화 (강화된 오류 처리 및 타이밍 제어)"""
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.info("[진단] video_input.initialize 진입")
         try:
-            loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(loop)
-            return loop.run_until_complete(self.start())
-        except Exception as e:
-            logger.error(f"Sync initialization failed: {e}")
-            return False
-
-    async def _initialize_capture(self) -> bool:
-        """비디오 캡처 초기화"""
-        try:
-            if self.source_type == "webcam":
-                return await self._initialize_webcam()
-            elif self.source_type == "video":
-                return await self._initialize_video()
+            logger.info(f"[진단] video_input.initialize - self.input_source={self.input_source}")
+            self.init_error_message = None  # 에러 메시지 저장용
+            if self.is_video_mode:
+                self.video_playlist = self.input_source if isinstance(self.input_source, list) else [self.input_source]
+                if not self.video_playlist:
+                    logger.error("비어있는 비디오 플레이리스트")
+                    self.init_error_message = "비어있는 비디오 플레이리스트"
+                    return False
+                logger.info(f"비디오 플레이리스트: {len(self.video_playlist)}개 파일")
+                for i, video_file in enumerate(self.video_playlist):
+                    logger.info(f"  {i+1}. {os.path.basename(video_file)}")
+                # 여러 파일 중 열리는 첫 파일을 찾음
+                self.current_video_index = 0
+                cap_found = False
+                for idx, video_file in enumerate(self.video_playlist):
+                    cap = self._create_optimized_capture(video_file)
+                    if cap and cap.isOpened():
+                        self.cap = cap
+                        self.current_video_index = idx
+                        cap_found = True
+                        # backend 정보, 속성, 코덱 등 진단 로그
+                        backend = self.cap.getBackendName() if hasattr(self.cap, 'getBackendName') else 'unknown'
+                        fourcc = int(self.cap.get(cv2.CAP_PROP_FOURCC))
+                        codec = ''.join([chr((fourcc >> 8 * i) & 0xFF) for i in range(4)])
+                        total_frames = int(self.cap.get(cv2.CAP_PROP_FRAME_COUNT))
+                        logger.info(f"[진단] VideoCapture backend: {backend}, codec: {codec}, 총 프레임: {total_frames}")
+                        break
+                    else:
+                        logger.error(f"비디오 파일 열기 실패: {video_file}")
+                if not cap_found:
+                    logger.error("모든 비디오 파일 열기 실패")
+                    self.init_error_message = "모든 비디오 파일 열기 실패"
+                    return False
             else:
-                raise ValueError(f"Unsupported source type: {self.source_type}")
-                
-        except Exception as e:
-            self.last_error = str(e)
-            logger.error(f"Failed to initialize capture: {e}")
-            return False
-
-    async def _initialize_webcam(self) -> bool:
-        """웹캠 초기화"""
-        try:
-            self.cap = cv2.VideoCapture(self.webcam_id)
-            
-            if not self.cap.isOpened():
-                raise RuntimeError(f"Failed to open webcam {self.webcam_id}")
-            
-            # Optimize webcam settings
-            self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
-            self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
-            self.cap.set(cv2.CAP_PROP_FPS, 30)
-            self.cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
-            
-            # Test first frame
-            ret, frame = self.cap.read()
-            if not ret or frame is None:
-                raise RuntimeError("Failed to read first frame from webcam")
-            
-            self.current_frame = frame
-            self.is_initialized = True
-            
-            # Start capture thread
-            self.stop_event.clear()
-            self.capture_thread = threading.Thread(target=self._capture_loop, daemon=True)
+                logger.info(f"웹캠 모드 - 디바이스 {self.input_source}")
+                self.cap = self._create_optimized_capture(int(self.input_source))
+                if self.cap and self.cap.isOpened():
+                    pass
+            if not self.cap or not self.cap.isOpened():
+                logger.error(f"입력 소스 열기 실패: {self.input_source}")
+                self.init_error_message = f"입력 소스 열기 실패: {self.input_source}"
+                return False
+            logger.info("VideoCapture 객체 성공적으로 생성됨")
+            # backend 정보, 속성, 코덱 등 진단 로그 (웹캠 포함)
+            backend = self.cap.getBackendName() if hasattr(self.cap, 'getBackendName') else 'unknown'
+            fourcc = int(self.cap.get(cv2.CAP_PROP_FOURCC))
+            codec = ''.join([chr((fourcc >> 8 * i) & 0xFF) for i in range(4)])
+            total_frames = int(self.cap.get(cv2.CAP_PROP_FRAME_COUNT))
+            logger.info(f"[진단] VideoCapture backend: {backend}, codec: {codec}, 총 프레임: {total_frames}")
+            # 리더 스레드 시작
+            self.stopped = False
+            self.capture_thread = threading.Thread(target=self._reader_thread, daemon=True)
             self.capture_thread.start()
-            
-            return await self._wait_for_first_frame()
-            
-        except Exception as e:
-            logger.error(f"Webcam initialization failed: {e}")
-            if self.cap:
-                self.cap.release()
-                self.cap = None
-            return False
-
-    async def _initialize_video(self) -> bool:
-        """비디오 파일 초기화"""
-        try:
-            if not self.video_files:
-                raise ValueError("No video files provided")
-            
-            # Try to open first video
-            for i, video_file in enumerate(self.video_files):
-                if await self._try_open_video(video_file, i):
-                    self.current_video_index = i
-                    break
-            else:
-                raise RuntimeError("Failed to open any video file")
-            
-            self.is_initialized = True
-            
-            # Start capture thread
-            self.stop_event.clear()
-            self.capture_thread = threading.Thread(target=self._capture_loop, daemon=True)
-            self.capture_thread.start()
-            
-            return await self._wait_for_first_frame()
-            
-        except Exception as e:
-            logger.error(f"Video initialization failed: {e}")
-            if self.cap:
-                self.cap.release()
-                self.cap = None
-            return False
-
-    async def _try_open_video(self, video_file: str, index: int) -> bool:
-        """비디오 파일 열기 시도"""
-        try:
-            if not os.path.exists(video_file):
-                logger.warning(f"Video file not found: {video_file}")
-                return False
-            
-            cap = cv2.VideoCapture(video_file)
-            if not cap.isOpened():
-                logger.warning(f"Failed to open video: {video_file}")
-                return False
-            
-            # Test first frame
-            ret, frame = cap.read()
-            if not ret or frame is None:
-                logger.warning(f"Failed to read first frame from: {video_file}")
-                cap.release()
-                return False
-            
-            # Success - store the capture and frame
-            if self.cap:
-                self.cap.release()
-            
-            self.cap = cap
-            self.current_frame = frame
-            self.video_changed = True
-            
-            logger.info(f"Successfully opened video: {video_file}")
-            return True
-            
-        except Exception as e:
-            logger.error(f"Error opening video {video_file}: {e}")
-            return False
-
-    async def _wait_for_first_frame(self, timeout: float = 5.0) -> bool:
-        """첫 번째 프레임 대기"""
-        try:
+            # 리더 스레드가 시작될 때까지 잠시 대기
+            logger.info("리더 스레드 시작 대기 중...")
+            time.sleep(0.5)  # 스레드 안정화 대기
+            # 첫 번째 프레임 대기 (최대 5초)
+            first_frame_timeout = 5.0
             start_time = time.time()
+            logger.info(f"첫 번째 프레임 대기 중 (최대 {first_frame_timeout}초)...")
             
-            while time.time() - start_time < timeout:
+            # Initialize thread health check variables
+            consecutive_failures = 0
+            max_consecutive_failures = 3
+            last_health_check = time.time()
+            health_check_interval = 0.5  # Check every 0.5 seconds
+            
+            while time.time() - start_time < first_frame_timeout:
+                current_time = time.time()
+                
+                # Check for first frame in thread-safe manner
+                frame_received = False
+                thread_alive = False
+                stopped_flag = False
+                
+                # Lock-protected frame check
                 with self.frame_lock:
                     if self.current_frame is not None:
-                        return True
+                        frame_received = True
                 
-                await asyncio.sleep(0.1)
+                # Check thread status with proper timing
+                if current_time - last_health_check >= health_check_interval:
+                    if self.capture_thread:
+                        thread_alive = self.capture_thread.is_alive()
+                    stopped_flag = self.stopped
+                    last_health_check = current_time
+                    
+                    # Thread health monitoring
+                    if not thread_alive and not stopped_flag:
+                        consecutive_failures += 1
+                        logger.warning(f"리더 스레드 비활성 감지 ({consecutive_failures}/{max_consecutive_failures})")
+                        
+                        if consecutive_failures >= max_consecutive_failures:
+                            logger.error("리더 스레드가 반복적으로 실패함")
+                            self.init_error_message = "리더 스레드가 반복적으로 실패함"
+                            return False
+                    else:
+                        consecutive_failures = 0  # Reset counter if thread is alive
+                
+                if frame_received:
+                    logger.info("✅ 첫 번째 프레임 수신 성공")
+                    logger.info("✅ 입력 소스 초기화 및 스레드 시작 완료")
+                    return True
+                
+                if stopped_flag:
+                    logger.error("리더 스레드가 예상치 못하게 중단됨")
+                    self.init_error_message = "리더 스레드가 예상치 못하게 중단됨"
+                    return False
+                
+                time.sleep(0.1)
             
-            logger.error("Timeout waiting for first frame")
-            return False
+            # 타임아웃 발생 - 최종 상태 검사
+            logger.warning(f"첫 번째 프레임 대기 타임아웃 ({first_frame_timeout}초)")
             
+            # Final comprehensive state check
+            final_frame_check = False
+            final_thread_alive = False
+            final_stopped_flag = False
+            
+            # One final frame check
+            with self.frame_lock:
+                if self.current_frame is not None:
+                    final_frame_check = True
+            
+            # Thread status check
+            if self.capture_thread:
+                final_thread_alive = self.capture_thread.is_alive()
+            final_stopped_flag = self.stopped
+            
+            if final_frame_check:
+                logger.info("타임아웃 후 프레임 발견됨 - 정상 진행")
+                return True
+            elif not final_stopped_flag and final_thread_alive:
+                logger.info("리더 스레드가 실행 중이므로 계속 진행")
+                return True
+            else:
+                logger.error("리더 스레드가 중단되었거나 시작되지 않음")
+                self.init_error_message = "리더 스레드가 중단되었거나 시작되지 않음"
+                return False
         except Exception as e:
-            logger.error(f"Error waiting for first frame: {e}")
+            logger.error(f"VideoInputManager 초기화 실패: {e}", exc_info=True)
+            self.init_error_message = f"VideoInputManager 초기화 실패: {e}"
             return False
 
-    def _capture_loop(self):
-        """프레임 캡처 루프"""
-        logger.info("Capture loop started")
-        
-        while not self.stop_event.is_set():
-            try:
-                if not self.cap or not self.cap.isOpened():
-                    if self.source_type == "video" and self._try_next_video():
-                        continue
-                    else:
-                        break
-                
+    def _reader_thread(self):
+        """비디오 프레임 읽기 스레드 (강화된 오류 처리 및 진단)"""
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.info("[진단] video_input._reader_thread 진입")
+        try:
+            while not self.stopped and self.cap and self.cap.isOpened():
                 ret, frame = self.cap.read()
-                
+                logger.info(f"[진단] video_input._reader_thread cap.read(): ret={ret}, frame type={type(frame)}, shape={getattr(frame, 'shape', None)}")
                 if ret and frame is not None:
                     with self.frame_lock:
                         self.current_frame = frame
-                        self.frame_count += 1
-                        self.last_frame_time = time.time()
-                    
-                    self.consecutive_failures = 0
-                    
-                    # Frame rate control for video files
-                    if self.source_type == "video":
-                        sleep_time = (1.0 / self.fps) / self.playback_speed
-                        time.sleep(max(0.001, sleep_time))
-                
+                        logger.info(f"[진단] video_input._reader_thread self.current_frame 갱신: shape={getattr(frame, 'shape', None)}")
                 else:
-                    # End of video file or error
-                    if self.source_type == "video":
-                        if not self._try_next_video():
-                            break
+                    logger.warning(f"[진단] video_input._reader_thread: 프레임 획득 실패 (ret={ret})")
+                    # 프레임 획득 실패 시 비디오 다음으로 넘어가기 시도
+                    if self.is_video_mode and not self._try_next_video():
+                        logger.info("모든 비디오 재생 완료")
+                        break
+                
+                # 프레임 레이트 제어 (웹캠은 지연 없음, 비디오 파일만 제어)
+                if self.is_video_mode:
+                    # 비디오 파일: 원본 FPS에 맞춰 재생
+                    actual_fps = self.cap.get(cv2.CAP_PROP_FPS) if self.cap else 30
+                    if actual_fps > 0:
+                        time.sleep(1.0 / actual_fps)
                     else:
-                        self.consecutive_failures += 1
-                        if self.consecutive_failures >= self.max_consecutive_failures:
-                            logger.error("Too many consecutive failures, stopping capture")
-                            break
-                        time.sleep(0.1)
-                
-            except Exception as e:
-                logger.error(f"Capture loop error: {e}")
-                self.consecutive_failures += 1
-                if self.consecutive_failures >= self.max_consecutive_failures:
-                    break
-                time.sleep(0.1)
+                        time.sleep(0.033)  # 30fps 기본값
+                else:
+                    # 웹캠: 지연 없음 (하드웨어가 자연스럽게 제어)
+                    time.sleep(0.001)  # 최소 지연
+            logger.info(f"[진단] video_input._reader_thread 루프 종료: stopped={self.stopped}, cap_opened={self.cap.isOpened() if self.cap else None}")
+        except Exception as e:
+            logger.error(f"[진단] video_input._reader_thread 예외: {e}", exc_info=True)
+        logger.info("[진단] video_input._reader_thread 함수 종료")
+
+    def _create_optimized_capture(self, source):
+        """플랫폼별 최적화된 VideoCapture 생성 (환경 적응형 처리)"""
+        import platform
         
-        logger.info("Capture loop ended")
-
-    def _try_next_video(self) -> bool:
-        """다음 비디오 파일로 전환"""
+        # 환경 감지
+        is_windows = platform.system() == "Windows"
+        is_rb2_platform = os.path.exists("/dev/video0") and not is_windows
+        
         try:
-            if not self.video_files or len(self.video_files) <= 1:
-                return False
-            
-            self.current_video_index = (self.current_video_index + 1) % len(self.video_files)
-            next_video = self.video_files[self.current_video_index]
-            
-            return self._try_open_video_sync(next_video, self.current_video_index)
-            
-        except Exception as e:
-            logger.error(f"Error switching to next video: {e}")
-            return False
-
-    def _try_open_video_sync(self, video_file: str, index: int) -> bool:
-        """비디오 파일 열기 (동기 버전)"""
-        try:
-            if not os.path.exists(video_file):
-                return False
-            
-            cap = cv2.VideoCapture(video_file)
-            if not cap.isOpened():
-                return False
-            
-            if self.cap:
-                self.cap.release()
-            
-            self.cap = cap
-            self.video_changed = True
-            logger.info(f"Switched to video: {video_file}")
-            return True
-            
-        except Exception as e:
-            logger.error(f"Error opening video sync {video_file}: {e}")
-            return False
-
-    async def get_frame_async(self) -> Optional[np.ndarray]:
-        """현재 프레임 반환 (비동기 버전)"""
-        try:
-            with self.frame_lock:
-                if self.current_frame is not None:
-                    return self.current_frame.copy()
-                return None
+            if is_rb2_platform:
+                # RB2 플랫폼: GStreamer 하드웨어 가속 시도
+                return self._create_rb2_optimized_capture(source)
+            else:
+                # Windows/개발 환경: 표준 OpenCV 사용
+                return self._create_standard_capture(source)
                 
         except Exception as e:
-            logger.error(f"Error getting frame async: {e}")
-            return None
-
-    def get_frame(self) -> Optional[np.ndarray]:
-        """현재 프레임 반환 (동기 버전)"""
+            logger.error(f"최적화된 VideoCapture 생성 실패: {e}, 기본 방식으로 폴백")
+            return self._create_standard_capture(source)
+    
+    def _create_rb2_optimized_capture(self, source):
+        """RB2 플랫폼용 GStreamer 하드웨어 가속 캡처"""
         try:
-            with self.frame_lock:
-                if self.current_frame is not None:
-                    return self.current_frame.copy()
-                return None
+            if isinstance(source, int):  # 웹캠 (V4L2 디바이스)
+                gstreamer_pipeline = (
+                    f"v4l2src device=/dev/video{source} ! "
+                    "video/x-raw,format=YUY2,width=640,height=480,framerate=15/1 ! "
+                    "videoconvert ! "
+                    "appsink max-buffers=1 drop=true"
+                )
+                logger.info(f"RB2 최적화: V4L2 GStreamer 파이프라인 사용 (디바이스: /dev/video{source})")
+                cap = cv2.VideoCapture(gstreamer_pipeline, cv2.CAP_GSTREAMER)
+                
+                if not cap.isOpened():
+                    logger.warning("GStreamer V4L2 파이프라인 실패, 기본 방식으로 폴백")
+                    cap = cv2.VideoCapture(source)
+                    
+                return cap
+            
+            elif isinstance(source, str):  # 비디오 파일
+                gstreamer_pipeline = (
+                    f"filesrc location={source} ! "
+                    "decodebin ! "
+                    "videoconvert ! "
+                    "video/x-raw,format=BGR ! "
+                    "appsink max-buffers=1 drop=true"
+                )
+                logger.info(f"RB2 최적화: 하드웨어 디코더 GStreamer 파이프라인 사용 (파일: {os.path.basename(source)})")
+                cap = cv2.VideoCapture(gstreamer_pipeline, cv2.CAP_GSTREAMER)
+                
+                if not cap.isOpened():
+                    logger.warning("GStreamer 파일 파이프라인 실패, 기본 방식으로 폴백")
+                    cap = cv2.VideoCapture(source)
+                    
+                return cap
+            
+            else:
+                return cv2.VideoCapture(source)
+                
         except Exception as e:
-            logger.error(f"Error getting frame: {e}")
+            logger.warning(f"RB2 GStreamer 최적화 실패: {e}, 표준 방식으로 폴백")
+            return self._create_standard_capture(source)
+    
+    def _create_standard_capture(self, source):
+        """표준 OpenCV VideoCapture 생성 (Windows/개발 환경용) - 강화된 진단 기능"""
+        try:
+            if isinstance(source, str):
+                # 파일 존재 및 속성 확인
+                if not os.path.exists(source):
+                    logger.error(f"비디오 파일이 존재하지 않습니다: {source}")
+                    return None
+                    
+                # 파일 크기 및 확장자 확인
+                file_size = os.path.getsize(source) / (1024 * 1024)  # MB
+                file_ext = os.path.splitext(source)[1].lower()
+                logger.info(f"비디오 파일 정보: {os.path.basename(source)} ({file_size:.2f}MB, {file_ext})")
+                
+                if file_size < 0.1:
+                    logger.warning(f"비디오 파일이 너무 작습니다: {file_size:.2f}MB")
+                    
+                logger.info(f"Windows/개발 환경: 표준 파일 디코더 사용")
+                
+                # 다양한 백엔드로 시도
+                backends_to_try = [
+                    (cv2.CAP_FFMPEG, "FFMPEG"),
+                    (cv2.CAP_DSHOW, "DirectShow"),
+                    (cv2.CAP_MSMF, "MediaFoundation")
+                ]
+                
+                cap = None
+                for backend_id, backend_name in backends_to_try:
+                    try:
+                        logger.info(f"{backend_name} 백엔드로 시도 중...")
+                        cap = cv2.VideoCapture(source, backend_id)
+                        
+                        if cap.isOpened():
+                            # 테스트 프레임 읽기
+                            ret, test_frame = cap.read()
+                            if ret and test_frame is not None:
+                                logger.info(f"✅ {backend_name} 백엔드로 성공 (테스트 프레임: {test_frame.shape})")
+                                # 처음으로 되돌리기
+                                cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+                                break
+                            else:
+                                logger.warning(f"{backend_name} 백엔드는 열렸지만 프레임 읽기 실패")
+                                cap.release()
+                                cap = None
+                        else:
+                            logger.warning(f"{backend_name} 백엔드로 열기 실패")
+                            if cap:
+                                cap.release()
+                            cap = None
+                    except Exception as e:
+                        logger.warning(f"{backend_name} 백엔드 시도 중 오류: {e}")
+                        if cap:
+                            cap.release()
+                        cap = None
+                
+                # 모든 백엔드 실패 시 기본 방식 시도
+                if cap is None:
+                    logger.warning("모든 전용 백엔드 실패, 기본 VideoCapture 시도")
+                    cap = cv2.VideoCapture(source)
+                    
+                # 최적화 설정 적용
+                if cap and cap.isOpened():
+                    cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
+                    
+                    # 비디오 정보 로깅
+                    width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+                    height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+                    fps = cap.get(cv2.CAP_PROP_FPS)
+                    frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+                    duration = frame_count / fps if fps > 0 else 0
+                    
+                    logger.info(f"비디오 속성: {width}x{height}, {fps:.2f}fps, {frame_count}프레임, {duration:.1f}초")
+                    
+                    # 코덱 정보 (가능한 경우)
+                    try:
+                        fourcc = int(cap.get(cv2.CAP_PROP_FOURCC))
+                        codec = "".join([chr((fourcc >> 8 * i) & 0xFF) for i in range(4)])
+                        logger.info(f"비디오 코덱: {codec}")
+                    except (ValueError, TypeError, AttributeError) as e:
+                        logger.debug(f"코덱 정보 추출 실패: {e}")
+                    except Exception as e:
+                        logger.warning(f"코덱 정보 추출 중 예상치 못한 오류: {e}")
+                
+                return cap
+                
+            elif isinstance(source, int):
+                logger.info(f"Windows/개발 환경: 표준 웹캠 캡처 사용 (디바이스: {source})")
+                cap = cv2.VideoCapture(source)
+                
+                if cap and cap.isOpened():
+                    cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
+                    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+                    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+                    cap.set(cv2.CAP_PROP_FPS, 30)
+                    
+                    # 웹캠 테스트 프레임 읽기
+                    ret, test_frame = cap.read()
+                    if ret and test_frame is not None:
+                        logger.info(f"웹캠 테스트 성공: {test_frame.shape}")
+                    else:
+                        logger.warning("웹캠이 열렸지만 프레임 읽기 실패")
+                
+                return cap
+            
+            else:
+                logger.info(f"기타 소스 타입: {type(source)}")
+                return cv2.VideoCapture(source)
+                
+        except Exception as e:
+            logger.error(f"표준 VideoCapture 생성 실패: {e}", exc_info=True)
             return None
-
-    # Legacy compatibility - remove duplicate method
-    # get_frame is handled by get_frame_sync for backward compatibility
-
-    def is_active(self) -> bool:
-        """비디오 입력 활성 상태 확인"""
-        return self._is_running and self.cap is not None and self.cap.isOpened()
-
-    def get_performance_info(self) -> Dict[str, Any]:
-        """성능 정보 반환"""
-        return {
-            'frame_count': self.frame_count,
-            'fps': self.fps,
-            'playback_speed': self.playback_speed,
-            'source_type': self.source_type,
-            'is_active': self.is_active(),
-            'consecutive_failures': self.consecutive_failures,
-            'current_video_index': self.current_video_index if self.source_type == "video" else None
-        }
-
-    def set_playback_speed(self, speed: float):
-        """재생 속도 설정"""
-        self.playback_speed = max(0.1, min(5.0, speed))
-
-    def has_video_changed(self) -> bool:
-        """비디오 변경 여부 확인"""
-        if self.video_changed:
-            self.video_changed = False
+    
+    def _try_next_video(self):
+        if self.current_video_index >= len(self.video_playlist) - 1:
+            return False
+        self.current_video_index += 1
+        if self.cap:
+            self.cap.release()
+        self.cap = self._create_optimized_capture(self.video_playlist[self.current_video_index])
+        if self.cap.isOpened():
+            logger.info(f"다음 비디오 로드 (RB2 최적화): {os.path.basename(self.video_playlist[self.current_video_index])}")
+            self.video_changed_flag = True
             return True
         return False
 
-    async def stop(self):
-        """비디오 입력 중지"""
+    def get_frame(self):
+        """리더 스레드에서 저장한 최신 프레임 반환 (스레드 안전)"""
         try:
-            self._is_running = False
-            self.stop_event.set()
-            
+            with self.frame_lock:
+                if self.current_frame is not None:
+                    return self.current_frame.copy()  # 복사본 반환으로 스레드 안전성 보장
+                else:
+                    return None
+        except Exception as e:
+            logger.error(f"get_frame 오류: {e}")
+            return None
+
+    def has_video_changed(self):
+        if self.video_changed_flag:
+            self.video_changed_flag = False
+            return True
+        return False
+
+    def set_playback_speed(self, speed: float):
+        self.playback_speed = max(0.1, speed)
+
+    def get_playback_info(self):
+        info = {"mode": "video" if self.is_video_mode else "webcam"}
+        if self.is_video_mode and self.video_playlist:
+            info.update({
+                "current_file": os.path.basename(self.video_playlist[self.current_video_index]),
+                "total_videos": len(self.video_playlist),
+                "current_video": self.current_video_index + 1,
+            })
+        return info
+
+    def is_running(self):
+        return not self.stopped
+
+    def release(self):
+        """리소스 정리 (예외 안전성 보장)"""
+        try:
+            self.stopped = True
+        except Exception as e:
+            logger.warning(f"stopped 플래그 설정 실패: {e}")
+        
+        try:
             if self.capture_thread and self.capture_thread.is_alive():
-                self.capture_thread.join(timeout=2.0)
-            
+                self.capture_thread.join(timeout=1)
+                if self.capture_thread.is_alive():
+                    logger.warning("캡처 스레드가 1초 내에 종료되지 않음")
+        except Exception as e:
+            logger.warning(f"캡처 스레드 종료 중 오류: {e}")
+        
+        try:
             if self.cap:
                 self.cap.release()
                 self.cap = None
-            
-            self.is_initialized = False
-            logger.info("Video input stopped")
-            
         except Exception as e:
-            logger.error(f"Error stopping video input: {e}")
-
-    def release(self):
-        """리소스 해제 (레거시 호환성)"""
-        try:
-            loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(loop)
-            loop.run_until_complete(self.stop())
-        except Exception as e:
-            logger.error(f"Error in sync release: {e}")
-
-    def get_error(self) -> Optional[str]:
-        """마지막 에러 반환"""
-        return self.last_error
+            logger.warning(f"VideoCapture 해제 중 오류: {e}")
+        finally:
+            logger.info("VideoInputManager 리소스 해제 완료.")
 
     def __enter__(self):
-        """Context manager 진입"""
+        """Context Manager 진입"""
+        if not self.initialize():
+            raise RuntimeError("VideoInputManager 초기화 실패")
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        """Context manager 종료"""
-        self.release()
-
-    # Legacy compatibility methods
-    def is_running(self) -> bool:
-        """Legacy compatibility for is_running"""
-        return self.is_active()
-
-    def get_playback_info(self) -> Dict[str, Any]:
-        """Legacy compatibility for playback info"""
-        return self.get_performance_info()
-
-
-# Legacy compatibility class
-class MultiVideoCalibrationManager:
-    """레거시 호환성을 위한 더미 클래스"""
-    def __init__(self, *args, **kwargs):
-        logger.warning("MultiVideoCalibrationManager is deprecated")
-    
-    def should_skip_calibration(self) -> bool:
+        """Context Manager 종료 (예외 발생 시에도 리소스 정리 보장)"""
+        try:
+            self.release()
+        except (OSError, RuntimeError) as e:
+            logger.error(f"Context Manager 종료 중 오류: {e}")
+        except Exception as e:
+            # KeyboardInterrupt, SystemExit 등은 여기서 잡히지 않음
+            logger.error(f"Context Manager 종료 중 예상치 못한 오류: {e}")
+        # 예외를 다시 발생시키지 않음 (리소스 정리가 우선)
         return False
