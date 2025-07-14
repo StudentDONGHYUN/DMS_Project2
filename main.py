@@ -9,7 +9,6 @@ from dataclasses import dataclass
 from pathlib import Path
 import json
 
-from app import DMSApp
 from core.definitions import CameraPosition
 from integration.integrated_system import AnalysisSystemType
 import logging
@@ -67,7 +66,7 @@ class SClassDMSv19Enhanced:
         self.edition = edition
         
         # 피처 플래그 설정
-        self.feature_flags = FeatureFlagConfig(edition=edition)
+        self.feature_flags = FeatureFlagConfig(system_edition=edition)
         
         # 로깅 설정
         self.logger = self._setup_logging()
@@ -212,6 +211,7 @@ class SClass_DMS_GUI_Setup:
         self.config = None
         self.video_files = []
         self.is_same_driver = True
+        self.edition_var = tk.StringVar(value="RESEARCH")  # 에디션 선택 변수 추가
         
         # S-Class v19.0 혁신 시스템 초기화
         self.innovation_engine = SClassDMSv19Enhanced("default", "RESEARCH")
@@ -343,6 +343,12 @@ class SClass_DMS_GUI_Setup:
                        borderwidth=0,
                        lightcolor=colors['accent_cyan'],
                        darkcolor=colors['accent_cyan'])
+        # 진행바 레이아웃 명시적 추가 (호환성 강화)
+        style.layout("SClass.TProgressbar",
+            [('Horizontal.Progressbar.trough',
+              {'children': [('Horizontal.Progressbar.pbar',
+                             {'side': 'left', 'sticky': 'ns'})],
+               'sticky': 'nswe'})])
 
     def _create_advanced_gui(self):
         """S-Class 차세대 GUI 생성 - 탭 기반 인터페이스"""
@@ -502,7 +508,7 @@ class SClass_DMS_GUI_Setup:
         # 시작 버튼 (업그레이드)
         start_button = ttk.Button(
             control_frame,
-            text="� Launch S-Class Neural DMS v18+",
+            text="🚀 Launch S-Class Neural DMS v18+",
             command=self.start_app,
             style="SClassButton.TButton"
         )
@@ -602,6 +608,10 @@ class SClass_DMS_GUI_Setup:
         ttk.Entry(id_frame, textvariable=self.user_id, style="SClass.TEntry", width=20).pack(
             side="left", expand=True, fill="x", padx=(0, 20)
         )
+        # 에디션 선택 콤보박스 추가
+        editions = ["COMMUNITY", "PRO", "ENTERPRISE", "RESEARCH"]
+        ttk.Label(id_frame, text="에디션:", style="SClassFeature.TLabel").pack(side="left", padx=(10, 5))
+        ttk.Combobox(id_frame, textvariable=self.edition_var, values=editions, state="readonly", width=12, style="SClass.TCombobox").pack(side="left")
         
         # 개인화 설정
         ttk.Checkbutton(
@@ -871,7 +881,7 @@ class SClass_DMS_GUI_Setup:
 
         # 사용자 설정
         user_id = self.user_id.get().strip() or "default"
-        
+        edition = self.edition_var.get()  # 에디션 값 읽기
         # 카메라 위치
         selected_pos_str = self.camera_position_var.get()
         camera_position = next(
@@ -892,6 +902,7 @@ class SClass_DMS_GUI_Setup:
             "is_same_driver": self.is_same_driver,
             "system_type": system_type,
             "use_legacy_engine": self.use_legacy_engine.get(),
+            "edition": edition,  # edition 값을 명시적으로 포함
             "sclass_features": {
                 # Expert Systems
                 "enable_rppg": self.enable_rppg.get(),
@@ -907,7 +918,8 @@ class SClass_DMS_GUI_Setup:
                 "enable_adaptive_thresholds": self.enable_adaptive_thresholds.get(),
             }
         }
-
+        # 혁신 엔진에 에디션 반영
+        self.innovation_engine = SClassDMSv19Enhanced(user_id, edition)
         self.root.destroy()
 
 
@@ -1104,9 +1116,10 @@ def main():
             print(f" 시스템 모드: {config['system_type'].value}")
             print(f" 레거시 엔진: {'활성화' if config['use_legacy_engine'] else '비활성화'}")
             print("=" * 70)
-            
-            app = DMSApp(**config)
-            app.run()
+            edition = config["edition"]  # 항상 config에서만 읽음
+            app = SClassDMSv19Enhanced(user_id=config["user_id"], edition=edition)
+            # 실행 메서드 없음. 필요시 안내 메시지 출력
+            print("✅ S-Class DMS v19.0 시스템이 성공적으로 초기화되었습니다. (실행 루프는 GUI에서만 지원됩니다.)")
         else:
             print("\n❌ 설정이 취소되어 프로그램을 종료합니다.")
 

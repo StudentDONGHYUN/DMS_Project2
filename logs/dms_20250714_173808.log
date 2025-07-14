@@ -1,0 +1,26 @@
+2025-07-14 17:38:08,467 - __main__                  - INFO     - [진단] main.py: main() 진입
+2025-07-14 17:38:08,803 - SClassDMS_v19_default     - INFO     - ✅ AI 드라이빙 코치 시스템 초기화 완료
+2025-07-14 17:38:08,803 - SClassDMS_v19_default     - INFO     - ✅ V2D 헬스케어 시스템 초기화 완료
+2025-07-14 17:38:08,820 - SClassDMS_v19_default     - INFO     - ✅ AR HUD 시스템 초기화 완료
+2025-07-14 17:38:08,823 - SClassDMS_v19_default     - INFO     - ✅ 감성 케어 시스템 초기화 완료
+2025-07-14 17:38:08,825 - SClassDMS_v19_default     - INFO     - ✅ 디지털 트윈 플랫폼 초기화 완료
+2025-07-14 17:38:08,830 - SClassDMS_v19_default     - INFO     - 혁신 시스템 초기화 완료: 5개 시스템 성공
+2025-07-14 17:38:08,831 - SClassDMS_v19_default     - INFO     - S-Class DMS v19.0 시스템 초기화 완료
+2025-07-14 17:38:08,832 - SClassDMS_v19_default     - INFO     - 사용자: default, 에디션: RESEARCH
+2025-07-14 17:38:08,833 - SClassDMS_v19_default     - INFO     - 활성화된 기능: ['Expert Systems', 'AI Coach', 'Healthcare', 'AR HUD', 'Emotional Care', 'Digital Twin']
+2025-07-14 17:38:54,628 - SClassDMS_v19_default     - INFO     - ✅ AI 드라이빙 코치 시스템 초기화 완료
+2025-07-14 17:38:54,628 - SClassDMS_v19_default     - INFO     - ✅ V2D 헬스케어 시스템 초기화 완료
+2025-07-14 17:38:54,628 - SClassDMS_v19_default     - INFO     - ✅ AR HUD 시스템 초기화 완료
+2025-07-14 17:38:54,628 - SClassDMS_v19_default     - INFO     - ✅ 감성 케어 시스템 초기화 완료
+2025-07-14 17:38:54,628 - SClassDMS_v19_default     - INFO     - ✅ 디지털 트윈 플랫폼 초기화 완료
+2025-07-14 17:38:54,628 - SClassDMS_v19_default     - INFO     - 혁신 시스템 초기화 완료: 5개 시스템 성공
+2025-07-14 17:38:54,628 - SClassDMS_v19_default     - INFO     - S-Class DMS v19.0 시스템 초기화 완료
+2025-07-14 17:38:54,628 - SClassDMS_v19_default     - INFO     - 사용자: default, 에디션: RESEARCH
+2025-07-14 17:38:54,628 - SClassDMS_v19_default     - INFO     - 활성화된 기능: ['Expert Systems', 'AI Coach', 'Healthcare', 'AR HUD', 'Emotional Care', 'Digital Twin']
+2025-07-14 17:38:54,672 - __main__                  - INFO     - S-Class 설정 완료: {'input_source': 0, 'user_id': 'default', 'camera_position': <CameraPosition.REARVIEW_MIRROR: '백미러 위치'>, 'enable_calibration': True, 'is_same_driver': True, 'system_type': <AnalysisSystemType.STANDARD: 'standard'>, 'use_legacy_engine': False, 'sclass_features': {'enable_rppg': True, 'enable_saccade': True, 'enable_spinal_analysis': True, 'enable_tremor_fft': True, 'enable_bayesian_prediction': True, 'enable_emotion_ai': True, 'enable_predictive_safety': True, 'enable_biometric_fusion': True, 'enable_adaptive_thresholds': True}}
+2025-07-14 17:38:54,674 - __main__                  - ERROR    - S-Class 시스템 실행 실패: SClassDMSv19Enhanced.__init__() got an unexpected keyword argument 'input_source'
+Traceback (most recent call last):
+  File "c:\Users\HKIT\Desktop\DMS_Project2\main.py", line 1119, in main
+    app = SClassDMSv19Enhanced(**config)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SClassDMSv19Enhanced.__init__() got an unexpected keyword argument 'input_source'

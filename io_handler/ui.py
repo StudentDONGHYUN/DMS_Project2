@@ -1180,4 +1180,4 @@ class SClassAdvancedUIManager:
 
 
 # 하위 호환성을 위한 별칭
-EnhancedUIManager = SClassAdvancedUIManager
+UIHandler = SClassAdvancedUIManager
