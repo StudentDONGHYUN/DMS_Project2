@@ -46,12 +46,21 @@ class EnhancedDrowsinessDetector:
             recent_ears = [frame["ear"] for frame in list(self.ear_history)[-900:]]
             prev_ears = [frame["ear"] for frame in list(self.ear_history)[-1800:-900]]
             if len(prev_ears) == 900:
-                mean_recent, std_recent = np.mean(recent_ears), np.std(recent_ears)
-                mean_prev, std_prev = np.mean(prev_ears), np.std(prev_ears)
-                # 변화 임계값: 평균 0.03, 표준편차 0.02
-                if abs(mean_recent - mean_prev) > 0.03 or abs(std_recent - std_prev) > 0.02:
+                mean_recent, std_recent, var_recent = np.mean(recent_ears), np.std(recent_ears), np.var(recent_ears)
+                mean_prev, std_prev, var_prev = np.mean(prev_ears), np.std(prev_ears), np.var(prev_ears)
+                # 변화 임계값: 평균 0.03, 표준편차 0.02, 분산 0.001
+                if (
+                    abs(mean_recent - mean_prev) > 0.03 or
+                    abs(std_recent - std_prev) > 0.02 or
+                    abs(var_recent - var_prev) > 0.001
+                ):
                     self._update_personalized_threshold()
-                    logger.info(f"EAR 분포 변화 감지: 재캘리브레이션 수행 (mean {mean_prev:.3f}->{mean_recent:.3f}, std {std_prev:.3f}->{std_recent:.3f})")
+                    logger.info(
+                        f"EAR 분포 변화 감지: 재캘리브레이션 수행 "
+                        f"(mean {mean_prev:.3f}->{mean_recent:.3f}, "
+                        f"std {std_prev:.3f}->{std_recent:.3f}, "
+                        f"var {var_prev:.4f}->{var_recent:.4f})"
+                    )
 
         drowsiness_probability = self.temporal_attention.predict(
             self.ear_history, self.personalized_threshold or 0.25
