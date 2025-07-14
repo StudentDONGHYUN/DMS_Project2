@@ -24,6 +24,7 @@ import time
 import cv2
 import mediapipe as mp
 import platform
+from mediapipe.tasks.python.core.base_options import BaseOptions
 # MediaPipe Tasks API imports
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision, audio, text
