@@ -340,7 +340,7 @@ class DMSApp:
             from events.event_bus import initialize_event_system
 
             try:
-                initialize_event_system()  # 기존 동기 호출
+                await initialize_event_system()  # Bug #13 fix: Add await for async call
                 logger.info("✅ 이벤트 시스템 초기화 완료")
             except Exception as e:
                 logger.error(f"❌ 이벤트 시스템 초기화 실패: {e}")
@@ -511,8 +511,13 @@ class DMSApp:
                         logger.info("Frame processing loop cancelled.")
                         break
                     except Exception as e:
-                        logger.info("비동기 프레임 처리 루프 종료")
-                        break
+                        # Bug #14 fix: Proper error handling with retry logic
+                        logger.error(f"프레임 처리 중 예상치 못한 오류: {e}", exc_info=True)
+                        consecutive_errors += 1
+                        if consecutive_errors >= max_consecutive_errors:
+                            logger.error("연속 오류 한계 초과 - 루프 종료")
+                            break
+                        await asyncio.sleep(0.1)  # 짧은 대기 후 재시도
 
                 logger.info("비동기 프레임 처리 루프 종료")
 
