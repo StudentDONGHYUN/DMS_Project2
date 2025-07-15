@@ -326,7 +326,7 @@ class DMSApp:
         logger.info("[수정] S-Class DMS 시스템 초기화 시작...")
         try:
             # 1. 상태 관리자 초기화
-            self.state_manager = EnhancedStateManager(self.user_id)
+            self.state_manager = EnhancedStateManager()
             # 2. 비디오 입력 초기화
             self.video_input_manager = VideoInputManager(self.input_source)
             if not self.video_input_manager.initialize():
@@ -418,16 +418,48 @@ class DMSApp:
                 # GEMINI.md 성능 최적화: MediaPipe 처리 전 writeable=False 적용
                 if hasattr(frame, "flags"):
                     frame.flags.writeable = False
-                # MediaPipe 처리 (numpy)
-                # (실제 분석/시각화 파이프라인에 맞게 아래 라인 수정)
-                # 예시: mediapipe_results = self.mediapipe_manager.process_frame(frame)
-                # 시각화/렌더링 단계에서만 UMat 변환
-                # 예시: annotated_frame = draw_landmarks_on_image(cv2.UMat(frame), mediapipe_results)
-                # annotated_frame은 UMat
-                # 아래는 기존 annotated_frame 처리 예시
-                annotated_frame = self._create_basic_info_overlay(
-                    cv2.UMat(frame), frame_count, perf_stats=None
-                )
+                    # MediaPipe 처리 및 통합 분석 시스템 실행
+                    try:
+                        # 1. MediaPipe 결과 획득
+                        mediapipe_results = await self.mediapipe_manager.process_frame(
+                            frame
+                        )
+
+                        # 2. 통합 분석 시스템으로 처리 및 시각화
+                        annotated_frame = (
+                            await self.integrated_system.process_and_annotate_frame(
+                                mediapipe_results, time.time()
+                            )
+                        )
+
+                        # 3. 기본 정보 오버레이 추가
+                        if annotated_frame is not None:
+                            # UMat로 변환 (필요시)
+                            if not isinstance(annotated_frame, cv2.UMat):
+                                annotated_frame = cv2.UMat(annotated_frame)
+
+                            # 프레임 정보 오버레이
+                            cv2.putText(
+                                annotated_frame,
+                                f"Frame: {frame_count}",
+                                (10, 30),
+                                cv2.FONT_HERSHEY_SIMPLEX,
+                                1,
+                                (0, 255, 0),
+                                2,
+                            )
+                        else:
+                            # 폴백: 기본 오버레이만 표시
+                            annotated_frame = self._create_basic_info_overlay(
+                                cv2.UMat(frame), frame_count, perf_stats=None
+                            )
+
+                    except Exception as e:
+                        logger.error(f"MediaPipe 분석 오류: {e}")
+                        # 오류 발생시 기본 오버레이 표시
+                        annotated_frame = self._create_basic_info_overlay(
+                            cv2.UMat(frame), frame_count, perf_stats=None
+                        )
                 if annotated_frame is not None:
                     try:
                         frame_queue.put_nowait(annotated_frame)
@@ -450,11 +482,22 @@ class DMSApp:
             except queue.Full:
                 pass
 
-        display_thread = threading.Thread(target=opencv_display_loop)
-        display_thread.start()
-        asyncio.run(async_frame_producer())
-        stop_event.set()
-        display_thread.join()
+        try:
+            # 기존 실행 코드
+            display_thread = threading.Thread(target=opencv_display_loop)
+            display_thread.start()
+            asyncio.run(async_frame_producer())
+            stop_event.set()
+            display_thread.join()
+        finally:
+            # 🆕 정리 작업 추가
+            try:
+                if hasattr(self, "mediapipe_manager"):
+                    asyncio.run(self.mediapipe_manager.close())
+                if hasattr(self, "integrated_system"):
+                    asyncio.run(self.integrated_system.shutdown())
+            except Exception as e:
+                logger.warning(f"정리 작업 중 오류: {e}")
 
     def _create_basic_info_overlay(self, frame, frame_count, perf_stats=None):
         # Ensure overlay is drawn on UMat
