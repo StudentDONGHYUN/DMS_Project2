@@ -327,12 +327,20 @@ class DMSApp:
         try:
             # 1. 상태 관리자 초기화
             self.state_manager = EnhancedStateManager()
+
             # 2. 비디오 입력 초기화
             self.video_input_manager = VideoInputManager(self.input_source)
             if not self.video_input_manager.initialize():
                 logger.error("비디오 입력 초기화 실패")
                 return False
-            # 3. 통합 분석 시스템 초기화 (파라미터 수정)
+
+            # 🆕 3. 이벤트 시스템 초기화 (통합 시스템 초기화 전에 반드시 실행)
+            from events.event_bus import initialize_event_system
+
+            await initialize_event_system()
+            logger.info("✅ 이벤트 시스템 초기화 완료")
+
+            # 4. 통합 분석 시스템 초기화
             custom_config = {
                 "user_id": self.user_id,
                 "camera_position": self.camera_position,
@@ -344,6 +352,7 @@ class DMSApp:
                 custom_config=custom_config,
                 use_legacy_engine=self.use_legacy_engine,
             )
+            # ... 나머지 초기화 코드
             # 4. MediaPipe 매니저 초기화
             self.mediapipe_manager = AdvancedMediaPipeManager(DummyAnalysisEngine())
             # 5. 콜백 어댑터 연결
@@ -418,29 +427,40 @@ class DMSApp:
                 # GEMINI.md 성능 최적화: MediaPipe 처리 전 writeable=False 적용
                 if hasattr(frame, "flags"):
                     frame.flags.writeable = False
-                    # MediaPipe 처리 및 통합 분석 시스템 실행
-                    try:
-                        # 1. MediaPipe 결과 획득
-                        mediapipe_results = await self.mediapipe_manager.process_frame(
-                            frame
-                        )
+                # MediaPipe 처리 및 통합 분석 시스템 실행
+                try:
+                    # 1. MediaPipe 결과 획득
+                    mediapipe_results = await self.mediapipe_manager.process_frame(
+                        frame
+                    )
 
-                        # 2. 통합 분석 시스템으로 처리 및 시각화
-                        annotated_frame = (
-                            await self.integrated_system.process_and_annotate_frame(
-                                mediapipe_results, time.time()
+                    # 2. 통합 분석 시스템으로 처리 및 시각화
+                    annotated_frame = (
+                        await self.integrated_system.process_and_annotate_frame(
+                            mediapipe_results, time.time()
+                        )
+                    )
+
+                    # 3. 안전한 UMat 변환 및 정보 오버레이
+                    if annotated_frame is not None:
+                        # numpy array를 안전하게 UMat로 변환
+                        try:
+                            if isinstance(annotated_frame, cv2.UMat):
+                                # 이미 UMat인 경우
+                                final_frame = annotated_frame
+                            else:
+                                # numpy array인 경우 UMat로 변환
+                                final_frame = cv2.UMat(annotated_frame)
+                        except Exception as umat_error:
+                            logger.warning(
+                                f"UMat 변환 실패, numpy array 사용: {umat_error}"
                             )
-                        )
+                            final_frame = annotated_frame
 
-                        # 3. 기본 정보 오버레이 추가
-                        if annotated_frame is not None:
-                            # UMat로 변환 (필요시)
-                            if not isinstance(annotated_frame, cv2.UMat):
-                                annotated_frame = cv2.UMat(annotated_frame)
-
-                            # 프레임 정보 오버레이
+                        # 프레임 정보 오버레이 추가
+                        try:
                             cv2.putText(
-                                annotated_frame,
+                                final_frame,
                                 f"Frame: {frame_count}",
                                 (10, 30),
                                 cv2.FONT_HERSHEY_SIMPLEX,
@@ -448,18 +468,34 @@ class DMSApp:
                                 (0, 255, 0),
                                 2,
                             )
-                        else:
-                            # 폴백: 기본 오버레이만 표시
-                            annotated_frame = self._create_basic_info_overlay(
-                                cv2.UMat(frame), frame_count, perf_stats=None
-                            )
-
-                    except Exception as e:
-                        logger.error(f"MediaPipe 분석 오류: {e}")
-                        # 오류 발생시 기본 오버레이 표시
+                            annotated_frame = final_frame
+                        except Exception as text_error:
+                            logger.warning(f"텍스트 오버레이 실패: {text_error}")
+                            # 오버레이 실패시 원본 annotated_frame 사용
+                    else:
+                        # annotated_frame이 None인 경우 폴백
+                        logger.warning("통합 시스템에서 None 반환, 기본 오버레이 사용")
                         annotated_frame = self._create_basic_info_overlay(
                             cv2.UMat(frame), frame_count, perf_stats=None
                         )
+
+                except Exception as e:
+                    logger.error(f"MediaPipe 분석 오류: {e}")
+                    # 오류 발생시 안전한 폴백 처리
+                    try:
+                        annotated_frame = cv2.UMat(frame)
+                        cv2.putText(
+                            annotated_frame,
+                            f"Frame: {frame_count} (Fallback)",
+                            (10, 30),
+                            cv2.FONT_HERSHEY_SIMPLEX,
+                            1,
+                            (0, 0, 255),  # 빨간색으로 오류 표시
+                            2,
+                        )
+                    except:
+                        # 최종 폴백: 원본 프레임 사용
+                        annotated_frame = frame
                 if annotated_frame is not None:
                     try:
                         frame_queue.put_nowait(annotated_frame)
@@ -500,38 +536,47 @@ class DMSApp:
                 logger.warning(f"정리 작업 중 오류: {e}")
 
     def _create_basic_info_overlay(self, frame, frame_count, perf_stats=None):
-        # Ensure overlay is drawn on UMat
         try:
-            annotated_frame = frame if isinstance(frame, cv2.UMat) else cv2.UMat(frame)
-        except Exception:
-            annotated_frame = frame
-        height, width = (
-            annotated_frame.get().shape[:2]
-            if isinstance(annotated_frame, cv2.UMat)
-            else annotated_frame.shape[:2]
-        )
-        # 예시: 프레임 번호 및 FPS 표시
-        cv2.putText(
-            annotated_frame,
-            f"Frame: {frame_count}",
-            (10, 30),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            1,
-            (0, 255, 0),
-            2,
-        )
-        if perf_stats is not None:
-            fps = perf_stats.get("fps", 0.0)
+            # 안전한 UMat 변환
+            if isinstance(frame, cv2.UMat):
+                annotated_frame = frame
+            else:
+                try:
+                    annotated_frame = cv2.UMat(frame)
+                except Exception:
+                    # UMat 변환 실패시 numpy array 그대로 사용
+                    annotated_frame = frame
+
+            # 프레임 번호 표시
             cv2.putText(
                 annotated_frame,
-                f"FPS: {fps:.1f}",
-                (10, 60),
+                f"Frame: {frame_count}",
+                (10, 30),
                 cv2.FONT_HERSHEY_SIMPLEX,
-                0.8,
-                (255, 255, 0),
+                1,
+                (0, 255, 0),
                 2,
             )
-        return annotated_frame
+
+            # 성능 정보 표시
+            if perf_stats is not None:
+                fps = perf_stats.get("fps", 0.0)
+                cv2.putText(
+                    annotated_frame,
+                    f"FPS: {fps:.1f}",
+                    (10, 60),
+                    cv2.FONT_HERSHEY_SIMPLEX,
+                    0.8,
+                    (255, 255, 0),
+                    2,
+                )
+
+            return annotated_frame
+
+        except Exception as e:
+            logger.error(f"기본 오버레이 생성 실패: {e}")
+            # 최종 폴백: 원본 프레임 반환
+            return frame
 
     def _perform_memory_cleanup(self):
         logger.info("메모리 정리 실행")
