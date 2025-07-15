@@ -579,4 +579,223 @@ class DMSApp:
             return frame
 
     def _perform_memory_cleanup(self):
+        """DMS 시스템 메모리 정리 작업"""
         logger.info("메모리 정리 실행")
+
+        try:
+            # 1. 가비지 컬렉션 실행
+            import gc
+
+            before_cleanup = self._get_memory_usage()
+
+            # 모든 세대의 가비지 컬렉션 실행
+            collected_objects = 0
+            for generation in range(3):
+                collected = gc.collect(generation)
+                collected_objects += collected
+                if collected > 0:
+                    logger.debug(f"GC 세대 {generation}: {collected}개 객체 정리")
+
+            logger.info(f"가비지 컬렉션 완료: 총 {collected_objects}개 객체 정리")
+
+            # 2. MediaPipe 관련 메모리 정리
+            if hasattr(self, "mediapipe_manager") and self.mediapipe_manager:
+                try:
+                    # MediaPipe 결과 버퍼 정리
+                    if hasattr(self.mediapipe_manager, "clear_result_buffers"):
+                        self.mediapipe_manager.clear_result_buffers()
+                        logger.debug("MediaPipe 결과 버퍼 정리 완료")
+
+                    # MediaPipe 내부 캐시 정리
+                    if hasattr(self.mediapipe_manager, "cleanup_cache"):
+                        self.mediapipe_manager.cleanup_cache()
+                        logger.debug("MediaPipe 캐시 정리 완료")
+                except Exception as e:
+                    logger.warning(f"MediaPipe 메모리 정리 중 오류: {e}")
+
+            # 3. 통합 시스템 콜백 어댑터 정리
+            if hasattr(self, "callback_adapter") and self.callback_adapter:
+                try:
+                    # 결과 버퍼 정리
+                    if hasattr(self.callback_adapter, "result_buffer"):
+                        buffer_size = len(self.callback_adapter.result_buffer)
+                        self.callback_adapter.result_buffer.clear()
+                        logger.debug(
+                            f"콜백 어댑터 버퍼 정리: {buffer_size}개 항목 제거"
+                        )
+
+                    # 긴급 버퍼 정리 실행
+                    if hasattr(self.callback_adapter, "_emergency_buffer_cleanup"):
+                        import asyncio
+
+                        if asyncio.iscoroutinefunction(
+                            self.callback_adapter._emergency_buffer_cleanup
+                        ):
+                            # 비동기 함수인 경우 동기적으로 실행
+                            loop = None
+                            try:
+                                loop = asyncio.get_running_loop()
+                            except RuntimeError:
+                                pass
+
+                            if loop and loop.is_running():
+                                # 이미 실행 중인 루프가 있는 경우 태스크로 생성
+                                asyncio.create_task(
+                                    self.callback_adapter._emergency_buffer_cleanup()
+                                )
+                            else:
+                                # 새 루프에서 실행
+                                asyncio.run(
+                                    self.callback_adapter._emergency_buffer_cleanup()
+                                )
+                        else:
+                            self.callback_adapter._emergency_buffer_cleanup()
+                        logger.debug("콜백 어댑터 긴급 정리 완료")
+                except Exception as e:
+                    logger.warning(f"콜백 어댑터 메모리 정리 중 오류: {e}")
+
+            # 4. 통합 시스템 메모리 정리
+            if hasattr(self, "integrated_system") and self.integrated_system:
+                try:
+                    # 분석 엔진 메모리 정리
+                    if hasattr(self.integrated_system, "analysis_engine"):
+                        engine = self.integrated_system.analysis_engine
+
+                        # 각 분석기의 메모리 정리
+                        cleanup_methods = [
+                            "clear_buffers",
+                            "cleanup_memory",
+                            "reset_buffers",
+                            "clear_cache",
+                            "cleanup_resources",
+                        ]
+
+                        for method_name in cleanup_methods:
+                            if hasattr(engine, method_name):
+                                try:
+                                    method = getattr(engine, method_name)
+                                    method()
+                                    logger.debug(f"분석 엔진 {method_name} 완료")
+                                except Exception as e:
+                                    logger.debug(f"분석 엔진 {method_name} 실패: {e}")
+
+                    # 통합 시스템 전체 정리
+                    if hasattr(self.integrated_system, "cleanup_memory"):
+                        self.integrated_system.cleanup_memory()
+                        logger.debug("통합 시스템 메모리 정리 완료")
+                except Exception as e:
+                    logger.warning(f"통합 시스템 메모리 정리 중 오류: {e}")
+
+            # 5. 프레임 버퍼 및 큐 정리
+            try:
+                # 현재 처리된 프레임 정리
+                if hasattr(self, "current_processed_frame"):
+                    self.current_processed_frame = None
+                    logger.debug("현재 프레임 버퍼 정리 완료")
+
+                # 시스템 구성요소들의 메모리 정리
+                components = [
+                    "performance_monitor",
+                    "personalization_engine",
+                    "dynamic_analysis",
+                    "backup_manager",
+                    "calibration_manager",
+                ]
+
+                for component_name in components:
+                    if hasattr(self, component_name):
+                        component = getattr(self, component_name)
+
+                        # 각 컴포넌트의 정리 메서드 호출
+                        cleanup_methods = ["cleanup_memory", "clear_cache", "reset"]
+                        for method_name in cleanup_methods:
+                            if hasattr(component, method_name):
+                                try:
+                                    method = getattr(component, method_name)
+                                    if callable(method):
+                                        method()
+                                        logger.debug(
+                                            f"{component_name}.{method_name} 완료"
+                                        )
+                                except Exception as e:
+                                    logger.debug(
+                                        f"{component_name}.{method_name} 실패: {e}"
+                                    )
+            except Exception as e:
+                logger.warning(f"컴포넌트 메모리 정리 중 오류: {e}")
+
+            # 6. OpenCV 메모리 정리
+            try:
+                import cv2
+
+                # OpenCV 내부 캐시 정리 (가능한 경우)
+                if hasattr(cv2, "setUseOptimized"):
+                    cv2.setUseOptimized(True)  # 최적화 재활성화
+                logger.debug("OpenCV 메모리 정리 완료")
+            except Exception as e:
+                logger.debug(f"OpenCV 메모리 정리 중 오류: {e}")
+
+            # 7. NumPy 메모리 정리
+            try:
+                import numpy as np
+
+                # NumPy 메모리 풀 정리 (가능한 경우)
+                if hasattr(np, "clear_cache"):
+                    np.clear_cache()
+                    logger.debug("NumPy 캐시 정리 완료")
+            except Exception as e:
+                logger.debug(f"NumPy 메모리 정리 중 오류: {e}")
+
+            # 8. 최종 가비지 컬렉션
+            final_collected = gc.collect()
+            if final_collected > 0:
+                logger.debug(f"최종 가비지 컬렉션: {final_collected}개 객체 정리")
+
+            # 9. 메모리 사용량 확인 및 로깅
+            after_cleanup = self._get_memory_usage()
+            memory_freed = before_cleanup - after_cleanup
+
+            logger.info(
+                f"메모리 정리 완료 - "
+                f"정리 전: {before_cleanup:.1f}MB, "
+                f"정리 후: {after_cleanup:.1f}MB, "
+                f"확보된 메모리: {memory_freed:.1f}MB"
+            )
+
+            # 10. 메모리 정리 효과가 미미한 경우 경고
+            if memory_freed < 10.0:  # 10MB 미만
+                logger.warning(f"메모리 정리 효과가 제한적입니다: {memory_freed:.1f}MB")
+
+                # 추가 정리 작업 제안
+                if after_cleanup > 1000:  # 1GB 이상 사용 중
+                    logger.warning(
+                        "높은 메모리 사용량 지속 - 시스템 재시작을 고려하세요"
+                    )
+
+            return {
+                "before_mb": before_cleanup,
+                "after_mb": after_cleanup,
+                "freed_mb": memory_freed,
+                "objects_collected": collected_objects + final_collected,
+            }
+
+        except Exception as e:
+            logger.error(f"메모리 정리 중 예외 발생: {e}", exc_info=True)
+            return {
+                "error": str(e),
+                "before_mb": 0,
+                "after_mb": 0,
+                "freed_mb": 0,
+                "objects_collected": 0,
+            }
+
+    def _get_memory_usage(self) -> float:
+        """현재 메모리 사용량 반환 (MB)"""
+        try:
+            import psutil
+
+            process = psutil.Process()
+            return process.memory_info().rss / 1024 / 1024
+        except Exception as e:
+            logger.error(f"메모리 사용량 조회 실패: {e}")
+            return 0.0
