@@ -128,8 +128,15 @@ class IntegratedCallbackAdapter:
                 raise
         except asyncio.TimeoutError:
             logger.warning(f"Lock 획득 타임아웃 - {result_type} 결과 무시됨 (ts: {ts})")
+        except (asyncio.CancelledError, asyncio.TimeoutError):
+            # Re-raise asyncio-specific exceptions
+            raise
+        except (ValueError, TypeError, AttributeError) as e:
+            logger.error(f"_on_result 처리 중 데이터 오류: {e}")
+            # Continue processing other results
         except Exception as e:
-            logger.error(f"_on_result 처리 중 오류: {e}", exc_info=True)
+            logger.error(f"_on_result 처리 중 예상치 못한 오류: {e}", exc_info=True)
+            # Log but don't re-raise to prevent system crash
 
     async def _process_results(self, timestamp):
         if timestamp <= self.last_processed_timestamp:
@@ -146,8 +153,14 @@ class IntegratedCallbackAdapter:
             )
             self.last_integrated_results = integrated_results
             self.last_processed_timestamp = timestamp
+        except (asyncio.CancelledError, asyncio.TimeoutError):
+            # Re-raise asyncio-specific exceptions
+            raise
+        except (ValueError, TypeError, AttributeError) as e:
+            logger.error(f"통합 분석 중 데이터 오류: {e}")
+            self.last_integrated_results = self._get_fallback_results()
         except Exception as e:
-            logger.error(f"통합 분석 중 오류: {e}", exc_info=True)
+            logger.error(f"통합 분석 중 예상치 못한 오류: {e}", exc_info=True)
             self.last_integrated_results = self._get_fallback_results()
         await self._prune_buffer()
 

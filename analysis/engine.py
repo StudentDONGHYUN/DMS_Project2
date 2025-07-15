@@ -247,10 +247,36 @@ class EnhancedAnalysisEngine:
         logger.info("[진단] engine._try_queue_results 종료")
 
     def _prune_buffers(self):
+        """Enhanced buffer management with memory cleanup"""
         current_time_ms = int(time.time() * 1000)
-        for ts in [ts for ts in self.frame_buffer if current_time_ms - ts > 2000]:
-            self.frame_buffer.pop(ts, None)
-            self.result_buffer.pop(ts, None)
+        pruned_count = 0
+        
+        # Prune old timestamps
+        for ts in list(self.frame_buffer.keys()):
+            if current_time_ms - ts > 2000:  # 2 second timeout
+                self.frame_buffer.pop(ts, None)
+                self.result_buffer.pop(ts, None)
+                pruned_count += 1
+        
+        # Emergency cleanup if buffers are too large
+        if len(self.frame_buffer) > 50:  # Max 50 frames in buffer
+            logger.warning(f"Buffer overflow detected. Current size: {len(self.frame_buffer)}")
+            # Keep only the most recent 20 frames
+            sorted_timestamps = sorted(self.frame_buffer.keys())
+            timestamps_to_remove = sorted_timestamps[:-20]
+            for ts in timestamps_to_remove:
+                self.frame_buffer.pop(ts, None)
+                self.result_buffer.pop(ts, None)
+                pruned_count += 1
+            logger.info(f"Emergency buffer cleanup: removed {len(timestamps_to_remove)} old frames")
+        
+        if pruned_count > 0:
+            logger.debug(f"Buffer pruning completed: {pruned_count} entries removed")
+        
+        # Force garbage collection if needed
+        if pruned_count > 10:
+            import gc
+            gc.collect()
 
     async def process_and_annotate_frame(
         self, frame, results, perf_stats, playback_info

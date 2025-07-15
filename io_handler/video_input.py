@@ -18,7 +18,7 @@ def video_capture_context(source):
         if not cap.isOpened():
             raise RuntimeError(f"VideoCapture 열기 실패: {source}")
         yield cap
-    except Exception as e:
+    except (cv2.error, RuntimeError, OSError) as e:
         logger.error(f"VideoCapture Context Manager 오류: {e}")
         raise
     finally:
@@ -26,7 +26,7 @@ def video_capture_context(source):
             try:
                 cap.release()
                 logger.debug("VideoCapture 리소스 정리 완료")
-            except Exception as e:
+            except (cv2.error, RuntimeError) as e:
                 logger.warning(f"VideoCapture 정리 중 오류: {e}")
 
 
@@ -39,7 +39,7 @@ async def async_video_capture_context(source):
         if not cap.isOpened():
             raise RuntimeError(f"Async VideoCapture 열기 실패: {source}")
         yield cap
-    except Exception as e:
+    except (cv2.error, RuntimeError, OSError) as e:
         logger.error(f"Async VideoCapture Context Manager 오류: {e}")
         raise
     finally:
@@ -47,7 +47,7 @@ async def async_video_capture_context(source):
             try:
                 cap.release()
                 logger.debug("Async VideoCapture 리소스 정리 완료")
-            except Exception as e:
+            except (cv2.error, RuntimeError) as e:
                 logger.warning(f"Async VideoCapture 정리 중 오류: {e}")
 
 
@@ -88,10 +88,23 @@ class VideoInputManager:
         self.current_frame = None
         self.frame_lock = threading.Lock()
         self.capture_thread = None
-        self.stopped = True
+        self.stopped_lock = threading.Lock()  # Thread-safe stopped flag
+        self._stopped = True
         self.video_changed_flag = False
         self.init_error_message = None  # 에러 메시지 저장용
         self.fps = 30  # 프레임 속도 저장용
+        
+    @property
+    def stopped(self):
+        """Thread-safe stopped property"""
+        with self.stopped_lock:
+            return self._stopped
+            
+    @stopped.setter
+    def stopped(self, value):
+        """Thread-safe stopped setter"""
+        with self.stopped_lock:
+            self._stopped = value
 
     def initialize(self) -> bool:
         """비디오 입력 초기화 (강화된 오류 처리 및 타이밍 제어)"""

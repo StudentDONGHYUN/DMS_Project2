@@ -1,6 +1,61 @@
 import os
-import tkinter as tk
-from tkinter import filedialog, messagebox, ttk
+# Handle tkinter import with fallback
+try:
+    import tkinter as tk
+    from tkinter import filedialog, messagebox, ttk
+    TKINTER_AVAILABLE = True
+except ImportError:
+    TKINTER_AVAILABLE = False
+    # Create dummy classes for when tkinter is not available
+    class tk:
+        class Tk:
+            def __init__(self): pass
+            def mainloop(self): pass
+            def destroy(self): pass
+            def withdraw(self): pass
+            def title(self, title): pass
+            def geometry(self, geometry): pass
+            def configure(self, **kwargs): pass
+            def tk(self): return self
+            def call(self, *args): pass
+    class filedialog:
+        @staticmethod
+        def askopenfilenames(**kwargs): return ()
+    class messagebox:
+        @staticmethod
+        def showerror(title, message): print(f"ERROR: {title} - {message}")
+        @staticmethod
+        def askyesno(title, message): return False
+    class ttk:
+        class Button:
+            def __init__(self, **kwargs): pass
+            def pack(self, **kwargs): pass
+            def config(self, **kwargs): pass
+        class Frame:
+            def __init__(self, **kwargs): pass
+            def pack(self, **kwargs): pass
+        class Label:
+            def __init__(self, **kwargs): pass
+            def pack(self, **kwargs): pass
+            def config(self, **kwargs): pass
+        class Entry:
+            def __init__(self, **kwargs): pass
+            def pack(self, **kwargs): pass
+            def get(self): return ""
+            def config(self, **kwargs): pass
+        class Combobox:
+            def __init__(self, **kwargs): pass
+            def pack(self, **kwargs): pass
+            def get(self): return ""
+            def set(self, value): pass
+        class Checkbutton:
+            def __init__(self, **kwargs): pass
+            def pack(self, **kwargs): pass
+            def get(self): return False
+        class Notebook:
+            def __init__(self, **kwargs): pass
+            def pack(self, **kwargs): pass
+            def add(self, **kwargs): pass
 from utils.logging import setup_logging_system
 import asyncio
 import time
@@ -31,7 +86,10 @@ setup_logging_system()
 
 logger = logging.getLogger(__name__)
 
-GUI_AVAILABLE = True
+# Set GUI availability based on tkinter import
+GUI_AVAILABLE = TKINTER_AVAILABLE
+if not GUI_AVAILABLE:
+    logger.warning("tkinter not available - running in terminal mode")
 
 
 @dataclass
@@ -1038,7 +1096,18 @@ class SClass_DMS_GUI_Setup:
         }
         # 혁신 엔진에 에디션 반영
         self.innovation_engine = SClassDMSv19Enhanced(user_id, edition)
-        self.root.destroy()
+        
+        # DMSApp 인스턴스 생성 및 실행
+        try:
+            logger.info("DMSApp 인스턴스 생성 중...")
+            app = DMSApp(**self.config)
+            logger.info("DMSApp 실행 시작...")
+            self.root.destroy()  # GUI 창 닫기
+            app.run()  # 메인 애플리케이션 실행
+        except Exception as e:
+            logger.error(f"DMSApp 실행 실패: {e}")
+            messagebox.showerror("실행 오류", f"메인 애플리케이션 실행 중 오류가 발생했습니다:\n{e}")
+            self.root.destroy()
 
 
 def get_user_input_terminal():
