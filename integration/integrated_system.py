@@ -211,25 +211,33 @@ class IntegratedDMSSystem:
             raise RuntimeError(f"시스템 초기화 실패: {e}")
 
     async def initialize(self):
-        """비동기 초기화 (이벤트 시스템 등)"""
+        """비동기 초기화 (이벤트 시스템 등) - Bug #11 fix: Add proper error handling"""
 
-        # 1. 이벤트 시스템 초기화
-        from events.event_bus import initialize_event_system
+        # 1. 이벤트 시스템 초기화 (Bug #11 fix: Add error handling)
+        from events.event_bus import initialize_event_system, get_event_bus
 
-        await initialize_event_system()
+        try:
+            await initialize_event_system()
+            logger.info("✅ 이벤트 시스템 초기화 성공")
+            
+            # 2. 이벤트 핸들러들 등록
+            event_bus = get_event_bus()
 
-        # 2. 이벤트 핸들러들 등록
-        event_bus = get_event_bus()
+            # 안전 이벤트 핸들러
+            self.safety_handler = SafetyEventHandler(alert_system=self.state_manager)
+            event_bus.subscribe(self.safety_handler)
 
-        # 안전 이벤트 핸들러
-        self.safety_handler = SafetyEventHandler(alert_system=self.state_manager)
-        event_bus.subscribe(self.safety_handler)
-
-        # 분석 이벤트 핸들러
-        self.analytics_handler = AnalyticsEventHandler(
-            analytics_engine=self.metrics_manager
-        )
-        event_bus.subscribe(self.analytics_handler)
+            # 분석 이벤트 핸들러
+            self.analytics_handler = AnalyticsEventHandler(
+                analytics_engine=self.metrics_manager
+            )
+            event_bus.subscribe(self.analytics_handler)
+            
+        except Exception as e:
+            logger.warning(f"이벤트 시스템 초기화 실패, 안전 모드로 진행: {e}")
+            # Set None handlers to indicate safe mode operation
+            self.safety_handler = None
+            self.analytics_handler = None
 
         # 3. 각 컴포넌트들의 상호 연결 설정
         self._setup_component_connections()

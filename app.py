@@ -441,8 +441,13 @@ class DMSApp:
             """
             logger.info("[수정] 비동기 프레임 프로듀서 시작")
 
-            # 초기화 및 준비 대기
-            await self.initialize()
+            # 초기화 및 준비 대기 (Bug #10 fix: Check initialization result)
+            initialization_success = await self.initialize()
+            if not initialization_success:
+                logger.error("S-Class DMS 시스템 초기화 실패 - 프로그램을 종료합니다")
+                stop_event.set()  # Stop the display thread
+                return  # Exit frame producer
+            
             logger.info("[수정] S-Class DMS 시스템 초기화 완료")
 
             # 시스템 안정화를 위한 짧은 대기
