@@ -300,7 +300,7 @@ class EventBus:
             if event.priority >= EventPriority.CRITICAL:
                 logger.critical(f"긴급 이벤트 발행: {event.event_type.value} (출처: {event.source})")
             
-        except Exception as e:
+        except (asyncio.QueueFull, AttributeError, TypeError) as e:
             logger.error(f"이벤트 발행 중 오류: {e}")
     
     async def _process_priority_queue(self, priority: EventPriority):
@@ -321,11 +321,11 @@ class EventBus:
                 # 큐에서 작업 완료 표시
                 queue.task_done()
                 
-            except asyncio.CancelledError:
-                logger.info(f"{priority.name} 우선순위 큐 처리 취소됨")
+            except (asyncio.CancelledError, asyncio.TimeoutError) as e:
+                logger.info(f"{priority.name} 우선순위 큐 처리 취소됨: {e}")
                 break
             except Exception as e:
-                logger.error(f"{priority.name} 큐 처리 중 오류: {e}")
+                logger.error(f"{priority.name} 큐 처리 중 오류: {e}", exc_info=True)
     
     async def _handle_event(self, event: Event):
         """개별 이벤트 처리"""
@@ -384,7 +384,7 @@ class EventBus:
                 logger.debug(f"이벤트 {event.event_type.value} 처리 완료: {success_count}개 핸들러")
             
         except Exception as e:
-            logger.error(f"이벤트 처리 중 치명적 오류: {e}")
+            logger.error(f"이벤트 처리 중 치명적 오류: {e}", exc_info=True)
     
     async def _execute_handler_safely(self, handler: IEventHandler, event: Event) -> bool:
         """핸들러를 안전하게 실행 (개별 핸들러 실패가 전체에 영향 안 줌)"""
@@ -404,13 +404,13 @@ class EventBus:
             
             return bool(result)
             
-        except asyncio.TimeoutError:
-            logger.error(f"핸들러 {handler_name} 타임아웃 ({timeout}초)")
+        except (asyncio.TimeoutError, AttributeError, TypeError) as e:
+            logger.error(f"핸들러 {handler_name} 타임아웃 ({timeout}초): {e}")
             self._event_statistics['handler_performance'][handler_name]['failure'] += 1
             return False
             
         except Exception as e:
-            logger.error(f"핸들러 {handler_name} 실행 중 오류: {e}")
+            logger.error(f"핸들러 {handler_name} 실행 중 오류: {e}", exc_info=True)
             self._event_statistics['handler_performance'][handler_name]['failure'] += 1
             return False
     
@@ -429,8 +429,8 @@ class EventBus:
                 
             except asyncio.CancelledError:
                 break
-            except Exception as e:
-                logger.error(f"정리 작업 중 오류: {e}")
+            except (asyncio.CancelledError, AttributeError, TypeError) as e:
+                logger.error(f"정리 작업 중 오류: {e}", exc_info=True)
     
     def _cleanup_dead_references(self):
         """끊어진 약한 참조들 정리"""

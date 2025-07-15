@@ -432,7 +432,7 @@ class ObjectDataProcessor(IObjectDataProcessor):
                 'contextual_factors': self.contextual_factors.copy()
             }
             
-        except Exception as e:
+        except (AttributeError, TypeError, ValueError) as e:
             logger.error(f"Error in comprehensive risk analysis: {e}")
             return self._get_default_risk_analysis()
 
@@ -520,7 +520,8 @@ class ObjectDataProcessor(IObjectDataProcessor):
         
         try:
             slope = np.polyfit(timestamps, recent_risks, 1)[0]
-        except np.linalg.LinAlgError:
+        except np.linalg.LinAlgError as e:
+            logger.warning(f"Temporal risk pattern analysis failed due to singular matrix: {e}")
             slope = 0.0
 
         if slope > 0.05:
@@ -595,9 +596,9 @@ class ObjectDataProcessor(IObjectDataProcessor):
                 update_method = getattr(self.metrics_updater, 'update_distraction_metrics', None) or getattr(self.metrics_updater, 'update_metrics', None)
                 if update_method:
                     update_method(metrics_data)
-            except Exception as e:
+            except (AttributeError, TypeError) as e:
                 logger.debug(f"Could not update object metrics: {e}")
-        except Exception as e:
+        except (AttributeError, TypeError, KeyError) as e:
             logger.error(f"Error updating object metrics: {e}")
 
     def process_object_detections(self, detections: Any, hand_positions: List[Dict], timestamp: float) -> Dict[str, Any]:

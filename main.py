@@ -117,7 +117,7 @@ class SClassDMSv19Enhanced:
             # Create default feature flags for safety
             try:
                 self.feature_flags = FeatureFlagConfig(edition="COMMUNITY")
-            except Exception as e:
+            except (AttributeError, TypeError, ValueError) as e:
                 self.logger.error(f"기본 feature flags 생성 실패: {e}")
                 return systems
 
@@ -128,7 +128,7 @@ class SClassDMSv19Enhanced:
             try:
                 systems["ai_coach"] = AIDrivingCoach(self.user_id)
                 self.logger.info("✅ AI 드라이빙 코치 시스템 초기화 완료")
-            except Exception as e:
+            except (AttributeError, TypeError, ValueError) as e:
                 self.logger.error(f"❌ AI 드라이빙 코치 초기화 실패: {e}")
                 # Bug fix: Continue initialization even if one system fails
 
@@ -139,7 +139,7 @@ class SClassDMSv19Enhanced:
             try:
                 systems["healthcare"] = V2DHealthcareSystem(self.user_id)
                 self.logger.info("✅ V2D 헬스케어 시스템 초기화 완료")
-            except Exception as e:
+            except (AttributeError, TypeError, ValueError) as e:
                 self.logger.error(f"❌ V2D 헬스케어 초기화 실패: {e}")
 
         # 3. AR HUD 시스템 (ENTERPRISE 이상)
@@ -149,7 +149,7 @@ class SClassDMSv19Enhanced:
             try:
                 systems["ar_hud"] = ARHUDSystem()
                 self.logger.info("✅ AR HUD 시스템 초기화 완료")
-            except Exception as e:
+            except (AttributeError, TypeError, ValueError) as e:
                 self.logger.error(f"❌ AR HUD 초기화 실패: {e}")
 
         # 4. 감성 케어 시스템 (ENTERPRISE 이상)
@@ -159,7 +159,7 @@ class SClassDMSv19Enhanced:
             try:
                 systems["emotional_care"] = EmotionalCareSystem(self.user_id)
                 self.logger.info("✅ 감성 케어 시스템 초기화 완료")
-            except Exception as e:
+            except (AttributeError, TypeError, ValueError) as e:
                 self.logger.error(f"❌ 감성 케어 초기화 실패: {e}")
 
         # 5. 디지털 트윈 플랫폼 (RESEARCH 에디션)
@@ -169,7 +169,7 @@ class SClassDMSv19Enhanced:
             try:
                 systems["digital_twin"] = DigitalTwinPlatform()
                 self.logger.info("✅ 디지털 트윈 플랫폼 초기화 완료")
-            except Exception as e:
+            except (AttributeError, TypeError, ValueError) as e:
                 self.logger.error(f"❌ 디지털 트윈 플랫폼 초기화 실패: {e}")
 
         # Bug fix: Log summary of initialization results
@@ -271,7 +271,7 @@ class SClass_DMS_GUI_Setup:
         # 고급 테마 설정
         try:
             style.theme_use("clam")
-        except Exception as e:
+        except tk.TclError as e:
             logger.debug(f"GUI 테마 'clam' 설정 실패 (기본 테마 사용): {e}")
 
         # S-Class 전용 색상 팔레트
@@ -1089,7 +1089,7 @@ def get_user_input_terminal():
 
             value = int(user_input)
             return max(min_val, min(max_val, value))
-        except (ValueError, KeyboardInterrupt):
+        except (ValueError, KeyboardInterrupt) as e:
             return default
 
     def get_safe_choice_input(
@@ -1257,7 +1257,7 @@ def main():
         else:
             print("\n❌ 설정이 취소되어 프로그램을 종료합니다.")
 
-    except (KeyboardInterrupt, EOFError):
+    except (KeyboardInterrupt, EOFError) as e:
         print("\n\n🛑 프로그램을 종료합니다.")
     except Exception as e:
         logger.error(f"S-Class 시스템 실행 실패: {e}", exc_info=True)

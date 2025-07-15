@@ -229,11 +229,11 @@ class EventBus:
                 # 이벤트 이력에 추가
                 self.event_history.append(event)
                 
-            except asyncio.TimeoutError:
-                # 타임아웃은 정상 동작 (새 이벤트 대기)
-                continue
+            except (asyncio.CancelledError, asyncio.TimeoutError) as e:
+                logger.debug(f"이벤트 처리 루프 중단: {e}")
+                break
             except Exception as e:
-                logger.error(f"이벤트 처리 중 오류: {e}")
+                logger.error(f"이벤트 처리 중 오류: {e}", exc_info=True)
                 self.failed_events += 1
     
     async def _deliver_event(self, event: Event):
@@ -279,7 +279,7 @@ class EventBus:
         except asyncio.TimeoutError:
             logger.warning(f"핸들러 타임아웃: {handler.get_handler_name()}")
         except Exception as e:
-            logger.error(f"핸들러 오류 {handler.get_handler_name()}: {e}")
+            logger.error(f"핸들러 오류 {handler.get_handler_name()}: {e}", exc_info=True)
     
     def _update_performance_metrics(self, processing_time: float):
         """성능 메트릭 업데이트"""
@@ -387,7 +387,7 @@ class SafetyEventHandler(IEventHandler):
             return False
             
         except Exception as e:
-            logger.error(f"안전 이벤트 처리 중 오류: {e}")
+            logger.error(f"안전 이벤트 처리 중 오류: {e}", exc_info=True)
             return False
     
     def get_handled_event_types(self) -> Set[EventType]:
@@ -487,7 +487,7 @@ class AnalyticsEventHandler(IEventHandler):
             return True
             
         except Exception as e:
-            logger.error(f"분석 이벤트 처리 중 오류: {e}")
+            logger.error(f"분석 이벤트 처리 중 오류: {e}", exc_info=True)
             return False
     
     def get_handled_event_types(self) -> Set[EventType]:

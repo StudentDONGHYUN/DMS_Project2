@@ -233,7 +233,7 @@ class HandDataProcessor(IHandDataProcessor):
             elif fatigue_power > 0.1: severity = 'mild'
 
             return {'dominant_frequency_hz': dominant_freq, 'fatigue_tremor_power': fatigue_power, 'tremor_severity': severity}
-        except Exception as e:
+        except (ValueError, IndexError, np.linalg.LinAlgError) as e:
             logger.error(f"Error in FFT tremor analysis: {e}")
             return {'dominant_frequency_hz': 0.0, 'fatigue_tremor_power': 0.0, 'tremor_severity': 'unknown'}
 
@@ -271,7 +271,7 @@ class HandDataProcessor(IHandDataProcessor):
                 angle = self._calculate_angle_between_vectors(v1, v2)
                 angles[name] = angle
             return angles
-        except Exception as e:
+        except (IndexError, AttributeError, TypeError) as e:
             logger.error(f"Error calculating finger angles: {e}")
             return {name: 90.0 for name in ['thumb', 'index', 'middle', 'ring', 'pinky']}
 
@@ -460,10 +460,10 @@ class HandDataProcessor(IHandDataProcessor):
                 update_method = getattr(self.metrics_updater, 'update_distraction_metrics', None) or getattr(self.metrics_updater, 'update_metrics', None)
                 if update_method:
                     update_method(distraction_data)
-            except Exception as e:
+            except (AttributeError, TypeError) as e:
                 logger.debug(f"Could not update hand metrics: {e}")
 
-        except Exception as e:
+        except (AttributeError, TypeError, KeyError) as e:
             logger.error(f"Error updating hand metrics: {e}")
 
     async def _handle_no_hands_detected(self) -> Dict[str, Any]:

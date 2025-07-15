@@ -70,13 +70,15 @@ class DriverIdentificationSystem:
             face_height = self._euclidean_distance(key_points["nose_tip"], key_points["chin"])
             features.append(face_height)
             return np.array(features)
-        except (IndexError, AttributeError):
+        except (IndexError, AttributeError) as e:
+            logger.debug(f"얼굴 특징 추출 실패: {e}")
             return np.zeros(4)
 
     def _euclidean_distance(self, point1, point2):
         try:
             return math.sqrt((point1.x - point2.x) ** 2 + (point1.y - point2.y) ** 2)
-        except AttributeError:
+        except AttributeError as e:
+            logger.debug(f"유클리드 거리 계산 실패: {e}")
             return 0.0
 
     def _calculate_similarity(self, features1, features2):
@@ -109,7 +111,7 @@ class DriverIdentificationSystem:
                         "created_at": profile_data["created_at"],
                     }
                 logger.info(f"{len(self.face_encodings)}명의 운전자 프로필 로드됨")
-            except Exception as e:
+            except (FileNotFoundError, json.JSONDecodeError, KeyError) as e:
                 logger.warning(f"프로필 로드 실패: {e}")
 
     def _register_new_driver(self, driver_id, features):
@@ -133,7 +135,7 @@ class DriverIdentificationSystem:
                 }
             with open(profile_file, "w") as f:
                 json.dump(data, f, indent=2)
-        except Exception as e:
+        except (IOError, TypeError) as e:
             logger.error(f"프로필 저장 실패: {e}")
 
     def get_current_driver(self):

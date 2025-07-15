@@ -1,0 +1,827 @@
+2025-07-15 17:23:38,569 - __main__                  - INFO     - [진단] main.py: main() 진입
+2025-07-15 17:23:40,530 - SClassDMS_v19_default     - INFO     - ✅ AI 드라이빙 코치 시스템 초기화 완료
+2025-07-15 17:23:40,532 - SClassDMS_v19_default     - INFO     - ✅ V2D 헬스케어 시스템 초기화 완료
+2025-07-15 17:23:40,533 - SClassDMS_v19_default     - INFO     - ✅ AR HUD 시스템 초기화 완료
+2025-07-15 17:23:40,534 - SClassDMS_v19_default     - INFO     - ✅ 감성 케어 시스템 초기화 완료
+2025-07-15 17:23:40,536 - SClassDMS_v19_default     - INFO     - ✅ 디지털 트윈 플랫폼 초기화 완료
+2025-07-15 17:23:40,537 - SClassDMS_v19_default     - INFO     - 혁신 시스템 초기화 완료: 5개 시스템 성공
+2025-07-15 17:23:40,538 - SClassDMS_v19_default     - INFO     - S-Class DMS v19.0 시스템 초기화 완료
+2025-07-15 17:23:40,539 - SClassDMS_v19_default     - INFO     - 사용자: default, 에디션: RESEARCH
+2025-07-15 17:23:40,539 - SClassDMS_v19_default     - INFO     - 활성화된 기능: ['Expert Systems', 'AI Coach', 'Healthcare', 'AR HUD', 'Emotional Care', 'Digital Twin']
+2025-07-15 17:24:08,985 - SClassDMS_v19_default     - INFO     - ✅ AI 드라이빙 코치 시스템 초기화 완료
+2025-07-15 17:24:08,985 - SClassDMS_v19_default     - INFO     - ✅ V2D 헬스케어 시스템 초기화 완료
+2025-07-15 17:24:08,985 - SClassDMS_v19_default     - INFO     - 혁신 시스템 초기화 완료: 2개 시스템 성공
+2025-07-15 17:24:08,985 - SClassDMS_v19_default     - INFO     - S-Class DMS v19.0 시스템 초기화 완료
+2025-07-15 17:24:08,985 - SClassDMS_v19_default     - INFO     - 사용자: default, 에디션: PRO
+2025-07-15 17:24:08,985 - SClassDMS_v19_default     - INFO     - 활성화된 기능: ['Expert Systems', 'AI Coach', 'Healthcare']
+2025-07-15 17:24:09,044 - __main__                  - INFO     - S-Class 설정 완료: {'input_source': ['C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0097/video/SGA5100180S0097.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0126/video/SGA5100180S0126.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0135/video/SGA5100180S0135.mp4'], 'user_id': 'default', 'camera_position': <CameraPosition.REARVIEW_MIRROR: '백미러 위치'>, 'enable_calibration': True, 'is_same_driver': True, 'system_type': <AnalysisSystemType.STANDARD: 'standard'>, 'use_legacy_engine': False, 'edition': 'PRO', 'sclass_features': {'enable_rppg': True, 'enable_saccade': True, 'enable_spinal_analysis': True, 'enable_tremor_fft': True, 'enable_bayesian_prediction': True, 'enable_emotion_ai': True, 'enable_predictive_safety': True, 'enable_biometric_fusion': True, 'enable_adaptive_thresholds': True}, 'enable_performance_optimization': True}
+2025-07-15 17:24:09,044 - app                       - INFO     - [수정] app_fixed.py: DMSApp.__init__ 진입
+2025-07-15 17:24:09,044 - app                       - INFO     - 에디션 'PRO'에 따른 기능 설정 중...
+2025-07-15 17:24:09,044 - app                       - INFO     - 에디션 'PRO' 기능 설정 완료: {'enable_rppg': True, 'enable_saccade': True, 'enable_spinal_analysis': True, 'enable_tremor_fft': True, 'enable_bayesian_prediction': True, 'enable_emotion_ai': False, 'enable_predictive_safety': False, 'enable_biometric_fusion': False, 'enable_adaptive_thresholds': False}
+2025-07-15 17:24:09,058 - systems.performance       - INFO     - PerformanceOptimizer 초기화 완료
+2025-07-15 17:24:09,064 - systems.personalization   - INFO     - 사용자 프로필 로드됨: default
+2025-07-15 17:24:09,064 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-15 17:24:09,064 - systems.dynamic           - INFO     - DynamicAnalysisEngine 초기화 완료
+2025-07-15 17:24:09,065 - systems.backup            - INFO     - SensorBackupManager 초기화 완료
+2025-07-15 17:24:09,069 - utils.memory_monitor      - INFO     - MemoryMonitor 초기화 - 경고: 600MB, 위험: 1000MB
+2025-07-15 17:24:09,077 - io_handler.video_input    - INFO     - 운전자 연속성 설정됨: 동일 운전자
+2025-07-15 17:24:09,077 - app                       - INFO     - [수정] S-Class 시스템 초기화 완료
+2025-07-15 17:24:09,079 - app                       - INFO     - [수정] app.py: run 진입
+2025-07-15 17:24:09,080 - app                       - INFO     - [수정] app.py: run - opencv_display_loop 진입
+2025-07-15 17:24:09,094 - app                       - INFO     - [수정] 비동기 프레임 프로듀서 시작
+2025-07-15 17:24:09,094 - app                       - INFO     - [수정] S-Class DMS 시스템 초기화 시작...
+2025-07-15 17:24:09,094 - io_handler.video_input    - INFO     - [진단] video_input.initialize 진입
+2025-07-15 17:24:09,095 - io_handler.video_input    - INFO     - [진단] video_input.initialize - self.input_source=['C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0097/video/SGA5100180S0097.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0126/video/SGA5100180S0126.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0135/video/SGA5100180S0135.mp4']
+2025-07-15 17:24:09,096 - io_handler.video_input    - INFO     - 비디오 플레이리스트: 3개 파일
+2025-07-15 17:24:09,096 - io_handler.video_input    - INFO     -   1. SGA5100180S0097.mp4
+2025-07-15 17:24:09,096 - io_handler.video_input    - INFO     -   2. SGA5100180S0126.mp4
+2025-07-15 17:24:09,097 - io_handler.video_input    - INFO     -   3. SGA5100180S0135.mp4
+2025-07-15 17:24:09,097 - io_handler.video_input    - INFO     - 비디오 파일 정보: SGA5100180S0097.mp4 (0.96MB, .mp4)
+2025-07-15 17:24:09,097 - io_handler.video_input    - INFO     - Windows/개발 환경: 표준 파일 디코더 사용
+2025-07-15 17:24:09,098 - io_handler.video_input    - INFO     - FFMPEG 백엔드로 시도 중...
+2025-07-15 17:24:10,604 - io_handler.video_input    - INFO     - ✅ FFMPEG 백엔드로 성공 (테스트 프레임: (720, 1280, 3))
+2025-07-15 17:24:11,310 - io_handler.video_input    - INFO     - 비디오 속성: 1280x720, 30.00fps, 114프레임, 3.8초
+2025-07-15 17:24:11,310 - io_handler.video_input    - INFO     - 비디오 코덱: h264
+2025-07-15 17:24:11,331 - io_handler.video_input    - INFO     - [진단] VideoCapture backend: FFMPEG, codec: h264, 총 프레임: 114
+2025-07-15 17:24:11,332 - io_handler.video_input    - INFO     - VideoCapture 객체 성공적으로 생성됨
+2025-07-15 17:24:11,332 - io_handler.video_input    - INFO     - [진단] VideoCapture backend: FFMPEG, codec: h264, 총 프레임: 114
+2025-07-15 17:24:11,334 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 진입
+2025-07-15 17:24:11,334 - io_handler.video_input    - INFO     - 리더 스레드 시작 대기 중...
+2025-07-15 17:24:11,835 - io_handler.video_input    - INFO     - 첫 번째 프레임 대기 중 (최대 5.0초)...
+2025-07-15 17:24:11,835 - io_handler.video_input    - INFO     - ✅ 첫 번째 프레임 수신 성공
+2025-07-15 17:24:11,835 - io_handler.video_input    - INFO     - ✅ 입력 소스 초기화 및 스레드 시작 완료
+2025-07-15 17:24:11,871 - app                       - INFO     - ✅ 이벤트 시스템 초기화 완료
+2025-07-15 17:24:11,871 - systems.metrics_manager   - INFO     - MetricsManager 초기화 완료 - 히스토리 크기: 900
+2025-07-15 17:24:11,871 - integration.integrated_system - INFO     - 새로운 시스템 초기화 시작 - 성능 우선 전략
+2025-07-15 17:24:11,871 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 시작: standard
+2025-07-15 17:24:11,871 - analysis.factory.analysis_factory - INFO     - 지원 기능: advanced_drowsiness_detection, multi_level_distraction_detection, precise_head_pose_tracking, gaze_zone_classification, emotion_recognition...
+2025-07-15 17:24:11,886 - analysis.factory.analysis_factory - INFO     - 표준 성능 DMS 시스템 생성 중...
+2025-07-15 17:24:11,886 - analysis.fusion.fusion_engine_advanced - INFO     - MultiModalFusionEngine (S-Class) 초기화 완료 - 디지털 신경과학자 준비됨
+2025-07-15 17:24:12,548 - analysis.drowsiness       - INFO     - EnhancedDrowsinessDetector 초기화 완료
+2025-07-15 17:24:12,549 - analysis.emotion          - INFO     - EmotionRecognitionSystem 초기화 완료
+2025-07-15 17:24:12,725 - analysis.gaze             - INFO     - GazeZoneClassifier 초기화: 11개 구역 정의됨, mode=3d
+2025-07-15 17:24:12,725 - analysis.identity         - INFO     - 1명의 운전자 프로필 로드됨
+2025-07-15 17:24:12,738 - analysis.identity         - INFO     - DriverIdentificationSystem 초기화 완료
+2025-07-15 17:24:12,739 - analysis.processors.face_processor - INFO     - FaceDataProcessor initialized - Digital Psychologist ready
+2025-07-15 17:24:12,739 - analysis.processors.pose_processor - INFO     - PoseDataProcessor initialized - Digital Biomechanics Expert ready
+2025-07-15 17:24:12,741 - analysis.processors.hand_processor - INFO     - HandDataProcessor initialized - Expert Kinematics Analyst ready
+2025-07-15 17:24:12,745 - analysis.processors.object_processor - INFO     - ObjectDataProcessor initialized - Digital Behavior Prediction Expert ready
+2025-07-15 17:24:12,748 - analysis.orchestrator.orchestrator_advanced - INFO     - AnalysisOrchestrator (S-Class) 초기화 완료 - 지능형 지휘자 준비됨
+2025-07-15 17:24:12,755 - analysis.factory.analysis_factory - INFO     - 표준 DMS 시스템 생성 완료 - 균형 모드 활성화
+2025-07-15 17:24:12,755 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 완료: standard
+2025-07-15 17:24:12,755 - integration.integrated_system - INFO     - ✅ 새로운 standard 시스템 생성 완료
+2025-07-15 17:24:12,755 - integration.integrated_system - INFO     - IntegratedDMSSystem 초기화 완료 - 타입: standard, 레거시: False
+2025-07-15 17:24:12,755 - events.event_bus          - INFO     - EventBus 초기화 완료 - 중추 신경계 가동 시작
+2025-07-15 17:24:12,755 - events.event_bus          - INFO     - EventBus 시작됨 - 모든 우선순위 큐 처리 시작
+2025-07-15 17:24:12,755 - events.event_bus          - INFO     - 글로벌 이벤트 시스템 초기화 완료
+2025-07-15 17:24:12,755 - events.handlers           - INFO     - SafetyEventHandler 초기화 완료 - 안전 모니터링 시작
+2025-07-15 17:24:12,771 - events.event_bus          - INFO     - 글로벌 핸들러 등록: SafetyEventHandler
+2025-07-15 17:24:12,771 - events.handlers           - INFO     - AnalyticsEventHandler 초기화 완료 - 성능 모니터링 시작
+2025-07-15 17:24:12,771 - events.event_bus          - INFO     - 글로벌 핸들러 등록: AnalyticsEventHandler
+2025-07-15 17:24:12,771 - systems.metrics_manager   - INFO     - StateManager와 연결됨
+2025-07-15 17:24:12,771 - core.state_manager        - INFO     - MetricsManager와 연결됨
+2025-07-15 17:24:12,771 - integration.integrated_system - INFO     - IntegratedDMSSystem 비동기 초기화 완료
+2025-07-15 17:24:12,771 - systems.mediapipe_manager - INFO     - 모델 디렉토리: C:\Users\HKIT\Desktop\DMS_Project2\models
+2025-07-15 17:24:12,771 - systems.mediapipe_manager - INFO     - AdvancedMediaPipeManager v2.0 (최적화) 초기화 완료
+2025-07-15 17:24:12,771 - app                       - INFO     - IntegratedCallbackAdapter (수정) 초기화 완료
+2025-07-15 17:24:12,771 - app                       - INFO     - [수정] S-Class DMS 시스템 초기화 완료
+2025-07-15 17:24:12,771 - app                       - INFO     - [수정] S-Class DMS 시스템 초기화 완료
+2025-07-15 17:24:12,895 - app                       - INFO     - 비동기 프레임 처리 루프 시작
+2025-07-15 17:24:13,102 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:13,102 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:13,102 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:13,102 - systems.metrics_manager   - WARNING  - 경고 발생 - distraction: critical (값: 1.000)
+2025-07-15 17:24:13,102 - core.state_manager        - WARNING  - 경고 수신: distraction - critical (값: 1.000)
+2025-07-15 17:24:13,133 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:13,133 - integration.integrated_system - INFO     - 성능 리포트 - 평균 처리시간: 31.2ms, FPS: 32.0
+2025-07-15 17:24:13,133 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:13,243 - app                       - ERROR    - frame_to_show 타입 오류: <class 'cv2.UMat'>
+2025-07-15 17:24:13,243 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:13,243 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:13,243 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:13,257 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:13,257 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:13,257 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:13,257 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:13,257 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:13,257 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:13,257 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:13,288 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:13,294 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:13,294 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:13,294 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:13,294 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:13,294 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:13,294 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:13,294 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:13,294 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:13,294 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:13,331 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:13,331 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:13,331 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:13,331 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:13,331 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:13,362 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:13,362 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:13,362 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:13,362 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:13,369 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:13,369 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:13,385 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:13,385 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:13,385 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:13,385 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:13,385 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:13,385 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:13,385 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:13,385 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:13,385 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:13,401 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:13,401 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:13,401 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:13,401 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:13,401 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:13,430 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:13,430 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:13,430 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:13,430 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:13,430 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:13,466 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:13,466 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:13,466 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:13,466 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:13,466 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:13,502 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:13,502 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:13,502 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:13,502 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:13,502 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:13,538 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:13,538 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:13,538 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:13,538 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:13,538 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:13,588 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:13,588 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:13,589 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:13,589 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:13,590 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:13,599 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:13,600 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:13,600 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:13,601 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:13,601 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:13,604 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:13,604 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:13,604 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:13,604 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:13,604 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:13,604 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:13,604 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:13,604 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:13,604 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:13,604 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:13,619 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:13,619 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:13,619 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:13,619 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:13,619 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:13,651 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:13,651 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:13,651 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:13,651 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:13,651 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:13,687 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:13,687 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:13,687 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:13,687 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:13,687 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:13,724 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:13,724 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:13,724 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:13,724 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:13,724 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:13,766 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:13,767 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:13,768 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:13,769 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:13,769 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:14,237 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:14,237 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:14,237 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:14,253 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:14,253 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:14,261 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:14,262 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:14,262 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:14,263 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:14,263 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:14,278 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:14,278 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:14,279 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:14,280 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:14,281 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:14,294 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:14,300 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:14,301 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:14,302 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:14,303 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:14,318 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:14,318 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:14,318 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:14,320 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:14,321 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:14,338 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:14,339 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:14,341 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:14,345 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:14,346 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:14,361 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:14,361 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:14,362 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:14,363 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:14,364 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:14,367 - app                       - INFO     - 성능 통계 - FPS: 27.4, 평균 처리시간: 36.5ms
+2025-07-15 17:24:14,368 - app                       - INFO     - 메모리 정리 실행
+2025-07-15 17:24:14,556 - app                       - INFO     - 가비지 컬렉션 완료: 총 0개 객체 정리
+2025-07-15 17:24:14,562 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-15 17:24:14,737 - app                       - INFO     - 메모리 정리 완료 - 정리 전: 409.7MB, 정리 후: 409.7MB, 확보된 메모리: -0.0MB
+2025-07-15 17:24:14,737 - app                       - WARNING  - 메모리 정리 효과가 제한적입니다: -0.0MB
+2025-07-15 17:24:14,779 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:14,779 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:14,779 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:14,779 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:14,779 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:14,791 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:14,791 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:14,794 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:14,798 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:14,800 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:14,808 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:14,808 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:14,808 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:14,820 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:14,820 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:14,830 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:14,837 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:14,837 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:14,838 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:14,838 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:14,856 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:14,856 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:14,856 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:14,865 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:14,865 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:14,873 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:14,874 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:14,874 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:14,874 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:14,875 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:14,889 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:14,889 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:14,890 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:14,891 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:14,892 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:14,899 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:14,904 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:14,904 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:14,905 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:14,905 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:14,906 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:14,906 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:14,906 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:14,906 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:14,906 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:14,926 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:14,926 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:14,926 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:14,932 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:14,932 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:14,941 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:14,941 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:14,941 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:14,942 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:14,942 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:14,948 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:14,948 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:14,948 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:14,949 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:14,949 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:14,955 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:14,955 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:14,955 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:14,956 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:14,956 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:14,966 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:14,967 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:14,967 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:14,968 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:14,968 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:14,976 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:14,977 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:14,977 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:14,977 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:14,978 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:14,989 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:14,989 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:14,989 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:14,989 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:14,989 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:14,989 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:14,989 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:14,989 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:14,989 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:14,989 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,025 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,025 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,025 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,026 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,026 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,034 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,034 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,034 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,034 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,034 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,047 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,048 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,048 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,049 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,050 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,058 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,059 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,059 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,060 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,061 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,071 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,071 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,071 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,071 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,071 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,071 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,071 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,071 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,083 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,083 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,100 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,100 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,100 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,101 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,101 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,105 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,105 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,105 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,105 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,105 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,138 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,147 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,147 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,147 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,147 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,155 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,155 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,155 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,155 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,155 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,164 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,164 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,164 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,164 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,164 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,177 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,177 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,177 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,177 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,177 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,192 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,193 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,193 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,194 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,194 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,197 - app                       - INFO     - 성능 통계 - FPS: 41.0, 평균 처리시간: 24.4ms
+2025-07-15 17:24:15,197 - app                       - INFO     - 메모리 정리 실행
+2025-07-15 17:24:15,374 - app                       - INFO     - 가비지 컬렉션 완료: 총 0개 객체 정리
+2025-07-15 17:24:15,376 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-15 17:24:15,549 - app                       - INFO     - 메모리 정리 완료 - 정리 전: 394.7MB, 정리 후: 394.7MB, 확보된 메모리: -0.0MB
+2025-07-15 17:24:15,550 - app                       - WARNING  - 메모리 정리 효과가 제한적입니다: -0.0MB
+2025-07-15 17:24:15,558 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,558 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,559 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,560 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,560 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,568 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,568 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,569 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,570 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,570 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,579 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,579 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,579 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,579 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,579 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,597 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,597 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,598 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,599 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,600 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,617 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,618 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,618 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,619 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,621 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,641 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,641 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,641 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,649 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,649 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,657 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,657 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,657 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,657 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,657 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,691 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,691 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,691 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,691 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,691 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,707 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,707 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,712 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,713 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,714 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,729 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,730 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,730 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,731 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,733 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,747 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,748 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,748 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,750 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,750 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,766 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,768 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,768 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,769 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,770 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,786 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,787 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,788 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,791 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,792 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,805 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,807 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,808 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,810 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,812 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,825 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,825 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,826 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,828 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,828 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,841 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,842 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,842 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,844 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,844 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,861 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,861 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,861 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,861 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,861 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,878 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,879 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,880 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,881 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,881 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,895 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,896 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,897 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,898 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,899 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,907 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,907 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,907 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,907 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,907 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,938 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,940 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,942 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,944 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,947 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,963 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,965 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,966 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,967 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,967 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,982 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,983 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,983 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:15,984 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:15,985 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:15,993 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:15,993 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:15,993 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,003 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,003 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,007 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,007 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,020 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,022 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,024 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,040 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,040 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,045 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,045 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,045 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,062 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,063 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,063 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,063 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,065 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,076 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,076 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,076 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,076 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,085 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,091 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,102 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,102 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,103 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,103 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,122 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,122 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,122 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,128 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,130 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,133 - app                       - INFO     - 성능 통계 - FPS: 44.1, 평균 처리시간: 22.7ms
+2025-07-15 17:24:16,134 - app                       - INFO     - 메모리 정리 실행
+2025-07-15 17:24:16,305 - app                       - INFO     - 가비지 컬렉션 완료: 총 0개 객체 정리
+2025-07-15 17:24:16,305 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-15 17:24:16,470 - app                       - INFO     - 메모리 정리 완료 - 정리 전: 395.0MB, 정리 후: 395.1MB, 확보된 메모리: -0.0MB
+2025-07-15 17:24:16,471 - app                       - WARNING  - 메모리 정리 효과가 제한적입니다: -0.0MB
+2025-07-15 17:24:16,472 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,472 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,472 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,478 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,478 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,490 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,491 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,491 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,492 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,492 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,498 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,498 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,498 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,498 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,498 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,512 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,513 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,513 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,514 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,514 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,521 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,522 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,523 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,523 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,524 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,528 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,528 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,528 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,528 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,528 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,542 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,543 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,543 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,544 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,544 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,551 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,552 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,552 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,553 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,554 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,559 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,559 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,559 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,559 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,559 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,571 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,571 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,571 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,571 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,571 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,592 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,592 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,592 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,592 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,592 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,608 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,608 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,609 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,609 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,610 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,616 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,616 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,616 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,617 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,617 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,630 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,631 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,631 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,632 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,632 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,638 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,639 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,639 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,640 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,640 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,654 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,654 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,654 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,654 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,654 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,654 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,654 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,654 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,668 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,668 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,677 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,677 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,678 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,678 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,678 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,684 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,685 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,685 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,686 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,686 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,692 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,692 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,692 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,693 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,693 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,699 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,699 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,700 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,700 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,700 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,708 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,708 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,709 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,709 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,710 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,717 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,718 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,718 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,719 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,719 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,720 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,720 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,720 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,720 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,720 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,760 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,760 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,761 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,761 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,762 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,768 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,769 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,769 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,769 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,770 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,775 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,776 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,776 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,777 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,777 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,785 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,786 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,787 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,787 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,787 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,787 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,787 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,787 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,787 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,787 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,824 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:16,824 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:16,825 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:16,825 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:16,826 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:16,828 - app                       - INFO     - 성능 통계 - FPS: 55.0, 평균 처리시간: 18.2ms
+2025-07-15 17:24:16,828 - app                       - INFO     - 메모리 정리 실행
+2025-07-15 17:24:16,951 - app                       - INFO     - 가비지 컬렉션 완료: 총 0개 객체 정리
+2025-07-15 17:24:16,953 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-15 17:24:17,070 - app                       - INFO     - 메모리 정리 완료 - 정리 전: 395.1MB, 정리 후: 395.1MB, 확보된 메모리: -0.0MB
+2025-07-15 17:24:17,070 - app                       - WARNING  - 메모리 정리 효과가 제한적입니다: -0.0MB
+2025-07-15 17:24:17,086 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:17,086 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:17,086 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:17,086 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:17,086 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:17,133 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:17,133 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:17,133 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:17,133 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:17,133 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:17,133 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:17,133 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:17,133 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:17,133 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:17,133 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:17,164 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:17,164 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:17,164 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:17,164 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:17,164 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:17,201 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:17,201 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:17,201 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:17,201 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:17,201 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:17,237 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:17,237 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:17,237 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:17,237 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:17,237 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:17,272 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:17,272 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:17,272 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:17,272 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:17,272 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:17,308 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:17,308 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:17,308 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:17,308 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:17,308 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:17,344 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:17,344 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:17,344 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:17,344 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:17,344 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:17,379 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:17,379 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:17,379 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:17,379 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:17,379 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:17,427 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:17,428 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:17,429 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:17,430 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:17,431 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:17,442 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:17,443 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:17,444 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:17,445 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:17,446 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:17,454 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:17,454 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:17,455 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:17,456 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:17,456 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:17,463 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:17,464 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:17,464 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:17,465 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:17,465 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:17,472 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:17,473 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:17,473 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:17,474 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:17,474 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:17,481 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:17,482 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:17,482 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:17,483 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:17,483 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:17,490 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:17,491 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:17,491 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-15 17:24:17,492 - integration.integrated_system - WARNING  - 시각화 프레임 생성 실패: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-07-15 17:24:17,493 - app                       - WARNING  - 분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys=['fatigue_risk_score', 'distraction_risk_score', 'confidence_score', 'face_analysis', 'pose_analysis', 'hand_analysis', 'object_analysis', 'fusion_analysis', 'execution_quality', 'system_health', 'timestamp', 'processing_mode', 'api_version']
+2025-07-15 17:24:17,510 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-15 17:24:17,510 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-15 17:24:17,511 - app                       - INFO     - Frame processing loop cancelled.
+2025-07-15 17:24:17,511 - app                       - INFO     - 비동기 프레임 처리 루프 종료
+2025-07-15 17:24:17,591 - io_handler.video_input    - WARNING  - [진단] video_input._reader_thread: 프레임 획득 실패 (ret=False)
+2025-07-15 17:24:17,622 - systems.mediapipe_manager - INFO     - MediaPipe Manager 정리 시작...
+2025-07-15 17:24:17,623 - systems.mediapipe_manager - INFO     - MediaPipe Manager 정리 완료
+2025-07-15 17:24:17,623 - integration.integrated_system - INFO     - IntegratedDMSSystem 종료 시작
+2025-07-15 17:24:17,624 - events.event_bus          - INFO     - EventBus 종료 중...
+2025-07-15 17:24:17,625 - events.event_bus          - INFO     - LOW 우선순위 큐 처리 취소됨: 
+2025-07-15 17:24:17,625 - events.event_bus          - INFO     - MEDIUM 우선순위 큐 처리 취소됨: 
+2025-07-15 17:24:17,626 - events.event_bus          - INFO     - HIGH 우선순위 큐 처리 취소됨: 
+2025-07-15 17:24:17,626 - events.event_bus          - INFO     - CRITICAL 우선순위 큐 처리 취소됨: 
+2025-07-15 17:24:17,626 - events.event_bus          - INFO     - EMERGENCY 우선순위 큐 처리 취소됨: 
+2025-07-15 17:24:17,627 - events.event_bus          - INFO     - EventBus 종료 완료
+2025-07-15 17:24:17,627 - events.event_bus          - INFO     - 글로벌 이벤트 시스템 종료 완료
+2025-07-15 17:24:17,627 - io_handler.video_input    - INFO     - 비디오 파일 정보: SGA5100180S0126.mp4 (1.05MB, .mp4)
+2025-07-15 17:24:17,627 - integration.integrated_system - INFO     - 최종 성능 리포트 - 총 137프레임, 평균 6.7ms
+2025-07-15 17:24:17,628 - io_handler.video_input    - INFO     - Windows/개발 환경: 표준 파일 디코더 사용
+2025-07-15 17:24:17,628 - integration.integrated_system - INFO     - IntegratedDMSSystem 종료 완료
+2025-07-15 17:24:17,628 - io_handler.video_input    - INFO     - FFMPEG 백엔드로 시도 중...
+2025-07-15 17:24:17,714 - io_handler.video_input    - INFO     - ✅ FFMPEG 백엔드로 성공 (테스트 프레임: (720, 1280, 3))
+2025-07-15 17:24:17,714 - io_handler.video_input    - INFO     - 비디오 속성: 1280x720, 30.00fps, 129프레임, 4.3초
+2025-07-15 17:24:17,715 - io_handler.video_input    - INFO     - 비디오 코덱: h264
+2025-07-15 17:24:17,719 - io_handler.video_input    - INFO     - 다음 비디오 로드 (RB2 최적화): SGA5100180S0126.mp4

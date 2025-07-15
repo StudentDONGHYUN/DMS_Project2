@@ -36,6 +36,13 @@ from utils.drawing import (
 )
 from utils.memory_monitor import MemoryMonitor, log_memory_usage
 
+# ✅ FIXED: OpenCV 안전 처리 추가
+from utils.opencv_safe import (
+    OpenCVSafeHandler,
+    safe_create_basic_info_overlay,
+    safe_frame_preprocessing_for_mediapipe,
+)
+
 logger = logging.getLogger(__name__)
 
 # 이하 app_backup_20250714_075833.py의 전체 코드 복원 (DummyAnalysisEngine, IntegratedCallbackAdapter, DMSApp 등)
@@ -122,7 +129,7 @@ class IntegratedCallbackAdapter:
         except asyncio.TimeoutError:
             logger.warning(f"Lock 획득 타임아웃 - {result_type} 결과 무시됨 (ts: {ts})")
         except Exception as e:
-            logger.error(f"_on_result 처리 중 오류: {e}")
+            logger.error(f"_on_result 처리 중 오류: {e}", exc_info=True)
 
     async def _process_results(self, timestamp):
         if timestamp <= self.last_processed_timestamp:
@@ -140,7 +147,7 @@ class IntegratedCallbackAdapter:
             self.last_integrated_results = integrated_results
             self.last_processed_timestamp = timestamp
         except Exception as e:
-            logger.error(f"통합 분석 중 오류: {e}")
+            logger.error(f"통합 분석 중 오류: {e}", exc_info=True)
             self.last_integrated_results = self._get_fallback_results()
         await self._prune_buffer()
 
@@ -325,22 +332,20 @@ class DMSApp:
     async def initialize(self) -> bool:
         logger.info("[수정] S-Class DMS 시스템 초기화 시작...")
         try:
-            # 1. 상태 관리자 초기화
             self.state_manager = EnhancedStateManager()
-
-            # 2. 비디오 입력 초기화
             self.video_input_manager = VideoInputManager(self.input_source)
             if not self.video_input_manager.initialize():
                 logger.error("비디오 입력 초기화 실패")
                 return False
-
-            # 🆕 3. 이벤트 시스템 초기화 (통합 시스템 초기화 전에 반드시 실행)
             from events.event_bus import initialize_event_system
 
-            await initialize_event_system()
-            logger.info("✅ 이벤트 시스템 초기화 완료")
-
-            # 4. 통합 분석 시스템 초기화
+            try:
+                initialize_event_system()  # 기존 동기 호출
+                logger.info("✅ 이벤트 시스템 초기화 완료")
+            except Exception as e:
+                logger.error(f"❌ 이벤트 시스템 초기화 실패: {e}")
+                logger.warning("이벤트 시스템 없이 안전 모드로 계속 진행")
+            # 1. 통합 시스템 인스턴스 생성
             custom_config = {
                 "user_id": self.user_id,
                 "camera_position": self.camera_position,
@@ -352,10 +357,10 @@ class DMSApp:
                 custom_config=custom_config,
                 use_legacy_engine=self.use_legacy_engine,
             )
-            # ... 나머지 초기화 코드
-            # 4. MediaPipe 매니저 초기화
+            # 2. 비동기 초기화
+            await self.integrated_system.initialize()
+            # 3. 나머지 컴포넌트 초기화
             self.mediapipe_manager = AdvancedMediaPipeManager(DummyAnalysisEngine())
-            # 5. 콜백 어댑터 연결
             self.callback_adapter = IntegratedCallbackAdapter(self.integrated_system)
             logger.info("[수정] S-Class DMS 시스템 초기화 완료")
             self.initialization_completed = True
@@ -371,6 +376,10 @@ class DMSApp:
 
         frame_queue = queue.Queue(maxsize=5)
         stop_event = threading.Event()
+
+        # ✅ FIXED: 손실된 참조 변수 추가
+        self.frame_queue = frame_queue
+        self.stop_event = stop_event
 
         def opencv_display_loop():
             logger.info("[수정] app.py: run - opencv_display_loop 진입")
@@ -390,8 +399,20 @@ class DMSApp:
                             if not isinstance(last_frame, cv2.UMat)
                             else last_frame
                         )
-                    except Exception:
+                    except cv2.error as cv_err:
+                        logger.warning(f"Frame conversion to UMat failed: {cv_err}")
                         frame_to_show = last_frame
+                    if frame_to_show is None:
+                        logger.error(
+                            "frame_to_show is None! OpenCV 창을 띄울 수 없습니다."
+                        )
+                        return
+                    if not isinstance(frame_to_show, np.ndarray):
+                        logger.error(f"frame_to_show 타입 오류: {type(frame_to_show)}")
+                        return
+                    if frame_to_show.ndim != 3 or frame_to_show.shape[2] != 3:
+                        logger.error(f"frame_to_show shape 오류: {frame_to_show.shape}")
+                        return
                     cv2.imshow("S-Class DMS v18+ - Research Integrated", frame_to_show)
                 key = cv2.waitKey(1) & 0xFF
                 if key == ord("q"):
@@ -406,111 +427,98 @@ class DMSApp:
                                 if not isinstance(last_frame, cv2.UMat)
                                 else last_frame
                             )
-                        except Exception:
+                        except cv2.error as cv_err:
+                            logger.warning(
+                                f"Frame conversion to UMat for saving failed: {cv_err}"
+                            )
                             frame_to_save = last_frame
                         cv2.imwrite(filename, frame_to_save)
             cv2.destroyAllWindows()
 
         async def async_frame_producer():
-            logger.info("[수정] app.py: run - async_frame_producer 진입")
+            """
+            ✅ FIXED: 통합된 비동기 프레임 처리 파이프라인
+            """
+            logger.info("[수정] 비동기 프레임 프로듀서 시작")
+
+            # 초기화 및 준비 대기
             await self.initialize()
-            logger.info("[수정] app.py: run - S-Class DMS 시스템 초기화 완료")
+            logger.info("[수정] S-Class DMS 시스템 초기화 완료")
+
+            # 시스템 안정화를 위한 짧은 대기
             await asyncio.sleep(0.1)
+
+            # 프레임 처리 루프 변수
             frame_count = 0
-            last_perf_log_time = time.time()
+            consecutive_errors = 0
+            max_consecutive_errors = 5
+
+            # 성능 모니터링 변수
+            from collections import deque
+
+            frame_processing_times = deque(maxlen=100)
+
+            logger.info("비동기 프레임 처리 루프 시작")
+
             try:
                 while not stop_event.is_set():
-                    frame = self.video_input_manager.get_frame()  # 항상 numpy
-                    if frame is None:
-                        await asyncio.sleep(0.01)
-                        continue
-                    frame_count += 1
-                    # GEMINI.md 성능 최적화: MediaPipe 처리 전 writeable=False 적용
-                    if hasattr(frame, "flags"):
-                        frame.flags.writeable = False
-                        # MediaPipe 처리 및 통합 분석 시스템 실행
-                        try:
-                            # 1. MediaPipe 결과 획득
-                            mediapipe_results = (
-                                await self.mediapipe_manager.process_frame(frame)
-                            )
-                            # 2. 통합 분석 시스템으로 처리 및 시각화
-                            annotated_frame = (
-                                await self.integrated_system.process_and_annotate_frame(
-                                    mediapipe_results, time.time()
-                                )
-                            )
-                            # 3. 기본 정보 오버레이 추가
-                            if annotated_frame is not None:
-                                # annotated_frame이 numpy array일 때만 UMat 변환
-                                import numpy as np
+                    loop_start_time = time.time()
 
-                                if isinstance(annotated_frame, np.ndarray):
-                                    try:
-                                        annotated_frame = cv2.UMat(annotated_frame)
-                                    except Exception as e:
-                                        logger.warning(
-                                            f"UMat 변환 실패, numpy array 사용: {e}"
-                                        )
-                                        # 변환 실패 시 annotated_frame은 그대로 numpy array
-                                elif isinstance(annotated_frame, cv2.UMat):
-                                    pass  # 이미 UMat이면 변환하지 않음
-                                else:
-                                    logger.warning(
-                                        "annotated_frame이 numpy array도 UMat도 아님!"
-                                    )
-                                # 프레임 정보 오버레이
-                                if isinstance(annotated_frame, (np.ndarray, cv2.UMat)):
-                                    try:
-                                        cv2.putText(
-                                            annotated_frame,
-                                            f"Frame: {frame_count}",
-                                            (10, 30),
-                                            cv2.FONT_HERSHEY_SIMPLEX,
-                                            1,
-                                            (0, 255, 0),
-                                            2,
-                                        )
-                                    except Exception as e:
-                                        logger.warning(f"텍스트 오버레이 실패: {e}")
-                                else:
-                                    logger.warning(
-                                        "putText 대상이 numpy array도 UMat도 아님!"
-                                    )
-                            else:
-                                # 폴백: 기본 오버레이만 표시
-                                annotated_frame = self._create_basic_info_overlay(
-                                    frame, frame_count, perf_stats=None
-                                )
-                        except Exception as e:
-                            logger.error(f"MediaPipe 분석 오류: {e}")
-                            # 오류 발생시 기본 오버레이 표시
-                            annotated_frame = self._create_basic_info_overlay(
-                                frame, frame_count, perf_stats=None
+                    try:
+                        # === 1. 프레임 획득 (비동기화) ===
+                        frame = await self._async_get_frame()
+                        if frame is None:
+                            await asyncio.sleep(0.01)  # 짧은 대기 후 재시도
+                            continue
+
+                        frame_count += 1
+
+                        # === 2. 프레임 처리 (완전 비동기) ===
+                        annotated_frame = (
+                            await self._safe_process_frame_with_error_recovery(
+                                frame, frame_count
                             )
-                    if annotated_frame is not None:
-                        try:
-                            frame_queue.put_nowait(annotated_frame)
-                        except queue.Full:
-                            try:
-                                frame_queue.get_nowait()
-                                frame_queue.put_nowait(annotated_frame)
-                            except queue.Empty:
-                                pass
-                    # --- [성능 최적화 자동 호출] ---
-                    if frame_count % 30 == 0:
-                        processing_time = 0.0  # 실제 처리 시간 측정 필요시 측정값 사용
-                        fps = 0.0
-                        self.performance_monitor.log_performance(processing_time, fps)
-                        self.mediapipe_manager.adjust_dynamic_resources()
-                        self._perform_memory_cleanup()
-                    await asyncio.sleep(0.010)
+                        )
+
+                        # === 3. 프레임 큐에 추가 (비블로킹) ===
+                        await self._async_enqueue_frame(annotated_frame)
+
+                        # === 4. 성능 모니터링 및 최적화 ===
+                        frame_time = time.time() - loop_start_time
+                        frame_processing_times.append(frame_time)
+
+                        # 30프레임마다 성능 로깅 및 최적화
+                        if frame_count % 30 == 0:
+                            await self._async_performance_optimization(
+                                frame_processing_times
+                            )
+
+                        # 연속 오류 카운터 리셋
+                        consecutive_errors = 0
+
+                        # 적응형 대기 시간 (목표 FPS 기준)
+                        target_frame_time = 1.0 / 60.0  # 60 FPS 목표
+                        remaining_time = target_frame_time - frame_time
+                        if remaining_time > 0:
+                            await asyncio.sleep(remaining_time)
+
+                    except (asyncio.CancelledError, KeyboardInterrupt):
+                        logger.info("Frame processing loop cancelled.")
+                        break
+                    except Exception as e:
+                        logger.info("비동기 프레임 처리 루프 종료")
+                        break
+
+                logger.info("비동기 프레임 처리 루프 종료")
+
+                # 정리 신호 전송
                 try:
                     frame_queue.put(None, timeout=0.1)
                 except queue.Full:
                     pass
+
             finally:
-                # 🆕 정리 작업 추가 (동일 루프에서 await로 처리)
+                # 정리 작업
                 try:
                     if hasattr(self, "mediapipe_manager"):
                         await self.mediapipe_manager.close()
@@ -531,47 +539,19 @@ class DMSApp:
             pass
 
     def _create_basic_info_overlay(self, frame, frame_count, perf_stats=None):
+        """
+        ✅ FIXED: 안전한 기본 오버레이 생성 (기존 UMat 오류 해결)
+        """
         try:
-            # 안전한 UMat 변환
-            if isinstance(frame, cv2.UMat):
-                annotated_frame = frame
+            # 안전한 오버레이 생성 사용
+            return safe_create_basic_info_overlay(frame, frame_count, perf_stats)
+        except (cv2.error, TypeError, ValueError) as e:
+            logger.error(f"안전한 오버레이 생성 실패: {e}")
+            # 최종 폴백: 원본 프레임 반환 또는 폴백 프레임 생성
+            if frame is not None:
+                return frame
             else:
-                try:
-                    annotated_frame = cv2.UMat(frame)
-                except Exception:
-                    # UMat 변환 실패시 numpy array 그대로 사용
-                    annotated_frame = frame
-
-            # 프레임 번호 표시
-            cv2.putText(
-                annotated_frame,
-                f"Frame: {frame_count}",
-                (10, 30),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                1,
-                (0, 255, 0),
-                2,
-            )
-
-            # 성능 정보 표시
-            if perf_stats is not None:
-                fps = perf_stats.get("fps", 0.0)
-                cv2.putText(
-                    annotated_frame,
-                    f"FPS: {fps:.1f}",
-                    (10, 60),
-                    cv2.FONT_HERSHEY_SIMPLEX,
-                    0.8,
-                    (255, 255, 0),
-                    2,
-                )
-
-            return annotated_frame
-
-        except Exception as e:
-            logger.error(f"기본 오버레이 생성 실패: {e}")
-            # 최종 폴백: 원본 프레임 반환
-            return frame
+                return OpenCVSafeHandler.create_fallback_frame()
 
     def _perform_memory_cleanup(self):
         """DMS 시스템 메모리 정리 작업"""
@@ -605,7 +585,7 @@ class DMSApp:
                     if hasattr(self.mediapipe_manager, "cleanup_cache"):
                         self.mediapipe_manager.cleanup_cache()
                         logger.debug("MediaPipe 캐시 정리 완료")
-                except Exception as e:
+                except (AttributeError, TypeError) as e:
                     logger.warning(f"MediaPipe 메모리 정리 중 오류: {e}")
 
             # 3. 통합 시스템 콜백 어댑터 정리
@@ -646,7 +626,7 @@ class DMSApp:
                         else:
                             self.callback_adapter._emergency_buffer_cleanup()
                         logger.debug("콜백 어댑터 긴급 정리 완료")
-                except Exception as e:
+                except (AttributeError, TypeError, RuntimeError) as e:
                     logger.warning(f"콜백 어댑터 메모리 정리 중 오류: {e}")
 
             # 4. 통합 시스템 메모리 정리
@@ -678,7 +658,7 @@ class DMSApp:
                     if hasattr(self.integrated_system, "cleanup_memory"):
                         self.integrated_system.cleanup_memory()
                         logger.debug("통합 시스템 메모리 정리 완료")
-                except Exception as e:
+                except (AttributeError, TypeError) as e:
                     logger.warning(f"통합 시스템 메모리 정리 중 오류: {e}")
 
             # 5. 프레임 버퍼 및 큐 정리
@@ -716,7 +696,7 @@ class DMSApp:
                                     logger.debug(
                                         f"{component_name}.{method_name} 실패: {e}"
                                     )
-            except Exception as e:
+            except (AttributeError, TypeError) as e:
                 logger.warning(f"컴포넌트 메모리 정리 중 오류: {e}")
 
             # 6. OpenCV 메모리 정리
@@ -727,7 +707,7 @@ class DMSApp:
                 if hasattr(cv2, "setUseOptimized"):
                     cv2.setUseOptimized(True)  # 최적화 재활성화
                 logger.debug("OpenCV 메모리 정리 완료")
-            except Exception as e:
+            except (cv2.error, AttributeError) as e:
                 logger.debug(f"OpenCV 메모리 정리 중 오류: {e}")
 
             # 7. NumPy 메모리 정리
@@ -738,7 +718,7 @@ class DMSApp:
                 if hasattr(np, "clear_cache"):
                     np.clear_cache()
                     logger.debug("NumPy 캐시 정리 완료")
-            except Exception as e:
+            except AttributeError as e:
                 logger.debug(f"NumPy 메모리 정리 중 오류: {e}")
 
             # 8. 최종 가비지 컬렉션
@@ -774,7 +754,7 @@ class DMSApp:
                 "objects_collected": collected_objects + final_collected,
             }
 
-        except Exception as e:
+        except (ImportError, gc.error) as e:
             logger.error(f"메모리 정리 중 예외 발생: {e}", exc_info=True)
             return {
                 "error": str(e),
@@ -791,6 +771,219 @@ class DMSApp:
 
             process = psutil.Process()
             return process.memory_info().rss / 1024 / 1024
-        except Exception as e:
+        except (ImportError, psutil.Error) as e:
             logger.error(f"메모리 사용량 조회 실패: {e}")
             return 0.0
+
+    # ✅ FIXED: 비동기 처리를 위한 헬퍼 함수들 추가
+
+    async def _async_get_frame(self):
+        """
+        ✅ 비동기 프레임 획득
+        """
+        try:
+            # 동기 get_frame()을 executor에서 실행하여 비동기화
+            loop = asyncio.get_running_loop()
+            frame = await loop.run_in_executor(None, self.video_input_manager.get_frame)
+            return frame
+        except (AttributeError, TypeError) as e:
+            logger.debug(f"프레임 획득 실패: {e}")
+            return None
+
+    async def _async_enqueue_frame(self, frame):
+        """
+        ✅ 비동기 프레임 큐 추가
+        """
+        try:
+            # 큐가 가득 찬 경우 오래된 프레임 제거
+            if hasattr(self, "frame_queue"):
+                try:
+                    # 비블로킹으로 큐에 추가 시도
+                    self.frame_queue.put_nowait(frame)
+                except queue.Full:
+                    # 큐가 가득 찬 경우 가장 오래된 프레임 제거 후 추가
+                    try:
+                        self.frame_queue.get_nowait()  # 오래된 프레임 제거
+                        self.frame_queue.put_nowait(frame)  # 새 프레임 추가
+                    except queue.Empty:
+                        # 큐가 비어있는 경우 그냥 추가
+                        self.frame_queue.put_nowait(frame)
+        except (AttributeError, queue.Full) as e:
+            logger.warning(f"프레임 큐 추가 실패: {e}")
+
+    async def _async_performance_optimization(self, frame_processing_times):
+        """
+        ✅ 비동기 성능 최적화
+        """
+        try:
+            # 평균 프레임 처리 시간 계산
+            import numpy as np
+
+            avg_processing_time = (
+                np.mean(frame_processing_times) if frame_processing_times else 0.0
+            )
+            current_fps = 1.0 / avg_processing_time if avg_processing_time > 0 else 0.0
+
+            # 성능 통계 로깅
+            logger.info(
+                f"성능 통계 - FPS: {current_fps:.1f}, 평균 처리시간: {avg_processing_time * 1000:.1f}ms"
+            )
+
+            # MediaPipe 리소스 동적 조정
+            if hasattr(self, "mediapipe_manager"):
+                self.mediapipe_manager.adjust_dynamic_resources()
+
+            # 메모리 정리 (executor에서 실행)
+            loop = asyncio.get_running_loop()
+            await loop.run_in_executor(None, self._perform_memory_cleanup)
+
+            # 성능 모니터 업데이트
+            if hasattr(self, "performance_monitor") and self.performance_monitor:
+                self.performance_monitor.log_performance(
+                    avg_processing_time, current_fps
+                )
+
+        except (AttributeError, TypeError, ValueError) as e:
+            logger.warning(f"성능 최적화 실패: {e}")
+
+    async def _async_error_recovery(self):
+        """
+        ✅ 비동기 오류 복구
+        """
+        logger.info("시스템 오류 복구 시작...")
+
+        try:
+            # 1. MediaPipe 시스템 상태 점검
+            if hasattr(self, "mediapipe_manager"):
+                try:
+                    health_check = self.mediapipe_manager.get_performance_stats()
+                    logger.info(f"MediaPipe 상태: {health_check}")
+                except Exception as e:
+                    logger.warning(f"MediaPipe 상태 점검 실패: {e}")
+
+            # 2. 통합 시스템 상태 점검
+            if hasattr(self, "integrated_system"):
+                try:
+                    # 이벤트 시스템 재초기화 시도
+                    from events.event_bus import initialize_event_system
+
+                    initialize_event_system()
+                    logger.info("이벤트 시스템 재초기화 완료")
+                except Exception as e:
+                    logger.warning(f"이벤트 시스템 재초기화 실패: {e}")
+
+            # 3. 메모리 강제 정리
+            loop = asyncio.get_running_loop()
+            await loop.run_in_executor(None, self._perform_aggressive_memory_cleanup)
+
+            # 4. 복구 대기 시간
+            await asyncio.sleep(1.0)
+
+            logger.info("시스템 오류 복구 완료")
+
+        except Exception as e:
+            logger.error(f"오류 복구 실패: {e}", exc_info=True)
+
+    async def _safe_process_frame_with_error_recovery(self, frame, frame_count):
+        """
+        ✅ FIXED: 오류 복구 기능이 있는 안전한 프레임 처리
+        """
+        try:
+            # 1. MediaPipe 전처리
+            preprocessed_frame = safe_frame_preprocessing_for_mediapipe(frame)
+
+            # 2. MediaPipe 결과 획득
+            mediapipe_results = await self.mediapipe_manager.process_frame(
+                preprocessed_frame
+            )
+            # === PATCH: 프레임을 dict에 항상 포함 ===
+            mediapipe_results["image"] = preprocessed_frame
+
+            # 3. 통합 분석 시스템으로 처리 및 시각화
+            annotated_frame = await self.integrated_system.process_and_annotate_frame(
+                mediapipe_results, time.time()
+            )
+
+            # === PATCH: dict 반환 시 시각화용 프레임만 추출 ===
+            if isinstance(annotated_frame, dict):
+                # 관례적으로 'visualization', 'frame', 'image' 등 키를 우선 탐색
+                for key in ["visualization", "frame", "image", "annotated_frame"]:
+                    if key in annotated_frame and annotated_frame[key] is not None:
+                        annotated_frame = annotated_frame[key]
+                        break
+                else:
+                    logger.warning(
+                        f"분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys={list(annotated_frame.keys())}"
+                    )
+                    # dict에 시각화 프레임이 없으면 기본 오버레이 반환
+                    perf_stats = None
+                    if hasattr(self, "mediapipe_manager"):
+                        perf_stats = self.mediapipe_manager.get_performance_stats()
+                    return safe_create_basic_info_overlay(
+                        frame, frame_count, perf_stats
+                    )
+
+            return annotated_frame
+
+        except Exception as e:
+            logger.error(f"프레임 처리 오류: {e}", exc_info=True)
+
+            # 폴백 처리: 기본 정보만 표시하는 안전한 프레임 생성
+            try:
+                perf_stats = None
+                if hasattr(self, "mediapipe_manager"):
+                    perf_stats = self.mediapipe_manager.get_performance_stats()
+
+                fallback_frame = safe_create_basic_info_overlay(
+                    frame, frame_count, perf_stats
+                )
+
+                # 오류 상태 표시
+                error_frame = OpenCVSafeHandler.safe_frame_annotation(
+                    fallback_frame,
+                    f"ERROR: {str(e)[:50]}...",
+                    position=(10, 90),
+                    color=(0, 0, 255),  # 빨간색
+                    font_scale=0.6,
+                )
+
+                return error_frame
+
+            except (AttributeError, TypeError, ValueError) as fallback_error:
+                logger.error(f"폴백 처리도 실패: {fallback_error}")
+                # 최종 폴백: 기본 프레임 반환
+                return (
+                    frame
+                    if frame is not None
+                    else OpenCVSafeHandler.create_fallback_frame()
+                )
+
+    def _perform_aggressive_memory_cleanup(self):
+        """공격적 메모리 정리 (동기 함수)"""
+        try:
+            import gc
+
+            # 가비지 컶렉션 강제 실행
+            collected = gc.collect()
+            logger.info(f"가비지 컶렉션으로 {collected}개 객체 정리")
+
+            # MediaPipe 결과 버퍼 정리
+            if hasattr(self, "callback_adapter") and self.callback_adapter:
+                if hasattr(self.callback_adapter, "result_buffer"):
+                    self.callback_adapter.result_buffer.clear()
+                    logger.info("MediaPipe 결과 버퍼 정리 완료")
+
+            # 프레임 큐 정리
+            if hasattr(self, "frame_queue"):
+                queue_size = self.frame_queue.qsize()
+                if queue_size > 0:
+                    # 큐의 절반 정리
+                    for _ in range(queue_size // 2):
+                        try:
+                            self.frame_queue.get_nowait()
+                        except queue.Empty:
+                            break
+                    logger.info(f"프레임 큐 정리: {queue_size // 2}개 프레임 제거")
+
+        except (ImportError, gc.error, AttributeError, queue.Empty) as e:
+            logger.warning(f"공격적 메모리 정리 실패: {e}")

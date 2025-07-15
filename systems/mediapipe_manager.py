@@ -25,16 +25,19 @@ import cv2
 import mediapipe as mp
 import platform
 from mediapipe.tasks.python.core.base_options import BaseOptions
+
 # MediaPipe Tasks API imports
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision, audio, text
 
 logger = logging.getLogger(__name__)
 
+
 class TaskType(Enum):
     """MediaPipe Tasks 타입"""
+
     FACE_LANDMARKER = "face_landmarker"
-    POSE_LANDMARKER = "pose_landmarker" 
+    POSE_LANDMARKER = "pose_landmarker"
     HAND_LANDMARKER = "hand_landmarker"
     GESTURE_RECOGNIZER = "gesture_recognizer"
     OBJECT_DETECTOR = "object_detector"
@@ -42,9 +45,11 @@ class TaskType(Enum):
     FACE_DETECTOR = "face_detector"
     HOLISTIC_LANDMARKER = "holistic_landmarker"
 
+
 @dataclass
 class TaskConfig:
     """MediaPipe Task 설정"""
+
     task_type: TaskType
     model_path: str
     max_results: int = 1
@@ -59,6 +64,7 @@ class TaskConfig:
     min_detection_confidence: float = 0.5
     min_tracking_confidence: float = 0.5
 
+
 class AdvancedMediaPipeManager:
     """
     차세대 MediaPipe Tasks Manager - 성능 최적화
@@ -67,43 +73,43 @@ class AdvancedMediaPipeManager:
     - 성능 최적화 및 메모리 관리
     - 포괄적 오류 처리
     """
-    
+
     def __init__(self, analysis_engine=None, config_file: Optional[str] = None):
         self.analysis_engine = analysis_engine
         self.active_tasks: Dict[TaskType, Any] = {}
         self.task_configs: Dict[TaskType, TaskConfig] = {}
         self.result_callbacks: Dict[TaskType, Callable] = {}
         self.task_health: Dict[TaskType, bool] = {}
-        
+
         # 성능 모니터링 - 최적화된 deque 사용
         self.fps_counter = 0
         self.fps_start_time = time.time()
         self.current_fps = 0.0
         self.frame_processing_times = deque(maxlen=100)  # O(1) operations
-        
+
         # 결과 관리
         self.latest_results: Dict[TaskType, Any] = {}
         self.result_queue = queue.Queue(maxsize=100)
         self.processing_lock = asyncio.Lock()
         self.last_timestamp = 0
-        
+
         # 모델 경로 설정
         self.model_base_path = Path("models")
         self.ensure_model_directory()
-        
+
         # 비동기 처리 스레드
         self.callback_thread = None
         self.running = False
-        
+
         # 기본 설정 로드
         self._load_default_configs()
-        
+
         # 외부 설정 파일 로드 (있는 경우)
         if config_file:
             self._load_config_file(config_file)
-        
-        self.is_embedded = self._detect_dsp() == 'HEXAGON'
-        
+
+        self.is_embedded = self._detect_dsp() == "HEXAGON"
+
         logger.info("AdvancedMediaPipeManager v2.0 (최적화) 초기화 완료")
 
     def ensure_model_directory(self):
@@ -113,18 +119,18 @@ class AdvancedMediaPipeManager:
 
     def _load_default_configs(self):
         """기본 Task 설정 로드"""
-        
+
         # Face Landmarker 설정
         self.task_configs[TaskType.FACE_LANDMARKER] = TaskConfig(
             task_type=TaskType.FACE_LANDMARKER,
-            model_path=str(self.model_base_path / "face_landmarker_v2_with_blendshapes.task"),
+            model_path=str(self.model_base_path / "face_landmarker.task"),
             num_faces=1,
             min_detection_confidence=0.5,
             min_tracking_confidence=0.5,
             enable_face_blendshapes=True,
-            enable_facial_transformation_matrix=True
+            enable_facial_transformation_matrix=True,
         )
-        
+
         # Pose Landmarker 설정
         self.task_configs[TaskType.POSE_LANDMARKER] = TaskConfig(
             task_type=TaskType.POSE_LANDMARKER,
@@ -132,41 +138,41 @@ class AdvancedMediaPipeManager:
             num_poses=1,
             min_detection_confidence=0.5,
             min_tracking_confidence=0.5,
-            enable_segmentation_masks=True
+            enable_segmentation_masks=True,
         )
-        
+
         # Hand Landmarker 설정
         self.task_configs[TaskType.HAND_LANDMARKER] = TaskConfig(
             task_type=TaskType.HAND_LANDMARKER,
             model_path=str(self.model_base_path / "hand_landmarker.task"),
             num_hands=2,
             min_detection_confidence=0.7,
-            min_tracking_confidence=0.5
+            min_tracking_confidence=0.5,
         )
-        
+
         # Gesture Recognizer 설정 (새로운 기능)
         self.task_configs[TaskType.GESTURE_RECOGNIZER] = TaskConfig(
             task_type=TaskType.GESTURE_RECOGNIZER,
             model_path=str(self.model_base_path / "gesture_recognizer.task"),
             num_hands=2,
             min_detection_confidence=0.7,
-            min_tracking_confidence=0.5
+            min_tracking_confidence=0.5,
         )
-        
+
         # Object Detector 설정
         self.task_configs[TaskType.OBJECT_DETECTOR] = TaskConfig(
             task_type=TaskType.OBJECT_DETECTOR,
             model_path=str(self.model_base_path / "efficientdet_lite0.tflite"),
             max_results=5,
-            score_threshold=0.3
+            score_threshold=0.3,
         )
-        
+
         # Holistic Landmarker 설정 (최신 통합 모델)
         self.task_configs[TaskType.HOLISTIC_LANDMARKER] = TaskConfig(
             task_type=TaskType.HOLISTIC_LANDMARKER,
             model_path=str(self.model_base_path / "holistic_landmarker.task"),
             min_detection_confidence=0.5,
-            min_tracking_confidence=0.5
+            min_tracking_confidence=0.5,
         )
 
     def _load_config_file(self, config_file: str):
@@ -182,10 +188,10 @@ class AdvancedMediaPipeManager:
         """RB2 등 DSP(Hexagon) 감지: 실제 환경에 맞게 확장 필요"""
         # 예시: /proc/cpuinfo, lscpu, 환경변수 등으로 DSP 감지
         try:
-            with open('/proc/cpuinfo', 'r') as f:
+            with open("/proc/cpuinfo", "r") as f:
                 cpuinfo = f.read().lower()
-                if 'hexagon' in cpuinfo or 'dsp' in cpuinfo:
-                    return 'HEXAGON'
+                if "hexagon" in cpuinfo or "dsp" in cpuinfo:
+                    return "HEXAGON"
         except Exception:
             pass
         # 환경변수 등 추가 감지 로직 필요시 확장
@@ -211,11 +217,11 @@ class AdvancedMediaPipeManager:
             # GPU delegate는 Linux, macOS에서만 공식 지원
             if system in ["Linux", "Darwin"]:
                 base_options_kwargs = dict(model_asset_path=config.model_path)
-                base_options_kwargs['delegate'] = BaseOptions.Delegate.GPU
+                base_options_kwargs["delegate"] = BaseOptions.Delegate.GPU
                 logger.info(f"GPU delegate 적용: {system}")
             else:
                 base_options_kwargs = dict(model_asset_path=config.model_path)
-                base_options_kwargs['delegate'] = BaseOptions.Delegate.CPU
+                base_options_kwargs["delegate"] = BaseOptions.Delegate.CPU
                 logger.info(f"CPU delegate 적용: {system}")
             base_options = python.BaseOptions(**base_options_kwargs)
 
@@ -255,7 +261,7 @@ class AdvancedMediaPipeManager:
             min_tracking_confidence=config.min_tracking_confidence,
             output_face_blendshapes=config.enable_face_blendshapes,
             output_facial_transformation_matrixes=config.enable_facial_transformation_matrix,
-            result_callback=self._create_result_callback(TaskType.FACE_LANDMARKER)
+            result_callback=self._create_result_callback(TaskType.FACE_LANDMARKER),
         )
         return vision.FaceLandmarker.create_from_options(options)
 
@@ -268,7 +274,7 @@ class AdvancedMediaPipeManager:
             min_detection_confidence=config.min_detection_confidence,
             min_tracking_confidence=config.min_tracking_confidence,
             output_segmentation_masks=config.enable_segmentation_masks,
-            result_callback=self._create_result_callback(TaskType.POSE_LANDMARKER)
+            result_callback=self._create_result_callback(TaskType.POSE_LANDMARKER),
         )
         return vision.PoseLandmarker.create_from_options(options)
 
@@ -280,7 +286,7 @@ class AdvancedMediaPipeManager:
             num_hands=config.num_hands,
             min_detection_confidence=config.min_detection_confidence,
             min_tracking_confidence=config.min_tracking_confidence,
-            result_callback=self._create_result_callback(TaskType.HAND_LANDMARKER)
+            result_callback=self._create_result_callback(TaskType.HAND_LANDMARKER),
         )
         return vision.HandLandmarker.create_from_options(options)
 
@@ -292,7 +298,7 @@ class AdvancedMediaPipeManager:
             num_hands=config.num_hands,
             min_detection_confidence=config.min_detection_confidence,
             min_tracking_confidence=config.min_tracking_confidence,
-            result_callback=self._create_result_callback(TaskType.GESTURE_RECOGNIZER)
+            result_callback=self._create_result_callback(TaskType.GESTURE_RECOGNIZER),
         )
         return vision.GestureRecognizer.create_from_options(options)
 
@@ -303,7 +309,7 @@ class AdvancedMediaPipeManager:
             running_mode=config.running_mode,
             max_results=config.max_results,
             score_threshold=config.score_threshold,
-            result_callback=self._create_result_callback(TaskType.OBJECT_DETECTOR)
+            result_callback=self._create_result_callback(TaskType.OBJECT_DETECTOR),
         )
         return vision.ObjectDetector.create_from_options(options)
 
@@ -314,12 +320,13 @@ class AdvancedMediaPipeManager:
             running_mode=config.running_mode,
             min_detection_confidence=config.min_detection_confidence,
             min_tracking_confidence=config.min_tracking_confidence,
-            result_callback=self._create_result_callback(TaskType.HOLISTIC_LANDMARKER)
+            result_callback=self._create_result_callback(TaskType.HOLISTIC_LANDMARKER),
         )
         return vision.HolisticLandmarker.create_from_options(options)
 
     def _create_result_callback(self, task_type: TaskType):
         """결과 콜백 함수 생성"""
+
         def callback(result, output_image, timestamp_ms):
             try:
                 self.latest_results[task_type] = result
@@ -328,30 +335,31 @@ class AdvancedMediaPipeManager:
                 logger.warning(f"{task_type.value} 결과 큐 오버플로우")
             except Exception as e:
                 logger.error(f"{task_type.value} 콜백 오류: {e}")
+
         return callback
 
     async def initialize_all_tasks(self) -> Dict[TaskType, bool]:
         """모든 설정된 Task 초기화"""
         results = {}
-        
+
         # 기본 Tasks 초기화
         core_tasks = [
             TaskType.FACE_LANDMARKER,
             TaskType.POSE_LANDMARKER,
-            TaskType.HAND_LANDMARKER
+            TaskType.HAND_LANDMARKER,
         ]
-        
+
         # 선택적 Tasks
         optional_tasks = [
             TaskType.GESTURE_RECOGNIZER,
             TaskType.OBJECT_DETECTOR,
-            TaskType.HOLISTIC_LANDMARKER
+            TaskType.HOLISTIC_LANDMARKER,
         ]
-        
+
         # 병렬 초기화
         for task_type in core_tasks:
             results[task_type] = await self.initialize_task(task_type)
-        
+
         # 선택적 Tasks (실패해도 계속)
         for task_type in optional_tasks:
             try:
@@ -359,60 +367,90 @@ class AdvancedMediaPipeManager:
             except Exception as e:
                 logger.warning(f"선택적 Task {task_type.value} 초기화 실패: {e}")
                 results[task_type] = False
-        
+
         # 콜백 처리 스레드 시작
         if not self.callback_thread or not self.callback_thread.is_alive():
             self.running = True
-            self.callback_thread = threading.Thread(target=self._process_callbacks, daemon=True)
+            self.callback_thread = threading.Thread(
+                target=self._process_callbacks, daemon=True
+            )
             self.callback_thread.start()
-        
+
         initialized_count = sum(results.values())
         total_count = len(results)
         logger.info(f"Task 초기화 완료: {initialized_count}/{total_count}")
-        
+
         return results
 
     def _process_callbacks(self):
         """비동기 콜백 처리"""
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
-        
+
         logger.info("콜백 처리 스레드 시작")
-        
+
         while self.running:
             try:
                 task_type, result, timestamp = self.result_queue.get(timeout=1.0)
-                
+
                 if task_type == "shutdown":
                     break
-                
+
                 # Analysis engine으로 결과 전달
                 if self.analysis_engine:
-                    loop.run_until_complete(self._forward_result_to_analysis_engine(task_type, result, timestamp))
-                    
+                    loop.run_until_complete(
+                        self._forward_result_to_analysis_engine(
+                            task_type, result, timestamp
+                        )
+                    )
+
             except queue.Empty:
                 continue
             except Exception as e:
                 logger.error(f"콜백 처리 오류: {e}")
-        
+
         loop.close()
         logger.info("콜백 처리 스레드 종료")
 
-    async def _forward_result_to_analysis_engine(self, task_type: TaskType, result, timestamp):
+    async def _forward_result_to_analysis_engine(
+        self, task_type: TaskType, result, timestamp
+    ):
         """Analysis Engine으로 결과 전달"""
         try:
-            if hasattr(self.analysis_engine, 'on_face_result') and task_type == TaskType.FACE_LANDMARKER:
+            if (
+                hasattr(self.analysis_engine, "on_face_result")
+                and task_type == TaskType.FACE_LANDMARKER
+            ):
                 await self.analysis_engine.on_face_result(result, timestamp=timestamp)
-            elif hasattr(self.analysis_engine, 'on_pose_result') and task_type == TaskType.POSE_LANDMARKER:
+            elif (
+                hasattr(self.analysis_engine, "on_pose_result")
+                and task_type == TaskType.POSE_LANDMARKER
+            ):
                 await self.analysis_engine.on_pose_result(result, timestamp=timestamp)
-            elif hasattr(self.analysis_engine, 'on_hand_result') and task_type == TaskType.HAND_LANDMARKER:
+            elif (
+                hasattr(self.analysis_engine, "on_hand_result")
+                and task_type == TaskType.HAND_LANDMARKER
+            ):
                 await self.analysis_engine.on_hand_result(result, timestamp=timestamp)
-            elif hasattr(self.analysis_engine, 'on_gesture_result') and task_type == TaskType.GESTURE_RECOGNIZER:
-                await self.analysis_engine.on_gesture_result(result, timestamp=timestamp)
-            elif hasattr(self.analysis_engine, 'on_object_result') and task_type == TaskType.OBJECT_DETECTOR:
+            elif (
+                hasattr(self.analysis_engine, "on_gesture_result")
+                and task_type == TaskType.GESTURE_RECOGNIZER
+            ):
+                await self.analysis_engine.on_gesture_result(
+                    result, timestamp=timestamp
+                )
+            elif (
+                hasattr(self.analysis_engine, "on_object_result")
+                and task_type == TaskType.OBJECT_DETECTOR
+            ):
                 await self.analysis_engine.on_object_result(result, timestamp=timestamp)
-            elif hasattr(self.analysis_engine, 'on_holistic_result') and task_type == TaskType.HOLISTIC_LANDMARKER:
-                await self.analysis_engine.on_holistic_result(result, timestamp=timestamp)
+            elif (
+                hasattr(self.analysis_engine, "on_holistic_result")
+                and task_type == TaskType.HOLISTIC_LANDMARKER
+            ):
+                await self.analysis_engine.on_holistic_result(
+                    result, timestamp=timestamp
+                )
         except Exception as e:
             logger.error(f"Analysis engine 전달 오류 ({task_type.value}): {e}")
 
@@ -440,9 +478,9 @@ class AdvancedMediaPipeManager:
             for task_type, task in self.active_tasks.items():
                 if self.task_health.get(task_type, False):
                     try:
-                        if hasattr(task, 'detect_async'):
+                        if hasattr(task, "detect_async"):
                             task.detect_async(mp_image, timestamp_ms)
-                        elif hasattr(task, 'recognize_async'):
+                        elif hasattr(task, "recognize_async"):
                             task.recognize_async(mp_image, timestamp_ms)
                     except Exception as e:
                         logger.warning(f"{task_type.value} 처리 오류: {e}")
@@ -465,16 +503,28 @@ class AdvancedMediaPipeManager:
         pose_result = await asyncio.get_event_loop().run_in_executor(
             None, lambda: pose_task.detect(mp_image)
         )
-        # 2. ROI 추출 (얼굴/손)
+        logger.info(f"pose_result: {pose_result}")
+        logger.info(f"pose_landmarks: {getattr(pose_result, 'pose_landmarks', None)}")
+        if hasattr(pose_result, "pose_landmarks"):
+            logger.info(f"pose_landmarks length: {len(pose_result.pose_landmarks)}")
+
+        # 2. ROI 추출
         face_roi = self.extract_face_roi(pose_result, frame)
         hand_roi = self.extract_hand_roi(pose_result, frame)
+        logger.info(f"face_roi: {face_roi}, hand_roi: {hand_roi}")
+
         # 3. ROI crop & mp.Image 변환
         face_mp_image = self.crop_and_convert_to_mp_image(frame, face_roi)
         hand_mp_image = self.crop_and_convert_to_mp_image(frame, hand_roi)
+        logger.info(
+            f"face_mp_image is None: {face_mp_image is None}, hand_mp_image is None: {hand_mp_image is None}"
+        )
+
         # 4. Face/Hand Landmarker 비동기 실행
         face_task = self.active_tasks.get(TaskType.FACE_LANDMARKER)
         hand_task = self.active_tasks.get(TaskType.HAND_LANDMARKER)
         results = {}
+
         async def run_landmarker(task, mp_img, task_type):
             if not task or mp_img is None:
                 return None
@@ -485,9 +535,10 @@ class AdvancedMediaPipeManager:
             except Exception as e:
                 logger.error(f"{task_type.value} ROI 추론 오류: {e}")
                 return None
+
         face_result, hand_result = await asyncio.gather(
             run_landmarker(face_task, face_mp_image, TaskType.FACE_LANDMARKER),
-            run_landmarker(hand_task, hand_mp_image, TaskType.HAND_LANDMARKER)
+            run_landmarker(hand_task, hand_mp_image, TaskType.HAND_LANDMARKER),
         )
         results[TaskType.POSE_LANDMARKER] = pose_result
         results[TaskType.FACE_LANDMARKER] = face_result
@@ -498,7 +549,10 @@ class AdvancedMediaPipeManager:
         # 예시: 코, 눈, 귀 등 keypoint 평균으로 얼굴 bbox 산출
         # 실제 구현은 pose_result의 landmark 구조에 맞게 보정 필요
         try:
-            if not hasattr(pose_result, 'pose_landmarks') or not pose_result.pose_landmarks:
+            if (
+                not hasattr(pose_result, "pose_landmarks")
+                or not pose_result.pose_landmarks
+            ):
                 return None
             landmarks = pose_result.pose_landmarks[0]  # 첫 번째 사람
             # 코(0), 왼눈(1), 오른눈(2), 왼귀(3), 오른귀(4) 등 사용
@@ -517,7 +571,10 @@ class AdvancedMediaPipeManager:
     def extract_hand_roi(self, pose_result, frame):
         # 예시: 왼손(15), 오른손(16) keypoint 기준
         try:
-            if not hasattr(pose_result, 'pose_landmarks') or not pose_result.pose_landmarks:
+            if (
+                not hasattr(pose_result, "pose_landmarks")
+                or not pose_result.pose_landmarks
+            ):
                 return None
             landmarks = pose_result.pose_landmarks[0]
             h, w = frame.shape[:2]
@@ -561,15 +618,17 @@ class AdvancedMediaPipeManager:
 
     def get_performance_stats(self) -> Dict[str, Any]:
         """성능 통계 반환"""
-        avg_processing_time = np.mean(self.frame_processing_times) if self.frame_processing_times else 0
-        
+        avg_processing_time = (
+            np.mean(self.frame_processing_times) if self.frame_processing_times else 0
+        )
+
         return {
             "fps": self.current_fps,
             "avg_processing_time_ms": avg_processing_time * 1000,
             "active_tasks": len(self.active_tasks),
             "healthy_tasks": sum(self.task_health.values()),
             "task_health": self.task_health.copy(),
-            "queue_size": self.result_queue.qsize()
+            "queue_size": self.result_queue.qsize(),
         }
 
     def get_latest_results(self) -> Dict[str, Any]:
@@ -580,33 +639,33 @@ class AdvancedMediaPipeManager:
             "hand": self.latest_results.get(TaskType.HAND_LANDMARKER),
             "gesture": self.latest_results.get(TaskType.GESTURE_RECOGNIZER),
             "object": self.latest_results.get(TaskType.OBJECT_DETECTOR),
-            "holistic": self.latest_results.get(TaskType.HOLISTIC_LANDMARKER)
+            "holistic": self.latest_results.get(TaskType.HOLISTIC_LANDMARKER),
         }
 
     async def close(self):
         """리소스 정리"""
         logger.info("MediaPipe Manager 정리 시작...")
-        
+
         self.running = False
-        
+
         # 콜백 스레드 종료
         if self.callback_thread and self.callback_thread.is_alive():
             self.result_queue.put(("shutdown", None, None))
             self.callback_thread.join(timeout=5.0)
-        
+
         # 모든 Task 정리
         for task_type, task in self.active_tasks.items():
             try:
-                if hasattr(task, 'close'):
+                if hasattr(task, "close"):
                     task.close()
                 logger.info(f"✅ {task_type.value} 정리 완료")
             except Exception as e:
                 logger.warning(f"❌ {task_type.value} 정리 오류: {e}")
-        
+
         self.active_tasks.clear()
         self.task_health.clear()
         self.latest_results.clear()
-        
+
         logger.info("MediaPipe Manager 정리 완료")
 
     def adjust_dynamic_resources(self):
@@ -631,10 +690,10 @@ class AdvancedMediaPipeManager:
         """레거시 호환성을 위한 동기 인터페이스"""
         return asyncio.run(self.process_frame(frame))
 
-    @property 
+    @property
     def current_fps(self):
-        return getattr(self, '_current_fps', 0.0)
-    
+        return getattr(self, "_current_fps", 0.0)
+
     @current_fps.setter
     def current_fps(self, value):
         self._current_fps = value

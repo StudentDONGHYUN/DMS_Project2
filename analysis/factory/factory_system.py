@@ -483,8 +483,8 @@ class AnalysisSystemBuilder:
             logger.info(f"{system_type.value} 분석 시스템 빌드 완료")
             return orchestrator
             
-        except Exception as e:
-            logger.error(f"분석 시스템 빌드 중 오류 발생: {e}")
+        except (AttributeError, TypeError, ValueError, RuntimeError) as e:
+            logger.error(f"분석 시스템 빌드 중 오류 발생: {e}", exc_info=True)
             raise
     
     def register_custom_factory(

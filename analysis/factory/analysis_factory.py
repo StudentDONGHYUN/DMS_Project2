@@ -694,7 +694,7 @@ class ResearchSystemFactory(IAnalysisSystemFactory):
                         config.experimental_settings = {}
                     config.experimental_settings[key] = value
                     logger.info(f"실험적 설정 추가: {key}={value}")
-            except Exception as e:
+            except (AttributeError, TypeError) as e:
                 logger.warning(f"설정 적용 실패: {key}={value}, 오류: {e}")
 
 
@@ -750,8 +750,8 @@ def create_analysis_system(
         logger.info(f"DMS 분석 시스템 생성 완료: {system_type.value}")
         return system
         
-    except Exception as e:
-        logger.error(f"DMS 시스템 생성 실패: {e}")
+    except (AttributeError, TypeError, ValueError) as e:
+        logger.error(f"DMS 시스템 생성 실패: {e}", exc_info=True)
         
         # 실패시 폴백으로 가장 단순한 시스템 생성 시도
         if system_type != AnalysisSystemType.LOW_RESOURCE:

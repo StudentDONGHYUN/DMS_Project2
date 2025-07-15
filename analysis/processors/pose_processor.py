@@ -189,7 +189,7 @@ class PoseDataProcessor(IPoseDataProcessor):
                 'shoulder_analysis': shoulder_analysis,
                 'symmetry_analysis': symmetry_analysis,
             }
-        except Exception as e:
+        except (AttributeError, TypeError, IndexError) as e:
             logger.error(f"Error in 2D pose analysis: {e}")
             return {'available': False}
 
@@ -212,7 +212,7 @@ class PoseDataProcessor(IPoseDataProcessor):
                 'balance': balance_analysis,
                 'complexity': complexity_analysis,
             }
-        except Exception as e:
+        except (AttributeError, TypeError, IndexError) as e:
             logger.error(f"Error in 3D pose analysis: {e}")
             return {'available': False}
 
@@ -307,7 +307,7 @@ class PoseDataProcessor(IPoseDataProcessor):
                 'cervical_risk_level': 'high' if fhp_angle > 25 else 'medium' if fhp_angle > 15 else 'low'
             }
             
-        except Exception as e:
+        except (AttributeError, TypeError, IndexError, np.linalg.LinAlgError) as e:
             logger.error(f"Error in spinal alignment analysis: {e}")
             return {
                 'forward_head_posture_angle': 0.0,
@@ -373,7 +373,7 @@ class PoseDataProcessor(IPoseDataProcessor):
                 'sway_pattern': self._classify_sway_pattern(x_positions, z_positions)
             }
             
-        except Exception as e:
+        except (AttributeError, TypeError, IndexError, np.linalg.LinAlgError) as e:
             logger.error(f"Error in postural sway analysis: {e}")
             return {'sway_area_cm2': 0.0, 'sway_velocity_cm_s': 0.0, 'stability_score': 1.0}
 
@@ -390,7 +390,8 @@ class PoseDataProcessor(IPoseDataProcessor):
             else:
                 return 'circular_pattern'  # Circular pattern
                 
-        except Exception:
+        except (AttributeError, TypeError, np.linalg.LinAlgError) as e:
+            logger.error(f"Error classifying sway pattern: {e}")
             return 'unknown'
 
     def _calculate_biomechanical_health_score(self, pose_3d: Dict) -> Dict[str, Any]:
@@ -469,7 +470,7 @@ class PoseDataProcessor(IPoseDataProcessor):
                 'is_slouching': slouch_factor > 0.6,
                 'severity': 'severe' if slouch_factor > 0.8 else 'moderate' if slouch_factor > 0.6 else 'mild'
             }
-        except Exception as e:
+        except (AttributeError, TypeError, IndexError, np.linalg.LinAlgError) as e:
             logger.error(f"Error in slouch detection: {e}")
             return {'slouch_factor': 0.0, 'is_slouching': False, 'severity': 'unknown'}
 
@@ -624,7 +625,7 @@ class PoseDataProcessor(IPoseDataProcessor):
             update_method = getattr(self.metrics_updater, 'update_pose_metrics', None) or getattr(self.metrics_updater, 'update_metrics', None)
             if update_method:
                 update_method(metrics_data)
-        except Exception as e:
+        except (AttributeError, TypeError, KeyError) as e:
             logger.debug(f"Could not update pose metrics: {e}")
 
     async def _handle_no_pose_detected(self) -> Dict[str, Any]:

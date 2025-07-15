@@ -144,7 +144,8 @@ class EnhancedDrowsinessDetector:
                 return numerator_sq < rhs
             else:
                 return False
-        except (IndexError, TypeError):
+        except (IndexError, TypeError) as e:
+            logger.debug(f"is_eye_closed_enhanced_fast 오류: {e}")
             return False
 
     def _calculate_enhanced_ear(self, landmarks, eye_side):
@@ -164,13 +165,15 @@ class EnhancedDrowsinessDetector:
             else:
                 ear = 0.0
             return ear
-        except (IndexError, AttributeError):
+        except (IndexError, AttributeError) as e:
+            logger.debug(f"_calculate_enhanced_ear 오류: {e}")
             return 0.0
 
     def _euclidean_distance(self, point1, point2):
         try:
             return math.sqrt((point1.x - point2.x) ** 2 + (point1.y - point2.y) ** 2)
-        except AttributeError:
+        except AttributeError as e:
+            logger.debug(f"_euclidean_distance 오류: {e}")
             return 0.0
 
     def _estimate_head_pose_simple(self, landmarks):

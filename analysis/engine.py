@@ -170,11 +170,12 @@ class EnhancedAnalysisEngine:
                     logger.info("[진단] engine._try_queue_results: draw_enhanced_results 호출 완료")
                     try:
                         frame_to_show = cv2.UMat(annotated) if not isinstance(annotated, cv2.UMat) else annotated
-                    except Exception:
+                    except (cv2.error, TypeError) as e:
+                        logger.warning(f"Frame conversion for display failed: {e}")
                         frame_to_show = annotated
                     cv2.imshow("DMS", frame_to_show)
                     logger.info("[진단] engine._try_queue_results: cv2.imshow 호출 완료")
-                except Exception as e:
+                except (AttributeError, TypeError, ValueError, cv2.error) as e:
                     logger.error(f"[진단] engine._try_queue_results: 시각화 예외: {e}")
         logger.info("[진단] engine._try_queue_results 종료")
 
@@ -208,8 +209,8 @@ class EnhancedAnalysisEngine:
             # 나머지 얼굴 및 자세 처리 완료 대기
             await asyncio.gather(face_task, pose_task, return_exceptions=True)
             
-        except Exception as e:
-            logger.error(f"비동기 작업 처리 중 오류: {e}")
+        except (asyncio.CancelledError, AttributeError, TypeError, ValueError) as e:
+            logger.error(f"비동기 작업 처리 중 오류: {e}", exc_info=True)
             # 실패한 작업들 정리
             for task in created_tasks:
                 if not task.done():
@@ -219,7 +220,7 @@ class EnhancedAnalysisEngine:
                     except asyncio.CancelledError:
                         pass
                     except Exception as task_error:
-                        logger.error(f"작업 정리 중 오류: {task_error}")
+                        logger.error(f"작업 정리 중 오류: {task_error}", exc_info=True)
             
             # 폴백 처리 - 동기 방식으로 기본 처리
             await self._process_face_data_async(face_result, timestamp)

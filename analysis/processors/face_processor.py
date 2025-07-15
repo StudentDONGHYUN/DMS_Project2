@@ -116,7 +116,7 @@ class FaceDataProcessor(IFaceDataProcessor):
             
             return result
             
-        except Exception as e:
+        except (AttributeError, TypeError, ValueError) as e:
             logger.error(f"Error processing facial landmarks: {e}")
             return {
                 'drowsiness': {'status': 'error', 'confidence': 0.0},
@@ -145,7 +145,7 @@ class FaceDataProcessor(IFaceDataProcessor):
             
             return result
             
-        except Exception as e:
+        except (AttributeError, TypeError, ValueError) as e:
             logger.error(f"Error processing facial blendshapes: {e}")
             return {
                 'emotion': {'state': None, 'confidence': 0.0},
@@ -165,7 +165,7 @@ class FaceDataProcessor(IFaceDataProcessor):
             
             return gaze_data
             
-        except Exception as e:
+        except (AttributeError, TypeError, ValueError) as e:
             logger.error(f"Error processing facial transformation matrix: {e}")
             return self._get_default_pose_gaze_data()
 
@@ -291,7 +291,7 @@ class FaceDataProcessor(IFaceDataProcessor):
         try:
             drowsiness_result = self.drowsiness_detector.detect_drowsiness(landmarks, timestamp)
             return {'drowsiness': drowsiness_result}
-        except Exception as e:
+        except (AttributeError, TypeError, ValueError) as e:
             logger.error(f"Error in drowsiness analysis: {e}")
             return {'drowsiness': {'status': 'error', 'confidence': 0.0}}
 
@@ -300,7 +300,7 @@ class FaceDataProcessor(IFaceDataProcessor):
         try:
             emotion_result = self.emotion_recognizer.analyze_emotion(blendshapes, timestamp)
             return {'emotion': emotion_result}
-        except Exception as e:
+        except (AttributeError, TypeError, ValueError) as e:
             logger.error(f"Error in emotion analysis: {e}")
             return {'emotion': {'state': None, 'confidence': 0.0}}
 
@@ -328,7 +328,7 @@ class FaceDataProcessor(IFaceDataProcessor):
                     'deviation_score': deviation_score
                 }
             }
-        except Exception as e:
+        except (AttributeError, TypeError, ValueError) as e:
             logger.error(f"Error in head pose analysis: {e}")
             return self._get_default_pose_gaze_data()
 
@@ -344,7 +344,7 @@ class FaceDataProcessor(IFaceDataProcessor):
             landmarks_tuple = tuple((lm.x, lm.y, lm.z) for lm in landmarks)
             driver_info = self._cached_identify_driver(landmarks_tuple)
             return {'driver': driver_info}
-        except Exception as e:
+        except (AttributeError, TypeError, ValueError) as e:
             logger.error(f"Error in driver identification: {e}")
             return {'driver': {'identity': 'unknown', 'confidence': 0.0}}
 
@@ -370,7 +370,7 @@ class FaceDataProcessor(IFaceDataProcessor):
                 'saccade_count_per_s': (left_analysis['count'] + right_analysis['count']) / 2,
                 'gaze_fixation_stability': (left_analysis['stability'] + right_analysis['stability']) / 2
             }
-        except Exception as e:
+        except (AttributeError, TypeError, IndexError) as e:
             logger.error(f"Error in saccade analysis: {e}")
             return {'saccade_velocity_norm': 0.0, 'saccade_count_per_s': 0.0, 'gaze_fixation_stability': 0.0}
 
@@ -420,7 +420,7 @@ class FaceDataProcessor(IFaceDataProcessor):
                 'pupil_variability': pupil_variability,
                 'cognitive_load_indicator': cognitive_load
             }
-        except Exception as e:
+        except (AttributeError, TypeError, KeyError) as e:
             logger.error(f"Error in pupil analysis: {e}")
             return {'estimated_pupil_diameter': 0.0, 'pupil_variability': 0.0, 'cognitive_load_indicator': 0.0}
 
@@ -446,7 +446,7 @@ class FaceDataProcessor(IFaceDataProcessor):
             # 4. Store (timestamp, signal_value) in buffer
             if green_channel_mean > 0:
                 self.rppg_signal_buffer.append((timestamp, green_channel_mean))
-        except Exception as e:
+        except (AttributeError, TypeError, IndexError, cv2.error) as e:
             logger.error(f"Error in rPPG signal extraction: {e}")
 
     def _estimate_heart_rate_from_rppg(self) -> Dict[str, Any]:
@@ -529,7 +529,7 @@ class FaceDataProcessor(IFaceDataProcessor):
                 'signal_quality': signal_quality
             }
 
-        except Exception as e:
+        except (ValueError, IndexError, np.linalg.LinAlgError) as e:
             logger.error(f"Error in rPPG heart rate calculation: {e}")
             return {'estimated_hr_bpm': 0, 'estimated_hrv_ms': 0, 'signal_quality': 0.1}
 
@@ -549,7 +549,7 @@ class FaceDataProcessor(IFaceDataProcessor):
                 z = 0
             
             return {'yaw': -math.degrees(y), 'pitch': -math.degrees(x), 'roll': math.degrees(z)}
-        except Exception as e:
+        except (AttributeError, TypeError, IndexError, ValueError) as e:
             logger.error(f"Error extracting Euler angles: {e}")
             return {'yaw': 0.0, 'pitch': 0.0, 'roll': 0.0}
 
