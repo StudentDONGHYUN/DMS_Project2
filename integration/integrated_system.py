@@ -19,6 +19,7 @@ DMS System Integration Guide
 import asyncio
 import logging
 import time
+import cv2
 from typing import Dict, Any, Optional
 
 # === 새로운 시스템 컴포넌트들 ===
@@ -288,44 +289,31 @@ class IntegratedDMSSystem:
                 analysis_results, driver_state
             )
 
-            # 6. 시각화 프레임 생성 (추가)
-            # === PATCH: 시각화 프레임도 dict에 포함해서 반환 ===
+            # 6. 시각화 프레임 생성 (이중 파이프라인 지원)
             annotated_frame = None
             try:
-                from io_handler.ui import SClassAdvancedUIManager
-                import numpy as np
+                # 프레임 데이터 분리
+                frame_numpy = frame_data.get("image") or frame_data.get("frame")
+                frame_umat = frame_data.get("visualization_frame")
 
-                # 원본 프레임 추출 (frame_data에 'image' 또는 'frame' 키가 있다고 가정)
-                frame = frame_data.get("image") or frame_data.get("frame")
-                if frame is not None:
-                    ui_manager = getattr(self, "_ui_manager", None)
-                    if ui_manager is None:
-                        ui_manager = SClassAdvancedUIManager()
-                        self._ui_manager = ui_manager
-                    # metrics/state/results 등은 formatted_results에서 추출
-                    metrics = type("Metrics", (), formatted_results)()  # dict→객체 변환
-                    state = getattr(
-                        self.state_manager, "get_current_state", lambda: None
-                    )()
-                    results = formatted_results
-                    # 기타 인자들은 None 또는 기본값
-                    annotated_frame = ui_manager.draw_enhanced_results(
-                        frame,
-                        metrics,
-                        state,
-                        results,
-                        None,
-                        None,
-                        None,  # gaze_classifier, dynamic_analyzer, sensor_backup
-                        {},  # perf_stats
-                        {},  # playback_info
-                        None,
-                        None,
-                        None,  # driver_identifier, predictive_safety, emotion_recognizer
+                if frame_numpy is not None:
+                    # UMat 변환 (GPU 가속)
+                    if frame_umat is None:
+                        try:
+                            frame_umat = cv2.UMat(frame_numpy)
+                        except Exception as e:
+                            logger.warning(f"UMat 변환 실패: {e}")
+                            frame_umat = frame_numpy
+
+                    # 안전한 시각화 생성
+                    annotated_frame = self._create_safe_visualization_dual_pipeline(
+                        frame_umat, frame_numpy, formatted_results
                     )
+
             except Exception as viz_e:
                 logger.warning(f"시각화 프레임 생성 실패: {viz_e}")
                 annotated_frame = None
+
             if annotated_frame is not None:
                 formatted_results["visualization"] = annotated_frame
 
@@ -359,6 +347,89 @@ class IntegratedDMSSystem:
                 logger.debug(f"입력 데이터에서 {key} 누락 - 기본값 사용")
 
         return validated_data
+
+    # 새로운 메서드 추가 (파일 하단에 추가)
+    def _create_safe_visualization_dual_pipeline(
+        self, frame_umat, frame_numpy, results
+    ):
+        """이중 파이프라인 안전한 시각화 생성"""
+        try:
+            # UI 매니저 초기화
+            if not hasattr(self, "_ui_manager") or self._ui_manager is None:
+                from io_handler.ui import SClassAdvancedUIManager
+
+                self._ui_manager = SClassAdvancedUIManager()
+
+            # UMat 우선 시각화 시도
+            try:
+                return self._ui_manager.draw_enhanced_results_umat_safe(
+                    frame_umat,
+                    results,
+                    self.state_manager.get_current_state()
+                    if hasattr(self, "state_manager")
+                    else None,
+                )
+            except Exception as e:
+                logger.warning(f"UMat 시각화 실패: {e}")
+
+                # 폴백: numpy 배열 시각화
+                if frame_numpy is not None:
+                    return self._create_basic_numpy_visualization(frame_numpy, results)
+
+                return None
+
+        except Exception as e:
+            logger.error(f"이중 파이프라인 시각화 실패: {e}")
+            return None
+
+    def _create_basic_numpy_visualization(self, frame_numpy, results):
+        """기본 numpy 시각화 생성"""
+        try:
+            annotated_frame = frame_numpy.copy()
+
+            # 기본 정보 표시
+            system_health = results.get("system_health", "unknown")
+            cv2.putText(
+                annotated_frame,
+                f"System: {system_health}",
+                (10, 30),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.7,
+                (0, 255, 0),
+                2,
+            )
+
+            fatigue_score = results.get("fatigue_risk_score", 0.0)
+            distraction_score = results.get("distraction_risk_score", 0.0)
+
+            cv2.putText(
+                annotated_frame,
+                f"Fatigue: {fatigue_score:.2f}",
+                (10, 60),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.6,
+                (255, 255, 0),
+                2,
+            )
+            cv2.putText(
+                annotated_frame,
+                f"Distraction: {distraction_score:.2f}",
+                (10, 90),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.6,
+                (255, 255, 0),
+                2,
+            )
+
+            # UMat으로 변환해서 반환
+            try:
+                return cv2.UMat(annotated_frame)
+            except Exception:
+                return annotated_frame
+
+        except Exception as e:
+            logger.error(f"기본 numpy 시각화 실패: {e}")
+            return frame_numpy
 
     def _extract_driver_state(self, analysis_results: Dict[str, Any]) -> Dict[str, Any]:
         """분석 결과에서 운전자 상태 추출"""

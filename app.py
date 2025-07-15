@@ -896,8 +896,18 @@ class DMSApp:
             mediapipe_results = await self.mediapipe_manager.process_frame(
                 preprocessed_frame
             )
-            # === PATCH: 프레임을 dict에 항상 포함 ===
-            mediapipe_results["image"] = preprocessed_frame
+
+            # === 이중 파이프라인 데이터 준비 ===
+            # MediaPipe용 numpy 배열과 시각화용 UMat 분리
+            frame_data = {
+                "image": preprocessed_frame,  # MediaPipe용 numpy 배열
+                "frame": preprocessed_frame,  # 호환성을 위한 별칭
+                "visualization_frame": None,  # UMat은 통합 시스템에서 생성
+                "timestamp": time.time(),
+            }
+
+            # MediaPipe 결과와 프레임 데이터 통합
+            mediapipe_results.update(frame_data)
 
             # 3. 통합 분석 시스템으로 처리 및 시각화
             annotated_frame = await self.integrated_system.process_and_annotate_frame(
