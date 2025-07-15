@@ -418,105 +418,106 @@ class DMSApp:
             await asyncio.sleep(0.1)
             frame_count = 0
             last_perf_log_time = time.time()
-            while not stop_event.is_set():
-                frame = self.video_input_manager.get_frame()  # 항상 numpy
-                if frame is None:
-                    await asyncio.sleep(0.01)
-                    continue
-                frame_count += 1
-                # GEMINI.md 성능 최적화: MediaPipe 처리 전 writeable=False 적용
-                if hasattr(frame, "flags"):
-                    frame.flags.writeable = False
-                # MediaPipe 처리 및 통합 분석 시스템 실행
-                try:
-                    # 1. MediaPipe 결과 획득
-                    mediapipe_results = await self.mediapipe_manager.process_frame(
-                        frame
-                    )
-
-                    # 2. 통합 분석 시스템으로 처리 및 시각화
-                    annotated_frame = (
-                        await self.integrated_system.process_and_annotate_frame(
-                            mediapipe_results, time.time()
-                        )
-                    )
-
-                    # 3. 안전한 UMat 변환 및 정보 오버레이
-                    if annotated_frame is not None:
-                        # numpy array를 안전하게 UMat로 변환
-                        try:
-                            if isinstance(annotated_frame, cv2.UMat):
-                                # 이미 UMat인 경우
-                                final_frame = annotated_frame
-                            else:
-                                # numpy array인 경우 UMat로 변환
-                                final_frame = cv2.UMat(annotated_frame)
-                        except Exception as umat_error:
-                            logger.warning(
-                                f"UMat 변환 실패, numpy array 사용: {umat_error}"
-                            )
-                            final_frame = annotated_frame
-
-                        # 프레임 정보 오버레이 추가
-                        try:
-                            cv2.putText(
-                                final_frame,
-                                f"Frame: {frame_count}",
-                                (10, 30),
-                                cv2.FONT_HERSHEY_SIMPLEX,
-                                1,
-                                (0, 255, 0),
-                                2,
-                            )
-                            annotated_frame = final_frame
-                        except Exception as text_error:
-                            logger.warning(f"텍스트 오버레이 실패: {text_error}")
-                            # 오버레이 실패시 원본 annotated_frame 사용
-                    else:
-                        # annotated_frame이 None인 경우 폴백
-                        logger.warning("통합 시스템에서 None 반환, 기본 오버레이 사용")
-                        annotated_frame = self._create_basic_info_overlay(
-                            cv2.UMat(frame), frame_count, perf_stats=None
-                        )
-
-                except Exception as e:
-                    logger.error(f"MediaPipe 분석 오류: {e}")
-                    # 오류 발생시 안전한 폴백 처리
-                    try:
-                        annotated_frame = cv2.UMat(frame)
-                        cv2.putText(
-                            annotated_frame,
-                            f"Frame: {frame_count} (Fallback)",
-                            (10, 30),
-                            cv2.FONT_HERSHEY_SIMPLEX,
-                            1,
-                            (0, 0, 255),  # 빨간색으로 오류 표시
-                            2,
-                        )
-                    except:
-                        # 최종 폴백: 원본 프레임 사용
-                        annotated_frame = frame
-                if annotated_frame is not None:
-                    try:
-                        frame_queue.put_nowait(annotated_frame)
-                    except queue.Full:
-                        try:
-                            frame_queue.get_nowait()
-                            frame_queue.put_nowait(annotated_frame)
-                        except queue.Empty:
-                            pass
-                # --- [성능 최적화 자동 호출] ---
-                if frame_count % 30 == 0:
-                    processing_time = 0.0  # 실제 처리 시간 측정 필요시 측정값 사용
-                    fps = 0.0
-                    self.performance_monitor.log_performance(processing_time, fps)
-                    self.mediapipe_manager.adjust_dynamic_resources()
-                    self._perform_memory_cleanup()
-                await asyncio.sleep(0.010)
             try:
-                frame_queue.put(None, timeout=0.1)
-            except queue.Full:
-                pass
+                while not stop_event.is_set():
+                    frame = self.video_input_manager.get_frame()  # 항상 numpy
+                    if frame is None:
+                        await asyncio.sleep(0.01)
+                        continue
+                    frame_count += 1
+                    # GEMINI.md 성능 최적화: MediaPipe 처리 전 writeable=False 적용
+                    if hasattr(frame, "flags"):
+                        frame.flags.writeable = False
+                        # MediaPipe 처리 및 통합 분석 시스템 실행
+                        try:
+                            # 1. MediaPipe 결과 획득
+                            mediapipe_results = (
+                                await self.mediapipe_manager.process_frame(frame)
+                            )
+                            # 2. 통합 분석 시스템으로 처리 및 시각화
+                            annotated_frame = (
+                                await self.integrated_system.process_and_annotate_frame(
+                                    mediapipe_results, time.time()
+                                )
+                            )
+                            # 3. 기본 정보 오버레이 추가
+                            if annotated_frame is not None:
+                                # annotated_frame이 numpy array일 때만 UMat 변환
+                                import numpy as np
+
+                                if isinstance(annotated_frame, np.ndarray):
+                                    try:
+                                        annotated_frame = cv2.UMat(annotated_frame)
+                                    except Exception as e:
+                                        logger.warning(
+                                            f"UMat 변환 실패, numpy array 사용: {e}"
+                                        )
+                                        # 변환 실패 시 annotated_frame은 그대로 numpy array
+                                elif isinstance(annotated_frame, cv2.UMat):
+                                    pass  # 이미 UMat이면 변환하지 않음
+                                else:
+                                    logger.warning(
+                                        "annotated_frame이 numpy array도 UMat도 아님!"
+                                    )
+                                # 프레임 정보 오버레이
+                                if isinstance(annotated_frame, (np.ndarray, cv2.UMat)):
+                                    try:
+                                        cv2.putText(
+                                            annotated_frame,
+                                            f"Frame: {frame_count}",
+                                            (10, 30),
+                                            cv2.FONT_HERSHEY_SIMPLEX,
+                                            1,
+                                            (0, 255, 0),
+                                            2,
+                                        )
+                                    except Exception as e:
+                                        logger.warning(f"텍스트 오버레이 실패: {e}")
+                                else:
+                                    logger.warning(
+                                        "putText 대상이 numpy array도 UMat도 아님!"
+                                    )
+                            else:
+                                # 폴백: 기본 오버레이만 표시
+                                annotated_frame = self._create_basic_info_overlay(
+                                    frame, frame_count, perf_stats=None
+                                )
+                        except Exception as e:
+                            logger.error(f"MediaPipe 분석 오류: {e}")
+                            # 오류 발생시 기본 오버레이 표시
+                            annotated_frame = self._create_basic_info_overlay(
+                                frame, frame_count, perf_stats=None
+                            )
+                    if annotated_frame is not None:
+                        try:
+                            frame_queue.put_nowait(annotated_frame)
+                        except queue.Full:
+                            try:
+                                frame_queue.get_nowait()
+                                frame_queue.put_nowait(annotated_frame)
+                            except queue.Empty:
+                                pass
+                    # --- [성능 최적화 자동 호출] ---
+                    if frame_count % 30 == 0:
+                        processing_time = 0.0  # 실제 처리 시간 측정 필요시 측정값 사용
+                        fps = 0.0
+                        self.performance_monitor.log_performance(processing_time, fps)
+                        self.mediapipe_manager.adjust_dynamic_resources()
+                        self._perform_memory_cleanup()
+                    await asyncio.sleep(0.010)
+                try:
+                    frame_queue.put(None, timeout=0.1)
+                except queue.Full:
+                    pass
+            finally:
+                # 🆕 정리 작업 추가 (동일 루프에서 await로 처리)
+                try:
+                    if hasattr(self, "mediapipe_manager"):
+                        await self.mediapipe_manager.close()
+                    if hasattr(self, "integrated_system"):
+                        await self.integrated_system.shutdown()
+                except Exception as e:
+                    logger.warning(f"정리 작업 중 오류: {e}")
 
         try:
             # 기존 실행 코드
@@ -526,14 +527,8 @@ class DMSApp:
             stop_event.set()
             display_thread.join()
         finally:
-            # 🆕 정리 작업 추가
-            try:
-                if hasattr(self, "mediapipe_manager"):
-                    asyncio.run(self.mediapipe_manager.close())
-                if hasattr(self, "integrated_system"):
-                    asyncio.run(self.integrated_system.shutdown())
-            except Exception as e:
-                logger.warning(f"정리 작업 중 오류: {e}")
+            # finally 블록에서는 더 이상 asyncio.run()을 호출하지 않음
+            pass
 
     def _create_basic_info_overlay(self, frame, frame_count, perf_stats=None):
         try:
