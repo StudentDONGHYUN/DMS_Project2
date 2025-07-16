@@ -978,67 +978,76 @@ class SClass_DMS_GUI_Setup:
 
     def start_app(self):
         """S-Class 앱 시작"""
-        # 입력 소스 검증
-        input_source = None
-        if self.source_type.get() == "webcam":
-            cam_id_str = self.webcam_id.get()
-            if cam_id_str.isdigit():
-                input_source = int(cam_id_str)
+        try:
+            # 입력 소스 검증
+            input_source = None
+            if self.source_type.get() == "webcam":
+                cam_id_str = self.webcam_id.get()
+                if cam_id_str.isdigit():
+                    input_source = int(cam_id_str)
+                else:
+                    messagebox.showerror("입력 오류", "웹캠 번호는 숫자여야 합니다.")
+                    self.config = {"_error": "웹캠 번호 입력 오류"}
+                    return
             else:
-                messagebox.showerror("입력 오류", "웹캠 번호는 숫자여야 합니다.")
-                return
-        else:
-            if not self.video_files:
-                messagebox.showerror("입력 오류", "비디오 파일을 선택해주세요.")
-                return
-            input_source = (
-                self.video_files if len(self.video_files) > 1 else self.video_files[0]
+                if not self.video_files:
+                    messagebox.showerror("입력 오류", "비디오 파일을 선택해주세요.")
+                    self.config = {"_error": "비디오 파일 미선택"}
+                    return
+                input_source = (
+                    self.video_files
+                    if len(self.video_files) > 1
+                    else self.video_files[0]
+                )
+
+            # 사용자 설정
+            user_id = self.user_id.get().strip() or "default"
+            edition = self.edition_var.get()  # 에디션 값 읽기
+            # 카메라 위치
+            selected_pos_str = self.camera_position_var.get()
+            camera_position = next(
+                (pos for pos in CameraPosition if str(pos) == selected_pos_str),
+                CameraPosition.REARVIEW_MIRROR,
             )
 
-        # 사용자 설정
-        user_id = self.user_id.get().strip() or "default"
-        edition = self.edition_var.get()  # 에디션 값 읽기
-        # 카메라 위치
-        selected_pos_str = self.camera_position_var.get()
-        camera_position = next(
-            (pos for pos in CameraPosition if str(pos) == selected_pos_str),
-            CameraPosition.REARVIEW_MIRROR,
-        )
+            # 시스템 타입
+            system_type_str = self.system_type_var.get()
+            system_type = getattr(
+                AnalysisSystemType, system_type_str, AnalysisSystemType.STANDARD
+            )
 
-        # 시스템 타입
-        system_type_str = self.system_type_var.get()
-        system_type = getattr(
-            AnalysisSystemType, system_type_str, AnalysisSystemType.STANDARD
-        )
-
-        # S-Class Neural Platform 설정 구성
-        self.config = {
-            "input_source": input_source,
-            "user_id": user_id,
-            "camera_position": camera_position,
-            "enable_calibration": self.enable_calibration.get(),
-            "is_same_driver": self.is_same_driver,
-            "system_type": system_type,
-            "use_legacy_engine": self.use_legacy_engine.get(),
-            "edition": edition,  # edition 값을 명시적으로 포함
-            "sclass_features": {
-                # Expert Systems
-                "enable_rppg": self.enable_rppg.get(),
-                "enable_saccade": self.enable_saccade.get(),
-                "enable_spinal_analysis": self.enable_spinal_analysis.get(),
-                "enable_tremor_fft": self.enable_tremor_fft.get(),
-                "enable_bayesian_prediction": self.enable_bayesian_prediction.get(),
-                # Advanced Neural AI Features
-                "enable_emotion_ai": self.enable_emotion_ai.get(),
-                "enable_predictive_safety": self.enable_predictive_safety.get(),
-                "enable_biometric_fusion": self.enable_biometric_fusion.get(),
-                "enable_adaptive_thresholds": self.enable_adaptive_thresholds.get(),
-            },
-            "enable_performance_optimization": self.enable_performance_optimization.get(),
-        }
-        # 혁신 엔진에 에디션 반영
-        self.innovation_engine = SClassDMSv19Enhanced(user_id, edition)
-        self.root.destroy()
+            # S-Class Neural Platform 설정 구성
+            self.config = {
+                "input_source": input_source,
+                "user_id": user_id,
+                "camera_position": camera_position,
+                "enable_calibration": self.enable_calibration.get(),
+                "is_same_driver": self.is_same_driver,
+                "system_type": system_type,
+                "use_legacy_engine": self.use_legacy_engine.get(),
+                "edition": edition,  # edition 값을 명시적으로 포함
+                "sclass_features": {
+                    # Expert Systems
+                    "enable_rppg": self.enable_rppg.get(),
+                    "enable_saccade": self.enable_saccade.get(),
+                    "enable_spinal_analysis": self.enable_spinal_analysis.get(),
+                    "enable_tremor_fft": self.enable_tremor_fft.get(),
+                    "enable_bayesian_prediction": self.enable_bayesian_prediction.get(),
+                    # Advanced Neural AI Features
+                    "enable_emotion_ai": self.enable_emotion_ai.get(),
+                    "enable_predictive_safety": self.enable_predictive_safety.get(),
+                    "enable_biometric_fusion": self.enable_biometric_fusion.get(),
+                    "enable_adaptive_thresholds": self.enable_adaptive_thresholds.get(),
+                },
+                "enable_performance_optimization": self.enable_performance_optimization.get(),
+            }
+            # 혁신 엔진에 에디션 반영
+            self.innovation_engine = SClassDMSv19Enhanced(user_id, edition)
+        except Exception as e:
+            messagebox.showerror("설정 오류", f"설정 중 오류가 발생했습니다: {e}")
+            self.config = {"_error": f"설정 중 예외: {e}"}
+        finally:
+            self.root.destroy()
 
 
 def get_user_input_terminal():
@@ -1243,7 +1252,7 @@ def main():
         else:
             config = get_user_input_terminal()
 
-        if config:
+        if config and not (isinstance(config, dict) and config.get("_error")):
             logger.info(f"S-Class 설정 완료: {config}")
             print("\n" + "=" * 70)
             print(f" S-Class DMS v18+ 시스템 시작... (사용자: {config['user_id']})")
@@ -1255,7 +1264,11 @@ def main():
             app = DMSApp(**config)
             app.run()
         else:
-            print("\n❌ 설정이 취소되어 프로그램을 종료합니다.")
+            if config and isinstance(config, dict) and config.get("_error"):
+                print(f"\n❌ 설정 오류: {config['_error']}")
+                logger.error(f"설정 오류: {config['_error']}")
+            else:
+                print("\n❌ 설정이 취소되어 프로그램을 종료합니다.")
 
     except (KeyboardInterrupt, EOFError) as e:
         print("\n\n🛑 프로그램을 종료합니다.")

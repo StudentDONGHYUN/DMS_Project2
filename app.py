@@ -392,28 +392,32 @@ class DMSApp:
                     last_frame = frame
                 except queue.Empty:
                     pass
+                    
                 if last_frame is not None:
                     try:
-                        frame_to_show = (
-                            cv2.UMat(last_frame)
-                            if not isinstance(last_frame, cv2.UMat)
-                            else last_frame
-                        )
-                    except cv2.error as cv_err:
-                        logger.warning(f"Frame conversion to UMat failed: {cv_err}")
+                        # ✅ FIXED: UMat 변환 제거 - 이미 numpy array로 처리됨
                         frame_to_show = last_frame
-                    if frame_to_show is None:
-                        logger.error(
-                            "frame_to_show is None! OpenCV 창을 띄울 수 없습니다."
-                        )
-                        return
-                    if not isinstance(frame_to_show, np.ndarray):
-                        logger.error(f"frame_to_show 타입 오류: {type(frame_to_show)}")
-                        return
-                    if frame_to_show.ndim != 3 or frame_to_show.shape[2] != 3:
-                        logger.error(f"frame_to_show shape 오류: {frame_to_show.shape}")
-                        return
-                    cv2.imshow("S-Class DMS v18+ - Research Integrated", frame_to_show)
+                        
+                        # 프레임 검증
+                        if frame_to_show is None:
+                            logger.error("frame_to_show is None!")
+                            continue
+                            
+                        if not isinstance(frame_to_show, np.ndarray):
+                            logger.error(f"frame_to_show 타입 오류: {type(frame_to_show)}")
+                            continue
+                            
+                        if frame_to_show.ndim != 3 or frame_to_show.shape[2] != 3:
+                            logger.error(f"frame_to_show shape 오류: {frame_to_show.shape}")
+                            continue
+                            
+                        # 안전한 화면 표시
+                        cv2.imshow("S-Class DMS v18+ - Research Integrated", frame_to_show)
+                        
+                    except Exception as display_e:
+                        logger.error(f"화면 표시 오류: {display_e}")
+                        # 에러가 발생해도 계속 진행
+                        
                 key = cv2.waitKey(1) & 0xFF
                 if key == ord("q"):
                     stop_event.set()
@@ -422,17 +426,11 @@ class DMSApp:
                     if last_frame is not None:
                         filename = f"screenshot_{int(time.time())}.png"
                         try:
-                            frame_to_save = (
-                                cv2.UMat(last_frame)
-                                if not isinstance(last_frame, cv2.UMat)
-                                else last_frame
-                            )
-                        except cv2.error as cv_err:
-                            logger.warning(
-                                f"Frame conversion to UMat for saving failed: {cv_err}"
-                            )
-                            frame_to_save = last_frame
-                        cv2.imwrite(filename, frame_to_save)
+                            cv2.imwrite(filename, last_frame)
+                            logger.info(f"스크린샷 저장: {filename}")
+                        except Exception as save_e:
+                            logger.error(f"스크린샷 저장 실패: {save_e}")
+                            
             cv2.destroyAllWindows()
 
         async def async_frame_producer():
@@ -886,19 +884,37 @@ class DMSApp:
 
     async def _safe_process_frame_with_error_recovery(self, frame, frame_count):
         """
-        ✅ FIXED: 오류 복구 기능이 있는 안전한 프레임 처리
+        ✅ FIXED: 오류 복구 기능이 있는 안전한 프레임 처리 (완전 수정)
         """
         try:
-            # 1. MediaPipe 전처리
-            preprocessed_frame = safe_frame_preprocessing_for_mediapipe(frame)
+            # 1. 입력 프레임 검증
+            if frame is None:
+                logger.warning("None 프레임 입력")
+                return OpenCVSafeHandler.create_fallback_frame()
 
-            # 2. MediaPipe 결과 획득
-            mediapipe_results = await self.mediapipe_manager.process_frame(
-                preprocessed_frame
-            )
+            # 2. MediaPipe 전처리 (안전한 처리)
+            try:
+                preprocessed_frame = safe_frame_preprocessing_for_mediapipe(frame)
+            except Exception as e:
+                logger.warning(f"MediaPipe 전처리 실패: {e}")
+                preprocessed_frame = frame
 
-            # === 이중 파이프라인 데이터 준비 ===
-            # MediaPipe용 numpy 배열과 시각화용 UMat 분리
+            # 3. MediaPipe 결과 획득
+            try:
+                mediapipe_results = await self.mediapipe_manager.process_frame(
+                    preprocessed_frame
+                )
+            except Exception as e:
+                logger.warning(f"MediaPipe 처리 실패: {e}")
+                # 빈 결과로 계속 진행
+                mediapipe_results = {
+                    'face': None,
+                    'pose': None, 
+                    'hand': None,
+                    'object': None
+                }
+
+            # 4. 프레임 데이터 구조 준비 (이중 파이프라인)
             frame_data = {
                 "image": preprocessed_frame,  # MediaPipe용 numpy 배열
                 "frame": preprocessed_frame,  # 호환성을 위한 별칭
@@ -907,66 +923,108 @@ class DMSApp:
             }
 
             # MediaPipe 결과와 프레임 데이터 통합
-            mediapipe_results.update(frame_data)
+            frame_data.update(mediapipe_results)
 
-            # 3. 통합 분석 시스템으로 처리 및 시각화
-            annotated_frame = await self.integrated_system.process_and_annotate_frame(
-                mediapipe_results, time.time()
-            )
+            # 5. 통합 분석 시스템으로 처리
+            try:
+                analysis_results = await self.integrated_system.process_and_annotate_frame(
+                    frame_data, time.time()
+                )
+            except Exception as e:
+                logger.warning(f"통합 시스템 처리 실패: {e}")
+                # 기본 결과 구조 생성
+                analysis_results = {
+                    'fatigue_risk_score': 0.0,
+                    'distraction_risk_score': 0.0,
+                    'confidence_score': 0.0,
+                    'system_health': 'error',
+                    'visualization': None
+                }
 
-            # === PATCH: dict 반환 시 시각화용 프레임만 추출 ===
-            if isinstance(annotated_frame, dict):
-                # 관례적으로 'visualization', 'frame', 'image' 등 키를 우선 탐색
-                for key in ["visualization", "frame", "image", "annotated_frame"]:
-                    if key in annotated_frame and annotated_frame[key] is not None:
-                        annotated_frame = annotated_frame[key]
-                        break
-                else:
-                    logger.warning(
-                        f"분석 결과 dict에서 시각화용 프레임을 찾을 수 없음: keys={list(annotated_frame.keys())}"
-                    )
-                    # dict에 시각화 프레임이 없으면 기본 오버레이 반환
+            # 6. 시각화 프레임 처리 (안전한 추출)
+            annotated_frame = None
+            
+            # 시각화 프레임이 분석 결과에 있는지 확인
+            if 'visualization' in analysis_results and analysis_results['visualization'] is not None:
+                annotated_frame = analysis_results['visualization']
+            else:
+                # 시각화 프레임이 없으면 기본 오버레이 생성
+                try:
                     perf_stats = None
                     if hasattr(self, "mediapipe_manager"):
                         perf_stats = self.mediapipe_manager.get_performance_stats()
-                    return safe_create_basic_info_overlay(
+                    
+                    annotated_frame = safe_create_basic_info_overlay(
                         frame, frame_count, perf_stats
                     )
+                    
+                    # 시스템 상태 표시
+                    if analysis_results.get('system_health') == 'error':
+                        annotated_frame = OpenCVSafeHandler.safe_frame_annotation(
+                            annotated_frame,
+                            "SYSTEM ERROR - SAFE MODE",
+                            position=(10, 120),
+                            color=(0, 0, 255),  # 빨간색
+                            font_scale=0.7,
+                        )
+                        
+                except Exception as viz_e:
+                    logger.error(f"기본 오버레이 생성 실패: {viz_e}")
+                    annotated_frame = frame
+
+            # 7. 프레임 타입 안전 처리 (UMat 오류 해결)
+            if annotated_frame is not None:
+                try:
+                    # UMat을 numpy array로 변환 (display에 안전)
+                    if isinstance(annotated_frame, cv2.UMat):
+                        # UMat.get()으로 numpy array 추출
+                        annotated_frame = annotated_frame.get()
+                        
+                    # numpy array 검증
+                    if not isinstance(annotated_frame, np.ndarray):
+                        logger.warning(f"예상치 못한 프레임 타입: {type(annotated_frame)}")
+                        annotated_frame = frame
+                        
+                    # 프레임 차원 검증
+                    if annotated_frame.ndim != 3 or annotated_frame.shape[2] != 3:
+                        logger.warning(f"잘못된 프레임 형태: {annotated_frame.shape}")
+                        annotated_frame = frame
+                        
+                except Exception as conv_e:
+                    logger.error(f"프레임 타입 변환 실패: {conv_e}")
+                    annotated_frame = frame
 
             return annotated_frame
 
         except Exception as e:
-            logger.error(f"프레임 처리 오류: {e}", exc_info=True)
-
-            # 폴백 처리: 기본 정보만 표시하는 안전한 프레임 생성
+            logger.error(f"프레임 처리 중 치명적 오류: {e}", exc_info=True)
+            
+            # 최종 폴백: 기본 정보 오버레이 생성
             try:
-                perf_stats = None
-                if hasattr(self, "mediapipe_manager"):
-                    perf_stats = self.mediapipe_manager.get_performance_stats()
-
-                fallback_frame = safe_create_basic_info_overlay(
-                    frame, frame_count, perf_stats
-                )
-
+                fallback_frame = safe_create_basic_info_overlay(frame, frame_count, None)
+                
                 # 오류 상태 표시
                 error_frame = OpenCVSafeHandler.safe_frame_annotation(
                     fallback_frame,
-                    f"ERROR: {str(e)[:50]}...",
+                    f"CRITICAL ERROR: {str(e)[:30]}...",
                     position=(10, 90),
                     color=(0, 0, 255),  # 빨간색
                     font_scale=0.6,
                 )
-
+                
+                # UMat을 numpy로 변환
+                if isinstance(error_frame, cv2.UMat):
+                    error_frame = error_frame.get()
+                    
                 return error_frame
-
-            except (AttributeError, TypeError, ValueError) as fallback_error:
-                logger.error(f"폴백 처리도 실패: {fallback_error}")
-                # 최종 폴백: 기본 프레임 반환
-                return (
-                    frame
-                    if frame is not None
-                    else OpenCVSafeHandler.create_fallback_frame()
-                )
+                
+            except Exception as final_e:
+                logger.error(f"최종 폴백도 실패: {final_e}")
+                # 최종 폴백: 원본 프레임 또는 검은 화면
+                if frame is not None:
+                    return frame
+                else:
+                    return OpenCVSafeHandler.create_fallback_frame()
 
     def _perform_aggressive_memory_cleanup(self):
         """공격적 메모리 정리 (동기 함수)"""

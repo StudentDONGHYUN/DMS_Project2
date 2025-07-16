@@ -2,13 +2,13 @@
 
 ### 최근 버그 수정 (v19.0)
 
-**📅 수정일**: 2025-01-15  
+**📅 수정일**: 2025-01-15
 **🔧 수정 개수**: 5개 주요 버그 수정
 
 #### **Bug #1: Memory Leak in ThreadedVideoReader**
 - **문제**: `video_test_diagnostic.py`에서 ThreadedVideoReader가 VideoCapture 객체를 제대로 해제하지 않음
 - **증상**: 장시간 실행 시 메모리 사용량 지속 증가
-- **해결**: 
+- **해결**:
   - 안전한 리소스 정리를 위한 `_safe_cleanup()` 메서드 추가
   - 소멸자(`__del__`) 추가로 객체 삭제 시 자동 정리
   - 예외 발생 시에도 리소스 해제 보장
@@ -25,7 +25,7 @@ def stop(self):
     with self.stopped_lock:
         self.stopped = True
     self._safe_cleanup()
-    
+
 def _safe_cleanup(self):
     try:
         if self.cap:
@@ -38,7 +38,7 @@ def _safe_cleanup(self):
 #### **Bug #2: Race Condition in ThreadedVideoReader**
 - **문제**: 멀티스레딩 환경에서 `self.stopped` 변수에 대한 동기화 부족
 - **증상**: 스레드 종료 시 예측불가능한 동작, 때때로 무한 루프
-- **해결**: 
+- **해결**:
   - `self.stopped_lock` 추가로 thread-safe 접근
   - 모든 `self.stopped` 접근 시 lock 사용
 
@@ -46,7 +46,7 @@ def _safe_cleanup(self):
 # 수정 전: Race condition 위험
 while not self.stopped:  # 다른 스레드에서 동시 변경 가능
     # 처리 로직
-    
+
 # 수정 후: Thread-safe 접근
 while True:
     with self.stopped_lock:
@@ -58,7 +58,7 @@ while True:
 #### **Bug #3: Frame None Access Prevention**
 - **문제**: 프레임이 None인 상태에서 속성 접근 시 AttributeError 발생
 - **증상**: 간헐적인 시스템 크래시
-- **해결**: 
+- **해결**:
   - 모든 프레임 접근 전 None 체크 추가
   - 안전한 복사를 위한 조건부 처리
 
@@ -76,7 +76,7 @@ def get_frame(self):
 #### **Bug #4: Exception Handling in Innovation Systems**
 - **문제**: `main.py`에서 혁신 시스템 초기화 시 `feature_flags` 속성 누락으로 AttributeError 발생
 - **증상**: 시스템 시작 실패, 일부 혁신 기능 비활성화
-- **해결**: 
+- **해결**:
   - `getattr()` 사용으로 안전한 속성 접근
   - 기본값 제공으로 호환성 보장
   - 초기화 실패 시에도 시스템 계속 동작
@@ -92,16 +92,16 @@ if getattr(self.feature_flags, 's_class_advanced_features', False):
 #### **Bug #5: FeatureFlagConfig Properties**
 - **문제**: `config/settings.py`에서 main.py가 요구하는 속성들이 정의되지 않음
 - **증상**: 혁신 기능 활성화 체크 실패
-- **해결**: 
+- **해결**:
   - 누락된 속성들 (`basic_expert_systems`, `s_class_advanced_features` 등) 추가
   - 에디션별 기능 제한 후 속성 재계산
 
 ```python
 # 추가된 속성들
 self.basic_expert_systems = (
-    self.enable_face_processor and 
-    self.enable_pose_processor and 
-    self.enable_hand_processor and 
+    self.enable_face_processor and
+    self.enable_pose_processor and
+    self.enable_hand_processor and
     self.enable_object_processor
 )
 ```
@@ -171,3 +171,56 @@ cat performance_logs/summary_*.json
 #### **Bug #9: Thread Safety in Minor Utilities**
 - **문제**: 일부 유틸리티 함수에서 thread-unsafe 코드 가능성
 - **해결**: 필요시 락 추가, thread-safe 구조로 개선
+
+---
+
+### Newly Discovered Issues (2025-01-17)
+
+#### **Bug #10: Start Button Not Working**
+- **문제**: main.py의 GUI에서 시작 버튼 클릭 시 메인 프로그램이 실행되지 않음
+- **증상**: start_app() 호출 후 GUI만 닫히고 DMSApp이 시작되지 않음
+- **원인**: config 전달 문제 또는 DMSApp 초기화 실패 가능성
+
+#### **Bug #11: Missing Innovation System Modules**
+- **문제**: main.py에서 import하는 혁신 시스템 모듈들이 존재하지 않을 가능성
+- **증상**: ImportError로 DMSApp 실행 전 크래시
+- **import 된 모듈들**: AIDrivingCoach, V2DHealthcareSystem, ARHUDSystem, EmotionalCareSystem, DigitalTwinPlatform
+
+#### **Bug #12: Missing UIMode and UIState Classes**
+- **문제**: io_handler/ui.py에서 import하는 UIMode, UIState가 models/data_structures.py에 정의되지 않음
+- **증상**: ImportError로 UI 초기화 실패
+- **필요 클래스**: UIMode, UIState, EmotionState
+
+#### **Bug #13: Missing numpy Import in IntegratedDMSSystem**
+- **문제**: integrated_system.py에서 numpy를 import하지 않았지만 np를 사용함
+- **증상**: NameError: name 'np' is not defined
+- **해결**: import numpy as np 추가 필요
+
+#### **Bug #14: Missing initialize_event_system Function**
+- **문제**: events/event_bus.py에 initialize_event_system 함수가 정의되지 않음
+- **증상**: ImportError 또는 AttributeError
+- **요구사항**: 이벤트 시스템 초기화 함수 구현 필요
+
+#### **Bug #15: Missing SystemConstants Class**
+- **문제**: core/constants.py가 없거나 SystemConstants 클래스가 정의되지 않음
+- **증상**: ImportError 또는 AttributeError
+- **요구사항**: 필수 모델 파일 목록을 포함한 상수 정의 필요
+
+### Newly Discovered Issues (2025-07-15)
+
+#### **Bug #16: GUI Start 버튼 동작 시 config 미설정/예외로 인한 DMSApp 미실행**
+- **문제**: main.py의 SClass_DMS_GUI_Setup.start_app()에서 self.config가 None이거나 예외 발생 시, main() 함수에서 config가 None이 되어 DMSApp이 실행되지 않음
+- **증상**: Start 버튼 클릭 후 GUI만 닫히고 메인 프로그램이 실행되지 않음
+- **원인**: start_app()에서 self.config 미설정 또는 예외 발생 시 config가 None으로 전달됨
+- **해결**: start_app()에서 config가 항상 올바르게 설정되도록 하고, 예외 발생 시 사용자에게 안내 및 config를 None으로 두지 않도록 수정 필요
+
+### Bug Fixes (2025-07-15)
+
+- **Bug #16**: Start 버튼 동작 시 config 미설정/예외로 인한 DMSApp 미실행 문제를 해결. start_app()에서 예외 발생 시에도 config에 에러 정보를 명시적으로 기록하고, main()에서 config 오류를 감지해 사용자에게 안내하도록 수정.
+
+### Newly Discovered Issues (2025-07-15)
+
+#### **Bug #17: Broad Exception Handling Remains in Event System**
+- **문제**: events/event_bus.py 등에서 except Exception as e:로 모든 예외를 잡고 로그만 남기는 broad exception handling이 여전히 존재함
+- **증상**: 치명적 예외가 조용히 무시되어 디버깅이 어려움, 시스템 일관성 저하 가능성
+- **해결**: 구체적 예외만 처리하고, 치명적 예외는 상위로 전달하도록 수정 필요
