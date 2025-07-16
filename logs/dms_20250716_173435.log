@@ -1,0 +1,371 @@
+2025-07-16 17:34:35,273 - __main__                  - INFO     - [진단] main.py: main() 진입
+2025-07-16 17:34:35,799 - SClassDMS_v19_default     - INFO     - ✅ AI 드라이빙 코치 시스템 초기화 완료
+2025-07-16 17:34:35,799 - SClassDMS_v19_default     - INFO     - ✅ V2D 헬스케어 시스템 초기화 완료
+2025-07-16 17:34:35,799 - SClassDMS_v19_default     - INFO     - ✅ AR HUD 시스템 초기화 완료
+2025-07-16 17:34:35,799 - SClassDMS_v19_default     - INFO     - ✅ 감성 케어 시스템 초기화 완료
+2025-07-16 17:34:35,814 - SClassDMS_v19_default     - INFO     - ✅ 디지털 트윈 플랫폼 초기화 완료
+2025-07-16 17:34:35,814 - SClassDMS_v19_default     - INFO     - 혁신 시스템 초기화 완료: 5개 시스템 성공
+2025-07-16 17:34:35,814 - SClassDMS_v19_default     - INFO     - S-Class DMS v19.0 시스템 초기화 완료
+2025-07-16 17:34:35,817 - SClassDMS_v19_default     - INFO     - 사용자: default, 에디션: RESEARCH
+2025-07-16 17:34:35,817 - SClassDMS_v19_default     - INFO     - 활성화된 기능: ['Expert Systems', 'AI Coach', 'Healthcare', 'AR HUD', 'Emotional Care', 'Digital Twin']
+2025-07-16 17:35:16,902 - __main__                  - INFO     - start_app() 메서드 진입
+2025-07-16 17:35:16,902 - SClassDMS_v19_default     - INFO     - ✅ AI 드라이빙 코치 시스템 초기화 완료
+2025-07-16 17:35:16,905 - SClassDMS_v19_default     - INFO     - ✅ V2D 헬스케어 시스템 초기화 완료
+2025-07-16 17:35:16,905 - SClassDMS_v19_default     - INFO     - 혁신 시스템 초기화 완료: 2개 시스템 성공
+2025-07-16 17:35:16,905 - SClassDMS_v19_default     - INFO     - S-Class DMS v19.0 시스템 초기화 완료
+2025-07-16 17:35:16,905 - SClassDMS_v19_default     - INFO     - 사용자: default, 에디션: PRO
+2025-07-16 17:35:16,905 - SClassDMS_v19_default     - INFO     - 활성화된 기능: ['Expert Systems', 'AI Coach', 'Healthcare']
+2025-07-16 17:35:16,905 - __main__                  - INFO     - 혁신 엔진 초기화 완료: default, PRO
+2025-07-16 17:35:16,905 - __main__                  - INFO     - config 설정 완료
+2025-07-16 17:35:16,905 - __main__                  - INFO     - GUI 창 종료
+2025-07-16 17:35:16,955 - __main__                  - INFO     - S-Class 설정 완료 - 사용자: default, 에디션: PRO
+2025-07-16 17:35:16,958 - app                       - INFO     - [수정] app_fixed.py: DMSApp.__init__ 진입
+2025-07-16 17:35:16,958 - app                       - INFO     - 에디션 'PRO'에 따른 기능 설정 중...
+2025-07-16 17:35:16,960 - app                       - INFO     - 에디션 'PRO' 기능 설정 완료: {'enable_rppg': True, 'enable_saccade': True, 'enable_spinal_analysis': True, 'enable_tremor_fft': True, 'enable_bayesian_prediction': True, 'enable_emotion_ai': False, 'enable_predictive_safety': False, 'enable_biometric_fusion': False, 'enable_adaptive_thresholds': False}
+2025-07-16 17:35:16,966 - systems.performance       - INFO     - PerformanceOptimizer 초기화 완료
+2025-07-16 17:35:16,978 - systems.personalization   - INFO     - 사용자 프로필 로드됨: default
+2025-07-16 17:35:16,980 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-16 17:35:16,981 - systems.dynamic           - INFO     - DynamicAnalysisEngine 초기화 완료
+2025-07-16 17:35:16,981 - systems.backup            - INFO     - SensorBackupManager 초기화 완료
+2025-07-16 17:35:16,982 - utils.memory_monitor      - INFO     - MemoryMonitor 초기화 - 경고: 600MB, 위험: 1000MB
+2025-07-16 17:35:16,984 - io_handler.video_input    - INFO     - 운전자 연속성 설정됨: 동일 운전자
+2025-07-16 17:35:16,984 - app                       - INFO     - [수정] S-Class 시스템 초기화 완료
+2025-07-16 17:35:16,985 - app                       - INFO     - [수정] app.py: run 진입
+2025-07-16 17:35:16,988 - app                       - INFO     - [수정] app.py: run - opencv_display_loop 진입
+2025-07-16 17:35:17,002 - app                       - INFO     - [수정] 비동기 프레임 프로듀서 시작
+2025-07-16 17:35:17,003 - app                       - INFO     - [수정] S-Class DMS 시스템 초기화 시작...
+2025-07-16 17:35:17,005 - io_handler.video_input    - INFO     - [진단] video_input.initialize 진입
+2025-07-16 17:35:17,009 - io_handler.video_input    - INFO     - [진단] video_input.initialize - self.input_source=['C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0097/video/SGA5100180S0097.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0126/video/SGA5100180S0126.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0135/video/SGA5100180S0135.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0086/video/SGA5100180S0086.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0101/video/SGA5100180S0101.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0109/video/SGA5100180S0109.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0113/video/SGA5100180S0113.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0128/video/SGA5100180S0128.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0177/video/SGA5100180S0177.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0032/video/SGA5100180S0032.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0036/video/SGA5100180S0036.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0063/video/SGA5100180S0063.mp4']
+2025-07-16 17:35:17,015 - io_handler.video_input    - INFO     - 비디오 플레이리스트: 12개 파일
+2025-07-16 17:35:17,016 - io_handler.video_input    - INFO     -   1. SGA5100180S0097.mp4
+2025-07-16 17:35:17,017 - io_handler.video_input    - INFO     -   2. SGA5100180S0126.mp4
+2025-07-16 17:35:17,018 - io_handler.video_input    - INFO     -   3. SGA5100180S0135.mp4
+2025-07-16 17:35:17,018 - io_handler.video_input    - INFO     -   4. SGA5100180S0086.mp4
+2025-07-16 17:35:17,019 - io_handler.video_input    - INFO     -   5. SGA5100180S0101.mp4
+2025-07-16 17:35:17,020 - io_handler.video_input    - INFO     -   6. SGA5100180S0109.mp4
+2025-07-16 17:35:17,020 - io_handler.video_input    - INFO     -   7. SGA5100180S0113.mp4
+2025-07-16 17:35:17,020 - io_handler.video_input    - INFO     -   8. SGA5100180S0128.mp4
+2025-07-16 17:35:17,021 - io_handler.video_input    - INFO     -   9. SGA5100180S0177.mp4
+2025-07-16 17:35:17,021 - io_handler.video_input    - INFO     -   10. SGA5100180S0032.mp4
+2025-07-16 17:35:17,022 - io_handler.video_input    - INFO     -   11. SGA5100180S0036.mp4
+2025-07-16 17:35:17,023 - io_handler.video_input    - INFO     -   12. SGA5100180S0063.mp4
+2025-07-16 17:35:17,027 - io_handler.video_input    - INFO     - 비디오 파일 정보: SGA5100180S0097.mp4 (0.96MB, .mp4)
+2025-07-16 17:35:17,028 - io_handler.video_input    - INFO     - Windows/개발 환경: 표준 파일 디코더 사용
+2025-07-16 17:35:17,031 - io_handler.video_input    - INFO     - FFMPEG 백엔드로 시도 중...
+2025-07-16 17:35:17,269 - io_handler.video_input    - INFO     - ✅ FFMPEG 백엔드로 성공 (테스트 프레임: (720, 1280, 3))
+2025-07-16 17:35:17,269 - io_handler.video_input    - INFO     - 비디오 속성: 1280x720, 30.00fps, 114프레임, 3.8초
+2025-07-16 17:35:17,269 - io_handler.video_input    - INFO     - 비디오 코덱: h264
+2025-07-16 17:35:17,269 - io_handler.video_input    - INFO     - [진단] VideoCapture backend: FFMPEG, codec: h264, 총 프레임: 114
+2025-07-16 17:35:17,273 - io_handler.video_input    - INFO     - VideoCapture 객체 성공적으로 생성됨
+2025-07-16 17:35:17,273 - io_handler.video_input    - INFO     - [진단] VideoCapture backend: FFMPEG, codec: h264, 총 프레임: 114
+2025-07-16 17:35:17,273 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 진입
+2025-07-16 17:35:17,273 - io_handler.video_input    - INFO     - 리더 스레드 시작 대기 중...
+2025-07-16 17:35:17,802 - io_handler.video_input    - INFO     - 첫 번째 프레임 대기 중 (최대 5.0초)...
+2025-07-16 17:35:17,833 - io_handler.video_input    - INFO     - ✅ 첫 번째 프레임 수신 성공
+2025-07-16 17:35:17,833 - io_handler.video_input    - INFO     - ✅ 입력 소스 초기화 및 스레드 시작 완료
+2025-07-16 17:35:17,833 - events.event_bus          - INFO     - EventBus 초기화 완료 - 중추 신경계 가동 시작
+2025-07-16 17:35:17,833 - events.event_bus          - INFO     - 동기 이벤트 시스템 기본 초기화 완료 - 비동기 시작은 대기 중
+2025-07-16 17:35:17,833 - events.event_bus          - INFO     - EventBus 시작됨 - 모든 우선순위 큐 처리 시작
+2025-07-16 17:35:17,833 - events.event_bus          - INFO     - 기존 EventBus 인스턴스 시작 완료
+2025-07-16 17:35:17,833 - app                       - INFO     - ✅ 이벤트 시스템 초기화 완료
+2025-07-16 17:35:17,833 - systems.metrics_manager   - INFO     - MetricsManager 초기화 완료 - 히스토리 크기: 900
+2025-07-16 17:35:17,833 - integration.integrated_system - INFO     - 새로운 시스템 초기화 시작 - 성능 우선 전략
+2025-07-16 17:35:17,833 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 시작: standard
+2025-07-16 17:35:17,833 - analysis.factory.analysis_factory - INFO     - 지원 기능: advanced_drowsiness_detection, multi_level_distraction_detection, precise_head_pose_tracking, gaze_zone_classification, emotion_recognition...
+2025-07-16 17:35:17,833 - analysis.factory.analysis_factory - INFO     - 표준 성능 DMS 시스템 생성 중...
+2025-07-16 17:35:17,833 - analysis.fusion.fusion_engine_advanced - INFO     - MultiModalFusionEngine (S-Class) 초기화 완료 - 디지털 신경과학자 준비됨
+2025-07-16 17:35:18,020 - analysis.drowsiness       - INFO     - EnhancedDrowsinessDetector 초기화 완료
+2025-07-16 17:35:18,020 - analysis.emotion          - INFO     - EmotionRecognitionSystem 초기화 완료
+2025-07-16 17:35:18,300 - analysis.gaze             - INFO     - GazeZoneClassifier 초기화: 11개 구역 정의됨, mode=3d
+2025-07-16 17:35:18,300 - analysis.identity         - INFO     - 1명의 운전자 프로필 로드됨
+2025-07-16 17:35:18,300 - analysis.identity         - INFO     - DriverIdentificationSystem 초기화 완료
+2025-07-16 17:35:18,316 - analysis.processors.face_processor - INFO     - FaceDataProcessor initialized - Digital Psychologist ready
+2025-07-16 17:35:18,316 - analysis.processors.pose_processor - INFO     - PoseDataProcessor initialized - Digital Biomechanics Expert ready
+2025-07-16 17:35:18,318 - analysis.processors.hand_processor - INFO     - HandDataProcessor initialized - Expert Kinematics Analyst ready
+2025-07-16 17:35:18,319 - analysis.processors.object_processor - INFO     - ObjectDataProcessor initialized - Digital Behavior Prediction Expert ready
+2025-07-16 17:35:18,320 - analysis.orchestrator.orchestrator_advanced - INFO     - AnalysisOrchestrator (S-Class) 초기화 완료 - 지능형 지휘자 준비됨
+2025-07-16 17:35:18,320 - analysis.factory.analysis_factory - INFO     - 표준 DMS 시스템 생성 완료 - 균형 모드 활성화
+2025-07-16 17:35:18,323 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 완료: standard
+2025-07-16 17:35:18,324 - integration.integrated_system - INFO     - ✅ 새로운 standard 시스템 생성 완료
+2025-07-16 17:35:18,326 - integration.integrated_system - INFO     - IntegratedDMSSystem 초기화 완료 - 타입: standard, 레거시: False
+2025-07-16 17:35:18,327 - app                       - INFO     - IntegratedDMSSystem 초기화 시작...
+2025-07-16 17:35:18,333 - events.event_bus          - WARNING  - 이벤트 시스템이 이미 실행 중입니다
+2025-07-16 17:35:18,333 - events.handlers           - INFO     - SafetyEventHandler 초기화 완료 - 안전 모니터링 시작
+2025-07-16 17:35:18,335 - events.event_bus          - INFO     - 글로벌 핸들러 등록: SafetyEventHandler
+2025-07-16 17:35:18,335 - events.handlers           - INFO     - AnalyticsEventHandler 초기화 완료 - 성능 모니터링 시작
+2025-07-16 17:35:18,335 - events.event_bus          - INFO     - 글로벌 핸들러 등록: AnalyticsEventHandler
+2025-07-16 17:35:18,335 - systems.metrics_manager   - INFO     - StateManager와 연결됨
+2025-07-16 17:35:18,335 - core.state_manager        - INFO     - MetricsManager와 연결됨
+2025-07-16 17:35:18,340 - integration.integrated_system - INFO     - IntegratedDMSSystem 비동기 초기화 완료
+2025-07-16 17:35:18,341 - app                       - INFO     - IntegratedDMSSystem 초기화 완료
+2025-07-16 17:35:18,342 - app                       - INFO     - MediaPipe 매니저 초기화 시작...
+2025-07-16 17:35:18,342 - systems.mediapipe_manager - INFO     - AdvancedMediaPipeManager 초기화 시작...
+2025-07-16 17:35:18,343 - systems.mediapipe_manager - INFO     - MediaPipe 모듈 로드 성공 - 버전: 0.10.21
+2025-07-16 17:35:18,344 - systems.mediapipe_manager - INFO     - 모델 디렉토리: C:\Users\HKIT\Desktop\DMS_Project2\models
+2025-07-16 17:35:18,348 - systems.mediapipe_manager - WARNING  - Holistic Landmarker 모델 파일을 찾을 수 없습니다: models\holistic_landmarker.task
+2025-07-16 17:35:18,350 - systems.mediapipe_manager - INFO     - AdvancedMediaPipeManager v2.0 (최적화) 초기화 완료
+2025-07-16 17:35:18,350 - app                       - INFO     - MediaPipe 매니저 초기화 완료
+2025-07-16 17:35:18,350 - app                       - INFO     - MediaPipe 모델 로딩 시작...
+2025-07-16 17:35:18,351 - systems.mediapipe_manager - INFO     - 모델 파일 로드 중: models\face_landmarker.task (3.58MB)
+2025-07-16 17:35:18,352 - systems.mediapipe_manager - INFO     - CPU delegate 적용: Windows
+2025-07-16 17:35:18,644 - systems.mediapipe_manager - INFO     - ✅ face_landmarker 초기화 완료
+2025-07-16 17:35:18,650 - systems.mediapipe_manager - INFO     - 모델 파일 로드 중: models\pose_landmarker_full.task (8.96MB)
+2025-07-16 17:35:18,650 - systems.mediapipe_manager - INFO     - CPU delegate 적용: Windows
+2025-07-16 17:35:19,237 - systems.mediapipe_manager - INFO     - ✅ pose_landmarker 초기화 완료
+2025-07-16 17:35:19,237 - systems.mediapipe_manager - INFO     - 모델 파일 로드 중: models\hand_landmarker.task (7.46MB)
+2025-07-16 17:35:19,237 - systems.mediapipe_manager - INFO     - CPU delegate 적용: Windows
+2025-07-16 17:35:19,415 - systems.mediapipe_manager - INFO     - ✅ hand_landmarker 초기화 완료
+2025-07-16 17:35:19,415 - systems.mediapipe_manager - INFO     - 모델 파일 로드 중: models\gesture_recognizer.task (7.99MB)
+2025-07-16 17:35:19,415 - systems.mediapipe_manager - INFO     - CPU delegate 적용: Windows
+2025-07-16 17:35:19,602 - systems.mediapipe_manager - INFO     - ✅ gesture_recognizer 초기화 완료
+2025-07-16 17:35:19,617 - systems.mediapipe_manager - INFO     - 모델 파일 로드 중: models\efficientdet_lite0.tflite (13.20MB)
+2025-07-16 17:35:19,617 - systems.mediapipe_manager - INFO     - CPU delegate 적용: Windows
+2025-07-16 17:35:19,802 - systems.mediapipe_manager - INFO     - ✅ object_detector 초기화 완료
+2025-07-16 17:35:19,802 - systems.mediapipe_manager - ERROR    - holistic_landmarker 설정 없음
+2025-07-16 17:35:19,802 - systems.mediapipe_manager - INFO     - 콜백 처리 스레드 시작 준비...
+2025-07-16 17:35:19,802 - systems.mediapipe_manager - INFO     - 콜백 처리 스레드 시작
+2025-07-16 17:35:19,802 - systems.mediapipe_manager - INFO     - 콜백 처리 스레드 시작됨
+2025-07-16 17:35:19,802 - systems.mediapipe_manager - INFO     - Task 초기화 완료: 5/6
+2025-07-16 17:35:19,802 - app                       - INFO     - MediaPipe 모델 로딩 완료: {<TaskType.FACE_LANDMARKER: 'face_landmarker'>: True, <TaskType.POSE_LANDMARKER: 'pose_landmarker'>: True, <TaskType.HAND_LANDMARKER: 'hand_landmarker'>: True, <TaskType.GESTURE_RECOGNIZER: 'gesture_recognizer'>: True, <TaskType.OBJECT_DETECTOR: 'object_detector'>: True, <TaskType.HOLISTIC_LANDMARKER: 'holistic_landmarker'>: False}
+2025-07-16 17:35:19,802 - app                       - WARNING  - 초기화 실패한 모델들: [<TaskType.HOLISTIC_LANDMARKER: 'holistic_landmarker'>]
+2025-07-16 17:35:19,802 - app                       - INFO     - IntegratedCallbackAdapter (수정) 초기화 완료
+2025-07-16 17:35:19,816 - app                       - INFO     - [수정] S-Class DMS 시스템 초기화 완료
+2025-07-16 17:35:19,816 - app                       - INFO     - [수정] S-Class DMS 시스템 초기화 완료
+2025-07-16 17:35:19,929 - app                       - INFO     - 비동기 프레임 처리 루프 시작
+2025-07-16 17:35:19,998 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:19,999 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:20,001 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:20,008 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:20,010 - integration.integrated_system - INFO     - 성능 리포트 - 평균 처리시간: 12.3ms, FPS: 81.4
+2025-07-16 17:35:20,173 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:20,178 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:20,178 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:20,189 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:20,318 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:20,334 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:20,334 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:20,350 - systems.metrics_manager   - WARNING  - 경고 발생 - distraction: warning (값: 0.300)
+2025-07-16 17:35:20,350 - core.state_manager        - WARNING  - 경고 수신: distraction - warning (값: 0.300)
+2025-07-16 17:35:20,350 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:20,420 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:20,433 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:20,434 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:20,457 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:20,660 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:20,666 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:20,667 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:20,669 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:20,705 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:20,800 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:20,905 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:21,115 - systems.metrics_manager   - WARNING  - 경고 발생 - distraction: danger (값: 0.600)
+2025-07-16 17:35:21,117 - core.state_manager        - WARNING  - 경고 수신: distraction - danger (값: 0.600)
+2025-07-16 17:35:21,124 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:21,207 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:21,213 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:21,220 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:21,225 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:21,259 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:21,267 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:21,270 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:21,271 - systems.metrics_manager   - WARNING  - 경고 발생 - distraction: critical (값: 0.800)
+2025-07-16 17:35:21,272 - core.state_manager        - WARNING  - 경고 수신: distraction - critical (값: 0.800)
+2025-07-16 17:35:21,273 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:21,299 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:21,345 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:21,347 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:21,352 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:21,400 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:21,421 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:21,454 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:21,458 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:21,507 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:21,523 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:21,527 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:21,532 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:21,590 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:21,595 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:21,598 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:21,607 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:21,638 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:21,652 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:21,655 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:21,657 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:21,705 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:21,724 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:21,725 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:21,727 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:21,755 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:21,778 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:21,778 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:21,780 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:21,821 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:21,827 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:21,829 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:21,956 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:22,043 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:22,051 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:22,063 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:22,190 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:22,251 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:22,293 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:22,390 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:22,420 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:22,482 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:22,557 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:22,599 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:22,781 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:22,958 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:22,985 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:23,041 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:23,069 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:23,381 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:23,613 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:23,751 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:23,817 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:23,922 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:23,985 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:23,990 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:24,003 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:24,143 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:24,569 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:24,918 - io_handler.video_input    - WARNING  - [진단] video_input._reader_thread: 프레임 획득 실패 (ret=False)
+2025-07-16 17:35:24,941 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:24,985 - io_handler.video_input    - INFO     - 비디오 파일 정보: SGA5100180S0126.mp4 (1.05MB, .mp4)
+2025-07-16 17:35:25,178 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:25,178 - io_handler.video_input    - INFO     - Windows/개발 환경: 표준 파일 디코더 사용
+2025-07-16 17:35:25,268 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:25,331 - io_handler.video_input    - INFO     - FFMPEG 백엔드로 시도 중...
+2025-07-16 17:35:25,520 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:25,602 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:25,602 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:25,680 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:25,682 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:25,683 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:25,684 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:25,688 - io_handler.video_input    - INFO     - ✅ FFMPEG 백엔드로 성공 (테스트 프레임: (720, 1280, 3))
+2025-07-16 17:35:25,688 - io_handler.video_input    - INFO     - 비디오 속성: 1280x720, 30.00fps, 129프레임, 4.3초
+2025-07-16 17:35:25,688 - io_handler.video_input    - INFO     - 비디오 코덱: h264
+2025-07-16 17:35:25,704 - io_handler.video_input    - INFO     - 다음 비디오 로드 (RB2 최적화): SGA5100180S0126.mp4
+2025-07-16 17:35:25,753 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:25,846 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:25,861 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:25,874 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:25,950 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:25,957 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:25,959 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:25,964 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:26,076 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:26,190 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:26,205 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:26,279 - systems.metrics_manager   - WARNING  - 경고 발생 - distraction: critical (값: 1.000)
+2025-07-16 17:35:26,310 - core.state_manager        - WARNING  - 경고 수신: distraction - critical (값: 1.000)
+2025-07-16 17:35:26,439 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:26,518 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:26,598 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:26,603 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:26,608 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:26,683 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:26,708 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:26,765 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:26,773 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:26,869 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:26,874 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:26,876 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:26,883 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:26,974 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:27,123 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:27,138 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:27,143 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:27,250 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:27,340 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:27,381 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:27,397 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:27,466 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:27,541 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:27,541 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:27,555 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:27,617 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:27,672 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:27,672 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:27,688 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:27,783 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:27,900 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:27,909 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:27,940 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:28,067 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:28,132 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:28,148 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:28,148 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:28,301 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:28,391 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:28,406 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:28,460 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:28,568 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:28,688 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:28,704 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:28,770 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:28,835 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:28,926 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:29,007 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:29,106 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:29,207 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:29,283 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:29,287 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:29,287 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:29,409 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:29,460 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:29,476 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:29,476 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:29,666 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:29,682 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:29,682 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:29,682 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:29,764 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:29,879 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:29,879 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:29,879 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:29,976 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:29,992 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:29,992 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:30,005 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:30,017 - app                       - WARNING  - 성능 최적화: 긴급 모드 (4.5 FPS)
+2025-07-16 17:35:30,084 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:30,105 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:30,118 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:30,139 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:30,231 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:30,299 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:30,299 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:30,338 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:30,649 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 17:35:30,664 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 17:35:30,817 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 17:35:30,931 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 17:35:31,078 - app                       - INFO     - 비동기 프레임 처리 루프 종료
+2025-07-16 17:35:31,189 - systems.mediapipe_manager - INFO     - MediaPipe Manager 정리 시작...
+2025-07-16 17:35:31,227 - systems.mediapipe_manager - INFO     - 콜백 처리 스레드 종료
+2025-07-16 17:35:31,268 - systems.mediapipe_manager - INFO     - ✅ face_landmarker 정리 완료
+2025-07-16 17:35:31,404 - systems.mediapipe_manager - INFO     - ✅ pose_landmarker 정리 완료
+2025-07-16 17:35:31,619 - systems.mediapipe_manager - INFO     - ✅ hand_landmarker 정리 완료
+2025-07-16 17:35:31,667 - systems.mediapipe_manager - INFO     - ✅ gesture_recognizer 정리 완료
+2025-07-16 17:35:32,869 - io_handler.video_input    - WARNING  - [진단] video_input._reader_thread: 프레임 획득 실패 (ret=False)
+2025-07-16 17:35:32,893 - io_handler.video_input    - INFO     - 비디오 파일 정보: SGA5100180S0135.mp4 (0.79MB, .mp4)
+2025-07-16 17:35:32,894 - io_handler.video_input    - INFO     - Windows/개발 환경: 표준 파일 디코더 사용
+2025-07-16 17:35:32,896 - io_handler.video_input    - INFO     - FFMPEG 백엔드로 시도 중...
+2025-07-16 17:35:32,970 - io_handler.video_input    - INFO     - ✅ FFMPEG 백엔드로 성공 (테스트 프레임: (720, 1280, 3))
+2025-07-16 17:35:32,970 - io_handler.video_input    - INFO     - 비디오 속성: 1280x720, 30.00fps, 113프레임, 3.8초
+2025-07-16 17:35:32,970 - io_handler.video_input    - INFO     - 비디오 코덱: h264
+2025-07-16 17:35:32,970 - io_handler.video_input    - INFO     - 다음 비디오 로드 (RB2 최적화): SGA5100180S0135.mp4
+2025-07-16 17:35:33,753 - systems.mediapipe_manager - INFO     - ✅ object_detector 정리 완료
+2025-07-16 17:35:33,793 - systems.mediapipe_manager - INFO     - MediaPipe Manager 정리 완료
+2025-07-16 17:35:33,793 - integration.integrated_system - INFO     - IntegratedDMSSystem 종료 시작
+2025-07-16 17:35:33,793 - events.event_bus          - INFO     - EventBus 종료 중...
+2025-07-16 17:35:33,809 - events.event_bus          - INFO     - LOW 우선순위 큐 처리 취소됨: 
+2025-07-16 17:35:33,813 - events.event_bus          - INFO     - HIGH 우선순위 큐 처리 취소됨: 
+2025-07-16 17:35:33,814 - events.event_bus          - INFO     - CRITICAL 우선순위 큐 처리 취소됨: 
+2025-07-16 17:35:33,815 - events.event_bus          - INFO     - EMERGENCY 우선순위 큐 처리 취소됨: 
+2025-07-16 17:35:33,817 - events.event_bus          - INFO     - EventBus 종료 완료
+2025-07-16 17:35:33,817 - events.event_bus          - INFO     - 글로벌 이벤트 시스템 종료 완료
+2025-07-16 17:35:33,818 - integration.integrated_system - INFO     - 최종 성능 리포트 - 총 48프레임, 평균 157.1ms
+2025-07-16 17:35:33,818 - integration.integrated_system - INFO     - IntegratedDMSSystem 종료 완료

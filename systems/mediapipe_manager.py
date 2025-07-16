@@ -1,6 +1,7 @@
 """
 S-Class DMS v19+ 차세대 MediaPipe Tasks Manager
 최신 MediaPipe Tasks API (0.10.9+) 적용
+(수정본: origin 파일의 세부 파라미터 적용)
 
 NOTE: Python API에서는 GPU delegate를 명시적으로 지정할 수 없습니다.
 시스템에 CUDA/TF Lite delegate가 설치되어 있으면 자동 활용됩니다.
@@ -52,20 +53,31 @@ class TaskConfig:
 
     task_type: TaskType
     model_path: str
-    # 공통 파라미터
     running_mode: str = "LIVE_STREAM"  # "IMAGE", "VIDEO", "LIVE_STREAM"
-    # Object Detector 파라미터
-    max_results: int = 1
-    score_threshold: float = 0.5
+
     # Face Landmarker 파라미터
     num_faces: int = 1
     output_face_blendshapes: bool = False
     output_facial_transformation_matrixes: bool = False
+
     # Pose Landmarker 파라미터
     num_poses: int = 1
+    min_pose_detection_confidence: float = 0.5
+    min_pose_presence_confidence: float = 0.5
+    min_tracking_confidence: float = 0.5  # Hand, Pose 공통 사용 가능
     output_segmentation_masks: bool = False
+
     # Hand Landmarker 파라미터
     num_hands: int = 2
+    min_hand_detection_confidence: float = 0.5
+    min_hand_presence_confidence: float = 0.5
+
+    # Object Detector 파라미터
+    max_results: int = 5
+    score_threshold: float = 0.5
+    category_allowlist: Optional[List[str]] = None
+
+    # Holistic Landmarker는 별도 파라미터가 적어 생략 (필요시 추가 가능)
 
 
 class AdvancedMediaPipeManager:
@@ -114,6 +126,7 @@ class AdvancedMediaPipeManager:
         self.ensure_model_directory()
 
         # 비동기 처리 스레드
+        self.main_loop = None  # ◀◀◀ [수정] 메인 이벤트 루프를 저장할 변수 추가
         self.callback_thread = None
         self.running = False
 
@@ -134,9 +147,9 @@ class AdvancedMediaPipeManager:
         logger.info(f"모델 디렉토리: {self.model_base_path.absolute()}")
 
     def _load_default_configs(self):
-        """기본 Task 설정 로드"""
+        """기본 Task 설정 로드 (origin 파일의 세부 설정 반영)"""
 
-        # Face Landmarker 설정 (MediaPipe 0.10.21 API)
+        # Face Landmarker 설정
         self.task_configs[TaskType.FACE_LANDMARKER] = TaskConfig(
             task_type=TaskType.FACE_LANDMARKER,
             model_path=str(self.model_base_path / "face_landmarker.task"),
@@ -146,24 +159,32 @@ class AdvancedMediaPipeManager:
             running_mode="LIVE_STREAM",
         )
 
-        # Pose Landmarker 설정 (MediaPipe 0.10.21 API)
+        # Pose Landmarker 설정 (origin의 full 모델 및 신뢰도 값 반영)
         self.task_configs[TaskType.POSE_LANDMARKER] = TaskConfig(
             task_type=TaskType.POSE_LANDMARKER,
-            model_path=str(self.model_base_path / "pose_landmarker_heavy.task"),
+            model_path=str(
+                self.model_base_path / "pose_landmarker_full.task"
+            ),  # 모델 경로 수정
             num_poses=1,
+            min_pose_detection_confidence=0.7,  # 신뢰도 값 추가
+            min_pose_presence_confidence=0.9,  # 신뢰도 값 추가
+            min_tracking_confidence=0.8,  # 신뢰도 값 추가
             output_segmentation_masks=True,
             running_mode="LIVE_STREAM",
         )
 
-        # Hand Landmarker 설정 (MediaPipe 0.10.21 API)
+        # Hand Landmarker 설정 (origin의 신뢰도 값 반영)
         self.task_configs[TaskType.HAND_LANDMARKER] = TaskConfig(
             task_type=TaskType.HAND_LANDMARKER,
             model_path=str(self.model_base_path / "hand_landmarker.task"),
             num_hands=2,
+            min_hand_detection_confidence=0.4,  # 신뢰도 값 추가
+            min_hand_presence_confidence=0.5,  # 신뢰도 값 추가
+            min_tracking_confidence=0.7,  # 신뢰도 값 추가
             running_mode="LIVE_STREAM",
         )
 
-        # Gesture Recognizer 설정 (MediaPipe 0.10.21 API)
+        # Gesture Recognizer 설정
         self.task_configs[TaskType.GESTURE_RECOGNIZER] = TaskConfig(
             task_type=TaskType.GESTURE_RECOGNIZER,
             model_path=str(self.model_base_path / "gesture_recognizer.task"),
@@ -171,23 +192,31 @@ class AdvancedMediaPipeManager:
             running_mode="LIVE_STREAM",
         )
 
-        # Object Detector 설정 (MediaPipe 0.10.21 API)
+        # Object Detector 설정 (origin의 허용 목록 반영)
         self.task_configs[TaskType.OBJECT_DETECTOR] = TaskConfig(
             task_type=TaskType.OBJECT_DETECTOR,
             model_path=str(self.model_base_path / "efficientdet_lite0.tflite"),
             max_results=5,
             score_threshold=0.3,
+            category_allowlist=[
+                "cell phone",
+                "cup",
+                "bottle",
+                "sandwich",
+                "book",
+                "laptop",
+            ],  # 허용 목록 추가
             running_mode="LIVE_STREAM",
         )
 
-        # Holistic Landmarker 설정 (최신 통합 모델) - 파일 존재 시에만 추가
+        # Holistic Landmarker 설정
         holistic_model_path = self.model_base_path / "holistic_landmarker.task"
         if holistic_model_path.exists():
             self.task_configs[TaskType.HOLISTIC_LANDMARKER] = TaskConfig(
                 task_type=TaskType.HOLISTIC_LANDMARKER,
                 model_path=str(holistic_model_path),
-                min_detection_confidence=0.5,
-                min_tracking_confidence=0.5,
+                # min_detection_confidence=0.5,  # TaskConfig에 없는 파라미터는 여기서 직접 사용
+                # min_tracking_confidence=0.5,
             )
         else:
             logger.warning(
@@ -303,19 +332,22 @@ class AdvancedMediaPipeManager:
         return vision.FaceLandmarker.create_from_options(options)
 
     async def _initialize_pose_landmarker(self, base_options, config):
-        """Pose Landmarker 초기화 (MediaPipe 0.10.21 API)"""
+        """Pose Landmarker 초기화 (세부 파라미터 적용)"""
         from mediapipe.tasks.python import vision
 
-        # running_mode 변환
-        if hasattr(config, "running_mode") and config.running_mode == "LIVE_STREAM":
-            running_mode = vision.RunningMode.LIVE_STREAM
-        else:
-            running_mode = vision.RunningMode.LIVE_STREAM
+        running_mode = vision.RunningMode.LIVE_STREAM
 
         options = vision.PoseLandmarkerOptions(
             base_options=base_options,
             running_mode=running_mode,
             num_poses=getattr(config, "num_poses", 1),
+            min_pose_detection_confidence=getattr(
+                config, "min_pose_detection_confidence", 0.5
+            ),
+            min_pose_presence_confidence=getattr(
+                config, "min_pose_presence_confidence", 0.5
+            ),
+            min_tracking_confidence=getattr(config, "min_tracking_confidence", 0.5),
             output_segmentation_masks=getattr(
                 config, "output_segmentation_masks", True
             ),
@@ -324,19 +356,22 @@ class AdvancedMediaPipeManager:
         return vision.PoseLandmarker.create_from_options(options)
 
     async def _initialize_hand_landmarker(self, base_options, config):
-        """Hand Landmarker 초기화 (MediaPipe 0.10.21 API)"""
+        """Hand Landmarker 초기화 (세부 파라미터 적용)"""
         from mediapipe.tasks.python import vision
 
-        # running_mode 변환
-        if hasattr(config, "running_mode") and config.running_mode == "LIVE_STREAM":
-            running_mode = vision.RunningMode.LIVE_STREAM
-        else:
-            running_mode = vision.RunningMode.LIVE_STREAM
+        running_mode = vision.RunningMode.LIVE_STREAM
 
         options = vision.HandLandmarkerOptions(
             base_options=base_options,
             running_mode=running_mode,
             num_hands=getattr(config, "num_hands", 2),
+            min_hand_detection_confidence=getattr(
+                config, "min_hand_detection_confidence", 0.5
+            ),
+            min_hand_presence_confidence=getattr(
+                config, "min_hand_presence_confidence", 0.5
+            ),
+            min_tracking_confidence=getattr(config, "min_tracking_confidence", 0.5),
             result_callback=self._create_result_callback(TaskType.HAND_LANDMARKER),
         )
         return vision.HandLandmarker.create_from_options(options)
@@ -360,20 +395,17 @@ class AdvancedMediaPipeManager:
         return vision.GestureRecognizer.create_from_options(options)
 
     async def _initialize_object_detector(self, base_options, config):
-        """Object Detector 초기화 (MediaPipe 0.10.21 API)"""
+        """Object Detector 초기화 (세부 파라미터 적용)"""
         from mediapipe.tasks.python import vision
 
-        # running_mode 변환
-        if hasattr(config, "running_mode") and config.running_mode == "LIVE_STREAM":
-            running_mode = vision.RunningMode.LIVE_STREAM
-        else:
-            running_mode = vision.RunningMode.LIVE_STREAM
+        running_mode = vision.RunningMode.LIVE_STREAM
 
         options = vision.ObjectDetectorOptions(
             base_options=base_options,
             running_mode=running_mode,
             max_results=getattr(config, "max_results", 5),
             score_threshold=getattr(config, "score_threshold", 0.3),
+            category_allowlist=getattr(config, "category_allowlist", None),
             result_callback=self._create_result_callback(TaskType.OBJECT_DETECTOR),
         )
         return vision.ObjectDetector.create_from_options(options)
@@ -443,6 +475,7 @@ class AdvancedMediaPipeManager:
         if not self.callback_thread or not self.callback_thread.is_alive():
             logger.info("콜백 처리 스레드 시작 준비...")
             self.running = True
+            self.main_loop = asyncio.get_running_loop()  # ◀◀◀ [수정] 메인 루프 가져오기
             self.callback_thread = threading.Thread(
                 target=self._process_callbacks, daemon=True
             )
@@ -456,36 +489,31 @@ class AdvancedMediaPipeManager:
         return results
 
     def _process_callbacks(self):
-        """비동기 콜백 처리"""
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
-
+        """비동기 콜백 처리 (수정: run_coroutine_threadsafe 사용)"""
         logger.info("콜백 처리 스레드 시작")
 
         while self.running:
             try:
+                # 큐에서 결과 가져오기
                 task_type, result, timestamp = self.result_queue.get(timeout=1.0)
 
                 if task_type == "shutdown":
                     break
 
-                # Analysis engine으로 결과 전달
-                if self.analysis_engine is not None:
-                    try:
-                        loop.run_until_complete(
-                            self._forward_result_to_analysis_engine(
-                                task_type, result, timestamp
-                            )
-                        )
-                    except Exception as e:
-                        logger.error(f"Analysis engine 전달 중 오류: {e}")
+                # Analysis engine으로 결과 전달 (메인 이벤트 루프에서 실행하도록 스케줄링)
+                if self.analysis_engine and self.main_loop:
+                    asyncio.run_coroutine_threadsafe(
+                        self._forward_result_to_analysis_engine(
+                            task_type, result, timestamp
+                        ),
+                        self.main_loop,
+                    )
 
             except queue.Empty:
                 continue
             except Exception as e:
-                logger.error(f"콜백 처리 오류: {e}")
+                logger.error(f"콜백 처리 스레드에서 예외 발생: {e}")
 
-        loop.close()
         logger.info("콜백 처리 스레드 종료")
 
     async def _forward_result_to_analysis_engine(
@@ -625,27 +653,105 @@ class AdvancedMediaPipeManager:
         results[TaskType.HAND_LANDMARKER] = hand_result
         return results
 
-    def extract_face_roi(self, pose_result, frame):
-        # 예시: 코, 눈, 귀 등 keypoint 평균으로 얼굴 bbox 산출
-        # 실제 구현은 pose_result의 landmark 구조에 맞게 보정 필요
+    # mediapipe_manager.py 파일의 extract_face_roi 메서드를 아래 코드로 교체하세요.
+
+    def extract_face_roi(self, pose_result: Any, frame: np.ndarray) -> Optional[tuple]:
+        """포즈 랜드마크로부터 얼굴의 관심 영역(ROI)을 추출합니다.
+
+        MediaPipe Pose v2 모델의 얼굴(0-10) 및 어깨(11-12) 랜드마크를
+        사용하여 얼굴 영역의 경계 상자를 정밀하게 계산합니다. 이 메서드는
+        얼굴의 방향(정면/측면)을 자동으로 감지하여 적합한 ROI 추출 전략을 사용합니다.
+
+        Args:
+            pose_result (Any): MediaPipe PoseLandmarker의 결과 객체.
+            frame (np.ndarray): ROI를 추출할 원본 비디오 프레임.
+
+        Returns:
+            Optional[tuple]: (x_min, y_min, x_max, y_max) 형태의
+            얼굴 ROI 픽셀 좌표 튜플. 감지 실패 시 None을 반환합니다.
+
+        개선사항: 어깨 랜드마크를 참조하여 ROI의 하단 경계를 제한, 정확도 향상.
+        """
+        VISIBILITY_THRESHOLD = 0.65  # 랜드마크 가시성 임계값
+
         try:
-            if (
-                not hasattr(pose_result, "pose_landmarks")
-                or not pose_result.pose_landmarks
-            ):
+            # 포즈 랜드마크 결과가 없으면 아무것도 하지 않음
+            if not getattr(pose_result, "pose_landmarks", None):
                 return None
-            landmarks = pose_result.pose_landmarks[0]  # 첫 번째 사람
-            # 코(0), 왼눈(1), 오른눈(2), 왼귀(3), 오른귀(4) 등 사용
-            xs = [l.x for l in landmarks[:5]]
-            ys = [l.y for l in landmarks[:5]]
+
+            landmarks = pose_result.pose_landmarks[0]
             h, w = frame.shape[:2]
-            x_min = max(0, int(min(xs) * w) - 20)
-            x_max = min(w, int(max(xs) * w) + 20)
-            y_min = max(0, int(min(ys) * h) - 20)
-            y_max = min(h, int(max(ys) * h) + 20)
-            return (x_min, y_min, x_max, y_max)
+
+            # 1. 얼굴 방향 진단: 양쪽 귀의 가시성을 확인
+            left_ear_visible = landmarks[7].visibility > VISIBILITY_THRESHOLD
+            right_ear_visible = landmarks[8].visibility > VISIBILITY_THRESHOLD
+
+            x_min, y_min, x_max, y_max = 0.0, 0.0, 0.0, 0.0
+
+            # 2. 계산 전략 분기
+            if left_ear_visible and right_ear_visible:
+                # [전략 A: 정면] 모든 얼굴 랜드마크를 사용해 정밀 계산
+                logger.debug("정면 얼굴 감지, ROI 정밀 계산")
+                face_indices = list(range(11))
+                face_landmarks = [landmarks[i] for i in face_indices]
+
+                x_coords = [lm.x for lm in face_landmarks]
+                y_coords = [lm.y for lm in face_landmarks]
+                x_min, x_max = min(x_coords), max(x_coords)
+                y_min, y_max = min(y_coords), max(y_coords)
+
+                shoulder_y = (landmarks[11].y + landmarks[12].y) / 2
+
+                padding_w = (x_max - x_min) * 0.15
+                padding_h = (y_max - y_min) * 0.15
+                x_min -= padding_w
+                x_max += padding_w
+                y_min -= padding_h
+                y_max += padding_h
+                y_max = min(y_max, shoulder_y)
+
+            elif left_ear_visible != right_ear_visible:
+                # [전략 B: 측면] 어깨너비를 기준으로 얼굴 크기 추정
+                logger.debug("측면 얼굴 감지, ROI 추정 계산")
+                shoulder_vec = np.array(
+                    [
+                        landmarks[11].x - landmarks[12].x,
+                        landmarks[11].y - landmarks[12].y,
+                    ]
+                )
+                shoulder_dist = np.linalg.norm(shoulder_vec)
+
+                # 얼굴 크기를 어깨너비의 비율로 추정
+                face_width_ratio = 0.7
+                face_height_ratio = 0.8
+                roi_width = shoulder_dist * face_width_ratio
+                roi_height = shoulder_dist * face_height_ratio
+
+                # 코를 중심으로 ROI 설정
+                nose = landmarks[0]
+                x_min = nose.x - roi_width / 2
+                x_max = nose.x + roi_width / 2
+                y_min = nose.y - roi_height / 2
+                y_max = nose.y + roi_height / 2
+
+            else:
+                # 양쪽 귀가 모두 보이지 않으면(예: 뒷모습) ROI 추출 실패 처리
+                logger.warning("얼굴 방향 특정 불가 (양쪽 귀 Failsafe)")
+                return None
+
+            # 3. 최종 좌표 변환 및 안전 확인
+            x_min_px = max(0, int(x_min * w))
+            x_max_px = min(w, int(x_max * w))
+            y_min_px = max(0, int(y_min * h))
+            y_max_px = min(h, int(y_max * h))
+
+            if x_max_px <= x_min_px or y_max_px <= y_min_px:
+                return None
+
+            return (x_min_px, y_min_px, x_max_px, y_max_px)
+
         except Exception as e:
-            logger.error(f"얼굴 ROI 추출 오류: {e}")
+            logger.error(f"얼굴 ROI 추출 중 오류 발생: {e}")
             return None
 
     def extract_hand_roi(self, pose_result, frame):
