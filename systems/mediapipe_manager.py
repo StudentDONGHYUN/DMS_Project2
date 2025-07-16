@@ -75,6 +75,18 @@ class AdvancedMediaPipeManager:
     """
 
     def __init__(self, analysis_engine=None, config_file: Optional[str] = None):
+        logger.info("AdvancedMediaPipeManager 초기화 시작...")
+        
+        try:
+            # MediaPipe 모듈 가져오기 테스트
+            import mediapipe as mp
+            from mediapipe.tasks.python import vision
+            from mediapipe.tasks.python.core.base_options import BaseOptions
+            logger.info(f"MediaPipe 모듈 로드 성공 - 버전: {mp.__version__}")
+        except ImportError as e:
+            logger.error(f"MediaPipe 모듈 가져오기 실패: {e}")
+            raise
+        
         self.analysis_engine = analysis_engine
         self.active_tasks: Dict[TaskType, Any] = {}
         self.task_configs: Dict[TaskType, TaskConfig] = {}

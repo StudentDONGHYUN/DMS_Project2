@@ -374,7 +374,28 @@ class DMSApp:
             # 2. 비동기 초기화
             await self.integrated_system.initialize()
             # 3. 나머지 컴포넌트 초기화
-            self.mediapipe_manager = AdvancedMediaPipeManager(DummyAnalysisEngine())
+            try:
+                logger.info("MediaPipe 매니저 초기화 시작...")
+                self.mediapipe_manager = AdvancedMediaPipeManager(DummyAnalysisEngine())
+                logger.info("MediaPipe 매니저 초기화 완료")
+                
+                # MediaPipe 모델들 초기화
+                logger.info("MediaPipe 모델 로딩 시작...")
+                task_results = await self.mediapipe_manager.initialize_all_tasks()
+                logger.info(f"MediaPipe 모델 로딩 완료: {task_results}")
+                
+                # 초기화 실패한 모델들에 대한 경고
+                failed_tasks = [task for task, success in task_results.items() if not success]
+                if failed_tasks:
+                    logger.warning(f"초기화 실패한 모델들: {failed_tasks}")
+                else:
+                    logger.info("모든 MediaPipe 모델 초기화 성공")
+                    
+            except Exception as e:
+                logger.error(f"MediaPipe 매니저 초기화 실패: {e}", exc_info=True)
+                logger.warning("MediaPipe 매니저 없이 계속 진행 (감지 기능 제한됨)")
+                self.mediapipe_manager = None
+            
             self.callback_adapter = IntegratedCallbackAdapter(self.integrated_system)
             logger.info("[수정] S-Class DMS 시스템 초기화 완료")
             self.initialization_completed = True
@@ -619,8 +640,11 @@ class DMSApp:
             finally:
                 # 정리 작업
                 try:
-                    if hasattr(self, "mediapipe_manager"):
-                        await self.mediapipe_manager.close()
+                            if hasattr(self, "mediapipe_manager") and self.mediapipe_manager is not None:
+            try:
+                await self.mediapipe_manager.close()
+            except Exception as e:
+                logger.warning(f"MediaPipe 매니저 종료 중 오류: {e}")
                     if hasattr(self, "integrated_system"):
                         await self.integrated_system.shutdown()
                 except Exception as e:
@@ -1022,11 +1046,21 @@ class DMSApp:
 
             # 3. MediaPipe 결과 획득
             try:
-                mediapipe_results = await self.mediapipe_manager.process_frame(
-                    preprocessed_frame
-                )
+                if self.mediapipe_manager is not None:
+                    mediapipe_results = await self.mediapipe_manager.process_frame(
+                        preprocessed_frame
+                    )
+                else:
+                    logger.warning("MediaPipe 매니저가 초기화되지 않음 - 기본값 사용")
+                    mediapipe_results = {
+                        "face": None,
+                        "pose": None,
+                        "hand": None,
+                        "object": None,
+                    }
             except Exception as e:
                 # MediaPipe 처리 실패 시 시스템을 안전 모드로 전환
+                logger.error(f"MediaPipe 처리 실패: {e}")
                 self.safe_mode = True
                 mediapipe_results = {
                     "face": None,
