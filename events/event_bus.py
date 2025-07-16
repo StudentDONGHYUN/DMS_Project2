@@ -430,8 +430,12 @@ class EventBus:
             return False
 
         except Exception as e:
-            logger.error(f"핸들러 {handler_name} 실행 중 오류: {e}", exc_info=True)
-            self._event_statistics["handler_performance"][handler_name]["failure"] += 1
+            if not hasattr(self, "_handler_fail_count"):
+                self._handler_fail_count = 0
+            self._handler_fail_count += 1
+            if self._handler_fail_count >= 3:
+                global safe_mode
+                safe_mode = True  # 시스템 전체 안전 모드 진입
             return False
 
     async def _periodic_cleanup(self):

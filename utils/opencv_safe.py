@@ -337,8 +337,12 @@ def safe_create_basic_info_overlay(frame, frame_count, perf_stats=None):
         return annotated_frame
 
     except Exception as e:
-        logger.error(f"안전한 오버레이 생성 완전 실패: {e}")
-
+        if not hasattr(safe_create_basic_info_overlay, '_fail_count'):
+            safe_create_basic_info_overlay._fail_count = 0
+        safe_create_basic_info_overlay._fail_count += 1
+        if safe_create_basic_info_overlay._fail_count >= 3:
+            global safe_mode
+            safe_mode = True  # 시스템 전체 안전 모드 진입
         # 최종 폴백: 기본 프레임 반환 또는 생성
         try:
             if frame is not None and isinstance(frame, np.ndarray):
@@ -346,7 +350,6 @@ def safe_create_basic_info_overlay(frame, frame_count, perf_stats=None):
             else:
                 return OpenCVSafeHandler.create_fallback_frame()
         except Exception as final_e:
-            logger.error(f"최종 폴백도 실패: {final_e}")
             return OpenCVSafeHandler.create_fallback_frame()
 
 

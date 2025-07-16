@@ -215,7 +215,6 @@ class MathConstants:
 
 class SystemConstants:
     """시스템 운영 관련 상수"""
-
     REQUIRED_MODEL_FILES = [
         "efficientdet_lite0.tflite",
         "efficientdet_lite2.tflite",

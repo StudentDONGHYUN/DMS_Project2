@@ -283,7 +283,12 @@ class EnhancedAnalysisEngine:
             await asyncio.gather(face_task, pose_task, return_exceptions=True)
 
         except (asyncio.CancelledError, AttributeError, TypeError, ValueError) as e:
-            logger.error(f"비동기 작업 처리 중 오류: {e}", exc_info=True)
+            if not hasattr(self, '_process_fail_count'):
+                self._process_fail_count = 0
+            self._process_fail_count += 1
+            if self._process_fail_count >= 3:
+                global safe_mode
+                safe_mode = True  # 시스템 전체 안전 모드 진입
             # 실패한 작업들 정리
             for task in created_tasks:
                 if not task.done():
@@ -293,8 +298,7 @@ class EnhancedAnalysisEngine:
                     except asyncio.CancelledError:
                         pass
                     except Exception as task_error:
-                        logger.error(f"작업 정리 중 오류: {task_error}", exc_info=True)
-
+                        pass
             # 폴백 처리 - 동기 방식으로 기본 처리
             await self._process_face_data_async(face_result, timestamp)
             await self._process_pose_data_async(pose_result)

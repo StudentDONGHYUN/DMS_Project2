@@ -3,13 +3,15 @@ Data structures for the DMS system
 """
 
 from dataclasses import dataclass
-from enum import Enum
+from enum import Enum, auto
 from typing import Optional, Dict, Any
 
 
+# UIMode, EmotionState, AlertType 등 필요한 Enum 정의
 class UIMode(Enum):
-    DEFAULT = 0
-    ADVANCED = 1
+    MINIMAL = auto()
+    STANDARD = auto()
+    ALERT = auto()
 
 
 class UIState(Enum):
@@ -20,22 +22,25 @@ class UIState(Enum):
 
 
 class EmotionState(Enum):
-    NEUTRAL = 0
-    HAPPY = 1
-    SAD = 2
-    ANGRY = 3
-    SURPRISED = 4
+    NEUTRAL = auto()
+    HAPPY = auto()
+    SAD = auto()
+    ANGRY = auto()
+    STRESSED = auto()
+    FATIGUED = auto()
+    # 필요시 추가
 
 
 class AlertType(Enum):
     """경고 타입"""
 
-    NONE = "none"
-    DROWSINESS = "drowsiness"
-    DISTRACTION = "distraction"
-    PHONE_USAGE = "phone_usage"
-    MICROSLEEP = "microsleep"
-    EMOTIONAL_STRESS = "emotional_stress"
+    NONE = auto()
+    DROWSINESS = auto()
+    DISTRACTION = auto()
+    PHONE_USAGE = auto()
+    MICROSLEEP = auto()
+    EMOTIONAL_STRESS = auto()
+    # 필요시 추가
 
 
 @dataclass

@@ -277,7 +277,12 @@ class SafetyEventHandler(IEventHandler):
             return response_success
 
         except Exception as e:
-            logger.error(f"안전 대응 실행 중 오류: {e}")
+            if not hasattr(self, '_safety_response_fail_count'):
+                self._safety_response_fail_count = 0
+            self._safety_response_fail_count += 1
+            if self._safety_response_fail_count >= 3:
+                global safe_mode
+                safe_mode = True  # 시스템 전체 안전 모드 진입
             return False
 
     async def _handle_emergency_response(self, event: SafetyEvent) -> bool:
