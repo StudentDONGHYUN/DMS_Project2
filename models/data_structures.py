@@ -14,7 +14,8 @@ class UIMode(Enum):
     ALERT = auto()
 
 
-class UIState(Enum):
+class UIStateEnum(Enum):
+    """UI 상태 열거형 - Bug fix #21: Renamed to avoid collision"""
     IDLE = 0
     RUNNING = 1
     PAUSED = 2

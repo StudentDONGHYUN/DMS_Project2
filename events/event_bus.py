@@ -710,3 +710,44 @@ _global_monitor = EventSystemMonitor()
 def get_event_system_monitor() -> EventSystemMonitor:
     """이벤트 시스템 모니터 반환"""
     return _global_monitor
+
+
+# Bug fix #18: Add synchronous wrapper for initialize_event_system
+def initialize_event_system_sync(max_queue_size: int = 10000) -> bool:
+    """
+    동기 이벤트 시스템 초기화 - Bug fix #18
+    
+    비동기 환경이 아닌 곳에서 호출할 수 있는 동기 버전입니다.
+    단순히 기본 설정만 적용하고, 실제 초기화는 나중에 비동기로 수행됩니다.
+    
+    Returns:
+        bool: 초기화 성공 여부
+    """
+    global _global_event_bus
+    
+    try:
+        if _global_event_bus is not None:
+            logger.warning("이벤트 시스템이 이미 초기화되었습니다 (동기 버전)")
+            return True
+        
+        # 최소한의 EventBus 인스턴스만 생성 (start는 나중에)
+        _global_event_bus = EventBus(max_queue_size)
+        logger.info("동기 이벤트 시스템 기본 초기화 완료 - 비동기 시작은 대기 중")
+        return True
+        
+    except Exception as e:
+        logger.error(f"동기 이벤트 시스템 초기화 실패: {e}")
+        return False
+
+
+def initialize_event_system_lazy() -> bool:
+    """
+    지연 이벤트 시스템 초기화 - Bug fix #18
+    
+    실제 이벤트 시스템을 시작하지 않고 최소한의 준비만 합니다.
+    이후 비동기 환경에서 실제 시작이 이루어집니다.
+    
+    Returns:
+        bool: 기본 초기화 성공 여부
+    """
+    return initialize_event_system_sync()

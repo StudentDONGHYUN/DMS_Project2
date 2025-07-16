@@ -337,11 +337,16 @@ class DMSApp:
             if not self.video_input_manager.initialize():
                 logger.error("비디오 입력 초기화 실패")
                 return False
-            from events.event_bus import initialize_event_system
+            from events.event_bus import initialize_event_system, initialize_event_system_sync
 
             try:
-                initialize_event_system()  # 기존 동기 호출
-                logger.info("✅ 이벤트 시스템 초기화 완료")
+                # Bug fix #18: Use sync version for initial setup, then async start
+                if initialize_event_system_sync():
+                    # 비동기 환경에서 실제 시작
+                    await initialize_event_system()
+                    logger.info("✅ 이벤트 시스템 초기화 완료")
+                else:
+                    logger.warning("동기 이벤트 시스템 초기화 실패, 계속 진행")
             except Exception as e:
                 logger.error(f"❌ 이벤트 시스템 초기화 실패: {e}")
                 logger.warning("이벤트 시스템 없이 안전 모드로 계속 진행")
@@ -868,10 +873,10 @@ class DMSApp:
             # 2. 통합 시스템 상태 점검
             if hasattr(self, "integrated_system"):
                 try:
-                    # 이벤트 시스템 재초기화 시도
+                    # Bug fix #18: 이벤트 시스템 재초기화 시도 (비동기 버전)
                     from events.event_bus import initialize_event_system
 
-                    initialize_event_system()
+                    await initialize_event_system()
                     logger.info("이벤트 시스템 재초기화 완료")
                 except Exception as e:
                     logger.warning(f"이벤트 시스템 재초기화 실패: {e}")

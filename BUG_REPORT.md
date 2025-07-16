@@ -218,9 +218,66 @@ cat performance_logs/summary_*.json
 
 - **Bug #16**: Start 버튼 동작 시 config 미설정/예외로 인한 DMSApp 미실행 문제를 해결. start_app()에서 예외 발생 시에도 config에 에러 정보를 명시적으로 기록하고, main()에서 config 오류를 감지해 사용자에게 안내하도록 수정.
 
+### Bug Fixes (2025-01-17)
+
+- **Bug #18**: initialize_event_system Async/Sync Call Mismatch 문제 해결. events/event_bus.py에 동기 래퍼 함수 `initialize_event_system_sync()` 추가하고, app.py에서 비동기 호출로 변경.
+
+- **Bug #19**: GUI config 초기화 문제 해결. SClass_DMS_GUI_Setup.__init__에서 config를 None 대신 기본 딕셔너리로 초기화하고, start_app()과 main() 함수에서 config 검증 로직 개선. 예외 발생 시에도 적절한 에러 정보가 전달되도록 수정.
+
+- **Bug #21**: models/data_structures.py의 UIState 클래스 중복 정의 문제 해결. UIState Enum을 UIStateEnum으로 이름 변경하여 dataclass UIState와의 충돌 해결.
+
+- **Bug #20**: Missing Synchronous Event System Initialization 문제 해결. 동기 환경에서 호출할 수 있는 initialize_event_system_sync() 함수 추가로 초기화 호환성 개선.
+
 ### Newly Discovered Issues (2025-07-15)
 
 #### **Bug #17: Broad Exception Handling Remains in Event System**
 - **문제**: events/event_bus.py 등에서 except Exception as e:로 모든 예외를 잡고 로그만 남기는 broad exception handling이 여전히 존재함
 - **증상**: 치명적 예외가 조용히 무시되어 디버깅이 어려움, 시스템 일관성 저하 가능성
 - **해결**: 구체적 예외만 처리하고, 치명적 예외는 상위로 전달하도록 수정 필요
+
+### Newly Discovered Issues (2025-01-17)
+
+#### **Bug #18: initialize_event_system Async/Sync Call Mismatch**
+- **문제**: events/event_bus.py의 initialize_event_system()이 async 함수인데 app.py에서 동기 호출하고 있음
+- **증상**: TypeError: object NoneType can't be used in 'await' expression 또는 코루틴 경고
+- **원인**: app.py 342라인에서 동기 호출: `initialize_event_system()`
+- **해결**: await 호출로 변경하거나 동기 래퍼 함수 생성 필요
+
+#### **Bug #19: GUI config 초기화 문제**
+- **문제**: SClass_DMS_GUI_Setup.__init__에서 self.config = None으로 초기화하고, start_app() 예외 시 config가 None으로 남음
+- **증상**: Start 버튼 클릭 후 GUI만 닫히고 main()에서 config가 None이어서 DMSApp 미실행
+- **원인**: start_app()에서 예외 발생 시 config가 설정되지 않고 finally에서 GUI만 종료됨
+- **해결**: config 기본값 설정 및 예외 처리 개선 필요
+
+#### **Bug #20: Missing Synchronous Event System Initialization**
+- **문제**: 이벤트 시스템이 완전히 비동기 기반인데, 일부 컴포넌트에서 동기 초기화가 필요함
+- **증상**: app.py 초기화 시 이벤트 시스템 초기화 실패
+- **해결**: 동기 버전의 이벤트 시스템 초기화 함수 또는 래퍼 함수 필요
+
+#### **Bug #21: models/data_structures.py의 UIState 클래스 중복 정의**
+- **문제**: UIState가 Enum과 dataclass 둘 다로 정의되어 있음
+- **증상**: TypeError: UIState() takes no arguments 또는 AttributeError
+- **해결**: 하나의 정의로 통합하거나 이름 변경 필요
+
+### Additional Issues Found (2025-01-17)
+
+#### **Bug #22: Extensive Broad Exception Handling Throughout Codebase**
+- **문제**: 전체 코드베이스에 `except Exception as e:` 패턴이 광범위하게 사용됨
+- **위치**: utils/opencv_safe.py(17개), app.py(22개), utils/drawing.py(8개), utils/memory_monitor.py(6개) 등
+- **증상**: 치명적 예외가 조용히 무시되어 디버깅 및 문제 추적이 어려움
+- **해결**: 구체적 예외 타입 처리로 단계적 개선 필요
+
+#### **Bug #23: Potential Threading Issues in Async/Sync Mixed Environment**
+- **문제**: 비동기와 동기 코드가 혼재하면서 스레딩 안전성 문제 가능성
+- **위치**: app.py의 IntegratedCallbackAdapter, DMSApp.run() 등
+- **해결**: 스레드 안전성 검토 및 개선 필요
+
+### 검증 완료된 항목들 (2025-01-17)
+
+✅ **확인 완료**: 
+- 모든 혁신 시스템 모듈 존재 (AIDrivingCoach, V2DHealthcareSystem, ARHUDSystem, EmotionalCareSystem, DigitalTwinPlatform)
+- VehicleContext 클래스 존재 (systems/ar_hud_system.py:108)
+- UIMode, UIState, EmotionState 클래스들 존재 (models/data_structures.py)
+- SystemConstants 클래스 존재 (core/constants.py)
+- numpy import 존재 (integration/integrated_system.py:23)
+- initialize_event_system 함수 존재 (events/event_bus.py:525)
