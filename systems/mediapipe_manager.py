@@ -48,21 +48,24 @@ class TaskType(Enum):
 
 @dataclass
 class TaskConfig:
-    """MediaPipe Task 설정"""
+    """MediaPipe Task 설정 (MediaPipe 0.10.21 API)"""
 
     task_type: TaskType
     model_path: str
+    # 공통 파라미터
+    running_mode: str = "IMAGE"  # "IMAGE", "VIDEO", "LIVE_STREAM"
+    # Object Detector 파라미터
     max_results: int = 1
     score_threshold: float = 0.5
-    running_mode: vision.RunningMode = vision.RunningMode.LIVE_STREAM
-    enable_face_blendshapes: bool = False
-    enable_facial_transformation_matrix: bool = False
-    enable_segmentation_masks: bool = False
-    num_poses: int = 1
-    num_hands: int = 2
+    # Face Landmarker 파라미터
     num_faces: int = 1
-    min_detection_confidence: float = 0.5
-    min_tracking_confidence: float = 0.5
+    output_face_blendshapes: bool = False
+    output_facial_transformation_matrixes: bool = False
+    # Pose Landmarker 파라미터
+    num_poses: int = 1
+    output_segmentation_masks: bool = False
+    # Hand Landmarker 파라미터
+    num_hands: int = 2
 
 
 class AdvancedMediaPipeManager:
@@ -132,51 +135,48 @@ class AdvancedMediaPipeManager:
     def _load_default_configs(self):
         """기본 Task 설정 로드"""
 
-        # Face Landmarker 설정
+        # Face Landmarker 설정 (MediaPipe 0.10.21 API)
         self.task_configs[TaskType.FACE_LANDMARKER] = TaskConfig(
             task_type=TaskType.FACE_LANDMARKER,
             model_path=str(self.model_base_path / "face_landmarker.task"),
             num_faces=1,
-            min_detection_confidence=0.5,
-            min_tracking_confidence=0.5,
-            enable_face_blendshapes=True,
-            enable_facial_transformation_matrix=True,
+            output_face_blendshapes=True,
+            output_facial_transformation_matrixes=True,
+            running_mode="IMAGE",
         )
 
-        # Pose Landmarker 설정
+        # Pose Landmarker 설정 (MediaPipe 0.10.21 API)
         self.task_configs[TaskType.POSE_LANDMARKER] = TaskConfig(
             task_type=TaskType.POSE_LANDMARKER,
             model_path=str(self.model_base_path / "pose_landmarker_heavy.task"),
             num_poses=1,
-            min_detection_confidence=0.5,
-            min_tracking_confidence=0.5,
-            enable_segmentation_masks=True,
+            output_segmentation_masks=True,
+            running_mode="IMAGE",
         )
 
-        # Hand Landmarker 설정
+        # Hand Landmarker 설정 (MediaPipe 0.10.21 API)
         self.task_configs[TaskType.HAND_LANDMARKER] = TaskConfig(
             task_type=TaskType.HAND_LANDMARKER,
             model_path=str(self.model_base_path / "hand_landmarker.task"),
             num_hands=2,
-            min_detection_confidence=0.7,
-            min_tracking_confidence=0.5,
+            running_mode="IMAGE",
         )
 
-        # Gesture Recognizer 설정 (새로운 기능)
+        # Gesture Recognizer 설정 (MediaPipe 0.10.21 API)
         self.task_configs[TaskType.GESTURE_RECOGNIZER] = TaskConfig(
             task_type=TaskType.GESTURE_RECOGNIZER,
             model_path=str(self.model_base_path / "gesture_recognizer.task"),
             num_hands=2,
-            min_detection_confidence=0.7,
-            min_tracking_confidence=0.5,
+            running_mode="IMAGE",
         )
 
-        # Object Detector 설정
+        # Object Detector 설정 (MediaPipe 0.10.21 API)
         self.task_configs[TaskType.OBJECT_DETECTOR] = TaskConfig(
             task_type=TaskType.OBJECT_DETECTOR,
             model_path=str(self.model_base_path / "efficientdet_lite0.tflite"),
             max_results=5,
             score_threshold=0.3,
+            running_mode="IMAGE",
         )
 
         # Holistic Landmarker 설정 (최신 통합 모델) - 파일 존재 시에만 추가
@@ -274,75 +274,107 @@ class AdvancedMediaPipeManager:
         return False
 
     async def _initialize_face_landmarker(self, base_options, config):
-        """Face Landmarker 초기화"""
+        """Face Landmarker 초기화 (MediaPipe 0.10.21 API)"""
+        from mediapipe.tasks.python import vision
+        
+        # running_mode 변환
+        if hasattr(config, 'running_mode') and config.running_mode == "IMAGE":
+            running_mode = vision.RunningMode.IMAGE
+        else:
+            running_mode = vision.RunningMode.IMAGE
+        
         options = vision.FaceLandmarkerOptions(
             base_options=base_options,
-            running_mode=config.running_mode,
-            num_faces=config.num_faces,
-            min_detection_confidence=config.min_detection_confidence,
-            min_tracking_confidence=config.min_tracking_confidence,
-            output_face_blendshapes=config.enable_face_blendshapes,
-            output_facial_transformation_matrixes=config.enable_facial_transformation_matrix,
-            result_callback=self._create_result_callback(TaskType.FACE_LANDMARKER),
+            running_mode=running_mode,
+            num_faces=getattr(config, 'num_faces', 1),
+            output_face_blendshapes=getattr(config, 'output_face_blendshapes', True),
+            output_facial_transformation_matrixes=getattr(config, 'output_facial_transformation_matrixes', True),
         )
         return vision.FaceLandmarker.create_from_options(options)
 
     async def _initialize_pose_landmarker(self, base_options, config):
-        """Pose Landmarker 초기화"""
+        """Pose Landmarker 초기화 (MediaPipe 0.10.21 API)"""
+        from mediapipe.tasks.python import vision
+        
+        # running_mode 변환
+        if hasattr(config, 'running_mode') and config.running_mode == "IMAGE":
+            running_mode = vision.RunningMode.IMAGE
+        else:
+            running_mode = vision.RunningMode.IMAGE
+        
         options = vision.PoseLandmarkerOptions(
             base_options=base_options,
-            running_mode=config.running_mode,
-            num_poses=config.num_poses,
-            min_detection_confidence=config.min_detection_confidence,
-            min_tracking_confidence=config.min_tracking_confidence,
-            output_segmentation_masks=config.enable_segmentation_masks,
-            result_callback=self._create_result_callback(TaskType.POSE_LANDMARKER),
+            running_mode=running_mode,
+            num_poses=getattr(config, 'num_poses', 1),
+            output_segmentation_masks=getattr(config, 'output_segmentation_masks', True),
         )
         return vision.PoseLandmarker.create_from_options(options)
 
     async def _initialize_hand_landmarker(self, base_options, config):
-        """Hand Landmarker 초기화"""
+        """Hand Landmarker 초기화 (MediaPipe 0.10.21 API)"""
+        from mediapipe.tasks.python import vision
+        
+        # running_mode 변환
+        if hasattr(config, 'running_mode') and config.running_mode == "IMAGE":
+            running_mode = vision.RunningMode.IMAGE
+        else:
+            running_mode = vision.RunningMode.IMAGE
+        
         options = vision.HandLandmarkerOptions(
             base_options=base_options,
-            running_mode=config.running_mode,
-            num_hands=config.num_hands,
-            min_detection_confidence=config.min_detection_confidence,
-            min_tracking_confidence=config.min_tracking_confidence,
-            result_callback=self._create_result_callback(TaskType.HAND_LANDMARKER),
+            running_mode=running_mode,
+            num_hands=getattr(config, 'num_hands', 2),
         )
         return vision.HandLandmarker.create_from_options(options)
 
     async def _initialize_gesture_recognizer(self, base_options, config):
-        """Gesture Recognizer 초기화"""
+        """Gesture Recognizer 초기화 (MediaPipe 0.10.21 API)"""
+        from mediapipe.tasks.python import vision
+        
+        # running_mode 변환
+        if hasattr(config, 'running_mode') and config.running_mode == "IMAGE":
+            running_mode = vision.RunningMode.IMAGE
+        else:
+            running_mode = vision.RunningMode.IMAGE
+        
         options = vision.GestureRecognizerOptions(
             base_options=base_options,
-            running_mode=config.running_mode,
-            num_hands=config.num_hands,
-            min_detection_confidence=config.min_detection_confidence,
-            min_tracking_confidence=config.min_tracking_confidence,
-            result_callback=self._create_result_callback(TaskType.GESTURE_RECOGNIZER),
+            running_mode=running_mode,
+            num_hands=getattr(config, 'num_hands', 2),
         )
         return vision.GestureRecognizer.create_from_options(options)
 
     async def _initialize_object_detector(self, base_options, config):
-        """Object Detector 초기화"""
+        """Object Detector 초기화 (MediaPipe 0.10.21 API)"""
+        from mediapipe.tasks.python import vision
+        
+        # running_mode 변환
+        if hasattr(config, 'running_mode') and config.running_mode == "IMAGE":
+            running_mode = vision.RunningMode.IMAGE
+        else:
+            running_mode = vision.RunningMode.IMAGE
+        
         options = vision.ObjectDetectorOptions(
             base_options=base_options,
-            running_mode=config.running_mode,
-            max_results=config.max_results,
-            score_threshold=config.score_threshold,
-            result_callback=self._create_result_callback(TaskType.OBJECT_DETECTOR),
+            running_mode=running_mode,
+            max_results=getattr(config, 'max_results', 5),
+            score_threshold=getattr(config, 'score_threshold', 0.3),
         )
         return vision.ObjectDetector.create_from_options(options)
 
     async def _initialize_holistic_landmarker(self, base_options, config):
-        """Holistic Landmarker 초기화 (최신 통합 모델)"""
+        """Holistic Landmarker 초기화 (MediaPipe 0.10.21 API)"""
+        from mediapipe.tasks.python import vision
+        
+        # running_mode 변환
+        if hasattr(config, 'running_mode') and config.running_mode == "IMAGE":
+            running_mode = vision.RunningMode.IMAGE
+        else:
+            running_mode = vision.RunningMode.IMAGE
+        
         options = vision.HolisticLandmarkerOptions(
             base_options=base_options,
-            running_mode=config.running_mode,
-            min_detection_confidence=config.min_detection_confidence,
-            min_tracking_confidence=config.min_tracking_confidence,
-            result_callback=self._create_result_callback(TaskType.HOLISTIC_LANDMARKER),
+            running_mode=running_mode,
         )
         return vision.HolisticLandmarker.create_from_options(options)
 
