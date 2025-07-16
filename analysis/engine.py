@@ -10,6 +10,9 @@ from mediapipe import solutions
 import math
 from enum import Enum
 
+# 전역 안전 모드 플래그
+safe_mode = False
+
 from core.definitions import (
     CameraPosition,
     AdvancedMetrics,

@@ -11,6 +11,9 @@ from analysis.fusion.fusion_engine_advanced import MultiModalFusionEngine
 
 logger = logging.getLogger(__name__)
 
+# Bug fix: Initialize global safe_mode variable at module level
+safe_mode = False
+
 
 class AnalysisSystemType(Enum):
     """
@@ -752,16 +755,16 @@ def create_analysis_system(
 
     except (AttributeError, TypeError, ValueError) as e:
         # 폴백도 실패하면 시스템 전체 안전 모드 진입
+        global safe_mode  # 전체 except 블록에서 한 번만 선언
+        
         if system_type != AnalysisSystemType.LOW_RESOURCE:
             fallback_factory = LowResourceSystemFactory()
             try:
                 return fallback_factory.create_system(metrics_updater, None)
             except Exception:
-                global safe_mode
                 safe_mode = True  # 시스템 전체 안전 모드 진입
                 raise RuntimeError("DMS 시스템 생성 완전 실패: 안전 모드 진입")
         else:
-            global safe_mode
             safe_mode = True  # 시스템 전체 안전 모드 진입
             raise RuntimeError("DMS 시스템 생성 완전 실패: 안전 모드 진입")
 

@@ -9,6 +9,9 @@ import numpy as np
 import logging
 from typing import Union, Optional, Any
 
+# 전역 안전 모드 플래그
+safe_mode = False
+
 logger = logging.getLogger(__name__)
 
 

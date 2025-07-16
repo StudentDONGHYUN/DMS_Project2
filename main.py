@@ -220,7 +220,11 @@ class SClass_DMS_GUI_Setup:
         self.root.title("🚗 S-Class DMS v19.0 - The Next Chapter")
         self.root.geometry("800x1200")
         self.root.configure(bg="#1a1a2e")  # 다크 테마
-        self.config = None
+        # Bug fix #19: Initialize config with default values instead of None
+        self.config = {
+            "_initialized": False,
+            "_error": None
+        }
         self.video_files = []
         self.is_same_driver = True
         self.edition_var = tk.StringVar(value="RESEARCH")  # 에디션 선택 변수 추가
@@ -977,7 +981,9 @@ class SClass_DMS_GUI_Setup:
             self.video_label.config(text="선택된 파일 없음")
 
     def start_app(self):
-        """S-Class 앱 시작"""
+        """S-Class 앱 시작 - Bug fix #19: Improved config handling"""
+        logger.info("start_app() 메서드 진입")
+        
         try:
             # 입력 소스 검증
             input_source = None
@@ -987,12 +993,12 @@ class SClass_DMS_GUI_Setup:
                     input_source = int(cam_id_str)
                 else:
                     messagebox.showerror("입력 오류", "웹캠 번호는 숫자여야 합니다.")
-                    self.config = {"_error": "웹캠 번호 입력 오류"}
+                    self.config = {"_error": "웹캠 번호 입력 오류", "_initialized": True}
                     return
             else:
                 if not self.video_files:
                     messagebox.showerror("입력 오류", "비디오 파일을 선택해주세요.")
-                    self.config = {"_error": "비디오 파일 미선택"}
+                    self.config = {"_error": "비디오 파일 미선택", "_initialized": True}
                     return
                 input_source = (
                     self.video_files
@@ -1040,13 +1046,39 @@ class SClass_DMS_GUI_Setup:
                     "enable_adaptive_thresholds": self.enable_adaptive_thresholds.get(),
                 },
                 "enable_performance_optimization": self.enable_performance_optimization.get(),
+                "_initialized": True,
+                "_error": None
             }
-            # 혁신 엔진에 에디션 반영
-            self.innovation_engine = SClassDMSv19Enhanced(user_id, edition)
+            
+            # 혁신 엔진에 에디션 반영 (성능 최적화: 지연 로딩)
+            try:
+                # 성능 최적화: 혁신 엔진은 실제 필요 시에만 초기화
+                if edition in ["PRO", "ENTERPRISE", "RESEARCH"]:
+                    self.innovation_engine = SClassDMSv19Enhanced(user_id, edition)
+                    logger.info(f"혁신 엔진 초기화 완료: {user_id}, {edition}")
+                else:
+                    # COMMUNITY 에디션은 혁신 엔진 스킵
+                    self.innovation_engine = None
+                    logger.info(f"커뮤니티 에디션: 혁신 엔진 스킵")
+            except (ImportError, AttributeError) as innovation_e:
+                logger.warning(f"혁신 엔진 모듈 문제 (계속 진행): {innovation_e}")
+                self.innovation_engine = None
+            except Exception as innovation_e:
+                logger.warning(f"혁신 엔진 초기화 실패 (계속 진행): {innovation_e}")
+                self.innovation_engine = None
+                
+            logger.info("config 설정 완료")
+            
         except Exception as e:
-            messagebox.showerror("설정 오류", f"설정 중 오류가 발생했습니다: {e}")
-            self.config = {"_error": f"설정 중 예외: {e}"}
+            logger.error(f"start_app() 중 예외 발생: {e}", exc_info=True)
+            error_msg = f"설정 중 오류가 발생했습니다: {e}"
+            messagebox.showerror("설정 오류", error_msg)
+            self.config = {
+                "_error": f"설정 중 예외: {e}",
+                "_initialized": True
+            }
         finally:
+            logger.info("GUI 창 종료")
             self.root.destroy()
 
 
@@ -1236,6 +1268,7 @@ def get_user_input_terminal():
 
 
 def main():
+    """Bug fix #19: Improved main function with better config validation"""
     logger.info("[진단] main.py: main() 진입")
     config = None
     try:
@@ -1249,29 +1282,40 @@ def main():
             gui_setup = SClass_DMS_GUI_Setup(root)
             root.mainloop()
             config = gui_setup.config
+            logger.debug(f"GUI에서 받은 config 키들: {list(config.keys()) if isinstance(config, dict) else type(config)}")
         else:
             config = get_user_input_terminal()
 
-        if config and not (isinstance(config, dict) and config.get("_error")):
-            logger.info(f"S-Class 설정 완료: {config}")
-            print("\n" + "=" * 70)
-            print(f" S-Class DMS v18+ 시스템 시작... (사용자: {config['user_id']})")
-            print(f" 시스템 모드: {config['system_type'].value}")
-            print(
-                f" 레거시 엔진: {'활성화' if config['use_legacy_engine'] else '비활성화'}"
-            )
-            print("=" * 70)
-            app = DMSApp(**config)
-            app.run()
-        else:
-            if config and isinstance(config, dict) and config.get("_error"):
-                print(f"\n❌ 설정 오류: {config['_error']}")
-                logger.error(f"설정 오류: {config['_error']}")
+        # Bug fix #19: Improved config validation
+        if config and isinstance(config, dict):
+            if config.get("_initialized") and not config.get("_error"):
+                # 정상적으로 초기화된 config
+                logger.info(f"S-Class 설정 완료 - 사용자: {config.get('user_id', 'unknown')}, 에디션: {config.get('edition', 'unknown')}")
+                print("\n" + "=" * 70)
+                print(f" S-Class DMS v18+ 시스템 시작... (사용자: {config['user_id']})")
+                print(f" 시스템 모드: {config['system_type'].value}")
+                print(
+                    f" 레거시 엔진: {'활성화' if config['use_legacy_engine'] else '비활성화'}"
+                )
+                print("=" * 70)
+                
+                # _initialized와 _error 키를 제거하고 DMSApp에 전달
+                clean_config = {k: v for k, v in config.items() if not k.startswith('_')}
+                app = DMSApp(**clean_config)
+                app.run()
             else:
-                print("\n❌ 설정이 취소되어 프로그램을 종료합니다.")
+                # 에러가 있는 config
+                error_msg = config.get("_error", "알 수 없는 설정 오류")
+                print(f"\n❌ 설정 오류: {error_msg}")
+                logger.error(f"설정 오류: {error_msg}")
+        else:
+            # config가 None이거나 올바르지 않은 형태
+            print("\n❌ 설정이 취소되거나 올바르지 않아 프로그램을 종료합니다.")
+            logger.warning(f"유효하지 않은 config: {config}")
 
     except (KeyboardInterrupt, EOFError) as e:
         print("\n\n🛑 프로그램을 종료합니다.")
+        logger.info("사용자가 프로그램을 중단했습니다.")
     except Exception as e:
         logger.error(f"S-Class 시스템 실행 실패: {e}", exc_info=True)
         if GUI_AVAILABLE:
