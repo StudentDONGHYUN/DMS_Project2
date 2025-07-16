@@ -53,7 +53,7 @@ class TaskConfig:
     task_type: TaskType
     model_path: str
     # 공통 파라미터
-    running_mode: str = "LIVE_STREAM"  # "IMAGE", "VIDEO", "LIVE_STREAM"
+    running_mode: str = "IMAGE"  # "IMAGE", "VIDEO", "LIVE_STREAM"
     # Object Detector 파라미터
     max_results: int = 1
     score_threshold: float = 0.5
@@ -142,7 +142,7 @@ class AdvancedMediaPipeManager:
             num_faces=1,
             output_face_blendshapes=True,
             output_facial_transformation_matrixes=True,
-            running_mode="LIVE_STREAM",
+            running_mode="IMAGE",
         )
 
         # Pose Landmarker 설정 (MediaPipe 0.10.21 API)
@@ -151,7 +151,7 @@ class AdvancedMediaPipeManager:
             model_path=str(self.model_base_path / "pose_landmarker_heavy.task"),
             num_poses=1,
             output_segmentation_masks=True,
-            running_mode="LIVE_STREAM",
+            running_mode="IMAGE",
         )
 
         # Hand Landmarker 설정 (MediaPipe 0.10.21 API)
@@ -159,7 +159,7 @@ class AdvancedMediaPipeManager:
             task_type=TaskType.HAND_LANDMARKER,
             model_path=str(self.model_base_path / "hand_landmarker.task"),
             num_hands=2,
-            running_mode="LIVE_STREAM",
+            running_mode="IMAGE",
         )
 
         # Gesture Recognizer 설정 (MediaPipe 0.10.21 API)
@@ -167,7 +167,7 @@ class AdvancedMediaPipeManager:
             task_type=TaskType.GESTURE_RECOGNIZER,
             model_path=str(self.model_base_path / "gesture_recognizer.task"),
             num_hands=2,
-            running_mode="LIVE_STREAM",
+            running_mode="IMAGE",
         )
 
         # Object Detector 설정 (MediaPipe 0.10.21 API)
@@ -176,7 +176,7 @@ class AdvancedMediaPipeManager:
             model_path=str(self.model_base_path / "efficientdet_lite0.tflite"),
             max_results=5,
             score_threshold=0.3,
-            running_mode="LIVE_STREAM",
+            running_mode="IMAGE",
         )
 
         # Holistic Landmarker 설정 (최신 통합 모델) - 파일 존재 시에만 추가
