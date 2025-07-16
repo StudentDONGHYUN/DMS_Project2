@@ -14,7 +14,7 @@ import json
 from pathlib import Path
 
 from config.settings import get_config
-from models.data_structures import UIState, ProcessorOutput
+from models.data_structures import UIState
 
 
 class DrivingSkillCategory(Enum):
