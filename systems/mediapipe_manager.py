@@ -53,7 +53,7 @@ class TaskConfig:
     task_type: TaskType
     model_path: str
     # 공통 파라미터
-    running_mode: str = "IMAGE"  # "IMAGE", "VIDEO", "LIVE_STREAM"
+    running_mode: str = "LIVE_STREAM"  # "IMAGE", "VIDEO", "LIVE_STREAM"
     # Object Detector 파라미터
     max_results: int = 1
     score_threshold: float = 0.5
@@ -142,7 +142,7 @@ class AdvancedMediaPipeManager:
             num_faces=1,
             output_face_blendshapes=True,
             output_facial_transformation_matrixes=True,
-            running_mode="IMAGE",
+            running_mode="LIVE_STREAM",
         )
 
         # Pose Landmarker 설정 (MediaPipe 0.10.21 API)
@@ -151,7 +151,7 @@ class AdvancedMediaPipeManager:
             model_path=str(self.model_base_path / "pose_landmarker_heavy.task"),
             num_poses=1,
             output_segmentation_masks=True,
-            running_mode="IMAGE",
+            running_mode="LIVE_STREAM",
         )
 
         # Hand Landmarker 설정 (MediaPipe 0.10.21 API)
@@ -159,7 +159,7 @@ class AdvancedMediaPipeManager:
             task_type=TaskType.HAND_LANDMARKER,
             model_path=str(self.model_base_path / "hand_landmarker.task"),
             num_hands=2,
-            running_mode="IMAGE",
+            running_mode="LIVE_STREAM",
         )
 
         # Gesture Recognizer 설정 (MediaPipe 0.10.21 API)
@@ -167,7 +167,7 @@ class AdvancedMediaPipeManager:
             task_type=TaskType.GESTURE_RECOGNIZER,
             model_path=str(self.model_base_path / "gesture_recognizer.task"),
             num_hands=2,
-            running_mode="IMAGE",
+            running_mode="LIVE_STREAM",
         )
 
         # Object Detector 설정 (MediaPipe 0.10.21 API)
@@ -176,7 +176,7 @@ class AdvancedMediaPipeManager:
             model_path=str(self.model_base_path / "efficientdet_lite0.tflite"),
             max_results=5,
             score_threshold=0.3,
-            running_mode="IMAGE",
+            running_mode="LIVE_STREAM",
         )
 
         # Holistic Landmarker 설정 (최신 통합 모델) - 파일 존재 시에만 추가
@@ -278,10 +278,10 @@ class AdvancedMediaPipeManager:
         from mediapipe.tasks.python import vision
         
         # running_mode 변환
-        if hasattr(config, 'running_mode') and config.running_mode == "IMAGE":
-            running_mode = vision.RunningMode.IMAGE
+        if hasattr(config, 'running_mode') and config.running_mode == "LIVE_STREAM":
+            running_mode = vision.RunningMode.LIVE_STREAM
         else:
-            running_mode = vision.RunningMode.IMAGE
+            running_mode = vision.RunningMode.LIVE_STREAM
         
         options = vision.FaceLandmarkerOptions(
             base_options=base_options,
@@ -289,6 +289,7 @@ class AdvancedMediaPipeManager:
             num_faces=getattr(config, 'num_faces', 1),
             output_face_blendshapes=getattr(config, 'output_face_blendshapes', True),
             output_facial_transformation_matrixes=getattr(config, 'output_facial_transformation_matrixes', True),
+            result_callback=self._create_result_callback(TaskType.FACE_LANDMARKER),
         )
         return vision.FaceLandmarker.create_from_options(options)
 
@@ -297,16 +298,17 @@ class AdvancedMediaPipeManager:
         from mediapipe.tasks.python import vision
         
         # running_mode 변환
-        if hasattr(config, 'running_mode') and config.running_mode == "IMAGE":
-            running_mode = vision.RunningMode.IMAGE
+        if hasattr(config, 'running_mode') and config.running_mode == "LIVE_STREAM":
+            running_mode = vision.RunningMode.LIVE_STREAM
         else:
-            running_mode = vision.RunningMode.IMAGE
+            running_mode = vision.RunningMode.LIVE_STREAM
         
         options = vision.PoseLandmarkerOptions(
             base_options=base_options,
             running_mode=running_mode,
             num_poses=getattr(config, 'num_poses', 1),
             output_segmentation_masks=getattr(config, 'output_segmentation_masks', True),
+            result_callback=self._create_result_callback(TaskType.POSE_LANDMARKER),
         )
         return vision.PoseLandmarker.create_from_options(options)
 
@@ -315,15 +317,16 @@ class AdvancedMediaPipeManager:
         from mediapipe.tasks.python import vision
         
         # running_mode 변환
-        if hasattr(config, 'running_mode') and config.running_mode == "IMAGE":
-            running_mode = vision.RunningMode.IMAGE
+        if hasattr(config, 'running_mode') and config.running_mode == "LIVE_STREAM":
+            running_mode = vision.RunningMode.LIVE_STREAM
         else:
-            running_mode = vision.RunningMode.IMAGE
+            running_mode = vision.RunningMode.LIVE_STREAM
         
         options = vision.HandLandmarkerOptions(
             base_options=base_options,
             running_mode=running_mode,
             num_hands=getattr(config, 'num_hands', 2),
+            result_callback=self._create_result_callback(TaskType.HAND_LANDMARKER),
         )
         return vision.HandLandmarker.create_from_options(options)
 
@@ -332,15 +335,16 @@ class AdvancedMediaPipeManager:
         from mediapipe.tasks.python import vision
         
         # running_mode 변환
-        if hasattr(config, 'running_mode') and config.running_mode == "IMAGE":
-            running_mode = vision.RunningMode.IMAGE
+        if hasattr(config, 'running_mode') and config.running_mode == "LIVE_STREAM":
+            running_mode = vision.RunningMode.LIVE_STREAM
         else:
-            running_mode = vision.RunningMode.IMAGE
+            running_mode = vision.RunningMode.LIVE_STREAM
         
         options = vision.GestureRecognizerOptions(
             base_options=base_options,
             running_mode=running_mode,
             num_hands=getattr(config, 'num_hands', 2),
+            result_callback=self._create_result_callback(TaskType.GESTURE_RECOGNIZER),
         )
         return vision.GestureRecognizer.create_from_options(options)
 
@@ -349,16 +353,17 @@ class AdvancedMediaPipeManager:
         from mediapipe.tasks.python import vision
         
         # running_mode 변환
-        if hasattr(config, 'running_mode') and config.running_mode == "IMAGE":
-            running_mode = vision.RunningMode.IMAGE
+        if hasattr(config, 'running_mode') and config.running_mode == "LIVE_STREAM":
+            running_mode = vision.RunningMode.LIVE_STREAM
         else:
-            running_mode = vision.RunningMode.IMAGE
+            running_mode = vision.RunningMode.LIVE_STREAM
         
         options = vision.ObjectDetectorOptions(
             base_options=base_options,
             running_mode=running_mode,
             max_results=getattr(config, 'max_results', 5),
             score_threshold=getattr(config, 'score_threshold', 0.3),
+            result_callback=self._create_result_callback(TaskType.OBJECT_DETECTOR),
         )
         return vision.ObjectDetector.create_from_options(options)
 
@@ -367,14 +372,15 @@ class AdvancedMediaPipeManager:
         from mediapipe.tasks.python import vision
         
         # running_mode 변환
-        if hasattr(config, 'running_mode') and config.running_mode == "IMAGE":
-            running_mode = vision.RunningMode.IMAGE
+        if hasattr(config, 'running_mode') and config.running_mode == "LIVE_STREAM":
+            running_mode = vision.RunningMode.LIVE_STREAM
         else:
-            running_mode = vision.RunningMode.IMAGE
+            running_mode = vision.RunningMode.LIVE_STREAM
         
         options = vision.HolisticLandmarkerOptions(
             base_options=base_options,
             running_mode=running_mode,
+            result_callback=self._create_result_callback(TaskType.HOLISTIC_LANDMARKER),
         )
         return vision.HolisticLandmarker.create_from_options(options)
 
