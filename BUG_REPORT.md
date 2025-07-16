@@ -228,6 +228,18 @@ cat performance_logs/summary_*.json
 
 - **Bug #20**: Missing Synchronous Event System Initialization 문제 해결. 동기 환경에서 호출할 수 있는 initialize_event_system_sync() 함수 추가로 초기화 호환성 개선.
 
+### Critical Bug Fixes (2025-01-17)
+
+#### **Critical Bug #24: SyntaxError in analysis_factory.py**
+- **문제**: `global safe_mode` 선언이 같은 스코프에서 중복 선언되어 SyntaxError 발생
+- **위치**: analysis/factory/analysis_factory.py:764 
+- **오류**: `SyntaxError: name 'safe_mode' is assigned to before global declaration`
+- **해결**: 
+  1. 모듈 레벨에서 `safe_mode = False` 변수 초기화
+  2. except 블록 맨 처음에 `global safe_mode` 한 번만 선언
+  3. if/else 구문에서 중복 global 선언 제거
+- **상태**: ✅ **완전 해결** - SyntaxError 완전 제거 확인
+
 ### Performance Optimizations (2025-01-17)
 
 #### **성능 최적화 #1: 동적 프레임 스킵핑**
