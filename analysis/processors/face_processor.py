@@ -68,6 +68,10 @@ class FaceDataProcessor(IFaceDataProcessor):
         # EMA filter settings
         self.head_pose_history = deque(maxlen=self.config.face.ema_filter_size)
         self.ema_alpha = self.config.face.ema_alpha
+        
+        # 연속 감지 실패 추적 (점진적 위험도 증가용)
+        self.consecutive_failures = 0
+        self.max_failures_for_max_risk = 10  # 10프레임 후 최대 위험도
 
         # Advanced S-Class: Eye movement and pupil analysis history buffers
         history_size = self.config.face.saccade_history_size
@@ -251,6 +255,9 @@ class FaceDataProcessor(IFaceDataProcessor):
 
         landmarks = data.face_landmarks[0]
         results = {'face_detected': True}
+        
+        # 얼굴 감지 성공 시 연속 실패 카운터 초기화
+        self.consecutive_failures = 0
 
         # 0.5. rPPG signal extraction (performed every frame)
         self._extract_rppg_signal(image, landmarks, timestamp)
@@ -610,10 +617,17 @@ class FaceDataProcessor(IFaceDataProcessor):
     async def _handle_no_face_detected(self) -> Dict[str, Any]:
         """Return default values when no face is detected"""
         logger.warning("No face detected - setting all facial metrics to default values")
+        
+        # 연속 감지 실패 횟수 증가
+        self.consecutive_failures += 1
+        
+        # 점진적 위험도 증가 (0.0 -> 1.0)
+        risk_score = min(self.consecutive_failures / self.max_failures_for_max_risk, 1.0)
+        
         default_gaze = self._get_default_pose_gaze_data()['gaze']
         return {
             'face_detected': False,
-            'drowsiness': {'status': 'no_face', 'confidence': 0.0},
+            'drowsiness': {'status': 'no_face', 'confidence': risk_score},
             'emotion': {'state': None, 'confidence': 0.0},
             'gaze': default_gaze,
             'driver': {'identity': 'unknown', 'confidence': 0.0},

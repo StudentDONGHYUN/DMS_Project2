@@ -167,13 +167,17 @@ class AdvancedMediaPipeManager:
             score_threshold=0.3,
         )
 
-        # Holistic Landmarker 설정 (최신 통합 모델)
-        self.task_configs[TaskType.HOLISTIC_LANDMARKER] = TaskConfig(
-            task_type=TaskType.HOLISTIC_LANDMARKER,
-            model_path=str(self.model_base_path / "holistic_landmarker.task"),
-            min_detection_confidence=0.5,
-            min_tracking_confidence=0.5,
-        )
+        # Holistic Landmarker 설정 (최신 통합 모델) - 파일 존재 시에만 추가
+        holistic_model_path = self.model_base_path / "holistic_landmarker.task"
+        if holistic_model_path.exists():
+            self.task_configs[TaskType.HOLISTIC_LANDMARKER] = TaskConfig(
+                task_type=TaskType.HOLISTIC_LANDMARKER,
+                model_path=str(holistic_model_path),
+                min_detection_confidence=0.5,
+                min_tracking_confidence=0.5,
+            )
+        else:
+            logger.warning(f"Holistic Landmarker 모델 파일을 찾을 수 없습니다: {holistic_model_path}")
 
     def _load_config_file(self, config_file: str):
         """외부 설정 파일 로드"""
@@ -207,10 +211,16 @@ class AdvancedMediaPipeManager:
             logger.error(f"{task_type.value} 설정 없음")
             return False
         try:
-            # 모델 파일 존재 확인
-            if not Path(config.model_path).exists():
-                logger.warning(f"모델 파일 없음: {config.model_path}")
-                return False
+                    # 모델 파일 존재 확인
+        if not Path(config.model_path).exists():
+            logger.error(f"모델 파일 없음: {config.model_path}")
+            logger.error(f"현재 작업 디렉토리: {Path.cwd()}")
+            logger.error(f"models 디렉토리 내용: {list(self.model_base_path.glob('*'))}")
+            return False
+        
+        # 모델 파일 크기 확인
+        model_size = Path(config.model_path).stat().st_size
+        logger.info(f"모델 파일 로드 중: {config.model_path} ({model_size / (1024*1024):.2f}MB)")
 
             # delegate 자동 분기 (공식 지원: CPU/GPU만)
             system = platform.system()

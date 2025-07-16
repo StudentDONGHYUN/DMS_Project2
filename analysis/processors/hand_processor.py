@@ -68,6 +68,10 @@ class HandDataProcessor(IHandDataProcessor):
             (wheel_zone['x1'] + wheel_zone['x2']) / 2,
             (wheel_zone['y1'] + wheel_zone['y2']) / 2
         )
+        
+        # 연속 감지 실패 추적 (점진적 위험도 증가용)
+        self.consecutive_failures = 0
+        self.max_failures_for_max_risk = 10  # 10프레임 후 최대 위험도
         # Calculate radius for circular approximation of steering wheel area
         self.steering_wheel_radius_sq = ((wheel_zone['x2'] - wheel_zone['x1']) / 2) ** 2
 
@@ -91,6 +95,9 @@ class HandDataProcessor(IHandDataProcessor):
         # Process hands and perform comprehensive analysis
         processed_hands = await self.process_hand_landmarks(result, timestamp)
         comprehensive_analysis = await self._perform_comprehensive_hand_analysis(processed_hands, timestamp)
+
+        # 손 감지 성공 시 연속 실패 카운터 초기화
+        self.consecutive_failures = 0
 
         results = {'hand_positions': processed_hands, 'hand_analysis': comprehensive_analysis}
         self._update_hand_metrics(comprehensive_analysis)
@@ -475,10 +482,16 @@ class HandDataProcessor(IHandDataProcessor):
 
     async def _get_default_hand_analysis(self) -> Dict[str, Any]:
         """Default analysis data to return when no hands are detected"""
+        # 연속 감지 실패 횟수 증가
+        self.consecutive_failures += 1
+        
+        # 점진적 위험도 증가 (0.0 -> 1.0)
+        risk_score = min(self.consecutive_failures / self.max_failures_for_max_risk, 1.0)
+        
         return {
             'hands_detected_count': 0,
             'steering_skill': {'skill_score': 0.0, 'feedback': 'No hands detected', 'components': {}},
-            'distraction_behaviors': {'risk_score': 1.0, 'behaviors': ['No hands detected'], 'phone_detected': False},
+            'distraction_behaviors': {'risk_score': risk_score, 'behaviors': ['No hands detected'], 'phone_detected': False},
             'driving_technique': {'technique_rating': 'unknown', 'score': 0.0},
             'overall_hand_safety': 0.0,
             'hand_positions': [] # Add empty list for metric update function reference

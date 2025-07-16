@@ -49,6 +49,10 @@ class PoseDataProcessor(IPoseDataProcessor):
         # --- Advanced state tracking variables ---
         self.posture_history = deque(maxlen=300) # 10 seconds (30fps*10) history
         self.torso_center_history = deque(maxlen=150) # 5 seconds of torso center tracking
+        
+        # 연속 감지 실패 추적 (점진적 위험도 증가용)
+        self.consecutive_failures = 0
+        self.max_failures_for_max_risk = 10  # 10프레임 후 최대 위험도
 
         logger.info("PoseDataProcessor initialized - Digital Biomechanics Expert ready")
     
@@ -161,6 +165,9 @@ class PoseDataProcessor(IPoseDataProcessor):
         
         pose_result = result
         results = {}
+        
+        # 포즈 감지 성공 시 연속 실패 카운터 초기화
+        self.consecutive_failures = 0
         
         if pose_result.pose_landmarks:
             results['pose_2d'] = await self.process_pose_landmarks(pose_result.pose_landmarks[0], timestamp)
@@ -631,10 +638,17 @@ class PoseDataProcessor(IPoseDataProcessor):
     async def _handle_no_pose_detected(self) -> Dict[str, Any]:
         """Handle no pose detected scenario"""
         logger.warning("No pose detected - backup mode or sensor recalibration needed")
+        
+        # 연속 감지 실패 횟수 증가
+        self.consecutive_failures += 1
+        
+        # 점진적 위험도 증가 (0.0 -> 1.0)
+        risk_score = min(self.consecutive_failures / self.max_failures_for_max_risk, 1.0)
+        
         return { 
             'pose_detected': False, 
             'pose_analysis': {
-                'driving_suitability': 0.0,
-                'biomechanical_health': {'overall_score': 0.0, 'risk_factors': ['Pose detection failed'], 'recommendations': ['Adjust camera position']}
+                'driving_suitability': 1.0 - risk_score,  # 위험도가 높을수록 운전 적합도 낮음
+                'biomechanical_health': {'overall_score': 1.0 - risk_score, 'risk_factors': ['Pose detection failed'], 'recommendations': ['Adjust camera position']}
             }
         }
