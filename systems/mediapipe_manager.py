@@ -430,11 +430,13 @@ class AdvancedMediaPipeManager:
 
         # 콜백 처리 스레드 시작
         if not self.callback_thread or not self.callback_thread.is_alive():
+            logger.info("콜백 처리 스레드 시작 준비...")
             self.running = True
             self.callback_thread = threading.Thread(
                 target=self._process_callbacks, daemon=True
             )
             self.callback_thread.start()
+            logger.info("콜백 처리 스레드 시작됨")
 
         initialized_count = sum(results.values())
         total_count = len(results)
@@ -457,12 +459,15 @@ class AdvancedMediaPipeManager:
                     break
 
                 # Analysis engine으로 결과 전달
-                if self.analysis_engine:
-                    loop.run_until_complete(
-                        self._forward_result_to_analysis_engine(
-                            task_type, result, timestamp
+                if self.analysis_engine is not None:
+                    try:
+                        loop.run_until_complete(
+                            self._forward_result_to_analysis_engine(
+                                task_type, result, timestamp
+                            )
                         )
-                    )
+                    except Exception as e:
+                        logger.error(f"Analysis engine 전달 중 오류: {e}")
 
             except queue.Empty:
                 continue
@@ -476,6 +481,10 @@ class AdvancedMediaPipeManager:
         self, task_type: TaskType, result, timestamp
     ):
         """Analysis Engine으로 결과 전달"""
+        # analysis_engine이 None인 경우 스킵
+        if self.analysis_engine is None:
+            return
+            
         try:
             if (
                 hasattr(self.analysis_engine, "on_face_result")

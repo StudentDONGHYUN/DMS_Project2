@@ -49,16 +49,22 @@ logger = logging.getLogger(__name__)
 
 
 class DummyAnalysisEngine:
-    def on_face_result(self, *args, **kwargs):
+    async def on_face_result(self, *args, **kwargs):
         pass
 
-    def on_pose_result(self, *args, **kwargs):
+    async def on_pose_result(self, *args, **kwargs):
         pass
 
-    def on_hand_result(self, *args, **kwargs):
+    async def on_hand_result(self, *args, **kwargs):
         pass
 
-    def on_object_result(self, *args, **kwargs):
+    async def on_object_result(self, *args, **kwargs):
+        pass
+    
+    async def on_gesture_result(self, *args, **kwargs):
+        pass
+    
+    async def on_holistic_result(self, *args, **kwargs):
         pass
 
     frame_buffer = {}
@@ -372,7 +378,14 @@ class DMSApp:
                 use_legacy_engine=self.use_legacy_engine,
             )
             # 2. 비동기 초기화
-            await self.integrated_system.initialize()
+            try:
+                logger.info("IntegratedDMSSystem 초기화 시작...")
+                await self.integrated_system.initialize()
+                logger.info("IntegratedDMSSystem 초기화 완료")
+            except Exception as e:
+                logger.error(f"IntegratedDMSSystem 초기화 실패: {e}", exc_info=True)
+                return False
+            
             # 3. 나머지 컴포넌트 초기화
             try:
                 logger.info("MediaPipe 매니저 초기화 시작...")
