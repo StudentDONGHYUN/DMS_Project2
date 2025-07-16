@@ -1,0 +1,527 @@
+2025-07-16 16:25:39,616 - __main__                  - INFO     - [진단] main.py: main() 진입
+2025-07-16 16:25:40,195 - SClassDMS_v19_default     - INFO     - ✅ AI 드라이빙 코치 시스템 초기화 완료
+2025-07-16 16:25:40,196 - SClassDMS_v19_default     - INFO     - ✅ V2D 헬스케어 시스템 초기화 완료
+2025-07-16 16:25:40,197 - SClassDMS_v19_default     - INFO     - ✅ AR HUD 시스템 초기화 완료
+2025-07-16 16:25:40,198 - SClassDMS_v19_default     - INFO     - ✅ 감성 케어 시스템 초기화 완료
+2025-07-16 16:25:40,199 - SClassDMS_v19_default     - INFO     - ✅ 디지털 트윈 플랫폼 초기화 완료
+2025-07-16 16:25:40,199 - SClassDMS_v19_default     - INFO     - 혁신 시스템 초기화 완료: 5개 시스템 성공
+2025-07-16 16:25:40,200 - SClassDMS_v19_default     - INFO     - S-Class DMS v19.0 시스템 초기화 완료
+2025-07-16 16:25:40,201 - SClassDMS_v19_default     - INFO     - 사용자: default, 에디션: RESEARCH
+2025-07-16 16:25:40,201 - SClassDMS_v19_default     - INFO     - 활성화된 기능: ['Expert Systems', 'AI Coach', 'Healthcare', 'AR HUD', 'Emotional Care', 'Digital Twin']
+2025-07-16 16:25:53,979 - __main__                  - INFO     - start_app() 메서드 진입
+2025-07-16 16:25:53,979 - SClassDMS_v19_default     - INFO     - ✅ AI 드라이빙 코치 시스템 초기화 완료
+2025-07-16 16:25:53,979 - SClassDMS_v19_default     - INFO     - ✅ V2D 헬스케어 시스템 초기화 완료
+2025-07-16 16:25:53,995 - SClassDMS_v19_default     - INFO     - 혁신 시스템 초기화 완료: 2개 시스템 성공
+2025-07-16 16:25:53,995 - SClassDMS_v19_default     - INFO     - S-Class DMS v19.0 시스템 초기화 완료
+2025-07-16 16:25:53,995 - SClassDMS_v19_default     - INFO     - 사용자: default, 에디션: PRO
+2025-07-16 16:25:53,995 - SClassDMS_v19_default     - INFO     - 활성화된 기능: ['Expert Systems', 'AI Coach', 'Healthcare']
+2025-07-16 16:25:53,995 - __main__                  - INFO     - 혁신 엔진 초기화 완료: default, PRO
+2025-07-16 16:25:53,995 - __main__                  - INFO     - config 설정 완료
+2025-07-16 16:25:53,995 - __main__                  - INFO     - GUI 창 종료
+2025-07-16 16:25:54,019 - __main__                  - INFO     - S-Class 설정 완료 - 사용자: default, 에디션: PRO
+2025-07-16 16:25:54,035 - app                       - INFO     - [수정] app_fixed.py: DMSApp.__init__ 진입
+2025-07-16 16:25:54,036 - app                       - INFO     - 에디션 'PRO'에 따른 기능 설정 중...
+2025-07-16 16:25:54,036 - app                       - INFO     - 에디션 'PRO' 기능 설정 완료: {'enable_rppg': True, 'enable_saccade': True, 'enable_spinal_analysis': True, 'enable_tremor_fft': True, 'enable_bayesian_prediction': True, 'enable_emotion_ai': False, 'enable_predictive_safety': False, 'enable_biometric_fusion': False, 'enable_adaptive_thresholds': False}
+2025-07-16 16:25:54,042 - systems.performance       - INFO     - PerformanceOptimizer 초기화 완료
+2025-07-16 16:25:54,077 - systems.personalization   - INFO     - 사용자 프로필 로드됨: default
+2025-07-16 16:25:54,078 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-16 16:25:54,078 - systems.dynamic           - INFO     - DynamicAnalysisEngine 초기화 완료
+2025-07-16 16:25:54,079 - systems.backup            - INFO     - SensorBackupManager 초기화 완료
+2025-07-16 16:25:54,082 - utils.memory_monitor      - INFO     - MemoryMonitor 초기화 - 경고: 600MB, 위험: 1000MB
+2025-07-16 16:25:54,106 - io_handler.video_input    - INFO     - 운전자 연속성 설정됨: 동일 운전자
+2025-07-16 16:25:54,106 - app                       - INFO     - [수정] S-Class 시스템 초기화 완료
+2025-07-16 16:25:54,106 - app                       - INFO     - [수정] app.py: run 진입
+2025-07-16 16:25:54,119 - app                       - INFO     - [수정] app.py: run - opencv_display_loop 진입
+2025-07-16 16:25:54,126 - app                       - INFO     - [수정] 비동기 프레임 프로듀서 시작
+2025-07-16 16:25:54,127 - app                       - INFO     - [수정] S-Class DMS 시스템 초기화 시작...
+2025-07-16 16:25:54,128 - io_handler.video_input    - INFO     - [진단] video_input.initialize 진입
+2025-07-16 16:25:54,129 - io_handler.video_input    - INFO     - [진단] video_input.initialize - self.input_source=['C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0097/video/SGA5100180S0097.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0126/video/SGA5100180S0126.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0135/video/SGA5100180S0135.mp4']
+2025-07-16 16:25:54,129 - io_handler.video_input    - INFO     - 비디오 플레이리스트: 3개 파일
+2025-07-16 16:25:54,130 - io_handler.video_input    - INFO     -   1. SGA5100180S0097.mp4
+2025-07-16 16:25:54,130 - io_handler.video_input    - INFO     -   2. SGA5100180S0126.mp4
+2025-07-16 16:25:54,130 - io_handler.video_input    - INFO     -   3. SGA5100180S0135.mp4
+2025-07-16 16:25:54,131 - io_handler.video_input    - INFO     - 비디오 파일 정보: SGA5100180S0097.mp4 (0.96MB, .mp4)
+2025-07-16 16:25:54,132 - io_handler.video_input    - INFO     - Windows/개발 환경: 표준 파일 디코더 사용
+2025-07-16 16:25:54,133 - io_handler.video_input    - INFO     - FFMPEG 백엔드로 시도 중...
+2025-07-16 16:25:54,321 - io_handler.video_input    - INFO     - ✅ FFMPEG 백엔드로 성공 (테스트 프레임: (720, 1280, 3))
+2025-07-16 16:25:54,323 - io_handler.video_input    - INFO     - 비디오 속성: 1280x720, 30.00fps, 114프레임, 3.8초
+2025-07-16 16:25:54,324 - io_handler.video_input    - INFO     - 비디오 코덱: h264
+2025-07-16 16:25:54,325 - io_handler.video_input    - INFO     - [진단] VideoCapture backend: FFMPEG, codec: h264, 총 프레임: 114
+2025-07-16 16:25:54,326 - io_handler.video_input    - INFO     - VideoCapture 객체 성공적으로 생성됨
+2025-07-16 16:25:54,326 - io_handler.video_input    - INFO     - [진단] VideoCapture backend: FFMPEG, codec: h264, 총 프레임: 114
+2025-07-16 16:25:54,329 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 진입
+2025-07-16 16:25:54,329 - io_handler.video_input    - INFO     - 리더 스레드 시작 대기 중...
+2025-07-16 16:25:54,831 - io_handler.video_input    - INFO     - 첫 번째 프레임 대기 중 (최대 5.0초)...
+2025-07-16 16:25:54,831 - io_handler.video_input    - INFO     - ✅ 첫 번째 프레임 수신 성공
+2025-07-16 16:25:54,831 - io_handler.video_input    - INFO     - ✅ 입력 소스 초기화 및 스레드 시작 완료
+2025-07-16 16:25:54,831 - events.event_bus          - INFO     - EventBus 초기화 완료 - 중추 신경계 가동 시작
+2025-07-16 16:25:54,831 - events.event_bus          - INFO     - 동기 이벤트 시스템 기본 초기화 완료 - 비동기 시작은 대기 중
+2025-07-16 16:25:54,831 - events.event_bus          - INFO     - EventBus 시작됨 - 모든 우선순위 큐 처리 시작
+2025-07-16 16:25:54,831 - events.event_bus          - INFO     - 기존 EventBus 인스턴스 시작 완료
+2025-07-16 16:25:54,834 - app                       - INFO     - ✅ 이벤트 시스템 초기화 완료
+2025-07-16 16:25:54,835 - systems.metrics_manager   - INFO     - MetricsManager 초기화 완료 - 히스토리 크기: 900
+2025-07-16 16:25:54,836 - integration.integrated_system - INFO     - 새로운 시스템 초기화 시작 - 성능 우선 전략
+2025-07-16 16:25:54,836 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 시작: low_resource
+2025-07-16 16:25:54,837 - analysis.factory.analysis_factory - INFO     - 지원 기능: basic_drowsiness_detection, basic_distraction_detection, head_pose_tracking, simple_gaze_estimation, basic_emotion_recognition...
+2025-07-16 16:25:54,839 - analysis.factory.analysis_factory - WARNING  - 필수 프로세서 누락: hand - 기본 설정으로 추가
+2025-07-16 16:25:54,842 - analysis.factory.analysis_factory - WARNING  - 필수 프로세서 누락: object - 기본 설정으로 추가
+2025-07-16 16:25:54,843 - analysis.factory.analysis_factory - INFO     - 저사양 최적화 DMS 시스템 생성 중...
+2025-07-16 16:25:54,843 - analysis.fusion.fusion_engine_advanced - INFO     - MultiModalFusionEngine (S-Class) 초기화 완료 - 디지털 신경과학자 준비됨
+2025-07-16 16:25:55,254 - analysis.drowsiness       - INFO     - EnhancedDrowsinessDetector 초기화 완료
+2025-07-16 16:25:55,254 - analysis.emotion          - INFO     - EmotionRecognitionSystem 초기화 완료
+2025-07-16 16:25:55,449 - analysis.gaze             - INFO     - GazeZoneClassifier 초기화: 11개 구역 정의됨, mode=3d
+2025-07-16 16:25:55,458 - analysis.identity         - INFO     - 1명의 운전자 프로필 로드됨
+2025-07-16 16:25:55,458 - analysis.identity         - INFO     - DriverIdentificationSystem 초기화 완료
+2025-07-16 16:25:55,458 - analysis.processors.face_processor - INFO     - FaceDataProcessor initialized - Digital Psychologist ready
+2025-07-16 16:25:55,459 - analysis.processors.pose_processor - INFO     - PoseDataProcessor initialized - Digital Biomechanics Expert ready
+2025-07-16 16:25:55,459 - analysis.processors.hand_processor - INFO     - HandDataProcessor initialized - Expert Kinematics Analyst ready
+2025-07-16 16:25:55,459 - analysis.processors.object_processor - INFO     - ObjectDataProcessor initialized - Digital Behavior Prediction Expert ready
+2025-07-16 16:25:55,459 - analysis.orchestrator.orchestrator_advanced - INFO     - AnalysisOrchestrator (S-Class) 초기화 완료 - 지능형 지휘자 준비됨
+2025-07-16 16:25:55,460 - analysis.factory.analysis_factory - INFO     - 저사양 DMS 시스템 생성 완료 - 절전 모드 활성화
+2025-07-16 16:25:55,460 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 완료: low_resource
+2025-07-16 16:25:55,460 - integration.integrated_system - INFO     - ✅ 새로운 low_resource 시스템 생성 완료
+2025-07-16 16:25:55,460 - integration.integrated_system - INFO     - IntegratedDMSSystem 초기화 완료 - 타입: low_resource, 레거시: False
+2025-07-16 16:25:55,461 - events.event_bus          - WARNING  - 이벤트 시스템이 이미 실행 중입니다
+2025-07-16 16:25:55,461 - events.handlers           - INFO     - SafetyEventHandler 초기화 완료 - 안전 모니터링 시작
+2025-07-16 16:25:55,461 - events.event_bus          - INFO     - 글로벌 핸들러 등록: SafetyEventHandler
+2025-07-16 16:25:55,462 - events.handlers           - INFO     - AnalyticsEventHandler 초기화 완료 - 성능 모니터링 시작
+2025-07-16 16:25:55,462 - events.event_bus          - INFO     - 글로벌 핸들러 등록: AnalyticsEventHandler
+2025-07-16 16:25:55,462 - systems.metrics_manager   - INFO     - StateManager와 연결됨
+2025-07-16 16:25:55,462 - core.state_manager        - INFO     - MetricsManager와 연결됨
+2025-07-16 16:25:55,462 - integration.integrated_system - INFO     - IntegratedDMSSystem 비동기 초기화 완료
+2025-07-16 16:25:55,463 - app                       - INFO     - MediaPipe 매니저 초기화 시작...
+2025-07-16 16:25:55,463 - systems.mediapipe_manager - INFO     - AdvancedMediaPipeManager 초기화 시작...
+2025-07-16 16:25:55,463 - systems.mediapipe_manager - INFO     - MediaPipe 모듈 로드 성공 - 버전: 0.10.21
+2025-07-16 16:25:55,464 - systems.mediapipe_manager - INFO     - 모델 디렉토리: C:\Users\HKIT\Desktop\DMS_Project2\models
+2025-07-16 16:25:55,464 - systems.mediapipe_manager - WARNING  - Holistic Landmarker 모델 파일을 찾을 수 없습니다: models\holistic_landmarker.task
+2025-07-16 16:25:55,465 - systems.mediapipe_manager - INFO     - AdvancedMediaPipeManager v2.0 (최적화) 초기화 완료
+2025-07-16 16:25:55,466 - app                       - INFO     - MediaPipe 매니저 초기화 완료
+2025-07-16 16:25:55,466 - app                       - INFO     - MediaPipe 모델 로딩 시작...
+2025-07-16 16:25:55,467 - systems.mediapipe_manager - INFO     - 모델 파일 로드 중: models\face_landmarker.task (3.58MB)
+2025-07-16 16:25:55,467 - systems.mediapipe_manager - INFO     - CPU delegate 적용: Windows
+2025-07-16 16:25:55,629 - systems.mediapipe_manager - INFO     - ✅ face_landmarker 초기화 완료
+2025-07-16 16:25:55,631 - systems.mediapipe_manager - INFO     - 모델 파일 로드 중: models\pose_landmarker_heavy.task (29.24MB)
+2025-07-16 16:25:55,632 - systems.mediapipe_manager - INFO     - CPU delegate 적용: Windows
+2025-07-16 16:25:56,062 - systems.mediapipe_manager - INFO     - ✅ pose_landmarker 초기화 완료
+2025-07-16 16:25:56,062 - systems.mediapipe_manager - INFO     - 모델 파일 로드 중: models\hand_landmarker.task (7.46MB)
+2025-07-16 16:25:56,062 - systems.mediapipe_manager - INFO     - CPU delegate 적용: Windows
+2025-07-16 16:25:56,203 - systems.mediapipe_manager - INFO     - ✅ hand_landmarker 초기화 완료
+2025-07-16 16:25:56,205 - systems.mediapipe_manager - INFO     - 모델 파일 로드 중: models\gesture_recognizer.task (7.99MB)
+2025-07-16 16:25:56,205 - systems.mediapipe_manager - INFO     - CPU delegate 적용: Windows
+2025-07-16 16:25:56,334 - systems.mediapipe_manager - INFO     - ✅ gesture_recognizer 초기화 완료
+2025-07-16 16:25:56,335 - systems.mediapipe_manager - INFO     - 모델 파일 로드 중: models\efficientdet_lite0.tflite (13.20MB)
+2025-07-16 16:25:56,335 - systems.mediapipe_manager - INFO     - CPU delegate 적용: Windows
+2025-07-16 16:25:56,440 - systems.mediapipe_manager - INFO     - ✅ object_detector 초기화 완료
+2025-07-16 16:25:56,441 - systems.mediapipe_manager - ERROR    - holistic_landmarker 설정 없음
+2025-07-16 16:25:56,444 - systems.mediapipe_manager - INFO     - Task 초기화 완료: 5/6
+2025-07-16 16:25:56,445 - app                       - INFO     - MediaPipe 모델 로딩 완료: {<TaskType.FACE_LANDMARKER: 'face_landmarker'>: True, <TaskType.POSE_LANDMARKER: 'pose_landmarker'>: True, <TaskType.HAND_LANDMARKER: 'hand_landmarker'>: True, <TaskType.GESTURE_RECOGNIZER: 'gesture_recognizer'>: True, <TaskType.OBJECT_DETECTOR: 'object_detector'>: True, <TaskType.HOLISTIC_LANDMARKER: 'holistic_landmarker'>: False}
+2025-07-16 16:25:56,445 - systems.mediapipe_manager - INFO     - 콜백 처리 스레드 시작
+2025-07-16 16:25:56,445 - app                       - WARNING  - 초기화 실패한 모델들: [<TaskType.HOLISTIC_LANDMARKER: 'holistic_landmarker'>]
+2025-07-16 16:25:56,446 - app                       - INFO     - IntegratedCallbackAdapter (수정) 초기화 완료
+2025-07-16 16:25:56,446 - app                       - INFO     - [수정] S-Class DMS 시스템 초기화 완료
+2025-07-16 16:25:56,447 - app                       - INFO     - [수정] S-Class DMS 시스템 초기화 완료
+2025-07-16 16:25:56,549 - app                       - INFO     - 비동기 프레임 처리 루프 시작
+2025-07-16 16:25:56,595 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:25:56,595 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:25:56,602 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:25:56,607 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:25:56,608 - integration.integrated_system - INFO     - 성능 리포트 - 평균 처리시간: 13.5ms, FPS: 74.2
+2025-07-16 16:25:56,751 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:25:56,751 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:56,766 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:25:56,804 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:56,807 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:25:56,810 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:25:56,825 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:56,905 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:25:56,905 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:56,967 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:25:56,967 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:56,967 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:25:56,967 - systems.metrics_manager   - WARNING  - 경고 발생 - distraction: warning (값: 0.300)
+2025-07-16 16:25:56,967 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:56,967 - core.state_manager        - WARNING  - 경고 수신: distraction - warning (값: 0.300)
+2025-07-16 16:25:56,967 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:25:57,009 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:25:57,032 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:57,104 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:25:57,119 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:57,134 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:25:57,184 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:25:57,240 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:25:57,302 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:57,342 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:25:57,353 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:57,356 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:25:57,358 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:57,360 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:25:57,361 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (pose_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:57,409 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:25:57,469 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:57,503 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:57,563 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:25:57,582 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:25:57,583 - systems.metrics_manager   - WARNING  - 경고 발생 - distraction: danger (값: 0.600)
+2025-07-16 16:25:57,594 - core.state_manager        - WARNING  - 경고 수신: distraction - danger (값: 0.600)
+2025-07-16 16:25:57,607 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:25:57,652 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:25:57,691 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:25:57,696 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:57,704 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:25:57,712 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:57,722 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:25:57,814 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:57,846 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:25:57,897 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:57,927 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:25:57,938 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:57,941 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:25:57,945 - systems.metrics_manager   - WARNING  - 경고 발생 - distraction: critical (값: 0.800)
+2025-07-16 16:25:57,955 - core.state_manager        - WARNING  - 경고 수신: distraction - critical (값: 0.800)
+2025-07-16 16:25:57,956 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:25:57,990 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:58,002 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:25:58,019 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:58,019 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:25:58,035 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:25:58,041 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:25:58,049 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (pose_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:58,133 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:25:58,164 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:58,165 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:25:58,167 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:25:58,174 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:25:58,200 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:58,252 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:58,290 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:25:58,333 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:25:58,342 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:58,344 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:25:58,346 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:25:58,381 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:25:58,407 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:58,421 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:25:58,428 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:58,428 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:25:58,452 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:25:58,469 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:58,577 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:25:58,612 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:58,623 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:25:58,624 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:58,625 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:25:58,626 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:25:58,659 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:25:58,682 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:25:58,685 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:58,754 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:25:58,772 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:58,774 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:25:58,805 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:58,837 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:25:58,860 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:25:58,860 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:25:58,862 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:25:58,889 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:59,010 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:25:59,012 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:59,017 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:25:59,025 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (pose_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:59,026 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:25:59,027 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:25:59,033 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:59,069 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:59,097 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:25:59,111 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:59,123 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:25:59,125 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:25:59,126 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:25:59,159 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:25:59,190 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:59,220 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:25:59,231 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:59,245 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:25:59,249 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:59,250 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:25:59,308 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:25:59,322 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:25:59,323 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:25:59,334 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:25:59,341 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:59,367 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:59,434 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:25:59,461 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:59,464 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:25:59,466 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:25:59,468 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:25:59,478 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:59,557 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:59,578 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:25:59,595 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:59,645 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:25:59,665 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (pose_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:59,706 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:25:59,714 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:25:59,799 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:25:59,827 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:25:59,837 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:25:59,837 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:25:59,861 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:25:59,895 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:00,213 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:00,220 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:00,278 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:00,298 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:00,326 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (pose_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:00,331 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:00,340 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:00,347 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:00,348 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:00,358 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:00,396 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:00,406 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:00,472 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:00,474 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:00,478 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:00,479 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:00,486 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:00,510 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:00,532 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:00,535 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:00,543 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:00,545 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:00,568 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:00,588 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:00,597 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:00,607 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:00,607 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:00,609 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:00,658 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:00,664 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:00,664 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:00,667 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:00,672 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:00,687 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:00,759 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:00,784 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:00,847 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (pose_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:00,941 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:00,972 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:00,980 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:00,990 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:01,052 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:01,079 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:01,113 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:01,118 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:01,138 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:01,180 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:01,180 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:01,290 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:01,321 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:01,395 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:01,411 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:01,417 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:01,430 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:01,638 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:01,791 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:01,814 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:01,871 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:01,918 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:02,050 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:02,050 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (pose_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:02,110 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:02,135 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:02,180 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:02,183 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:02,184 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:02,216 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:02,329 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:02,345 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:02,432 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:02,452 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:02,494 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:02,514 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:02,549 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:02,629 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:02,708 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (pose_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:02,747 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:02,879 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:02,893 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:02,894 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:02,895 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:02,898 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:02,968 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:03,024 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:03,029 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:03,118 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:03,118 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:03,197 - systems.metrics_manager   - WARNING  - 경고 발생 - distraction: critical (값: 1.000)
+2025-07-16 16:26:03,242 - core.state_manager        - WARNING  - 경고 수신: distraction - critical (값: 1.000)
+2025-07-16 16:26:03,249 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:03,267 - io_handler.video_input    - WARNING  - [진단] video_input._reader_thread: 프레임 획득 실패 (ret=False)
+2025-07-16 16:26:03,305 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:03,315 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:03,358 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:03,432 - io_handler.video_input    - INFO     - 비디오 파일 정보: SGA5100180S0126.mp4 (1.05MB, .mp4)
+2025-07-16 16:26:03,481 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:03,492 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:03,512 - io_handler.video_input    - INFO     - Windows/개발 환경: 표준 파일 디코더 사용
+2025-07-16 16:26:03,534 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:03,551 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (pose_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:03,564 - io_handler.video_input    - INFO     - FFMPEG 백엔드로 시도 중...
+2025-07-16 16:26:03,567 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:03,631 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:03,699 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:03,700 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:03,709 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:03,712 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:03,714 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:03,745 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:03,828 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:03,865 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:03,865 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:03,947 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:03,948 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:03,955 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:03,961 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:03,971 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:04,029 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:04,081 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:04,115 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:04,115 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:04,117 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:04,142 - io_handler.video_input    - INFO     - ✅ FFMPEG 백엔드로 성공 (테스트 프레임: (720, 1280, 3))
+2025-07-16 16:26:04,142 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:04,161 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:04,166 - io_handler.video_input    - INFO     - 비디오 속성: 1280x720, 30.00fps, 129프레임, 4.3초
+2025-07-16 16:26:04,182 - io_handler.video_input    - INFO     - 비디오 코덱: h264
+2025-07-16 16:26:04,182 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:04,196 - io_handler.video_input    - INFO     - 다음 비디오 로드 (RB2 최적화): SGA5100180S0126.mp4
+2025-07-16 16:26:04,249 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:04,252 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:04,303 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:04,378 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:04,380 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:04,387 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:04,398 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:04,450 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:04,452 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:04,475 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:04,477 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:04,479 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:04,517 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:04,533 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:04,540 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:04,547 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:04,616 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:04,620 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (pose_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:04,637 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:04,674 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:04,728 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:04,730 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:04,764 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:04,766 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:04,779 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:04,781 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:04,836 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:04,839 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:04,888 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:04,917 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:04,918 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:04,920 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:04,946 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:04,946 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:05,019 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:05,024 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:05,122 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:05,122 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:05,135 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:05,137 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:05,144 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:05,192 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:05,219 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:05,262 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:05,302 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:05,326 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:05,331 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:05,331 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:05,377 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:05,377 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (pose_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:05,448 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:05,467 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:05,482 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:05,484 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:05,510 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:05,518 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:05,568 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:05,621 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:05,623 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:05,628 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:05,628 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:05,630 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:05,692 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:05,735 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:05,755 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:05,755 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:05,832 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:05,832 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:05,864 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:05,917 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:05,979 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:05,990 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (object_detector): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:05,992 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:05,994 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:06,010 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:06,047 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:06,091 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:06,092 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:06,101 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:06,121 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:06,140 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (hand_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:06,191 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 16:26:06,196 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 16:26:06,197 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 16:26:06,200 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 16:26:06,207 - app                       - INFO     - 비동기 프레임 처리 루프 종료
+2025-07-16 16:26:06,207 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (pose_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:06,287 - systems.mediapipe_manager - INFO     - MediaPipe Manager 정리 시작...
+2025-07-16 16:26:06,295 - systems.mediapipe_manager - ERROR    - Analysis engine 전달 오류 (face_landmarker): object NoneType can't be used in 'await' expression
+2025-07-16 16:26:06,313 - systems.mediapipe_manager - INFO     - 콜백 처리 스레드 종료
+2025-07-16 16:26:06,336 - systems.mediapipe_manager - INFO     - ✅ face_landmarker 정리 완료
+2025-07-16 16:26:09,930 - io_handler.video_input    - WARNING  - [진단] video_input._reader_thread: 프레임 획득 실패 (ret=False)
+2025-07-16 16:26:09,942 - io_handler.video_input    - INFO     - 비디오 파일 정보: SGA5100180S0135.mp4 (0.79MB, .mp4)
+2025-07-16 16:26:09,942 - io_handler.video_input    - INFO     - Windows/개발 환경: 표준 파일 디코더 사용
+2025-07-16 16:26:09,943 - io_handler.video_input    - INFO     - FFMPEG 백엔드로 시도 중...
+2025-07-16 16:26:10,012 - io_handler.video_input    - INFO     - ✅ FFMPEG 백엔드로 성공 (테스트 프레임: (720, 1280, 3))
+2025-07-16 16:26:10,014 - io_handler.video_input    - INFO     - 비디오 속성: 1280x720, 30.00fps, 113프레임, 3.8초
+2025-07-16 16:26:10,014 - io_handler.video_input    - INFO     - 비디오 코덱: h264
+2025-07-16 16:26:10,015 - io_handler.video_input    - INFO     - 다음 비디오 로드 (RB2 최적화): SGA5100180S0135.mp4
+2025-07-16 16:26:10,256 - systems.mediapipe_manager - WARNING  - pose_landmarker 결과 큐 오버플로우
+2025-07-16 16:26:10,415 - systems.mediapipe_manager - WARNING  - pose_landmarker 결과 큐 오버플로우
+2025-07-16 16:26:10,618 - systems.mediapipe_manager - WARNING  - pose_landmarker 결과 큐 오버플로우
+2025-07-16 16:26:10,772 - systems.mediapipe_manager - WARNING  - pose_landmarker 결과 큐 오버플로우
+2025-07-16 16:26:10,951 - systems.mediapipe_manager - WARNING  - pose_landmarker 결과 큐 오버플로우
+2025-07-16 16:26:11,106 - systems.mediapipe_manager - WARNING  - pose_landmarker 결과 큐 오버플로우
+2025-07-16 16:26:11,218 - systems.mediapipe_manager - WARNING  - pose_landmarker 결과 큐 오버플로우
+2025-07-16 16:26:11,334 - systems.mediapipe_manager - WARNING  - pose_landmarker 결과 큐 오버플로우
+2025-07-16 16:26:11,443 - systems.mediapipe_manager - WARNING  - pose_landmarker 결과 큐 오버플로우
+2025-07-16 16:26:11,560 - systems.mediapipe_manager - WARNING  - pose_landmarker 결과 큐 오버플로우
+2025-07-16 16:26:11,668 - systems.mediapipe_manager - WARNING  - pose_landmarker 결과 큐 오버플로우
+2025-07-16 16:26:11,773 - systems.mediapipe_manager - WARNING  - pose_landmarker 결과 큐 오버플로우
+2025-07-16 16:26:11,885 - systems.mediapipe_manager - WARNING  - pose_landmarker 결과 큐 오버플로우
+2025-07-16 16:26:12,000 - systems.mediapipe_manager - WARNING  - pose_landmarker 결과 큐 오버플로우
+2025-07-16 16:26:12,000 - systems.mediapipe_manager - INFO     - ✅ pose_landmarker 정리 완료
+2025-07-16 16:26:12,008 - systems.mediapipe_manager - INFO     - ✅ hand_landmarker 정리 완료
+2025-07-16 16:26:12,019 - systems.mediapipe_manager - INFO     - ✅ gesture_recognizer 정리 완료
+2025-07-16 16:26:12,029 - systems.mediapipe_manager - INFO     - ✅ object_detector 정리 완료
+2025-07-16 16:26:12,071 - systems.mediapipe_manager - INFO     - MediaPipe Manager 정리 완료
+2025-07-16 16:26:12,088 - integration.integrated_system - INFO     - IntegratedDMSSystem 종료 시작
+2025-07-16 16:26:12,088 - events.event_bus          - INFO     - EventBus 종료 중...
+2025-07-16 16:26:12,089 - events.event_bus          - INFO     - LOW 우선순위 큐 처리 취소됨: 
+2025-07-16 16:26:12,090 - events.event_bus          - INFO     - HIGH 우선순위 큐 처리 취소됨: 
+2025-07-16 16:26:12,090 - events.event_bus          - INFO     - CRITICAL 우선순위 큐 처리 취소됨: 
+2025-07-16 16:26:12,090 - events.event_bus          - INFO     - EMERGENCY 우선순위 큐 처리 취소됨: 
+2025-07-16 16:26:12,091 - events.event_bus          - INFO     - EventBus 종료 완료
+2025-07-16 16:26:12,091 - events.event_bus          - INFO     - 글로벌 이벤트 시스템 종료 완료
+2025-07-16 16:26:12,091 - integration.integrated_system - INFO     - 최종 성능 리포트 - 총 51프레임, 평균 127.8ms
+2025-07-16 16:26:12,092 - integration.integrated_system - INFO     - IntegratedDMSSystem 종료 완료

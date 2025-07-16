@@ -1,0 +1,1046 @@
+2025-07-16 14:08:18,354 - __main__                  - INFO     - [진단] main.py: main() 진입
+2025-07-16 14:08:18,621 - SClassDMS_v19_default     - INFO     - ✅ AI 드라이빙 코치 시스템 초기화 완료
+2025-07-16 14:08:18,622 - SClassDMS_v19_default     - INFO     - ✅ V2D 헬스케어 시스템 초기화 완료
+2025-07-16 14:08:18,623 - SClassDMS_v19_default     - INFO     - ✅ AR HUD 시스템 초기화 완료
+2025-07-16 14:08:18,624 - SClassDMS_v19_default     - INFO     - ✅ 감성 케어 시스템 초기화 완료
+2025-07-16 14:08:18,625 - SClassDMS_v19_default     - INFO     - ✅ 디지털 트윈 플랫폼 초기화 완료
+2025-07-16 14:08:18,628 - SClassDMS_v19_default     - INFO     - 혁신 시스템 초기화 완료: 5개 시스템 성공
+2025-07-16 14:08:18,628 - SClassDMS_v19_default     - INFO     - S-Class DMS v19.0 시스템 초기화 완료
+2025-07-16 14:08:18,629 - SClassDMS_v19_default     - INFO     - 사용자: default, 에디션: RESEARCH
+2025-07-16 14:08:18,629 - SClassDMS_v19_default     - INFO     - 활성화된 기능: ['Expert Systems', 'AI Coach', 'Healthcare', 'AR HUD', 'Emotional Care', 'Digital Twin']
+2025-07-16 14:08:54,410 - __main__                  - INFO     - start_app() 메서드 진입
+2025-07-16 14:08:54,425 - SClassDMS_v19_default     - INFO     - ✅ AI 드라이빙 코치 시스템 초기화 완료
+2025-07-16 14:08:54,425 - SClassDMS_v19_default     - INFO     - ✅ V2D 헬스케어 시스템 초기화 완료
+2025-07-16 14:08:54,425 - SClassDMS_v19_default     - INFO     - 혁신 시스템 초기화 완료: 2개 시스템 성공
+2025-07-16 14:08:54,425 - SClassDMS_v19_default     - INFO     - S-Class DMS v19.0 시스템 초기화 완료
+2025-07-16 14:08:54,425 - SClassDMS_v19_default     - INFO     - 사용자: default, 에디션: PRO
+2025-07-16 14:08:54,425 - SClassDMS_v19_default     - INFO     - 활성화된 기능: ['Expert Systems', 'AI Coach', 'Healthcare']
+2025-07-16 14:08:54,425 - __main__                  - INFO     - 혁신 엔진 초기화 완료: default, PRO
+2025-07-16 14:08:54,425 - __main__                  - INFO     - config 설정 완료
+2025-07-16 14:08:54,425 - __main__                  - INFO     - GUI 창 종료
+2025-07-16 14:08:54,452 - __main__                  - INFO     - S-Class 설정 완료 - 사용자: default, 에디션: PRO
+2025-07-16 14:08:54,459 - app                       - INFO     - [수정] app_fixed.py: DMSApp.__init__ 진입
+2025-07-16 14:08:54,460 - app                       - INFO     - 에디션 'PRO'에 따른 기능 설정 중...
+2025-07-16 14:08:54,460 - app                       - INFO     - 에디션 'PRO' 기능 설정 완료: {'enable_rppg': True, 'enable_saccade': True, 'enable_spinal_analysis': True, 'enable_tremor_fft': True, 'enable_bayesian_prediction': True, 'enable_emotion_ai': False, 'enable_predictive_safety': False, 'enable_biometric_fusion': False, 'enable_adaptive_thresholds': False}
+2025-07-16 14:08:54,462 - systems.performance       - INFO     - PerformanceOptimizer 초기화 완료
+2025-07-16 14:08:54,465 - systems.personalization   - INFO     - 사용자 프로필 로드됨: default
+2025-07-16 14:08:54,465 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-16 14:08:54,466 - systems.dynamic           - INFO     - DynamicAnalysisEngine 초기화 완료
+2025-07-16 14:08:54,467 - systems.backup            - INFO     - SensorBackupManager 초기화 완료
+2025-07-16 14:08:54,469 - utils.memory_monitor      - INFO     - MemoryMonitor 초기화 - 경고: 600MB, 위험: 1000MB
+2025-07-16 14:08:54,472 - io_handler.video_input    - INFO     - 운전자 연속성 설정됨: 동일 운전자
+2025-07-16 14:08:54,473 - app                       - INFO     - [수정] S-Class 시스템 초기화 완료
+2025-07-16 14:08:54,474 - app                       - INFO     - [수정] app.py: run 진입
+2025-07-16 14:08:54,478 - app                       - INFO     - [수정] app.py: run - opencv_display_loop 진입
+2025-07-16 14:08:54,482 - app                       - INFO     - [수정] 비동기 프레임 프로듀서 시작
+2025-07-16 14:08:54,483 - app                       - INFO     - [수정] S-Class DMS 시스템 초기화 시작...
+2025-07-16 14:08:54,483 - io_handler.video_input    - INFO     - [진단] video_input.initialize 진입
+2025-07-16 14:08:54,484 - io_handler.video_input    - INFO     - [진단] video_input.initialize - self.input_source=['C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0097/video/SGA5100180S0097.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0126/video/SGA5100180S0126.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0135/video/SGA5100180S0135.mp4']
+2025-07-16 14:08:54,484 - io_handler.video_input    - INFO     - 비디오 플레이리스트: 3개 파일
+2025-07-16 14:08:54,485 - io_handler.video_input    - INFO     -   1. SGA5100180S0097.mp4
+2025-07-16 14:08:54,485 - io_handler.video_input    - INFO     -   2. SGA5100180S0126.mp4
+2025-07-16 14:08:54,485 - io_handler.video_input    - INFO     -   3. SGA5100180S0135.mp4
+2025-07-16 14:08:54,486 - io_handler.video_input    - INFO     - 비디오 파일 정보: SGA5100180S0097.mp4 (0.96MB, .mp4)
+2025-07-16 14:08:54,486 - io_handler.video_input    - INFO     - Windows/개발 환경: 표준 파일 디코더 사용
+2025-07-16 14:08:54,486 - io_handler.video_input    - INFO     - FFMPEG 백엔드로 시도 중...
+2025-07-16 14:08:54,677 - io_handler.video_input    - INFO     - ✅ FFMPEG 백엔드로 성공 (테스트 프레임: (720, 1280, 3))
+2025-07-16 14:08:54,677 - io_handler.video_input    - INFO     - 비디오 속성: 1280x720, 30.00fps, 114프레임, 3.8초
+2025-07-16 14:08:54,677 - io_handler.video_input    - INFO     - 비디오 코덱: h264
+2025-07-16 14:08:54,677 - io_handler.video_input    - INFO     - [진단] VideoCapture backend: FFMPEG, codec: h264, 총 프레임: 114
+2025-07-16 14:08:54,677 - io_handler.video_input    - INFO     - VideoCapture 객체 성공적으로 생성됨
+2025-07-16 14:08:54,677 - io_handler.video_input    - INFO     - [진단] VideoCapture backend: FFMPEG, codec: h264, 총 프레임: 114
+2025-07-16 14:08:54,677 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 진입
+2025-07-16 14:08:54,677 - io_handler.video_input    - INFO     - 리더 스레드 시작 대기 중...
+2025-07-16 14:08:55,207 - io_handler.video_input    - INFO     - 첫 번째 프레임 대기 중 (최대 5.0초)...
+2025-07-16 14:08:55,207 - io_handler.video_input    - INFO     - ✅ 첫 번째 프레임 수신 성공
+2025-07-16 14:08:55,207 - io_handler.video_input    - INFO     - ✅ 입력 소스 초기화 및 스레드 시작 완료
+2025-07-16 14:08:55,207 - events.event_bus          - INFO     - EventBus 초기화 완료 - 중추 신경계 가동 시작
+2025-07-16 14:08:55,207 - events.event_bus          - INFO     - 동기 이벤트 시스템 기본 초기화 완료 - 비동기 시작은 대기 중
+2025-07-16 14:08:55,207 - events.event_bus          - INFO     - EventBus 시작됨 - 모든 우선순위 큐 처리 시작
+2025-07-16 14:08:55,207 - events.event_bus          - INFO     - 기존 EventBus 인스턴스 시작 완료
+2025-07-16 14:08:55,207 - app                       - INFO     - ✅ 이벤트 시스템 초기화 완료
+2025-07-16 14:08:55,207 - systems.metrics_manager   - INFO     - MetricsManager 초기화 완료 - 히스토리 크기: 900
+2025-07-16 14:08:55,207 - integration.integrated_system - INFO     - 새로운 시스템 초기화 시작 - 성능 우선 전략
+2025-07-16 14:08:55,207 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 시작: low_resource
+2025-07-16 14:08:55,207 - analysis.factory.analysis_factory - INFO     - 지원 기능: basic_drowsiness_detection, basic_distraction_detection, head_pose_tracking, simple_gaze_estimation, basic_emotion_recognition...
+2025-07-16 14:08:55,220 - analysis.factory.analysis_factory - WARNING  - 필수 프로세서 누락: hand - 기본 설정으로 추가
+2025-07-16 14:08:55,220 - analysis.factory.analysis_factory - WARNING  - 필수 프로세서 누락: object - 기본 설정으로 추가
+2025-07-16 14:08:55,220 - analysis.factory.analysis_factory - INFO     - 저사양 최적화 DMS 시스템 생성 중...
+2025-07-16 14:08:55,220 - analysis.fusion.fusion_engine_advanced - INFO     - MultiModalFusionEngine (S-Class) 초기화 완료 - 디지털 신경과학자 준비됨
+2025-07-16 14:08:55,369 - analysis.drowsiness       - INFO     - EnhancedDrowsinessDetector 초기화 완료
+2025-07-16 14:08:55,370 - analysis.emotion          - INFO     - EmotionRecognitionSystem 초기화 완료
+2025-07-16 14:08:55,545 - analysis.gaze             - INFO     - GazeZoneClassifier 초기화: 11개 구역 정의됨, mode=3d
+2025-07-16 14:08:55,546 - analysis.identity         - INFO     - 1명의 운전자 프로필 로드됨
+2025-07-16 14:08:55,547 - analysis.identity         - INFO     - DriverIdentificationSystem 초기화 완료
+2025-07-16 14:08:55,547 - analysis.processors.face_processor - INFO     - FaceDataProcessor initialized - Digital Psychologist ready
+2025-07-16 14:08:55,548 - analysis.processors.pose_processor - INFO     - PoseDataProcessor initialized - Digital Biomechanics Expert ready
+2025-07-16 14:08:55,548 - analysis.processors.hand_processor - INFO     - HandDataProcessor initialized - Expert Kinematics Analyst ready
+2025-07-16 14:08:55,548 - analysis.processors.object_processor - INFO     - ObjectDataProcessor initialized - Digital Behavior Prediction Expert ready
+2025-07-16 14:08:55,549 - analysis.orchestrator.orchestrator_advanced - INFO     - AnalysisOrchestrator (S-Class) 초기화 완료 - 지능형 지휘자 준비됨
+2025-07-16 14:08:55,549 - analysis.factory.analysis_factory - INFO     - 저사양 DMS 시스템 생성 완료 - 절전 모드 활성화
+2025-07-16 14:08:55,549 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 완료: low_resource
+2025-07-16 14:08:55,550 - integration.integrated_system - INFO     - ✅ 새로운 low_resource 시스템 생성 완료
+2025-07-16 14:08:55,550 - integration.integrated_system - INFO     - IntegratedDMSSystem 초기화 완료 - 타입: low_resource, 레거시: False
+2025-07-16 14:08:55,550 - events.event_bus          - WARNING  - 이벤트 시스템이 이미 실행 중입니다
+2025-07-16 14:08:55,550 - events.handlers           - INFO     - SafetyEventHandler 초기화 완료 - 안전 모니터링 시작
+2025-07-16 14:08:55,551 - events.event_bus          - INFO     - 글로벌 핸들러 등록: SafetyEventHandler
+2025-07-16 14:08:55,551 - events.handlers           - INFO     - AnalyticsEventHandler 초기화 완료 - 성능 모니터링 시작
+2025-07-16 14:08:55,551 - events.event_bus          - INFO     - 글로벌 핸들러 등록: AnalyticsEventHandler
+2025-07-16 14:08:55,552 - systems.metrics_manager   - INFO     - StateManager와 연결됨
+2025-07-16 14:08:55,552 - core.state_manager        - INFO     - MetricsManager와 연결됨
+2025-07-16 14:08:55,553 - integration.integrated_system - INFO     - IntegratedDMSSystem 비동기 초기화 완료
+2025-07-16 14:08:55,553 - systems.mediapipe_manager - INFO     - 모델 디렉토리: C:\Users\HKIT\Desktop\DMS_Project2\models
+2025-07-16 14:08:55,554 - systems.mediapipe_manager - WARNING  - Holistic Landmarker 모델 파일을 찾을 수 없습니다: models\holistic_landmarker.task
+2025-07-16 14:08:55,554 - systems.mediapipe_manager - INFO     - AdvancedMediaPipeManager v2.0 (최적화) 초기화 완료
+2025-07-16 14:08:55,554 - app                       - INFO     - IntegratedCallbackAdapter (수정) 초기화 완료
+2025-07-16 14:08:55,555 - app                       - INFO     - [수정] S-Class DMS 시스템 초기화 완료
+2025-07-16 14:08:55,555 - app                       - INFO     - [수정] S-Class DMS 시스템 초기화 완료
+2025-07-16 14:08:55,657 - app                       - INFO     - 비동기 프레임 처리 루프 시작
+2025-07-16 14:08:55,680 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:55,680 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:55,680 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:55,693 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:55,694 - integration.integrated_system - INFO     - 성능 리포트 - 평균 처리시간: 14.8ms, FPS: 67.4
+2025-07-16 14:08:55,703 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:55,709 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:55,709 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:55,713 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:55,722 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:55,722 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:55,723 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:55,723 - systems.metrics_manager   - WARNING  - 경고 발생 - distraction: warning (값: 0.300)
+2025-07-16 14:08:55,723 - core.state_manager        - WARNING  - 경고 수신: distraction - warning (값: 0.300)
+2025-07-16 14:08:55,724 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:55,738 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:55,738 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:55,738 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:55,738 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:55,744 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:55,744 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:55,744 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:55,744 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:55,770 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:55,770 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:55,770 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:55,771 - systems.metrics_manager   - WARNING  - 경고 발생 - distraction: danger (값: 0.600)
+2025-07-16 14:08:55,771 - core.state_manager        - WARNING  - 경고 수신: distraction - danger (값: 0.600)
+2025-07-16 14:08:55,773 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:55,788 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:55,788 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:55,788 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:55,791 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:55,793 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:55,793 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:55,793 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:55,793 - systems.metrics_manager   - WARNING  - 경고 발생 - distraction: critical (값: 0.800)
+2025-07-16 14:08:55,793 - core.state_manager        - WARNING  - 경고 수신: distraction - critical (값: 0.800)
+2025-07-16 14:08:55,809 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:55,820 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:55,820 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:55,820 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:55,825 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:55,838 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:55,838 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:55,838 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:55,838 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:55,843 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:55,843 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:55,843 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:55,843 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:55,863 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:55,864 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:55,864 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:55,864 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:55,876 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:55,876 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:55,876 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:55,876 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:55,892 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:55,893 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:55,894 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:55,896 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:55,903 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:55,903 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:55,903 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:55,903 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:55,910 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:55,910 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:55,910 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:55,910 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:55,943 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:55,943 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:55,943 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:55,943 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:55,965 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:55,966 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:55,966 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:55,967 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:55,983 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:55,983 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:55,983 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:55,983 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:55,994 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:55,994 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:55,994 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,004 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,010 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,010 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,010 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,010 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,024 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,024 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,025 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,026 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,026 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,026 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,026 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,026 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,048 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,048 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,048 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,048 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,064 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,064 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,064 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,064 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,084 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,084 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,085 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,085 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,094 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,094 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,094 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,094 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,109 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,109 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,109 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,109 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,127 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,128 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,129 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,130 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,142 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,143 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,143 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,152 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,167 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,167 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,167 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,167 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,186 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,187 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,188 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,189 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,206 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,206 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,207 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,208 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,242 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,250 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,253 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,256 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,279 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,280 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,286 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,289 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,303 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,304 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,305 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,307 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,320 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,321 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,321 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,323 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,339 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,341 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,341 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,343 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,357 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,361 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,361 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,364 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,381 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,384 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,385 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,388 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,404 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,405 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,405 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,407 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,434 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,435 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,435 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,436 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,453 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,458 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,462 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,463 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,473 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,474 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,475 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,477 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,496 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,498 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,500 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,503 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,519 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,521 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,522 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,524 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,540 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,541 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,541 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,543 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,561 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,564 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,567 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,568 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,579 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,588 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,589 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,594 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,620 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,622 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,623 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,625 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,647 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,651 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,652 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,654 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,679 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,691 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,693 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,694 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,724 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,735 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,741 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,752 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,776 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,779 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,781 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,785 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,806 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,818 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,823 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,829 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,856 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,857 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,858 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,866 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,890 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,890 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,894 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,896 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,924 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,924 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,926 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,930 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:56,959 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:56,970 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:56,974 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:56,979 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,000 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,001 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,006 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,021 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,026 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,026 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,042 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,057 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,087 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,089 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,089 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,091 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,119 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,119 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,119 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,119 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,142 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,157 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,164 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,167 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,195 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,212 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,214 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,217 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,235 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,243 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,246 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,251 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,259 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,259 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,274 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,276 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,292 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,307 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,307 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,309 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,332 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,332 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,345 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,351 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,377 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,383 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,389 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,394 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,427 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,431 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,431 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,443 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,493 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,502 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,506 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,508 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,534 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,535 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,536 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,539 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,567 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,568 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,577 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,577 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,604 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,611 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,619 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,621 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,641 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,646 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,647 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,649 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,676 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,678 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,678 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,690 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,708 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,722 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,722 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,724 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,729 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,749 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,751 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,756 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,759 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,779 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,781 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,788 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,804 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,804 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,804 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,811 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,826 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,826 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,835 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,836 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,839 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,839 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,839 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,855 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,870 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,870 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,876 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,878 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,886 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,902 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,902 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,902 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,927 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,931 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,934 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,938 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,944 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,944 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,944 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,944 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,970 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,971 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,972 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,972 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,977 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,977 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,977 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,977 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:57,993 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:57,993 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:57,993 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:57,998 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,007 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,007 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,008 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,008 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,009 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,009 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,009 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,009 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,056 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,056 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,056 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,057 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,066 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,068 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,071 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,071 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,077 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,077 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,077 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,077 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,104 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,104 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,104 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,104 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,129 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,132 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,133 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,133 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,145 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,148 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,150 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,153 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,165 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,165 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,165 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,165 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,186 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,186 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,187 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,188 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,204 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,204 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,204 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,206 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,226 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,229 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,232 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,234 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,248 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,250 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,250 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,253 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,272 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,273 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,273 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,274 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,289 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,290 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,290 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,291 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,302 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,306 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,308 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,311 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,323 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,323 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,323 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,326 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,342 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,343 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,344 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,350 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,367 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,369 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,370 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,372 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,389 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,389 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,389 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,392 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,410 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,411 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,412 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,413 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,431 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,431 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,431 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,431 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,444 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,444 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,444 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,444 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,486 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,487 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,488 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,488 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,509 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,510 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,516 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,523 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,527 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,527 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,527 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,539 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,554 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,555 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,555 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,556 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,572 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,573 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,574 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,579 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,597 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,598 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,599 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,600 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,610 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,617 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,619 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,619 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,623 - app                       - INFO     - 메모리 정리 실행
+2025-07-16 14:08:58,757 - app                       - INFO     - 가비지 컬렉션 완료: 총 0개 객체 정리
+2025-07-16 14:08:58,765 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-16 14:08:58,892 - app                       - INFO     - 메모리 정리 완료 - 정리 전: 604.6MB, 정리 후: 602.0MB, 확보된 메모리: 2.6MB
+2025-07-16 14:08:58,905 - app                       - WARNING  - 메모리 정리 효과가 제한적입니다: 2.6MB
+2025-07-16 14:08:58,906 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,906 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,906 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,915 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,929 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,930 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,930 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,932 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,947 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,947 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,947 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,947 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:58,972 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:58,974 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:58,976 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:58,978 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,001 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,002 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,002 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,004 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,016 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,016 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,016 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,016 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,040 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,041 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,045 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,051 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,066 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,066 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,067 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,068 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,081 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,081 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,082 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,083 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,098 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,100 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,100 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,102 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,112 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,114 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,115 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,118 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,127 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,127 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,127 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,127 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,177 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,178 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,178 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,178 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,178 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,178 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,178 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,191 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,205 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,205 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,211 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,214 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,228 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,231 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,233 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,237 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,249 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,249 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,259 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,260 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,270 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,270 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,271 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,272 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,293 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,294 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,295 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,297 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,306 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,307 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,312 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,312 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,332 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,333 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,334 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,335 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,345 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,345 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,359 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,360 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,370 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,371 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,372 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,377 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,396 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,397 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,398 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,398 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,411 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,417 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,421 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,424 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,426 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,426 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,426 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,438 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,445 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,450 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,450 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,450 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,468 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,469 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,470 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,474 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,488 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,489 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,489 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,489 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,504 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,504 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,504 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,504 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,522 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,522 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,524 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,528 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,546 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,546 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,546 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,546 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,562 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,567 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,568 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,571 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,577 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,586 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,586 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,586 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,606 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,606 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,609 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,610 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,610 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,610 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,610 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,625 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,645 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,647 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,648 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,649 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,666 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,667 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,667 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,668 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,696 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,697 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,699 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,701 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,723 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,724 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,724 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,726 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,744 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,746 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,746 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,747 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,763 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,763 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,763 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,763 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,794 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,794 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,794 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,794 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,812 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,824 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,825 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,827 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,844 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,849 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,850 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,850 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,868 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,870 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,872 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,876 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,892 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,892 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,893 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,894 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,912 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,915 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,915 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,915 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,927 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,927 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,927 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,936 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,956 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,957 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,958 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,959 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:08:59,974 - io_handler.video_input    - WARNING  - [진단] video_input._reader_thread: 프레임 획득 실패 (ret=False)
+2025-07-16 14:08:59,975 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:08:59,975 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:08:59,975 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:08:59,983 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,004 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,012 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,015 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,017 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,020 - io_handler.video_input    - INFO     - 비디오 파일 정보: SGA5100180S0126.mp4 (1.05MB, .mp4)
+2025-07-16 14:09:00,021 - io_handler.video_input    - INFO     - Windows/개발 환경: 표준 파일 디코더 사용
+2025-07-16 14:09:00,021 - io_handler.video_input    - INFO     - FFMPEG 백엔드로 시도 중...
+2025-07-16 14:09:00,028 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,032 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,033 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,033 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,044 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,044 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,044 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,059 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,080 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,083 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,089 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,101 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,102 - io_handler.video_input    - INFO     - ✅ FFMPEG 백엔드로 성공 (테스트 프레임: (720, 1280, 3))
+2025-07-16 14:09:00,105 - io_handler.video_input    - INFO     - 비디오 속성: 1280x720, 30.00fps, 129프레임, 4.3초
+2025-07-16 14:09:00,106 - io_handler.video_input    - INFO     - 비디오 코덱: h264
+2025-07-16 14:09:00,107 - io_handler.video_input    - INFO     - 다음 비디오 로드 (RB2 최적화): SGA5100180S0126.mp4
+2025-07-16 14:09:00,123 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,125 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,126 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,129 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,136 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,137 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,137 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,138 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,165 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,166 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,168 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,169 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,179 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,179 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,179 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,179 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,201 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,213 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,214 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,216 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,220 - app                       - INFO     - 메모리 정리 실행
+2025-07-16 14:09:00,360 - app                       - INFO     - 가비지 컬렉션 완료: 총 0개 객체 정리
+2025-07-16 14:09:00,376 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-16 14:09:00,525 - app                       - INFO     - 메모리 정리 완료 - 정리 전: 601.3MB, 정리 후: 597.8MB, 확보된 메모리: 3.5MB
+2025-07-16 14:09:00,527 - app                       - WARNING  - 메모리 정리 효과가 제한적입니다: 3.5MB
+2025-07-16 14:09:00,534 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,534 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,534 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,537 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,554 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,555 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,556 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,558 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,580 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,581 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,582 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,583 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,590 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,592 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,593 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,594 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,614 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,615 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,615 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,616 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,629 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,629 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,629 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,629 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,651 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,651 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,651 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,660 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,669 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,674 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,676 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,678 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,706 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,706 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,706 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,707 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,723 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,723 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,725 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,732 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,751 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,754 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,755 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,756 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,775 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,777 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,777 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,777 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,794 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,794 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,794 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,794 - systems.metrics_manager   - WARNING  - 경고 발생 - distraction: critical (값: 1.000)
+2025-07-16 14:09:00,794 - core.state_manager        - WARNING  - 경고 수신: distraction - critical (값: 1.000)
+2025-07-16 14:09:00,794 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,817 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,818 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,819 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,822 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,828 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,828 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,828 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,828 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,856 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,857 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,857 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,860 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,866 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,866 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,866 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,872 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,891 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,893 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,895 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,895 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,895 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,895 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,895 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,909 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,931 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,932 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,932 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,933 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,948 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,949 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,949 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,950 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,956 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,960 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:00,963 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:00,970 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:00,998 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:00,999 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:01,000 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:01,005 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:01,023 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:01,026 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:01,027 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:01,031 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:01,047 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:01,055 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:01,059 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:01,061 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:01,063 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:01,063 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:01,063 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:01,063 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:01,088 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:01,088 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:01,088 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:01,088 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:01,106 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:01,106 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:01,107 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:01,109 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:01,114 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:01,125 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:01,126 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:01,127 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:01,145 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:01,145 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:01,145 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:01,145 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:01,160 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:01,161 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:01,164 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:01,164 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:01,177 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:01,182 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:01,185 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:01,188 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:01,199 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:01,199 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:01,199 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:01,205 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:01,211 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:01,217 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:01,217 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:01,217 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:01,232 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:01,235 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:01,237 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:01,242 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:01,253 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:01,253 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:01,253 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:01,255 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:01,269 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:01,269 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:01,269 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:01,273 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:01,291 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:01,293 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:01,297 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:01,299 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:01,312 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:01,315 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:01,317 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:01,322 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:01,342 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:01,343 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:01,343 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:01,345 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:01,356 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:01,357 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:01,362 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:01,366 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:01,376 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:01,376 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:01,376 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:01,376 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:01,394 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:01,398 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:01,400 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:01,405 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:01,410 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:01,410 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:01,410 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:01,421 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:01,427 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:01,432 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:01,432 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:01,432 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:01,448 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:01,454 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:01,454 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:01,459 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:01,473 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 14:09:01,474 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 14:09:01,475 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 14:09:01,479 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 14:09:01,488 - app                       - INFO     - 비동기 프레임 처리 루프 종료
+2025-07-16 14:09:01,591 - systems.mediapipe_manager - INFO     - MediaPipe Manager 정리 시작...
+2025-07-16 14:09:01,593 - systems.mediapipe_manager - INFO     - MediaPipe Manager 정리 완료
+2025-07-16 14:09:01,593 - integration.integrated_system - INFO     - IntegratedDMSSystem 종료 시작
+2025-07-16 14:09:01,594 - events.event_bus          - INFO     - EventBus 종료 중...
+2025-07-16 14:09:01,595 - events.event_bus          - INFO     - LOW 우선순위 큐 처리 취소됨: 
+2025-07-16 14:09:01,596 - events.event_bus          - INFO     - HIGH 우선순위 큐 처리 취소됨: 
+2025-07-16 14:09:01,597 - events.event_bus          - INFO     - CRITICAL 우선순위 큐 처리 취소됨: 
+2025-07-16 14:09:01,597 - events.event_bus          - INFO     - EMERGENCY 우선순위 큐 처리 취소됨: 
+2025-07-16 14:09:01,598 - events.event_bus          - INFO     - EventBus 종료 완료
+2025-07-16 14:09:01,598 - events.event_bus          - INFO     - 글로벌 이벤트 시스템 종료 완료
+2025-07-16 14:09:01,599 - integration.integrated_system - INFO     - 최종 성능 리포트 - 총 227프레임, 평균 8.3ms
+2025-07-16 14:09:01,599 - integration.integrated_system - INFO     - IntegratedDMSSystem 종료 완료

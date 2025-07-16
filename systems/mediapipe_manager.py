@@ -48,21 +48,24 @@ class TaskType(Enum):
 
 @dataclass
 class TaskConfig:
-    """MediaPipe Task 설정"""
+    """MediaPipe Task 설정 (MediaPipe 0.10.21 API)"""
 
     task_type: TaskType
     model_path: str
+    # 공통 파라미터
+    running_mode: str = "LIVE_STREAM"  # "IMAGE", "VIDEO", "LIVE_STREAM"
+    # Object Detector 파라미터
     max_results: int = 1
     score_threshold: float = 0.5
-    running_mode: vision.RunningMode = vision.RunningMode.LIVE_STREAM
-    enable_face_blendshapes: bool = False
-    enable_facial_transformation_matrix: bool = False
-    enable_segmentation_masks: bool = False
-    num_poses: int = 1
-    num_hands: int = 2
+    # Face Landmarker 파라미터
     num_faces: int = 1
-    min_detection_confidence: float = 0.5
-    min_tracking_confidence: float = 0.5
+    output_face_blendshapes: bool = False
+    output_facial_transformation_matrixes: bool = False
+    # Pose Landmarker 파라미터
+    num_poses: int = 1
+    output_segmentation_masks: bool = False
+    # Hand Landmarker 파라미터
+    num_hands: int = 2
 
 
 class AdvancedMediaPipeManager:
@@ -75,6 +78,19 @@ class AdvancedMediaPipeManager:
     """
 
     def __init__(self, analysis_engine=None, config_file: Optional[str] = None):
+        logger.info("AdvancedMediaPipeManager 초기화 시작...")
+
+        try:
+            # MediaPipe 모듈 가져오기 테스트
+            import mediapipe as mp
+            from mediapipe.tasks.python import vision
+            from mediapipe.tasks.python.core.base_options import BaseOptions
+
+            logger.info(f"MediaPipe 모듈 로드 성공 - 버전: {mp.__version__}")
+        except ImportError as e:
+            logger.error(f"MediaPipe 모듈 가져오기 실패: {e}")
+            raise
+
         self.analysis_engine = analysis_engine
         self.active_tasks: Dict[TaskType, Any] = {}
         self.task_configs: Dict[TaskType, TaskConfig] = {}
@@ -120,60 +136,63 @@ class AdvancedMediaPipeManager:
     def _load_default_configs(self):
         """기본 Task 설정 로드"""
 
-        # Face Landmarker 설정
+        # Face Landmarker 설정 (MediaPipe 0.10.21 API)
         self.task_configs[TaskType.FACE_LANDMARKER] = TaskConfig(
             task_type=TaskType.FACE_LANDMARKER,
             model_path=str(self.model_base_path / "face_landmarker.task"),
             num_faces=1,
-            min_detection_confidence=0.5,
-            min_tracking_confidence=0.5,
-            enable_face_blendshapes=True,
-            enable_facial_transformation_matrix=True,
+            output_face_blendshapes=True,
+            output_facial_transformation_matrixes=True,
+            running_mode="LIVE_STREAM",
         )
 
-        # Pose Landmarker 설정
+        # Pose Landmarker 설정 (MediaPipe 0.10.21 API)
         self.task_configs[TaskType.POSE_LANDMARKER] = TaskConfig(
             task_type=TaskType.POSE_LANDMARKER,
             model_path=str(self.model_base_path / "pose_landmarker_heavy.task"),
             num_poses=1,
-            min_detection_confidence=0.5,
-            min_tracking_confidence=0.5,
-            enable_segmentation_masks=True,
+            output_segmentation_masks=True,
+            running_mode="LIVE_STREAM",
         )
 
-        # Hand Landmarker 설정
+        # Hand Landmarker 설정 (MediaPipe 0.10.21 API)
         self.task_configs[TaskType.HAND_LANDMARKER] = TaskConfig(
             task_type=TaskType.HAND_LANDMARKER,
             model_path=str(self.model_base_path / "hand_landmarker.task"),
             num_hands=2,
-            min_detection_confidence=0.7,
-            min_tracking_confidence=0.5,
+            running_mode="LIVE_STREAM",
         )
 
-        # Gesture Recognizer 설정 (새로운 기능)
+        # Gesture Recognizer 설정 (MediaPipe 0.10.21 API)
         self.task_configs[TaskType.GESTURE_RECOGNIZER] = TaskConfig(
             task_type=TaskType.GESTURE_RECOGNIZER,
             model_path=str(self.model_base_path / "gesture_recognizer.task"),
             num_hands=2,
-            min_detection_confidence=0.7,
-            min_tracking_confidence=0.5,
+            running_mode="LIVE_STREAM",
         )
 
-        # Object Detector 설정
+        # Object Detector 설정 (MediaPipe 0.10.21 API)
         self.task_configs[TaskType.OBJECT_DETECTOR] = TaskConfig(
             task_type=TaskType.OBJECT_DETECTOR,
             model_path=str(self.model_base_path / "efficientdet_lite0.tflite"),
             max_results=5,
             score_threshold=0.3,
+            running_mode="LIVE_STREAM",
         )
 
-        # Holistic Landmarker 설정 (최신 통합 모델)
-        self.task_configs[TaskType.HOLISTIC_LANDMARKER] = TaskConfig(
-            task_type=TaskType.HOLISTIC_LANDMARKER,
-            model_path=str(self.model_base_path / "holistic_landmarker.task"),
-            min_detection_confidence=0.5,
-            min_tracking_confidence=0.5,
-        )
+        # Holistic Landmarker 설정 (최신 통합 모델) - 파일 존재 시에만 추가
+        holistic_model_path = self.model_base_path / "holistic_landmarker.task"
+        if holistic_model_path.exists():
+            self.task_configs[TaskType.HOLISTIC_LANDMARKER] = TaskConfig(
+                task_type=TaskType.HOLISTIC_LANDMARKER,
+                model_path=str(holistic_model_path),
+                min_detection_confidence=0.5,
+                min_tracking_confidence=0.5,
+            )
+        else:
+            logger.warning(
+                f"Holistic Landmarker 모델 파일을 찾을 수 없습니다: {holistic_model_path}"
+            )
 
     def _load_config_file(self, config_file: str):
         """외부 설정 파일 로드"""
@@ -209,8 +228,18 @@ class AdvancedMediaPipeManager:
         try:
             # 모델 파일 존재 확인
             if not Path(config.model_path).exists():
-                logger.warning(f"모델 파일 없음: {config.model_path}")
+                logger.error(f"모델 파일 없음: {config.model_path}")
+                logger.error(f"현재 작업 디렉토리: {Path.cwd()}")
+                logger.error(
+                    f"models 디렉토리 내용: {list(self.model_base_path.glob('*'))}"
+                )
                 return False
+
+            # 모델 파일 크기 확인
+            model_size = Path(config.model_path).stat().st_size
+            logger.info(
+                f"모델 파일 로드 중: {config.model_path} ({model_size / (1024 * 1024):.2f}MB)"
+            )
 
             # delegate 자동 분기 (공식 지원: CPU/GPU만)
             system = platform.system()
@@ -252,74 +281,116 @@ class AdvancedMediaPipeManager:
         return False
 
     async def _initialize_face_landmarker(self, base_options, config):
-        """Face Landmarker 초기화"""
+        """Face Landmarker 초기화 (MediaPipe 0.10.21 API)"""
+        from mediapipe.tasks.python import vision
+
+        # running_mode 변환
+        if hasattr(config, "running_mode") and config.running_mode == "LIVE_STREAM":
+            running_mode = vision.RunningMode.LIVE_STREAM
+        else:
+            running_mode = vision.RunningMode.LIVE_STREAM
+
         options = vision.FaceLandmarkerOptions(
             base_options=base_options,
-            running_mode=config.running_mode,
-            num_faces=config.num_faces,
-            min_detection_confidence=config.min_detection_confidence,
-            min_tracking_confidence=config.min_tracking_confidence,
-            output_face_blendshapes=config.enable_face_blendshapes,
-            output_facial_transformation_matrixes=config.enable_facial_transformation_matrix,
+            running_mode=running_mode,
+            num_faces=getattr(config, "num_faces", 1),
+            output_face_blendshapes=getattr(config, "output_face_blendshapes", True),
+            output_facial_transformation_matrixes=getattr(
+                config, "output_facial_transformation_matrixes", True
+            ),
             result_callback=self._create_result_callback(TaskType.FACE_LANDMARKER),
         )
         return vision.FaceLandmarker.create_from_options(options)
 
     async def _initialize_pose_landmarker(self, base_options, config):
-        """Pose Landmarker 초기화"""
+        """Pose Landmarker 초기화 (MediaPipe 0.10.21 API)"""
+        from mediapipe.tasks.python import vision
+
+        # running_mode 변환
+        if hasattr(config, "running_mode") and config.running_mode == "LIVE_STREAM":
+            running_mode = vision.RunningMode.LIVE_STREAM
+        else:
+            running_mode = vision.RunningMode.LIVE_STREAM
+
         options = vision.PoseLandmarkerOptions(
             base_options=base_options,
-            running_mode=config.running_mode,
-            num_poses=config.num_poses,
-            min_detection_confidence=config.min_detection_confidence,
-            min_tracking_confidence=config.min_tracking_confidence,
-            output_segmentation_masks=config.enable_segmentation_masks,
+            running_mode=running_mode,
+            num_poses=getattr(config, "num_poses", 1),
+            output_segmentation_masks=getattr(
+                config, "output_segmentation_masks", True
+            ),
             result_callback=self._create_result_callback(TaskType.POSE_LANDMARKER),
         )
         return vision.PoseLandmarker.create_from_options(options)
 
     async def _initialize_hand_landmarker(self, base_options, config):
-        """Hand Landmarker 초기화"""
+        """Hand Landmarker 초기화 (MediaPipe 0.10.21 API)"""
+        from mediapipe.tasks.python import vision
+
+        # running_mode 변환
+        if hasattr(config, "running_mode") and config.running_mode == "LIVE_STREAM":
+            running_mode = vision.RunningMode.LIVE_STREAM
+        else:
+            running_mode = vision.RunningMode.LIVE_STREAM
+
         options = vision.HandLandmarkerOptions(
             base_options=base_options,
-            running_mode=config.running_mode,
-            num_hands=config.num_hands,
-            min_detection_confidence=config.min_detection_confidence,
-            min_tracking_confidence=config.min_tracking_confidence,
+            running_mode=running_mode,
+            num_hands=getattr(config, "num_hands", 2),
             result_callback=self._create_result_callback(TaskType.HAND_LANDMARKER),
         )
         return vision.HandLandmarker.create_from_options(options)
 
     async def _initialize_gesture_recognizer(self, base_options, config):
-        """Gesture Recognizer 초기화"""
+        """Gesture Recognizer 초기화 (MediaPipe 0.10.21 API)"""
+        from mediapipe.tasks.python import vision
+
+        # running_mode 변환
+        if hasattr(config, "running_mode") and config.running_mode == "LIVE_STREAM":
+            running_mode = vision.RunningMode.LIVE_STREAM
+        else:
+            running_mode = vision.RunningMode.LIVE_STREAM
+
         options = vision.GestureRecognizerOptions(
             base_options=base_options,
-            running_mode=config.running_mode,
-            num_hands=config.num_hands,
-            min_detection_confidence=config.min_detection_confidence,
-            min_tracking_confidence=config.min_tracking_confidence,
+            running_mode=running_mode,
+            num_hands=getattr(config, "num_hands", 2),
             result_callback=self._create_result_callback(TaskType.GESTURE_RECOGNIZER),
         )
         return vision.GestureRecognizer.create_from_options(options)
 
     async def _initialize_object_detector(self, base_options, config):
-        """Object Detector 초기화"""
+        """Object Detector 초기화 (MediaPipe 0.10.21 API)"""
+        from mediapipe.tasks.python import vision
+
+        # running_mode 변환
+        if hasattr(config, "running_mode") and config.running_mode == "LIVE_STREAM":
+            running_mode = vision.RunningMode.LIVE_STREAM
+        else:
+            running_mode = vision.RunningMode.LIVE_STREAM
+
         options = vision.ObjectDetectorOptions(
             base_options=base_options,
-            running_mode=config.running_mode,
-            max_results=config.max_results,
-            score_threshold=config.score_threshold,
+            running_mode=running_mode,
+            max_results=getattr(config, "max_results", 5),
+            score_threshold=getattr(config, "score_threshold", 0.3),
             result_callback=self._create_result_callback(TaskType.OBJECT_DETECTOR),
         )
         return vision.ObjectDetector.create_from_options(options)
 
     async def _initialize_holistic_landmarker(self, base_options, config):
-        """Holistic Landmarker 초기화 (최신 통합 모델)"""
+        """Holistic Landmarker 초기화 (MediaPipe 0.10.21 API)"""
+        from mediapipe.tasks.python import vision
+
+        # running_mode 변환
+        if hasattr(config, "running_mode") and config.running_mode == "LIVE_STREAM":
+            running_mode = vision.RunningMode.LIVE_STREAM
+        else:
+            running_mode = vision.RunningMode.LIVE_STREAM
+
         options = vision.HolisticLandmarkerOptions(
             base_options=base_options,
-            running_mode=config.running_mode,
-            min_detection_confidence=config.min_detection_confidence,
-            min_tracking_confidence=config.min_tracking_confidence,
+            running_mode=running_mode,
             result_callback=self._create_result_callback(TaskType.HOLISTIC_LANDMARKER),
         )
         return vision.HolisticLandmarker.create_from_options(options)
@@ -370,11 +441,13 @@ class AdvancedMediaPipeManager:
 
         # 콜백 처리 스레드 시작
         if not self.callback_thread or not self.callback_thread.is_alive():
+            logger.info("콜백 처리 스레드 시작 준비...")
             self.running = True
             self.callback_thread = threading.Thread(
                 target=self._process_callbacks, daemon=True
             )
             self.callback_thread.start()
+            logger.info("콜백 처리 스레드 시작됨")
 
         initialized_count = sum(results.values())
         total_count = len(results)
@@ -397,12 +470,15 @@ class AdvancedMediaPipeManager:
                     break
 
                 # Analysis engine으로 결과 전달
-                if self.analysis_engine:
-                    loop.run_until_complete(
-                        self._forward_result_to_analysis_engine(
-                            task_type, result, timestamp
+                if self.analysis_engine is not None:
+                    try:
+                        loop.run_until_complete(
+                            self._forward_result_to_analysis_engine(
+                                task_type, result, timestamp
+                            )
                         )
-                    )
+                    except Exception as e:
+                        logger.error(f"Analysis engine 전달 중 오류: {e}")
 
             except queue.Empty:
                 continue
@@ -416,6 +492,10 @@ class AdvancedMediaPipeManager:
         self, task_type: TaskType, result, timestamp
     ):
         """Analysis Engine으로 결과 전달"""
+        # analysis_engine이 None인 경우 스킵
+        if self.analysis_engine is None:
+            return
+
         try:
             if (
                 hasattr(self.analysis_engine, "on_face_result")
