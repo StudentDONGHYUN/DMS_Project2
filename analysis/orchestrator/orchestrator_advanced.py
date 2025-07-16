@@ -474,15 +474,11 @@ class AnalysisOrchestrator:
             return False, {}
 
         except Exception as e:
-            logger.error(f"{name} 프로세서 실행 중 오류: {e}")
-            if logger.isEnabledFor(logging.DEBUG):
-                import traceback
-
-                logger.debug(
-                    f"{name} 프로세서 스택 트레이스:\n{traceback.format_exc()}"
-                )
+            # 시스템을 degraded 상태로 전환
+            perf = self.processor_performance[name]
+            perf.status = ProcessorStatus.DEGRADED
             self._handle_processor_failure(name, "exception")
-            return False, {}
+            raise
 
     # 대체 실행 방법 (백업)
     async def _execute_processor_safe_fallback(

@@ -558,27 +558,28 @@ class VideoInputManager:
 
     def release(self):
         """리소스 정리 (예외 안전성 보장)"""
+        error_count = 0
         try:
             self.stopped = True
         except Exception as e:
-            logger.warning(f"stopped 플래그 설정 실패: {e}")
-
+            error_count += 1
         try:
             if self.capture_thread and self.capture_thread.is_alive():
                 self.capture_thread.join(timeout=1)
                 if self.capture_thread.is_alive():
-                    logger.warning("캡처 스레드가 1초 내에 종료되지 않음")
+                    error_count += 1
         except Exception as e:
-            logger.warning(f"캡처 스레드 종료 중 오류: {e}")
-
+            error_count += 1
         try:
             if self.cap:
                 self.cap.release()
                 self.cap = None
         except Exception as e:
-            logger.warning(f"VideoCapture 해제 중 오류: {e}")
+            error_count += 1
         finally:
-            logger.info("VideoInputManager 리소스 해제 완료.")
+            if error_count >= 2:
+                global safe_mode
+                safe_mode = True  # 시스템 전체 안전 모드 진입
 
     def __enter__(self):
         """Context Manager 진입"""
@@ -591,9 +592,15 @@ class VideoInputManager:
         try:
             self.release()
         except (OSError, RuntimeError) as e:
-            logger.error(f"Context Manager 종료 중 오류: {e}")
+            error_count = getattr(self, '_exit_error_count', 0) + 1
+            self._exit_error_count = error_count
+            if error_count >= 2:
+                global safe_mode
+                safe_mode = True  # 시스템 전체 안전 모드 진입
         except Exception as e:
-            # KeyboardInterrupt, SystemExit 등은 여기서 잡히지 않음
-            logger.error(f"Context Manager 종료 중 예상치 못한 오류: {e}")
-        # 예외를 다시 발생시키지 않음 (리소스 정리가 우선)
+            error_count = getattr(self, '_exit_error_count', 0) + 1
+            self._exit_error_count = error_count
+            if error_count >= 2:
+                global safe_mode
+                safe_mode = True  # 시스템 전체 안전 모드 진입
         return False

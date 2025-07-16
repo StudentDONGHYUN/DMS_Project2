@@ -199,9 +199,14 @@ class SafetyEventHandler(IEventHandler):
             await self._analyze_safety_patterns()
 
             return success
-
         except Exception as e:
-            logger.error(f"안전 이벤트 처리 중 오류: {e}")
+            # 예외가 반복적으로 발생하면 시스템을 안전 모드로 전환
+            if not hasattr(self, 'failure_count'):
+                self.failure_count = 0
+            self.failure_count += 1
+            if self.failure_count >= 3:
+                global safe_mode
+                safe_mode = True  # 시스템 전체 안전 모드 진입
             return False
 
     def _is_duplicate_alert(self, event: SafetyEvent) -> bool:

@@ -911,8 +911,8 @@ class DMSApp:
                     preprocessed_frame
                 )
             except Exception as e:
-                logger.warning(f"MediaPipe 처리 실패: {e}")
-                # 빈 결과로 계속 진행
+                # MediaPipe 처리 실패 시 시스템을 안전 모드로 전환
+                self.safe_mode = True
                 mediapipe_results = {
                     "face": None,
                     "pose": None,
@@ -965,18 +965,16 @@ class DMSApp:
                     if hasattr(self, "mediapipe_manager"):
                         perf_stats = self.mediapipe_manager.get_performance_stats()
 
-                    annotated_frame = safe_create_basic_info_overlay(
-                        frame, frame_count, perf_stats
-                    )
+                    annotated_frame = self._create_basic_info_overlay(frame, frame_count, perf_stats)
 
-                    # 시스템 상태 표시
-                    if analysis_results.get("system_health") == "error":
+                    # 시스템 상태가 error면 화면에 에러 표시
+                    if self.safe_mode or analysis_results.get("system_health") == "error":
                         annotated_frame = OpenCVSafeHandler.safe_frame_annotation(
                             annotated_frame,
-                            "SYSTEM ERROR - SAFE MODE",
-                            position=(10, 120),
-                            color=(0, 0, 255),  # 빨간색
-                            font_scale=0.7,
+                            "SYSTEM ERROR: 안전 모드 전환",
+                            position=(10, 90),
+                            color=(0, 0, 255),
+                            font_scale=0.6,
                         )
 
                 except Exception as viz_e:

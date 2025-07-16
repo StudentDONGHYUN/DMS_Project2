@@ -2,7 +2,7 @@
 """
 비디오 입력 시스템 진단 도구
 
-이 스크립트는 비디오 파일 읽기 및 OpenCV 창 표시 기능을 
+이 스크립트는 비디오 파일 읽기 및 OpenCV 창 표시 기능을
 독립적으로 테스트하여 문제의 근본 원인을 파악합니다.
 """
 
@@ -25,21 +25,21 @@ logger = logging.getLogger(__name__)
 def test_opencv_installation():
     """OpenCV 설치 및 기본 기능 테스트"""
     logger.info("=== OpenCV 설치 테스트 ===")
-    
+
     try:
         # OpenCV 버전 확인
         cv_version = cv2.__version__
         logger.info(f"OpenCV 버전: {cv_version}")
-        
+
         # 지원되는 백엔드 확인
         backends = []
         backend_names = {
             cv2.CAP_FFMPEG: "FFMPEG",
-            cv2.CAP_DSHOW: "DirectShow", 
+            cv2.CAP_DSHOW: "DirectShow",
             cv2.CAP_MSMF: "MediaFoundation",
             cv2.CAP_VFW: "Video for Windows"
         }
-        
+
         for backend_id, name in backend_names.items():
             try:
                 cap = cv2.VideoCapture()
@@ -50,9 +50,9 @@ def test_opencv_installation():
                 # 백엔드 테스트 실패는 정상적인 상황 (지원하지 않는 백엔드)
                 logger.debug(f"백엔드 {name} 테스트 실패 (지원되지 않음): {e}")
                 pass
-        
+
         logger.info(f"지원되는 백엔드: {', '.join(backends) if backends else '없음'}")
-        
+
         # 기본 창 생성 테스트
         test_img = cv2.imread("test_image.jpg")
         if test_img is None:
@@ -60,17 +60,17 @@ def test_opencv_installation():
             import numpy as np
             test_img = np.zeros((200, 300, 3), dtype=np.uint8)
             cv2.putText(test_img, "OpenCV Test", (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
-        
+
         cv2.namedWindow("OpenCV Test", cv2.WINDOW_AUTOSIZE)
         cv2.imshow("OpenCV Test", test_img)
-        
+
         logger.info("OpenCV 창 생성 테스트 - 2초 후 자동 닫힘")
         cv2.waitKey(2000)
         cv2.destroyAllWindows()
-        
+
         logger.info("✅ OpenCV 기본 기능 정상")
         return True
-        
+
     except Exception as e:
         logger.error(f"❌ OpenCV 테스트 실패: {e}")
         return False
@@ -79,16 +79,16 @@ def test_opencv_installation():
 def test_video_file_properties(video_path: str):
     """비디오 파일 속성 상세 분석"""
     logger.info(f"=== 비디오 파일 분석: {os.path.basename(video_path)} ===")
-    
+
     try:
         # 파일 존재 및 크기 확인
         if not os.path.exists(video_path):
             logger.error(f"❌ 파일이 존재하지 않음: {video_path}")
             return False
-            
+
         file_size = os.path.getsize(video_path) / (1024 * 1024)  # MB
         logger.info(f"파일 크기: {file_size:.2f} MB")
-        
+
         # 다양한 백엔드로 열기 시도
         backends_to_test = [
             (cv2.CAP_FFMPEG, "FFMPEG"),
@@ -96,18 +96,18 @@ def test_video_file_properties(video_path: str):
             (cv2.CAP_MSMF, "MediaFoundation"),
             (-1, "Default")  # 기본 백엔드
         ]
-        
+
         successful_backend = None
-        
+
         for backend_id, backend_name in backends_to_test:
             logger.info(f"--- {backend_name} 백엔드 테스트 ---")
-            
+
             try:
                 if backend_id == -1:
                     cap = cv2.VideoCapture(video_path)
                 else:
                     cap = cv2.VideoCapture(video_path, backend_id)
-                
+
                 if cap.isOpened():
                     # 비디오 속성 읽기
                     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
@@ -115,12 +115,12 @@ def test_video_file_properties(video_path: str):
                     fps = cap.get(cv2.CAP_PROP_FPS)
                     frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
                     duration = frame_count / fps if fps > 0 else 0
-                    
+
                     logger.info(f"해상도: {width}x{height}")
                     logger.info(f"FPS: {fps:.2f}")
                     logger.info(f"총 프레임: {frame_count}")
                     logger.info(f"재생시간: {duration:.1f}초")
-                    
+
                     # 코덱 정보
                     try:
                         fourcc = int(cap.get(cv2.CAP_PROP_FOURCC))
@@ -132,7 +132,7 @@ def test_video_file_properties(video_path: str):
                     except Exception as e:
                         logger.debug(f"코덱 정보 읽기 실패 (예상치 못한 오류): {e}")
                         logger.info("코덱 정보 읽기 실패")
-                    
+
                     # 첫 번째 프레임 읽기 테스트
                     ret, frame = cap.read()
                     if ret and frame is not None:
@@ -144,17 +144,17 @@ def test_video_file_properties(video_path: str):
                         cap.release()
                 else:
                     logger.warning(f"❌ {backend_name} 백엔드로 열기 실패")
-                    
+
             except Exception as e:
                 logger.warning(f"❌ {backend_name} 백엔드 오류: {e}")
-        
+
         if successful_backend:
             logger.info(f"✅ 최적 백엔드: {successful_backend[1]}")
             return successful_backend
         else:
             logger.error("❌ 모든 백엔드로 파일 열기 실패")
             return False
-            
+
     except Exception as e:
         logger.error(f"❌ 비디오 파일 분석 실패: {e}")
         return False
@@ -163,72 +163,72 @@ def test_video_file_properties(video_path: str):
 def test_video_playback(video_path: str, max_frames: int = 100):
     """실제 비디오 재생 테스트"""
     logger.info(f"=== 비디오 재생 테스트: {max_frames}프레임 ===")
-    
+
     try:
         # 최적 백엔드로 열기
         backend_info = test_video_file_properties(video_path)
         if not backend_info:
             return False
-            
+
         backend_id, backend_name, cap = backend_info
         logger.info(f"사용 백엔드: {backend_name}")
-        
+
         # 재생 테스트
         frame_count = 0
         successful_reads = 0
         failed_reads = 0
-        
+
         start_time = time.time()
-        
+
         logger.info("비디오 재생 시작 (ESC 키로 중단)")
-        
+
         while frame_count < max_frames:
             ret, frame = cap.read()
-            
+
             if not ret:
                 failed_reads += 1
                 logger.warning(f"프레임 {frame_count} 읽기 실패")
-                
+
                 if failed_reads >= 10:
                     logger.error("연속 실패 10회 - 재생 중단")
                     break
                 continue
-            
+
             successful_reads += 1
             frame_count += 1
-            
+
             # 프레임 정보 표시
             if frame is not None:
                 # 정보 오버레이
-                cv2.putText(frame, f"Frame: {frame_count}", (10, 30), 
+                cv2.putText(frame, f"Frame: {frame_count}", (10, 30),
                            cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
-                cv2.putText(frame, f"Backend: {backend_name}", (10, 70), 
+                cv2.putText(frame, f"Backend: {backend_name}", (10, 70),
                            cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 0), 2)
-                cv2.putText(frame, "Press ESC to quit", (10, frame.shape[0] - 20), 
+                cv2.putText(frame, "Press ESC to quit", (10, frame.shape[0] - 20),
                            cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
-                
+
                 cv2.imshow("Video Test", frame)
-                
+
                 # 키 입력 확인 (ESC = 27)
                 key = cv2.waitKey(30) & 0xFF
                 if key == 27:  # ESC
                     logger.info("사용자가 ESC로 중단")
                     break
-                    
+
                 # 진행상황 로깅 (10프레임마다)
                 if frame_count % 10 == 0:
                     elapsed = time.time() - start_time
                     fps = frame_count / elapsed if elapsed > 0 else 0
                     logger.info(f"프레임 {frame_count}/{max_frames} 처리됨 (평균 FPS: {fps:.1f})")
-        
+
         cap.release()
         cv2.destroyAllWindows()
-        
+
         # 결과 요약
         total_time = time.time() - start_time
         success_rate = successful_reads / frame_count if frame_count > 0 else 0
         avg_fps = successful_reads / total_time if total_time > 0 else 0
-        
+
         logger.info(f"=== 재생 테스트 결과 ===")
         logger.info(f"총 처리 프레임: {frame_count}")
         logger.info(f"성공한 읽기: {successful_reads}")
@@ -236,14 +236,14 @@ def test_video_playback(video_path: str, max_frames: int = 100):
         logger.info(f"성공률: {success_rate:.1%}")
         logger.info(f"평균 FPS: {avg_fps:.1f}")
         logger.info(f"총 소요시간: {total_time:.1f}초")
-        
+
         if success_rate > 0.9:
             logger.info("✅ 비디오 재생 테스트 성공")
             return True
         else:
             logger.warning("⚠️ 비디오 재생에 문제가 있음")
             return False
-            
+
     except Exception as e:
         logger.error(f"❌ 비디오 재생 테스트 실패: {e}")
         if 'cap' in locals():
@@ -255,7 +255,7 @@ def test_video_playback(video_path: str, max_frames: int = 100):
 def test_threading_video_reader(video_path: str):
     """스레드 기반 비디오 읽기 테스트 (실제 DMS와 유사)"""
     logger.info("=== 스레드 기반 비디오 읽기 테스트 ===")
-    
+
     class ThreadedVideoReader:
         def __init__(self, video_path):
             self.video_path = video_path
@@ -265,7 +265,7 @@ def test_threading_video_reader(video_path: str):
             self.stopped_lock = threading.Lock()  # Bug fix: Add lock for stopped variable
             self.stopped = True
             self.thread = None
-            
+
         def start(self):
             try:
                 self.cap = cv2.VideoCapture(self.video_path)
@@ -273,7 +273,7 @@ def test_threading_video_reader(video_path: str):
                     logger.error("VideoCapture 열기 실패")
                     self._safe_cleanup()  # Bug fix: Ensure cleanup on failure
                     return False
-                    
+
                 with self.stopped_lock:  # Bug fix: Thread-safe access to stopped
                     self.stopped = False
                 self.thread = threading.Thread(target=self._reader_loop, daemon=True)
@@ -284,7 +284,7 @@ def test_threading_video_reader(video_path: str):
                 logger.error(f"ThreadedVideoReader 시작 실패: {e}")
                 self._safe_cleanup()
                 return False
-            
+
         def _reader_loop(self):
             frame_count = 0
             try:
@@ -292,23 +292,23 @@ def test_threading_video_reader(video_path: str):
                     with self.stopped_lock:  # Bug fix: Thread-safe check
                         if self.stopped:
                             break
-                            
+
                     if not self.cap or not self.cap.isOpened():  # Bug fix: Additional safety check
                         logger.warning("VideoCapture가 닫혀있음 - 스레드 종료")
                         break
-                        
+
                     ret, frame = self.cap.read()
                     if not ret or frame is None:  # Bug fix: Check for None frame
                         logger.warning(f"프레임 {frame_count} 읽기 실패 - 스레드 종료")
                         break
-                        
+
                     with self.frame_lock:
                         self.current_frame = frame.copy()
-                        
+
                     frame_count += 1
                     if frame_count % 30 == 0:
                         logger.info(f"스레드에서 {frame_count} 프레임 처리됨")
-                        
+
                     time.sleep(1/30)  # 30 FPS 시뮬레이션
             except Exception as e:
                 logger.error(f"_reader_loop에서 예외 발생: {e}")
@@ -316,26 +316,26 @@ def test_threading_video_reader(video_path: str):
                 with self.stopped_lock:
                     self.stopped = True
                 logger.info("_reader_loop 종료")
-                
+
         def get_frame(self):
             with self.frame_lock:
                 return self.current_frame.copy() if self.current_frame is not None else None  # Bug fix: Safe copy
-                
+
         def stop(self):
             """Bug fix: Improved stop method with better resource management"""
             logger.info("ThreadedVideoReader 중단 시작")
-            
+
             with self.stopped_lock:
                 self.stopped = True
-                
+
             if self.thread and self.thread.is_alive():
                 self.thread.join(timeout=2.0)  # Bug fix: Longer timeout
                 if self.thread.is_alive():
                     logger.warning("스레드가 제한 시간 내에 종료되지 않음")
-                    
+
             self._safe_cleanup()
             logger.info("ThreadedVideoReader 중단 완료")
-            
+
         def _safe_cleanup(self):
             """Bug fix: Safe cleanup method"""
             try:
@@ -346,24 +346,32 @@ def test_threading_video_reader(video_path: str):
                     self.current_frame = None
             except Exception as e:
                 logger.error(f"cleanup 중 오류: {e}")
-                
+
         def is_running(self):
             with self.stopped_lock:  # Bug fix: Thread-safe access
                 return not self.stopped and self.thread and self.thread.is_alive()
-                
+
         def __del__(self):
             """Bug fix: Add destructor to ensure cleanup"""
             try:
                 self.stop()
             except Exception:
-                pass
-    
+                # 예외 발생 시 리소스 강제 해제 및 시스템 안전 모드 진입
+                try:
+                    if hasattr(self, 'cap') and self.cap:
+                        self.cap.release()
+                        self.cap = None
+                except Exception:
+                    pass
+                global safe_mode
+                safe_mode = True  # 시스템 전체 안전 모드 진입
+
     try:
         reader = ThreadedVideoReader(video_path)
-        
+
         if not reader.start():
             return False
-            
+
         # 첫 프레임 대기 - Bug fix: Improved frame waiting logic
         logger.info("첫 프레임 대기 중...")
         wait_time = 0
@@ -378,54 +386,54 @@ def test_threading_video_reader(video_path: str):
                 break
             time.sleep(0.1)
             wait_time += 0.1
-        
+
         if frame is None:
             logger.error("❌ 첫 프레임 수신 실패")
             reader.stop()
             return False
-        
+
         # 30초간 프레임 읽기 테스트
         logger.info("30초간 프레임 읽기 테스트 시작")
         start_time = time.time()
         frame_count = 0
-        
+
         while time.time() - start_time < 30.0:
             frame = reader.get_frame()
             if frame is not None:
                 frame_count += 1
-                
+
                 # 5초마다 프레임 표시
                 if frame_count % 150 == 0:  # 30fps * 5초
-                    cv2.putText(frame, f"Threaded Frame: {frame_count}", (10, 30), 
+                    cv2.putText(frame, f"Threaded Frame: {frame_count}", (10, 30),
                                cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
                     cv2.imshow("Threaded Video Test", frame)
                     cv2.waitKey(1)
                     logger.info(f"스레드 테스트: {frame_count} 프레임 처리됨")
-            
+
             if not reader.is_running():
                 logger.warning("리더 스레드가 중단됨")
                 break
-                
+
             time.sleep(1/30)
-        
+
         reader.stop()
         cv2.destroyAllWindows()
-        
+
         total_time = time.time() - start_time
         avg_fps = frame_count / total_time if total_time > 0 else 0
-        
+
         logger.info(f"=== 스레드 테스트 결과 ===")
         logger.info(f"처리된 프레임: {frame_count}")
         logger.info(f"평균 FPS: {avg_fps:.1f}")
         logger.info(f"테스트 시간: {total_time:.1f}초")
-        
+
         if frame_count > 100 and avg_fps > 10:
             logger.info("✅ 스레드 기반 비디오 읽기 성공")
             return True
         else:
             logger.warning("⚠️ 스레드 기반 비디오 읽기에 문제")
             return False
-            
+
     except Exception as e:
         logger.error(f"❌ 스레드 테스트 실패: {e}")
         # Bug fix: Improved exception handling
@@ -434,12 +442,12 @@ def test_threading_video_reader(video_path: str):
                 reader.stop()
         except Exception as cleanup_error:
             logger.error(f"리더 정리 중 오류: {cleanup_error}")
-        
+
         try:
             cv2.destroyAllWindows()
         except Exception as cv_error:
             logger.error(f"OpenCV 창 정리 중 오류: {cv_error}")
-        
+
         return False
 
 
@@ -447,54 +455,54 @@ def main():
     """메인 진단 루틴"""
     logger.info("🔍 DMS 비디오 입력 시스템 진단 시작")
     logger.info("=" * 60)
-    
+
     # 테스트할 비디오 파일 (실제 DMS에서 사용하는 파일)
     test_videos = [
         "C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0097/video/SGA5100180S0097.mp4",
         "C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0126/video/SGA5100180S0126.mp4"
     ]
-    
+
     results = {}
-    
+
     # 1. OpenCV 기본 기능 테스트
     results['opencv_basic'] = test_opencv_installation()
-    
+
     # 2. 비디오 파일 테스트
     for video_path in test_videos:
         if os.path.exists(video_path):
             logger.info(f"\n{'='*60}")
             logger.info(f"비디오 파일 테스트: {os.path.basename(video_path)}")
-            
+
             # 파일 속성 분석
             file_analysis = test_video_file_properties(video_path)
             results[f'file_analysis_{os.path.basename(video_path)}'] = bool(file_analysis)
-            
+
             if file_analysis:
                 # 실제 재생 테스트
                 playback_result = test_video_playback(video_path, max_frames=50)
                 results[f'playback_{os.path.basename(video_path)}'] = playback_result
-                
+
                 # 스레드 기반 읽기 테스트
                 thread_result = test_threading_video_reader(video_path)
                 results[f'threading_{os.path.basename(video_path)}'] = thread_result
-            
+
             break  # 첫 번째 파일만 테스트
         else:
             logger.warning(f"비디오 파일이 존재하지 않음: {video_path}")
-    
+
     # 결과 요약
     logger.info(f"\n{'='*60}")
     logger.info("🔍 진단 결과 요약")
     logger.info("=" * 60)
-    
+
     for test_name, result in results.items():
         status = "✅ 성공" if result else "❌ 실패"
         logger.info(f"{test_name}: {status}")
-    
+
     # 종합 판정
     success_count = sum(results.values())
     total_count = len(results)
-    
+
     if success_count == total_count:
         logger.info("\n🎉 모든 테스트 통과 - 비디오 시스템 정상")
         logger.info("DMS 시스템의 다른 부분에 문제가 있을 수 있습니다.")
@@ -504,7 +512,7 @@ def main():
     else:
         logger.info(f"\n❌ 대부분 실패 ({success_count}/{total_count}) - 심각한 문제")
         logger.info("OpenCV 재설치나 비디오 파일 확인이 필요합니다.")
-    
+
     logger.info("\n진단 완료. 추가 도움이 필요하면 결과를 개발자에게 전달하세요.")
 
 

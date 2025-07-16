@@ -29,6 +29,9 @@ from io_handler.video_input import VideoInputManager, MultiVideoCalibrationManag
 # utils 모듈
 logger = logging.getLogger(__name__)
 
+# 파일 상단에 safe_mode 글로벌 변수 추가
+safe_mode = False
+
 
 class DummyAnalysisEngine:
     def on_face_result(self, *args, **kwargs): pass
@@ -41,7 +44,7 @@ class DummyAnalysisEngine:
 
 class SafeOrchestratorCallbackAdapter:
     """개선된 안전한 오케스트레이터 콜백 어댑터 - DRY 원칙 적용 및 성능 최적화"""
-    
+
     def __init__(self, orchestrator, result_target=None):
         self.orchestrator = orchestrator
         self.result_target = result_target
@@ -49,7 +52,7 @@ class SafeOrchestratorCallbackAdapter:
         self.callback_errors = 0
         self.max_consecutive_errors = 5
         self.is_degraded = False
-        
+
         # 콜백 매핑 테이블로 중복 코드 제거
         self.callback_mapping = {
             'face': {
@@ -76,63 +79,67 @@ class SafeOrchestratorCallbackAdapter:
 
     async def _safe_callback_execution(self, callback_name: str, callback_func, *args, **kwargs):
         """개선된 안전한 콜백 실행 - 회로차단기 패턴 적용"""
-        
+
         # 회로차단기: 연속 오류가 많으면 일시적으로 차단
         if self.is_degraded:
+            global safe_mode
+            safe_mode = True  # 시스템 전체 안전 모드 진입
             logger.debug(f"{callback_name} 콜백 차단됨 (degraded mode)")
             return False
-            
+
         try:
             if asyncio.iscoroutinefunction(callback_func):
                 await callback_func(*args, **kwargs)
             else:
                 callback_func(*args, **kwargs)
-            
+
             # 성공 시 오류 카운터 리셋
             self.callback_errors = max(0, self.callback_errors - 1)
             logger.debug(f"{callback_name} 콜백 실행 성공")
             return True
-            
+
         except Exception as e:
             self.callback_errors += 1
             logger.warning(f"{callback_name} 콜백 실행 실패: {e} (오류 {self.callback_errors}/{self.max_consecutive_errors})")
-            
+
             # 임계값 초과 시 degraded mode 활성화
             if self.callback_errors >= self.max_consecutive_errors:
                 self.is_degraded = True
+                global safe_mode
+                safe_mode = True  # 시스템 전체 안전 모드 진입
                 logger.error(f"{callback_name} 콜백 차단 활성화 - 시스템 안정성 우선")
-                
+
             return False
 
     async def _generic_callback(self, callback_type: str, result, timestamp=None, mediapipe_results=None, *args, **kwargs):
         """통합된 콜백 처리 메서드 - 코드 중복 제거"""
-        
+
         if callback_type not in self.callback_mapping:
             logger.warning(f"알 수 없는 콜백 타입: {callback_type}")
             return
-            
+
         config = self.callback_mapping[callback_type]
-        
+
         # 결과 저장 (result_target이 있는 경우)
         if self.result_target:
             try:
                 config['result_setter'](result)
             except Exception as e:
                 logger.warning(f"{callback_type} result 저장 실패: {e}")
-        
+
         # 프로세서 실행
-        if (hasattr(self.orchestrator, 'processors') and 
+        if (hasattr(self.orchestrator, 'processors') and
             config['processor_key'] in self.orchestrator.processors):
-            
+
             processor = self.orchestrator.processors[config['processor_key']]
-            
+
             # 인자 준비
             args_list = [result]
             if config['requires_image'] and mediapipe_results and 'image' in mediapipe_results:
                 args_list.append(mediapipe_results['image'])
             if timestamp is not None:
                 args_list.append(timestamp)
-            
+
             await self._safe_callback_execution(
                 callback_type, processor.process_data, *args_list
             )
@@ -141,15 +148,15 @@ class SafeOrchestratorCallbackAdapter:
     def _set_face_result(self, result):
         if hasattr(self.result_target, 'set_last_face_result'):
             self.result_target.set_last_face_result(result)
-            
+
     def _set_pose_result(self, result):
         if hasattr(self.result_target, 'set_last_pose_result'):
             self.result_target.set_last_pose_result(result)
-            
+
     def _set_hand_result(self, result):
         if hasattr(self.result_target, 'set_last_hand_result'):
             self.result_target.set_last_hand_result(result)
-            
+
     def _set_object_result(self, result):
         if hasattr(self.result_target, 'set_last_object_result'):
             self.result_target.set_last_object_result(result)
@@ -440,15 +447,15 @@ class DMSApp:
     def _annotate_frame_with_results(self, frame, mediapipe_results):
         """기존 UI 대신 직접 랜드마크 그리기로 개선"""
         logger.info("[진단] app.py: _annotate_frame_with_results 진입")
-        
+
         if not mediapipe_results or (isinstance(mediapipe_results, dict) and not any(mediapipe_results.values())):
             logger.info("[진단] app.py: _annotate_frame_with_results - mediapipe_results가 None 또는 비어있음")
             return self._create_basic_annotation(frame, {})
-        
+
         try:
             annotated_frame = frame.copy()
             height, width = frame.shape[:2]
-            
+
             # Face landmarks 그리기
             face_result = mediapipe_results.get('face')
             if face_result and hasattr(face_result, 'face_landmarks') and face_result.face_landmarks:
@@ -458,7 +465,7 @@ class DMSApp:
                         x = int(landmark.x * width)
                         y = int(landmark.y * height)
                         cv2.circle(annotated_frame, (x, y), 1, (0, 255, 0), -1)
-                    
+
                     # 얼굴 바운딩 박스 그리기
                     x_coords = [landmark.x * width for landmark in landmarks]
                     y_coords = [landmark.y * height for landmark in landmarks]
@@ -466,7 +473,7 @@ class DMSApp:
                     y_min, y_max = int(min(y_coords)), int(max(y_coords))
                     cv2.rectangle(annotated_frame, (x_min, y_min), (x_max, y_max), (0, 255, 0), 2)
                     cv2.putText(annotated_frame, "FACE", (x_min, y_min-10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
-            
+
             # Pose landmarks 그리기
             pose_result = mediapipe_results.get('pose')
             if pose_result and hasattr(pose_result, 'pose_landmarks') and pose_result.pose_landmarks:
@@ -477,7 +484,7 @@ class DMSApp:
                         y = int(landmark.y * height)
                         cv2.circle(annotated_frame, (x, y), 3, (255, 0, 0), -1)
                 cv2.putText(annotated_frame, "POSE DETECTED", (10, height-50), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 0, 0), 2)
-            
+
             # Hand landmarks 그리기
             hand_result = mediapipe_results.get('hand')
             if hand_result and hasattr(hand_result, 'hand_landmarks') and hand_result.hand_landmarks:
@@ -488,7 +495,7 @@ class DMSApp:
                         y = int(landmark.y * height)
                         cv2.circle(annotated_frame, (x, y), 2, (0, 0, 255), -1)
                 cv2.putText(annotated_frame, "HAND DETECTED", (10, height-20), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
-            
+
             # Object detection 그리기
             object_result = mediapipe_results.get('object')
             if object_result and hasattr(object_result, 'detections') and object_result.detections:
@@ -499,36 +506,36 @@ class DMSApp:
                     y_min = int(bbox.origin_y * height)
                     x_max = int((bbox.origin_x + bbox.width) * width)
                     y_max = int((bbox.origin_y + bbox.height) * height)
-                    
+
                     cv2.rectangle(annotated_frame, (x_min, y_min), (x_max, y_max), (255, 255, 0), 2)
-                    
+
                     if detection.categories:
                         label = detection.categories[0].category_name
                         confidence = detection.categories[0].score
-                        cv2.putText(annotated_frame, f"{label}: {confidence:.2f}", 
+                        cv2.putText(annotated_frame, f"{label}: {confidence:.2f}",
                                    (x_min, y_min-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 0), 1)
-            
+
             # 전체 상태 표시
             status_y = 30
             if face_result and face_result.face_landmarks:
                 cv2.putText(annotated_frame, "Face: OK", (width-150, status_y), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
             else:
                 cv2.putText(annotated_frame, "Face: NO", (width-150, status_y), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
-            
+
             status_y += 25
             if pose_result and pose_result.pose_landmarks:
                 cv2.putText(annotated_frame, "Pose: OK", (width-150, status_y), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
             else:
                 cv2.putText(annotated_frame, "Pose: NO", (width-150, status_y), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
-            
+
             status_y += 25
             if hand_result and hand_result.hand_landmarks:
                 cv2.putText(annotated_frame, "Hand: OK", (width-150, status_y), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
             else:
                 cv2.putText(annotated_frame, "Hand: NO", (width-150, status_y), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
-            
+
             return annotated_frame
-            
+
         except Exception as e:
             logger.error(f"[진단] app.py: _annotate_frame_with_results 예외: {e}")
             import traceback
@@ -541,31 +548,31 @@ class DMSApp:
         try:
             annotated_frame = frame.copy()
             height, width = frame.shape[:2]
-            
+
             # 기본 상태 표시
             cv2.putText(annotated_frame, "DMS System Active", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2)
-            
+
             # MediaPipe 상태 확인 및 표시
             detection_status = []
-            
+
             # 더 정확한 상태 검사
             face_detected = False
             pose_detected = False
             hand_detected = False
-            
+
             if mediapipe_results and isinstance(mediapipe_results, dict):
                 face_result = mediapipe_results.get('face')
                 if face_result and hasattr(face_result, 'face_landmarks') and face_result.face_landmarks:
                     face_detected = True
-                
+
                 pose_result = mediapipe_results.get('pose')
                 if pose_result and hasattr(pose_result, 'pose_landmarks') and pose_result.pose_landmarks:
                     pose_detected = True
-                
+
                 hand_result = mediapipe_results.get('hand')
                 if hand_result and hasattr(hand_result, 'hand_landmarks') and hand_result.hand_landmarks:
                     hand_detected = True
-            
+
             # 상태 표시
             y_offset = 70
             statuses = [
@@ -573,19 +580,19 @@ class DMSApp:
                 ("Pose", pose_detected),
                 ("Hand", hand_detected)
             ]
-            
+
             for label, detected in statuses:
                 status_text = f"{label}: {'OK' if detected else 'NO'}"
                 color = (0, 255, 0) if detected else (0, 0, 255)
                 cv2.putText(annotated_frame, status_text, (10, y_offset), cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
                 y_offset += 30
-            
+
             return annotated_frame
-            
+
         except Exception as e:
             logger.error(f"[진단] app.py: _create_basic_annotation 예외: {e}")
             return frame
-    
+
     async def _safe_process_frame(self, mediapipe_results, timestamp):
         logger.info("[진단] app.py: _safe_process_frame 진입")
         logger.info(f"[진단] app.py: _safe_process_frame - mediapipe_results={mediapipe_results}, timestamp={timestamp}")
@@ -609,7 +616,7 @@ class DMSApp:
         except Exception as e:
             logger.warning(f"[진단] app.py: _safe_process_frame 예외: {e}")
             return None
-    
+
     def _create_safe_fallback_frame(self, original_frame, frame_count):
         logger.info("[진단] app.py: _create_safe_fallback_frame 진입")
         logger.info(f"[진단] app.py: _create_safe_fallback_frame - original_frame type: {type(original_frame)}, frame_count: {frame_count}")
@@ -632,18 +639,18 @@ class DMSApp:
         logger.info("[진단] app.py: _create_safe_fallback_frame - msg3 표시 완료")
         logger.info("[진단] app.py: _create_safe_fallback_frame - dummy 반환")
         return dummy
-    
+
     def _create_basic_info_overlay(self, frame, frame_count):
         """기본 정보 오버레이가 있는 프레임 생성"""
         logger.info("[진단] app.py: _create_basic_info_overlay 진입")
         try:
             annotated_frame = frame.copy()
             height, width = frame.shape[:2]
-            
+
             # 기본 상태 표시
-            cv2.putText(annotated_frame, "DMS System Running", (10, 30), 
+            cv2.putText(annotated_frame, "DMS System Running", (10, 30),
                        cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2)
-            
+
             # MediaPipe 상태 확인
             mp_status = "MediaPipe: "
             if hasattr(self, 'mediapipe_manager') and self.mediapipe_manager:
@@ -656,7 +663,7 @@ class DMSApp:
                         detections.append("Pose")
                     if results.get('hand') and results['hand'].hand_landmarks:
                         detections.append("Hand")
-                    
+
                     if detections:
                         mp_status += ", ".join(detections)
                         color = (0, 255, 0)  # 녹색
@@ -669,20 +676,20 @@ class DMSApp:
             else:
                 mp_status += "Not Available"
                 color = (128, 128, 128)  # 회색
-            
-            cv2.putText(annotated_frame, mp_status, (10, 70), 
+
+            cv2.putText(annotated_frame, mp_status, (10, 70),
                        cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
-            
+
             # 프레임 카운터
-            cv2.putText(annotated_frame, f"Frame: {frame_count}", (10, 110), 
+            cv2.putText(annotated_frame, f"Frame: {frame_count}", (10, 110),
                        cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
-            
+
             # 사용자 정보
-            cv2.putText(annotated_frame, f"User: {self.user_id}", (10, 150), 
+            cv2.putText(annotated_frame, f"User: {self.user_id}", (10, 150),
                        cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
-            
+
             return annotated_frame
-            
+
         except Exception as e:
             logger.error(f"[진단] app.py: _create_basic_info_overlay 예외: {e}")
             return frame
@@ -819,41 +826,41 @@ class DMSApp:
                 if frame is None:
                     await asyncio.sleep(0.01)
                     continue
-                    
+
                 frame_count += 1
-                
+
                 # MediaPipe 작업 실행 및 동기화된 결과 처리
                 annotated_frame = None
                 if hasattr(self, 'mediapipe_manager') and self.mediapipe_manager:
                     try:
                         # MediaPipe 작업 실행
                         self.mediapipe_manager.run_tasks(frame.copy())
-                        
+
                         # 짧은 대기 후 결과 가져오기 (동기화 개선)
                         await asyncio.sleep(0.005)  # 5ms 대기로 콜백 처리 시간 확보
-                        
+
                         # 최신 결과 가져오기
                         mediapipe_results = self.mediapipe_manager.get_latest_results()
-                        
+
                         # 결과 로깅 (10프레임마다)
                         if frame_count % 10 == 0 and mediapipe_results:
                             face_status = "YES" if mediapipe_results.get('face') and mediapipe_results['face'].face_landmarks else "NO"
                             pose_status = "YES" if mediapipe_results.get('pose') and mediapipe_results['pose'].pose_landmarks else "NO"
                             hand_status = "YES" if mediapipe_results.get('hand') and mediapipe_results['hand'].hand_landmarks else "NO"
                             logger.info(f"Frame {frame_count}: Face={face_status}, Pose={pose_status}, Hand={hand_status}")
-                        
+
                         # 현재 프레임과 동기화된 어노테이션
                         if mediapipe_results and any(mediapipe_results.values()):
                             annotated_frame = self._annotate_frame_with_results(frame, mediapipe_results)
                         else:
                             annotated_frame = self._create_basic_info_overlay(frame, frame_count)
-                            
+
                     except Exception as e:
                         logger.error(f"MediaPipe 작업 실행 오류: {e}")
                         annotated_frame = self._create_basic_info_overlay(frame, frame_count)
                 else:
                     annotated_frame = self._create_basic_info_overlay(frame, frame_count)
-                
+
                 # 프레임 큐에 추가 (유령 랜드마크 방지를 위한 동기화)
                 if annotated_frame is not None:
                     try:
@@ -865,7 +872,7 @@ class DMSApp:
                             frame_queue.put_nowait(annotated_frame)  # 새 프레임 추가
                         except queue.Empty:
                             pass
-                    
+
                 # 프레임 처리 안정성을 위한 적절한 대기 시간
                 await asyncio.sleep(0.010)  # 10ms 대기로 MediaPipe 콜백과 동기화
             try:
