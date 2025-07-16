@@ -538,7 +538,12 @@ async def initialize_event_system(max_queue_size: int = 10000) -> EventBus:
     global _global_event_bus
 
     if _global_event_bus is not None:
-        logger.warning("이벤트 시스템이 이미 초기화되었습니다")
+        # EventBus가 이미 생성되었지만 시작되지 않았을 수 있음
+        if not _global_event_bus.is_running:
+            await _global_event_bus.start()
+            logger.info("기존 EventBus 인스턴스 시작 완료")
+        else:
+            logger.warning("이벤트 시스템이 이미 실행 중입니다")
         return _global_event_bus
 
     _global_event_bus = EventBus(max_queue_size)
