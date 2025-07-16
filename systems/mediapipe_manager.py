@@ -754,34 +754,122 @@ class AdvancedMediaPipeManager:
             logger.error(f"얼굴 ROI 추출 중 오류 발생: {e}")
             return None
 
-    def extract_hand_roi(self, pose_result, frame):
-        # 예시: 왼손(15), 오른손(16) keypoint 기준
+    # mediapipe_manager.py 파일의 extract_hand_roi 메서드를 아래 코드로 교체하세요.
+
+    def extract_hand_roi(
+        self, pose_result: Any, frame: np.ndarray
+    ) -> Dict[str, Optional[tuple]]:
+        """
+        (개선된 최종 버전) 팔과 손의 모든 가용 랜드마크를 활용하여 ROI를 정밀하게 추출합니다.
+
+        - 손가락 랜드마크(15, 17, 19, 21 / 16, 18, 20, 22)를 이용해 기본 Bounding Box 생성
+        - 팔꿈치-손목, 어깨-팔꿈치 길이를 동적으로 계산하여 ROI 여백(Padding) 조절
+        - 각 랜드마크의 가시성을 개별적으로 확인하여 신뢰도 극대화
+
+        Args:
+            pose_result (Any): MediaPipe PoseLandmarker의 결과 객체.
+            frame (np.ndarray): ROI를 추출할 원본 비디오 프레임.
+
+        Returns:
+            Dict[str, Optional[tuple]]: {'left': roi_tuple, 'right': roi_tuple}
+        """
+        VISIBILITY_THRESHOLD = 0.6
+        PADDING_SCALE_FACTOR = 0.55  # 팔 길이 대비 ROI 여백 비율 (손 제스처 공간 확보)
+
+        rois = {"left": None, "right": None}
+
         try:
-            if (
-                not hasattr(pose_result, "pose_landmarks")
-                or not pose_result.pose_landmarks
-            ):
-                return None
+            if not getattr(pose_result, "pose_landmarks", None):
+                return rois
+
             landmarks = pose_result.pose_landmarks[0]
             h, w = frame.shape[:2]
-            # 왼손
-            lx, ly = landmarks[15].x, landmarks[15].y
-            # 오른손
-            rx, ry = landmarks[16].x, landmarks[16].y
-            size = 60  # ROI 크기(픽셀)
-            rois = []
-            for x, y in [(lx, ly), (rx, ry)]:
-                cx, cy = int(x * w), int(y * h)
-                x_min = max(0, cx - size)
-                x_max = min(w, cx + size)
-                y_min = max(0, cy - size)
-                y_max = min(h, cy + size)
-                rois.append((x_min, y_min, x_max, y_max))
-            # 두 손 중 프레임 내에 있는 손만 반환(여기선 첫 번째 손만 예시)
-            return rois[0] if rois else None
+
+            # 손/팔 랜드마크 인덱스 정의
+            hand_landmark_indices = {
+                "left": {
+                    "shoulder": 11,
+                    "elbow": 13,
+                    "wrist": 15,
+                    "pinky": 17,
+                    "index": 19,
+                    "thumb": 21,
+                },
+                "right": {
+                    "shoulder": 12,
+                    "elbow": 14,
+                    "wrist": 16,
+                    "pinky": 18,
+                    "index": 20,
+                    "thumb": 22,
+                },
+            }
+
+            for hand, indices in hand_landmark_indices.items():
+                # 1. 손가락/손목 랜드마크 중 보이는 것들만 수집
+                hand_points = [
+                    landmarks[i]
+                    for i in [
+                        indices["wrist"],
+                        indices["pinky"],
+                        indices["index"],
+                        indices["thumb"],
+                    ]
+                    if landmarks[i].visibility > VISIBILITY_THRESHOLD
+                ]
+
+                # 손을 특정할 랜드마크가 없으면 해당 손은 건너뛰기
+                if not hand_points:
+                    continue
+
+                # 2. 보이는 손 랜드마크를 모두 포함하는 최소 Bounding Box 계산
+                x_coords = [p.x * w for p in hand_points]
+                y_coords = [p.y * h for p in hand_points]
+                x_min, x_max = min(x_coords), max(x_coords)
+                y_min, y_max = min(y_coords), max(y_coords)
+
+                # 3. 팔 길이를 기반으로 동적 패딩(여백) 계산
+                padding = w * 0.1  # 기본 패딩값 (대체용)
+
+                shoulder = landmarks[indices["shoulder"]]
+                elbow = landmarks[indices["elbow"]]
+                wrist = landmarks[indices["wrist"]]
+
+                # 팔꿈치-손목 거리를 우선적으로 사용 (가장 정확한 스케일링)
+                if (
+                    elbow.visibility > VISIBILITY_THRESHOLD
+                    and wrist.visibility > VISIBILITY_THRESHOLD
+                ):
+                    arm_segment_length = np.linalg.norm(
+                        [(elbow.x - wrist.x) * w, (elbow.y - wrist.y) * h]
+                    )
+                    padding = arm_segment_length * PADDING_SCALE_FACTOR
+                    logger.debug(f"{hand} hand: 팔꿈치-손목 거리 기반 패딩 적용.")
+                # 차선책으로 어깨-팔꿈치 거리 사용
+                elif (
+                    shoulder.visibility > VISIBILITY_THRESHOLD
+                    and elbow.visibility > VISIBILITY_THRESHOLD
+                ):
+                    arm_segment_length = np.linalg.norm(
+                        [(shoulder.x - elbow.x) * w, (shoulder.y - elbow.y) * h]
+                    )
+                    padding = arm_segment_length * PADDING_SCALE_FACTOR
+                    logger.debug(f"{hand} hand: 어깨-팔꿈치 거리 기반 패딩 적용.")
+
+                # 4. Bounding Box에 패딩 적용 및 최종 ROI 좌표 계산
+                x_min_pad = max(0, int(x_min - padding))
+                y_min_pad = max(0, int(y_min - padding))
+                x_max_pad = min(w, int(x_max + padding))
+                y_max_pad = min(h, int(y_max + padding))
+
+                if x_max_pad > x_min_pad and y_max_pad > y_min_pad:
+                    rois[hand] = (x_min_pad, y_min_pad, x_max_pad, y_max_pad)
+
+            return rois
+
         except Exception as e:
-            logger.error(f"손 ROI 추출 오류: {e}")
-            return None
+            logger.error(f"개선된 양손 ROI 추출 중 오류 발생: {e}")
+            return {"left": None, "right": None}
 
     def crop_and_convert_to_mp_image(self, frame, roi):
         # ROI 영역 crop 후 mp.Image로 변환
