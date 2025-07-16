@@ -27,6 +27,9 @@ from typing import Any, Dict, List, Optional, Callable, Set
 import threading
 import weakref
 
+# 전역 안전 모드 플래그
+safe_mode = False
+
 logger = logging.getLogger(__name__)
 
 

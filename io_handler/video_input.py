@@ -6,6 +6,9 @@ import logging
 import contextlib
 from typing import Optional, Dict
 
+# 전역 안전 모드 플래그
+safe_mode = False
+
 logger = logging.getLogger(__name__)
 
 
@@ -592,15 +595,15 @@ class VideoInputManager:
         try:
             self.release()
         except (OSError, RuntimeError) as e:
+            global safe_mode
             error_count = getattr(self, '_exit_error_count', 0) + 1
             self._exit_error_count = error_count
             if error_count >= 2:
-                global safe_mode
                 safe_mode = True  # 시스템 전체 안전 모드 진입
         except Exception as e:
+            global safe_mode
             error_count = getattr(self, '_exit_error_count', 0) + 1
             self._exit_error_count = error_count
             if error_count >= 2:
-                global safe_mode
                 safe_mode = True  # 시스템 전체 안전 모드 진입
         return False

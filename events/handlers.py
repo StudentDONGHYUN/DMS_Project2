@@ -27,6 +27,9 @@ from enum import Enum
 from config.settings import get_config
 from core.constants import AnalysisConstants
 
+# 전역 안전 모드 플래그
+safe_mode = False
+
 logger = logging.getLogger(__name__)
 
 

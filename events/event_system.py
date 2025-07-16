@@ -16,6 +16,9 @@ from collections import deque, defaultdict
 import logging
 from abc import ABC, abstractmethod
 
+# 전역 안전 모드 플래그
+safe_mode = False
+
 logger = logging.getLogger(__name__)
 
 
