@@ -1,0 +1,1640 @@
+2025-07-16 12:30:24,473 - __main__                  - INFO     - [진단] main.py: main() 진입
+2025-07-16 12:30:25,469 - SClassDMS_v19_default     - INFO     - ✅ AI 드라이빙 코치 시스템 초기화 완료
+2025-07-16 12:30:25,469 - SClassDMS_v19_default     - INFO     - ✅ V2D 헬스케어 시스템 초기화 완료
+2025-07-16 12:30:25,469 - SClassDMS_v19_default     - INFO     - ✅ AR HUD 시스템 초기화 완료
+2025-07-16 12:30:25,469 - SClassDMS_v19_default     - INFO     - ✅ 감성 케어 시스템 초기화 완료
+2025-07-16 12:30:25,469 - SClassDMS_v19_default     - INFO     - ✅ 디지털 트윈 플랫폼 초기화 완료
+2025-07-16 12:30:25,469 - SClassDMS_v19_default     - INFO     - 혁신 시스템 초기화 완료: 5개 시스템 성공
+2025-07-16 12:30:25,469 - SClassDMS_v19_default     - INFO     - S-Class DMS v19.0 시스템 초기화 완료
+2025-07-16 12:30:25,485 - SClassDMS_v19_default     - INFO     - 사용자: default, 에디션: RESEARCH
+2025-07-16 12:30:25,485 - SClassDMS_v19_default     - INFO     - 활성화된 기능: ['Expert Systems', 'AI Coach', 'Healthcare', 'AR HUD', 'Emotional Care', 'Digital Twin']
+2025-07-16 12:30:59,991 - __main__                  - INFO     - start_app() 메서드 진입
+2025-07-16 12:30:59,991 - SClassDMS_v19_default     - INFO     - ✅ AI 드라이빙 코치 시스템 초기화 완료
+2025-07-16 12:30:59,991 - SClassDMS_v19_default     - INFO     - ✅ V2D 헬스케어 시스템 초기화 완료
+2025-07-16 12:30:59,991 - SClassDMS_v19_default     - INFO     - 혁신 시스템 초기화 완료: 2개 시스템 성공
+2025-07-16 12:30:59,991 - SClassDMS_v19_default     - INFO     - S-Class DMS v19.0 시스템 초기화 완료
+2025-07-16 12:30:59,991 - SClassDMS_v19_default     - INFO     - 사용자: default, 에디션: PRO
+2025-07-16 12:30:59,991 - SClassDMS_v19_default     - INFO     - 활성화된 기능: ['Expert Systems', 'AI Coach', 'Healthcare']
+2025-07-16 12:30:59,991 - __main__                  - INFO     - 혁신 엔진 초기화 완료: default, PRO
+2025-07-16 12:30:59,991 - __main__                  - INFO     - config 설정 완료
+2025-07-16 12:30:59,991 - __main__                  - INFO     - GUI 창 종료
+2025-07-16 12:31:00,021 - __main__                  - INFO     - S-Class 설정 완료 - 사용자: default, 에디션: PRO
+2025-07-16 12:31:00,021 - app                       - INFO     - [수정] app_fixed.py: DMSApp.__init__ 진입
+2025-07-16 12:31:00,021 - app                       - INFO     - 에디션 'PRO'에 따른 기능 설정 중...
+2025-07-16 12:31:00,021 - app                       - INFO     - 에디션 'PRO' 기능 설정 완료: {'enable_rppg': True, 'enable_saccade': True, 'enable_spinal_analysis': True, 'enable_tremor_fft': True, 'enable_bayesian_prediction': True, 'enable_emotion_ai': False, 'enable_predictive_safety': False, 'enable_biometric_fusion': False, 'enable_adaptive_thresholds': False}
+2025-07-16 12:31:00,037 - systems.performance       - INFO     - PerformanceOptimizer 초기화 완료
+2025-07-16 12:31:00,038 - systems.personalization   - INFO     - 사용자 프로필 로드됨: default
+2025-07-16 12:31:00,039 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-16 12:31:00,039 - systems.dynamic           - INFO     - DynamicAnalysisEngine 초기화 완료
+2025-07-16 12:31:00,039 - systems.backup            - INFO     - SensorBackupManager 초기화 완료
+2025-07-16 12:31:00,040 - utils.memory_monitor      - INFO     - MemoryMonitor 초기화 - 경고: 600MB, 위험: 1000MB
+2025-07-16 12:31:00,041 - io_handler.video_input    - INFO     - 운전자 연속성 설정됨: 동일 운전자
+2025-07-16 12:31:00,042 - app                       - INFO     - [수정] S-Class 시스템 초기화 완료
+2025-07-16 12:31:00,042 - app                       - INFO     - [수정] app.py: run 진입
+2025-07-16 12:31:00,043 - app                       - INFO     - [수정] app.py: run - opencv_display_loop 진입
+2025-07-16 12:31:00,046 - app                       - INFO     - [수정] 비동기 프레임 프로듀서 시작
+2025-07-16 12:31:00,047 - app                       - INFO     - [수정] S-Class DMS 시스템 초기화 시작...
+2025-07-16 12:31:00,047 - io_handler.video_input    - INFO     - [진단] video_input.initialize 진입
+2025-07-16 12:31:00,047 - io_handler.video_input    - INFO     - [진단] video_input.initialize - self.input_source=['C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0097/video/SGA5100180S0097.mp4', 'C:/Users/HKIT/Videos/VS1/SGA5100180/SGA5100180S0126/video/SGA5100180S0126.mp4']
+2025-07-16 12:31:00,049 - io_handler.video_input    - INFO     - 비디오 플레이리스트: 2개 파일
+2025-07-16 12:31:00,049 - io_handler.video_input    - INFO     -   1. SGA5100180S0097.mp4
+2025-07-16 12:31:00,049 - io_handler.video_input    - INFO     -   2. SGA5100180S0126.mp4
+2025-07-16 12:31:00,049 - io_handler.video_input    - INFO     - 비디오 파일 정보: SGA5100180S0097.mp4 (0.96MB, .mp4)
+2025-07-16 12:31:00,049 - io_handler.video_input    - INFO     - Windows/개발 환경: 표준 파일 디코더 사용
+2025-07-16 12:31:00,049 - io_handler.video_input    - INFO     - FFMPEG 백엔드로 시도 중...
+2025-07-16 12:31:00,286 - io_handler.video_input    - INFO     - ✅ FFMPEG 백엔드로 성공 (테스트 프레임: (720, 1280, 3))
+2025-07-16 12:31:00,286 - io_handler.video_input    - INFO     - 비디오 속성: 1280x720, 30.00fps, 114프레임, 3.8초
+2025-07-16 12:31:00,286 - io_handler.video_input    - INFO     - 비디오 코덱: h264
+2025-07-16 12:31:00,286 - io_handler.video_input    - INFO     - [진단] VideoCapture backend: FFMPEG, codec: h264, 총 프레임: 114
+2025-07-16 12:31:00,306 - io_handler.video_input    - INFO     - VideoCapture 객체 성공적으로 생성됨
+2025-07-16 12:31:00,306 - io_handler.video_input    - INFO     - [진단] VideoCapture backend: FFMPEG, codec: h264, 총 프레임: 114
+2025-07-16 12:31:00,306 - io_handler.video_input    - INFO     - [진단] video_input._reader_thread 진입
+2025-07-16 12:31:00,306 - io_handler.video_input    - INFO     - 리더 스레드 시작 대기 중...
+2025-07-16 12:31:00,825 - io_handler.video_input    - INFO     - 첫 번째 프레임 대기 중 (최대 5.0초)...
+2025-07-16 12:31:00,825 - io_handler.video_input    - INFO     - ✅ 첫 번째 프레임 수신 성공
+2025-07-16 12:31:00,825 - io_handler.video_input    - INFO     - ✅ 입력 소스 초기화 및 스레드 시작 완료
+2025-07-16 12:31:00,825 - events.event_bus          - INFO     - EventBus 초기화 완료 - 중추 신경계 가동 시작
+2025-07-16 12:31:00,825 - events.event_bus          - INFO     - 동기 이벤트 시스템 기본 초기화 완료 - 비동기 시작은 대기 중
+2025-07-16 12:31:00,825 - events.event_bus          - WARNING  - 이벤트 시스템이 이미 초기화되었습니다
+2025-07-16 12:31:00,825 - app                       - INFO     - ✅ 이벤트 시스템 초기화 완료
+2025-07-16 12:31:00,825 - systems.metrics_manager   - INFO     - MetricsManager 초기화 완료 - 히스토리 크기: 900
+2025-07-16 12:31:00,825 - integration.integrated_system - INFO     - 새로운 시스템 초기화 시작 - 성능 우선 전략
+2025-07-16 12:31:00,825 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 시작: standard
+2025-07-16 12:31:00,825 - analysis.factory.analysis_factory - INFO     - 지원 기능: advanced_drowsiness_detection, multi_level_distraction_detection, precise_head_pose_tracking, gaze_zone_classification, emotion_recognition...
+2025-07-16 12:31:00,825 - analysis.factory.analysis_factory - INFO     - 표준 성능 DMS 시스템 생성 중...
+2025-07-16 12:31:00,825 - analysis.fusion.fusion_engine_advanced - INFO     - MultiModalFusionEngine (S-Class) 초기화 완료 - 디지털 신경과학자 준비됨
+2025-07-16 12:31:02,099 - analysis.drowsiness       - INFO     - EnhancedDrowsinessDetector 초기화 완료
+2025-07-16 12:31:02,099 - analysis.emotion          - INFO     - EmotionRecognitionSystem 초기화 완료
+2025-07-16 12:31:02,281 - analysis.gaze             - INFO     - GazeZoneClassifier 초기화: 11개 구역 정의됨, mode=3d
+2025-07-16 12:31:02,283 - analysis.identity         - INFO     - 1명의 운전자 프로필 로드됨
+2025-07-16 12:31:02,283 - analysis.identity         - INFO     - DriverIdentificationSystem 초기화 완료
+2025-07-16 12:31:02,283 - analysis.processors.face_processor - INFO     - FaceDataProcessor initialized - Digital Psychologist ready
+2025-07-16 12:31:02,283 - analysis.processors.pose_processor - INFO     - PoseDataProcessor initialized - Digital Biomechanics Expert ready
+2025-07-16 12:31:02,284 - analysis.processors.hand_processor - INFO     - HandDataProcessor initialized - Expert Kinematics Analyst ready
+2025-07-16 12:31:02,284 - analysis.processors.object_processor - INFO     - ObjectDataProcessor initialized - Digital Behavior Prediction Expert ready
+2025-07-16 12:31:02,284 - analysis.orchestrator.orchestrator_advanced - INFO     - AnalysisOrchestrator (S-Class) 초기화 완료 - 지능형 지휘자 준비됨
+2025-07-16 12:31:02,286 - analysis.factory.analysis_factory - INFO     - 표준 DMS 시스템 생성 완료 - 균형 모드 활성화
+2025-07-16 12:31:02,286 - analysis.factory.analysis_factory - INFO     - DMS 분석 시스템 생성 완료: standard
+2025-07-16 12:31:02,286 - integration.integrated_system - INFO     - ✅ 새로운 standard 시스템 생성 완료
+2025-07-16 12:31:02,287 - integration.integrated_system - INFO     - IntegratedDMSSystem 초기화 완료 - 타입: standard, 레거시: False
+2025-07-16 12:31:02,287 - events.event_bus          - WARNING  - 이벤트 시스템이 이미 초기화되었습니다
+2025-07-16 12:31:02,287 - events.handlers           - INFO     - SafetyEventHandler 초기화 완료 - 안전 모니터링 시작
+2025-07-16 12:31:02,288 - events.event_bus          - INFO     - 글로벌 핸들러 등록: SafetyEventHandler
+2025-07-16 12:31:02,288 - events.handlers           - INFO     - AnalyticsEventHandler 초기화 완료 - 성능 모니터링 시작
+2025-07-16 12:31:02,288 - events.event_bus          - INFO     - 글로벌 핸들러 등록: AnalyticsEventHandler
+2025-07-16 12:31:02,289 - systems.metrics_manager   - INFO     - StateManager와 연결됨
+2025-07-16 12:31:02,289 - core.state_manager        - INFO     - MetricsManager와 연결됨
+2025-07-16 12:31:02,289 - integration.integrated_system - INFO     - IntegratedDMSSystem 비동기 초기화 완료
+2025-07-16 12:31:02,290 - systems.mediapipe_manager - INFO     - 모델 디렉토리: C:\Users\HKIT\Desktop\DMS_Project2\models
+2025-07-16 12:31:02,291 - systems.mediapipe_manager - INFO     - AdvancedMediaPipeManager v2.0 (최적화) 초기화 완료
+2025-07-16 12:31:02,292 - app                       - INFO     - IntegratedCallbackAdapter (수정) 초기화 완료
+2025-07-16 12:31:02,293 - app                       - INFO     - [수정] S-Class DMS 시스템 초기화 완료
+2025-07-16 12:31:02,293 - app                       - INFO     - [수정] S-Class DMS 시스템 초기화 완료
+2025-07-16 12:31:02,405 - app                       - INFO     - 비동기 프레임 처리 루프 시작
+2025-07-16 12:31:02,446 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:02,446 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:02,447 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:02,447 - systems.metrics_manager   - WARNING  - 경고 발생 - distraction: critical (값: 1.000)
+2025-07-16 12:31:02,447 - core.state_manager        - WARNING  - 경고 수신: distraction - critical (값: 1.000)
+2025-07-16 12:31:02,450 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:02,450 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:02,450 - integration.integrated_system - INFO     - 성능 리포트 - 평균 처리시간: 4.0ms, FPS: 252.4
+2025-07-16 12:31:02,464 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:02,465 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:02,465 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:02,466 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:02,466 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:02,496 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:02,496 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:02,496 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:02,496 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:02,496 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:02,507 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:02,507 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:02,507 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:02,507 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:02,519 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:02,541 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:02,542 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:02,542 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:02,543 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:02,543 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:02,577 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:02,578 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:02,578 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:02,579 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:02,580 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:02,602 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:02,603 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:02,603 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:02,604 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:02,604 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:02,630 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:02,631 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:02,631 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:02,632 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:02,632 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:02,659 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:02,660 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:02,661 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:02,661 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:02,662 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:02,670 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:02,670 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:02,671 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:02,672 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:02,672 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:02,694 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:02,694 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:02,694 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:02,694 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:02,694 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:02,710 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:02,710 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:02,710 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:02,721 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:02,722 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:02,746 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:02,934 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:02,935 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:02,935 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:02,936 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:02,943 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:02,943 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:02,944 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:02,944 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:02,944 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:02,963 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:02,963 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:02,964 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:02,964 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:02,965 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:02,986 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:02,987 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:02,987 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:02,988 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:02,988 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,002 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,004 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,005 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,006 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,007 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,028 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,028 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,028 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,029 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,030 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,060 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,061 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,061 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,062 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,062 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,079 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,079 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,080 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,081 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,082 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,107 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,107 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,108 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,108 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,108 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,138 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,138 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,139 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,139 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,140 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,162 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,162 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,163 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,164 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,165 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,170 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,170 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,170 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,170 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,170 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,204 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,204 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,204 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,204 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,204 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,220 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,220 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,220 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,231 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,232 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,253 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,253 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,253 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,253 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,253 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,279 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,279 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,279 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,279 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,279 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,287 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,287 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,287 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,287 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,287 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,325 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,326 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,326 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,326 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,327 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,341 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,341 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,341 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,341 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,341 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,374 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,374 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,375 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,375 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,375 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,394 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,394 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,394 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,394 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,394 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,407 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,417 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,417 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,418 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,418 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,438 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,438 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,438 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,438 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,438 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,474 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,477 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,477 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,477 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,477 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,487 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,487 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,487 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,502 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,502 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,510 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,511 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,511 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,512 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,512 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,526 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,536 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,537 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,537 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,538 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,571 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,571 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,571 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,571 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,571 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,603 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,603 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,603 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,603 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,603 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,620 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,631 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,631 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,631 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,631 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,643 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,644 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,644 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,645 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,645 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,658 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,658 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,669 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,670 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,671 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,694 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,695 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,695 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,696 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,696 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,723 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,723 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,724 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,725 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,725 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,739 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,739 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,739 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,739 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,739 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,752 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,756 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,756 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,756 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,756 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,772 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,772 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,772 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,772 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,772 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,796 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,796 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,796 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,796 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,796 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,806 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,806 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,806 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,806 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,806 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,847 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,847 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,848 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,849 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,849 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,858 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,858 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,869 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,870 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,870 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,892 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,892 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,892 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,893 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,893 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,923 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,924 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,924 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,925 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,926 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,947 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,948 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,948 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,950 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,950 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,975 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,975 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,976 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,976 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,977 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:03,988 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:03,996 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:03,996 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:03,996 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:03,996 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:04,020 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:04,020 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:04,020 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:04,020 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:04,020 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:04,047 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:04,047 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:04,047 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:04,048 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:04,048 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:04,048 - app                       - INFO     - 메모리 정리 실행
+2025-07-16 12:31:04,400 - app                       - INFO     - 가비지 컬렉션 완료: 총 0개 객체 정리
+2025-07-16 12:31:04,405 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-16 12:31:04,920 - app                       - INFO     - 메모리 정리 완료 - 정리 전: 600.5MB, 정리 후: 608.2MB, 확보된 메모리: -7.7MB
+2025-07-16 12:31:04,949 - app                       - WARNING  - 메모리 정리 효과가 제한적입니다: -7.7MB
+2025-07-16 12:31:04,983 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,003 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,020 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,027 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,032 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,066 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,085 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,100 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,110 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,133 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,166 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,183 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,187 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,192 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,196 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,217 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,224 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,226 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,231 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,232 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,263 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,266 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,273 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,279 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,280 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,308 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,310 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,312 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,314 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,314 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,338 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,341 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,343 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,345 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,345 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,352 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,352 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,352 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,380 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,381 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,403 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,409 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,409 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,409 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,409 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,431 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,432 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,433 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,434 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,434 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,444 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,444 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,444 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,444 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,444 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,483 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,483 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,483 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,485 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,485 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,506 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,507 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,508 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,509 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,509 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,521 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,524 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,525 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,528 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,530 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,549 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,549 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,550 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,551 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,551 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,564 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,565 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,565 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,566 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,566 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,590 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,590 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,591 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,591 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,591 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,597 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,597 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,598 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,598 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,598 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,626 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,627 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,628 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,628 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,628 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,650 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,651 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,651 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,654 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,654 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,666 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,666 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,667 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,669 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,671 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,682 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,682 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,684 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,686 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,688 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,712 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,713 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,713 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,714 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,714 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,731 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,732 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,732 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,733 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,734 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,752 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,752 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,752 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,752 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,752 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,783 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,783 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,784 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,786 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,789 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,804 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,804 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,804 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,804 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,804 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,831 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,831 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,831 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,832 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,832 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,859 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,860 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,860 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,861 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,861 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,876 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,877 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,877 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,878 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,878 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,909 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,910 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,910 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,911 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,911 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,926 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,927 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,927 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,929 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,929 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,963 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,965 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,965 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,966 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,966 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,982 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:05,982 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:05,983 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:05,984 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:05,984 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:05,999 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:06,000 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:06,000 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:06,001 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:06,001 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:06,019 - io_handler.video_input    - WARNING  - [진단] video_input._reader_thread: 프레임 획득 실패 (ret=False)
+2025-07-16 12:31:06,034 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:06,037 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:06,038 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:06,040 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:06,043 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:06,064 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:06,065 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:06,065 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:06,066 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:06,067 - io_handler.video_input    - INFO     - 비디오 파일 정보: SGA5100180S0126.mp4 (1.05MB, .mp4)
+2025-07-16 12:31:06,068 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:06,068 - io_handler.video_input    - INFO     - Windows/개발 환경: 표준 파일 디코더 사용
+2025-07-16 12:31:06,070 - io_handler.video_input    - INFO     - FFMPEG 백엔드로 시도 중...
+2025-07-16 12:31:06,088 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:06,090 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:06,091 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:06,093 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:06,094 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:06,104 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:06,108 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:06,108 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:06,108 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:06,108 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:06,139 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:06,145 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:06,151 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:06,152 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:06,152 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:06,187 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:06,188 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:06,190 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:06,201 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:06,206 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:06,233 - io_handler.video_input    - INFO     - ✅ FFMPEG 백엔드로 성공 (테스트 프레임: (720, 1280, 3))
+2025-07-16 12:31:06,246 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:06,246 - io_handler.video_input    - INFO     - 비디오 속성: 1280x720, 30.00fps, 129프레임, 4.3초
+2025-07-16 12:31:06,253 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:06,256 - io_handler.video_input    - INFO     - 비디오 코덱: h264
+2025-07-16 12:31:06,258 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:06,265 - io_handler.video_input    - INFO     - 다음 비디오 로드 (RB2 최적화): SGA5100180S0126.mp4
+2025-07-16 12:31:06,267 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:06,269 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:06,293 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:06,293 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:06,293 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:06,293 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:06,302 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:06,349 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:06,352 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:06,353 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:06,356 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:06,358 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:06,380 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:06,434 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:06,439 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:06,441 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:06,444 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:06,467 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:06,470 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:06,471 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:06,474 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:06,480 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:06,508 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:06,531 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:06,535 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:06,537 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:06,551 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:06,582 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:06,590 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:06,610 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:06,610 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:06,610 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:06,655 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:06,661 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:06,662 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:06,664 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:06,664 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:06,689 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:06,701 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:06,701 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:06,704 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:06,704 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:06,732 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:06,732 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:06,741 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:06,741 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:06,741 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:06,772 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:06,786 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:06,786 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:06,786 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:06,786 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:06,806 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:06,806 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:06,806 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:06,822 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:06,823 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:06,850 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:06,850 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:06,850 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:06,850 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:06,850 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:06,880 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:06,880 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:06,880 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:06,880 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:06,896 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:06,917 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:06,919 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:06,919 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:06,919 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:06,919 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:06,957 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:06,958 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:06,960 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:06,960 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:06,960 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:06,987 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:06,991 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:06,993 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:06,993 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:06,997 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,025 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,026 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,028 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,029 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,029 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,053 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,057 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,062 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,068 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,068 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,089 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,089 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,089 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,089 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,089 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,138 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,138 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,138 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,155 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,161 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,182 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,182 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,188 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,197 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,198 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,228 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,237 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,239 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,250 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,252 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,277 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,279 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,281 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,282 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,283 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,298 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,299 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,300 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,301 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,301 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,328 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,331 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,333 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,334 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,335 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,348 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,348 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,348 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,349 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,350 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,380 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,389 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,389 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,391 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,394 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,408 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,410 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,411 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,415 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,420 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,433 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,434 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,434 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,435 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,435 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,468 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,468 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,469 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,469 - systems.metrics_manager   - WARNING  - 경고 발생 - distraction: critical (값: 1.000)
+2025-07-16 12:31:07,469 - core.state_manager        - WARNING  - 경고 수신: distraction - critical (값: 1.000)
+2025-07-16 12:31:07,470 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,470 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,504 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,506 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,508 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,511 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,513 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,522 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,524 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,525 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,527 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,528 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,543 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,545 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,545 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,546 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,546 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,561 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,563 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,563 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,563 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,563 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,577 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,577 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,577 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,577 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,577 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,613 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,614 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,614 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,614 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,614 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,644 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,645 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,646 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,648 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,649 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,665 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,666 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,666 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,667 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,667 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,680 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,683 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,683 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,692 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,694 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,708 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,709 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,709 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,710 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,710 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,731 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,732 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,733 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,734 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,734 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,751 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,751 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,751 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,752 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,752 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,767 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,768 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,770 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,782 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,784 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,798 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,800 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,801 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,807 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,810 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,833 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,833 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,834 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,834 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,834 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,848 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,849 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,851 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,853 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,857 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,882 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,882 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,882 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,886 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,892 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,908 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,923 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,926 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,927 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,927 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,934 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,937 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,939 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,946 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,947 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,957 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,957 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,958 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,959 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,959 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:07,982 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:07,983 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:07,983 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:07,984 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:07,984 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,005 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,006 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,006 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,007 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,008 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,023 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,024 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,024 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,025 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,025 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,040 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,040 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,041 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,045 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,047 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,056 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,057 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,057 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,058 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,058 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,088 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,089 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,090 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,090 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,091 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,109 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,110 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,111 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,112 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,113 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,138 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,139 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,139 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,139 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,140 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,158 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,159 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,159 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,160 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,161 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,183 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,183 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,183 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,186 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,186 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,212 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,212 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,212 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,217 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,217 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,241 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,242 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,242 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,243 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,243 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,260 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,260 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,260 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,260 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,260 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,299 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,299 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,299 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,299 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,299 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,329 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,330 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,330 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,330 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,331 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,355 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,357 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,357 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,358 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,359 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,376 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,376 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,376 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,376 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,376 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,398 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,398 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,399 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,400 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,400 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,430 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,431 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,432 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,433 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,433 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,454 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,455 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,455 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,456 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,456 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,495 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,495 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,496 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,496 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,496 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,517 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,517 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,517 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,518 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,518 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,545 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,545 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,553 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,554 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,557 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,568 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,568 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,569 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,571 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,571 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,606 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,607 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,607 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,607 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,607 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,607 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,607 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,607 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,607 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,619 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,633 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,637 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,640 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,649 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,652 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,675 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,675 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,675 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,675 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,675 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,675 - app                       - INFO     - 메모리 정리 실행
+2025-07-16 12:31:08,819 - app                       - INFO     - 가비지 컬렉션 완료: 총 0개 객체 정리
+2025-07-16 12:31:08,830 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-16 12:31:08,969 - app                       - INFO     - 메모리 정리 완료 - 정리 전: 600.1MB, 정리 후: 597.5MB, 확보된 메모리: 2.6MB
+2025-07-16 12:31:08,969 - app                       - WARNING  - 메모리 정리 효과가 제한적입니다: 2.6MB
+2025-07-16 12:31:08,969 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,969 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,969 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,984 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,984 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:08,994 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:08,995 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:08,995 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:08,996 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:08,996 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,021 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,021 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,021 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,021 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,021 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,054 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,054 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,054 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,054 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,054 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,076 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,077 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,077 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,078 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,078 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,104 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,104 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,104 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,104 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,104 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,125 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,125 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,125 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,125 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,125 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,152 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,152 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,152 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,152 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,152 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,179 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,179 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,179 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,179 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,179 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,217 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,217 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,217 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,217 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,217 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,253 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,253 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,253 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,253 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,253 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,289 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,289 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,289 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,289 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,289 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,327 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,327 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,327 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,327 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,327 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,366 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,367 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,368 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,369 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,369 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,390 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,390 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,390 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,390 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,390 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,403 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,403 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,403 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,414 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,414 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,438 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,438 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,438 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,438 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,438 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,465 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,470 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,471 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,471 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,471 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,492 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,492 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,492 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,495 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,495 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,500 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,500 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,500 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,502 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,504 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,536 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,539 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,540 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,541 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,542 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,559 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,564 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,566 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,568 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,569 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,582 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,584 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,584 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,588 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,589 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,605 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,612 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,613 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,615 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,615 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,633 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,634 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,634 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,636 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,643 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,655 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,662 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,663 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,666 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,666 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,689 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,689 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,689 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,689 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,689 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,705 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,709 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,711 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,714 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,714 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,733 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,734 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,735 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,736 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,741 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,762 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,766 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,767 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,768 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,768 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,792 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,793 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,793 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,794 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,795 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,801 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,805 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,807 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,809 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,809 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,824 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,830 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,833 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,835 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,835 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,853 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,854 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,856 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,859 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,860 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,869 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,881 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,883 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,884 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,885 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,890 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,890 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,890 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,890 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,890 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,935 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,937 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,939 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,940 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,941 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,957 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,957 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,958 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,959 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,959 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,981 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,982 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:09,982 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:09,982 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:09,983 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:09,993 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:09,999 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,000 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,004 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,005 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,016 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,017 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,017 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,019 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,021 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,053 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,054 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,056 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,056 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,057 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,077 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,077 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,078 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,078 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,079 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,092 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,093 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,093 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,094 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,094 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,121 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,121 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,121 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,121 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,121 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,143 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,143 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,144 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,144 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,145 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,172 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,172 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,172 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,172 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,172 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,199 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,200 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,201 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,202 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,202 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,232 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,232 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,232 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,233 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,233 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,250 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,251 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,251 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,252 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,252 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,272 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,273 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,274 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,274 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,274 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,292 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,292 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,292 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,292 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,292 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,308 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,309 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,309 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,310 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,310 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,332 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,333 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,333 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,334 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,334 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,357 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,358 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,360 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,361 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,361 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,365 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,369 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,373 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,377 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,379 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,397 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,399 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,400 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,400 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,402 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,419 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,421 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,421 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,421 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,421 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,452 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,453 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,454 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,456 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,458 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,479 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,479 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,480 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,480 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,481 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,483 - app                       - INFO     - 메모리 정리 실행
+2025-07-16 12:31:10,619 - app                       - INFO     - 가비지 컬렉션 완료: 총 0개 객체 정리
+2025-07-16 12:31:10,630 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-16 12:31:10,769 - app                       - INFO     - 메모리 정리 완료 - 정리 전: 600.9MB, 정리 후: 597.6MB, 확보된 메모리: 3.4MB
+2025-07-16 12:31:10,769 - app                       - WARNING  - 메모리 정리 효과가 제한적입니다: 3.4MB
+2025-07-16 12:31:10,787 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,787 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,788 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,789 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,790 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,805 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,806 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,808 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,809 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,809 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,828 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,829 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,829 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,829 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,829 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,851 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,852 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,852 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,854 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,854 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,881 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,882 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,882 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,882 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,883 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,897 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,899 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,901 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,902 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,902 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,925 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,926 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,927 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,929 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,930 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,940 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,941 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,942 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,948 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,949 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,968 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,971 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,974 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:10,979 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:10,980 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:10,993 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:10,994 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:10,998 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,000 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,001 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,024 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,027 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,028 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,031 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,031 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,051 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,052 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,052 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,054 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,054 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,066 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,066 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,067 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,068 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,068 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,086 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,087 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,087 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,088 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,089 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,114 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,115 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,115 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,116 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,116 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,123 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,124 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,125 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,126 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,126 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,155 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,159 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,159 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,159 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,164 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,184 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,184 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,185 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,185 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,185 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,209 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,213 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,213 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,214 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,214 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,232 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,232 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,233 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,233 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,233 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,257 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,258 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,258 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,258 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,258 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,283 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,283 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,284 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,284 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,285 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,311 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,312 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,313 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,314 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,314 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,332 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,332 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,333 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,333 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,333 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,345 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,347 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,348 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,351 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,354 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,356 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,356 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,356 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,372 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,373 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,389 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,392 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,394 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,397 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,400 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,408 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,408 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,408 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,408 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,417 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,433 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,437 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,440 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,445 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,446 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,456 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,460 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,461 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,463 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,464 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,488 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,488 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,488 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,488 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,488 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,505 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,508 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,509 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,511 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,512 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,525 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,529 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,532 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,535 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,541 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,552 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,554 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,558 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,560 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,561 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,575 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,580 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,584 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,587 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,591 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,604 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,608 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,609 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,611 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,612 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,618 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,620 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,622 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,625 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,626 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,650 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,651 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,651 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,652 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,653 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,664 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,664 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,665 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,667 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,668 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,685 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,687 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,690 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,690 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,690 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,704 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,706 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,706 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,706 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,716 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,740 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,742 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,743 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,745 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,745 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,764 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,764 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,765 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,767 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,768 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,785 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,785 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,787 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,791 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,794 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,815 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,815 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,816 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,816 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,816 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,846 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,846 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,846 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,857 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,858 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,868 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,870 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,871 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,873 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,874 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,892 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,898 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,900 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,905 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,907 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,918 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,919 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,920 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,923 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,924 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,945 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,948 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,950 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,952 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,954 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,960 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,971 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,973 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,976 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,977 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:11,986 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:11,989 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:11,992 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:11,995 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:11,996 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:12,007 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:12,015 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:12,015 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:12,015 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:12,015 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:12,031 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:12,033 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:12,034 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:12,035 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:12,036 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:12,048 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:12,049 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:12,050 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:12,051 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:12,052 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:12,089 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:12,089 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:12,089 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:12,089 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:12,089 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:12,100 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:12,100 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:12,101 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:12,104 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:12,105 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:12,118 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:12,121 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:12,124 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:12,129 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:12,130 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:12,140 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:12,140 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:12,143 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:12,148 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:12,150 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:12,154 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:12,154 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:12,163 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:12,166 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:12,166 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:12,171 - app                       - INFO     - 메모리 정리 실행
+2025-07-16 12:31:12,319 - app                       - INFO     - 가비지 컬렉션 완료: 총 0개 객체 정리
+2025-07-16 12:31:12,324 - systems.dynamic           - INFO     - DynamicAnalysisEngine 상태 초기화됨.
+2025-07-16 12:31:12,452 - app                       - INFO     - 메모리 정리 완료 - 정리 전: 600.2MB, 정리 후: 597.6MB, 확보된 메모리: 2.6MB
+2025-07-16 12:31:12,452 - app                       - WARNING  - 메모리 정리 효과가 제한적입니다: 2.6MB
+2025-07-16 12:31:12,488 - analysis.processors.face_processor - WARNING  - No face detected - setting all facial metrics to default values
+2025-07-16 12:31:12,489 - analysis.processors.pose_processor - WARNING  - No pose detected - backup mode or sensor recalibration needed
+2025-07-16 12:31:12,489 - analysis.processors.hand_processor - WARNING  - No hands detected.
+2025-07-16 12:31:12,489 - systems.metrics_manager   - WARNING  - 경고 발생 - distraction: critical (값: 1.000)
+2025-07-16 12:31:12,490 - core.state_manager        - WARNING  - 경고 수신: distraction - critical (값: 1.000)
+2025-07-16 12:31:12,490 - events.event_bus          - ERROR    - EventBus가 실행되지 않은 상태에서 이벤트 발행 시도
+2025-07-16 12:31:12,491 - integration.integrated_system - WARNING  - 시각화용 프레임 데이터가 없음
+2025-07-16 12:31:12,519 - app                       - INFO     - 비동기 프레임 처리 루프 종료
+2025-07-16 12:31:12,520 - systems.mediapipe_manager - INFO     - MediaPipe Manager 정리 시작...
+2025-07-16 12:31:12,521 - systems.mediapipe_manager - INFO     - MediaPipe Manager 정리 완료
+2025-07-16 12:31:12,521 - integration.integrated_system - INFO     - IntegratedDMSSystem 종료 시작
+2025-07-16 12:31:12,521 - events.event_bus          - INFO     - 글로벌 이벤트 시스템 종료 완료
+2025-07-16 12:31:12,522 - integration.integrated_system - INFO     - 최종 성능 리포트 - 총 301프레임, 평균 8.1ms
+2025-07-16 12:31:12,522 - integration.integrated_system - INFO     - IntegratedDMSSystem 종료 완료

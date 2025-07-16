@@ -6,6 +6,9 @@ import logging
 import contextlib
 from typing import Optional, Dict
 
+# 전역 안전 모드 플래그
+safe_mode = False
+
 logger = logging.getLogger(__name__)
 
 
@@ -558,6 +561,7 @@ class VideoInputManager:
 
     def release(self):
         """리소스 정리 (예외 안전성 보장)"""
+        global safe_mode
         error_count = 0
         try:
             self.stopped = True
@@ -578,7 +582,6 @@ class VideoInputManager:
             error_count += 1
         finally:
             if error_count >= 2:
-                global safe_mode
                 safe_mode = True  # 시스템 전체 안전 모드 진입
 
     def __enter__(self):
@@ -589,18 +592,17 @@ class VideoInputManager:
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         """Context Manager 종료 (예외 발생 시에도 리소스 정리 보장)"""
+        global safe_mode
         try:
             self.release()
         except (OSError, RuntimeError) as e:
-            error_count = getattr(self, '_exit_error_count', 0) + 1
+            error_count = getattr(self, "_exit_error_count", 0) + 1
             self._exit_error_count = error_count
             if error_count >= 2:
-                global safe_mode
                 safe_mode = True  # 시스템 전체 안전 모드 진입
         except Exception as e:
-            error_count = getattr(self, '_exit_error_count', 0) + 1
+            error_count = getattr(self, "_exit_error_count", 0) + 1
             self._exit_error_count = error_count
             if error_count >= 2:
-                global safe_mode
                 safe_mode = True  # 시스템 전체 안전 모드 진입
         return False

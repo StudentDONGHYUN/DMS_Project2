@@ -9,6 +9,9 @@ import numpy as np
 import logging
 from typing import Union, Optional, Any
 
+# 전역 안전 모드 플래그
+safe_mode = False
+
 logger = logging.getLogger(__name__)
 
 
@@ -337,7 +340,7 @@ def safe_create_basic_info_overlay(frame, frame_count, perf_stats=None):
         return annotated_frame
 
     except Exception as e:
-        if not hasattr(safe_create_basic_info_overlay, '_fail_count'):
+        if not hasattr(safe_create_basic_info_overlay, "_fail_count"):
             safe_create_basic_info_overlay._fail_count = 0
         safe_create_basic_info_overlay._fail_count += 1
         if safe_create_basic_info_overlay._fail_count >= 3:

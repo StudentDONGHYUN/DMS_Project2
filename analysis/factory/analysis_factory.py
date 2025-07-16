@@ -11,6 +11,9 @@ from analysis.fusion.fusion_engine_advanced import MultiModalFusionEngine
 
 logger = logging.getLogger(__name__)
 
+# Bug fix: Initialize global safe_mode variable at module level
+safe_mode = False
+
 
 class AnalysisSystemType(Enum):
     """
@@ -19,10 +22,11 @@ class AnalysisSystemType(Enum):
     각 타입은 서로 다른 사용 사례와 성능 요구사항을 가집니다.
     마치 스마트폰의 성능 모드 선택과 같습니다.
     """
-    LOW_RESOURCE = "low_resource"        # 절전모드 - 최소 자원으로 기본 기능
-    STANDARD = "standard"                # 균형모드 - 성능과 효율의 균형
-    HIGH_PERFORMANCE = "high_performance" # 고성능모드 - 최대 정확도와 기능
-    RESEARCH = "research"                # 연구모드 - 모든 실험 기능 활성화
+
+    LOW_RESOURCE = "low_resource"  # 절전모드 - 최소 자원으로 기본 기능
+    STANDARD = "standard"  # 균형모드 - 성능과 효율의 균형
+    HIGH_PERFORMANCE = "high_performance"  # 고성능모드 - 최대 정확도와 기능
+    RESEARCH = "research"  # 연구모드 - 모든 실험 기능 활성화
 
 
 @dataclass
@@ -34,6 +38,7 @@ class SystemConfiguration:
     - 엔진 종류, 기어박스, 옵션 등이 명시되어 있듯이
     - 여기에는 어떤 프로세서를 사용할지, 어떤 설정값을 적용할지 정의
     """
+
     system_type: AnalysisSystemType
     enabled_processors: List[str]
     fusion_config: Dict[str, Any]
@@ -51,7 +56,7 @@ class SystemConfiguration:
     def _validate_configuration(self):
         """구성의 유효성을 검증합니다"""
         # 필수 프로세서 확인
-        required_processors = ['face', 'pose', 'hand', 'object']
+        required_processors = ["face", "pose", "hand", "object"]
         for processor in required_processors:
             if processor not in self.enabled_processors:
                 logger.warning(f"필수 프로세서 누락: {processor} - 기본 설정으로 추가")
@@ -60,7 +65,9 @@ class SystemConfiguration:
         # 타임아웃 설정 검증
         for processor, timeout in self.timeout_settings.items():
             if timeout <= 0 or timeout > 1.0:  # 1초 초과는 비현실적
-                logger.warning(f"비정상적인 타임아웃 설정: {processor}={timeout} - 기본값으로 조정")
+                logger.warning(
+                    f"비정상적인 타임아웃 설정: {processor}={timeout} - 기본값으로 조정"
+                )
                 self.timeout_settings[processor] = 0.1  # 100ms 기본값
 
     def _apply_compatibility_fixes(self):
@@ -70,18 +77,24 @@ class SystemConfiguration:
             self.experimental_features = []
 
             # 품질 설정을 낮춤
-            self.quality_settings['max_resolution'] = min(
-                self.quality_settings.get('max_resolution', 640), 480
+            self.quality_settings["max_resolution"] = min(
+                self.quality_settings.get("max_resolution", 640), 480
             )
 
         elif self.system_type == AnalysisSystemType.HIGH_PERFORMANCE:
             # 고성능 시스템에서는 모든 기능 활성화
             all_experimental = [
-                'rppg_heart_rate', 'saccade_analysis', 'pupil_dynamics',
-                'predictive_analysis', 'behavior_modeling', 'stress_detection'
+                "rppg_heart_rate",
+                "saccade_analysis",
+                "pupil_dynamics",
+                "predictive_analysis",
+                "behavior_modeling",
+                "stress_detection",
             ]
             self.experimental_features.extend(all_experimental)
-            self.experimental_features = list(set(self.experimental_features))  # 중복 제거
+            self.experimental_features = list(
+                set(self.experimental_features)
+            )  # 중복 제거
 
 
 class IAnalysisSystemFactory(ABC):
@@ -91,7 +104,7 @@ class IAnalysisSystemFactory(ABC):
     def create_system(
         self,
         metrics_updater: IMetricsUpdater,
-        custom_config: Optional[Dict[str, Any]] = None
+        custom_config: Optional[Dict[str, Any]] = None,
     ) -> AnalysisOrchestrator:
         """분석 시스템을 생성합니다"""
         pass
@@ -126,40 +139,40 @@ class LowResourceSystemFactory(IAnalysisSystemFactory):
     def get_system_configuration(self) -> SystemConfiguration:
         return SystemConfiguration(
             system_type=AnalysisSystemType.LOW_RESOURCE,
-            enabled_processors=['face', 'pose'],  # 기본 프로세서만
+            enabled_processors=["face", "pose"],  # 기본 프로세서만
             fusion_config={
-                'fusion_method': 'simple_weighted',  # 단순 가중평균
-                'enable_attention': False,           # 어텐션 메커니즘 비활성화
-                'temporal_smoothing': False          # 시간적 평활화 비활성화
+                "fusion_method": "simple_weighted",  # 단순 가중평균
+                "enable_attention": False,  # 어텐션 메커니즘 비활성화
+                "temporal_smoothing": False,  # 시간적 평활화 비활성화
             },
             performance_settings={
-                'max_fps': 15,                       # 낮은 프레임레이트
-                'parallel_processing': False,       # 순차 처리로 메모리 절약
-                'cache_size': 10,                   # 작은 캐시
-                'optimization_level': 'speed'        # 속도 우선 최적화
+                "max_fps": 15,  # 낮은 프레임레이트
+                "parallel_processing": False,  # 순차 처리로 메모리 절약
+                "cache_size": 10,  # 작은 캐시
+                "optimization_level": "speed",  # 속도 우선 최적화
             },
             timeout_settings={
-                'face': 0.08,    # 80ms 타임아웃 (빠른 응답)
-                'pose': 0.06,    # 60ms 타임아웃
-                'total': 0.15    # 전체 150ms 제한
+                "face": 0.08,  # 80ms 타임아웃 (빠른 응답)
+                "pose": 0.06,  # 60ms 타임아웃
+                "total": 0.15,  # 전체 150ms 제한
             },
             quality_settings={
-                'max_resolution': 480,               # 낮은 해상도
-                'detection_confidence': 0.6,        # 낮은 신뢰도 임계값
-                'landmark_smoothing': False         # 랜드마크 평활화 비활성화
+                "max_resolution": 480,  # 낮은 해상도
+                "detection_confidence": 0.6,  # 낮은 신뢰도 임계값
+                "landmark_smoothing": False,  # 랜드마크 평활화 비활성화
             },
-            experimental_features=[],               # 실험 기능 없음
+            experimental_features=[],  # 실험 기능 없음
             resource_limits={
-                'max_memory_mb': 200,               # 200MB 메모리 제한
-                'max_cpu_percent': 60,              # CPU 60% 제한
-                'max_gpu_memory_mb': 100            # GPU 메모리 100MB 제한
-            }
+                "max_memory_mb": 200,  # 200MB 메모리 제한
+                "max_cpu_percent": 60,  # CPU 60% 제한
+                "max_gpu_memory_mb": 100,  # GPU 메모리 100MB 제한
+            },
         )
 
     def create_system(
         self,
         metrics_updater: IMetricsUpdater,
-        custom_config: Optional[Dict[str, Any]] = None
+        custom_config: Optional[Dict[str, Any]] = None,
     ) -> AnalysisOrchestrator:
         """저사양 최적화된 분석 시스템 생성"""
 
@@ -211,28 +224,32 @@ class LowResourceSystemFactory(IAnalysisSystemFactory):
 
     def get_supported_features(self) -> List[str]:
         return [
-            'basic_drowsiness_detection',
-            'basic_distraction_detection',
-            'head_pose_tracking',
-            'simple_gaze_estimation',
-            'basic_emotion_recognition'
+            "basic_drowsiness_detection",
+            "basic_distraction_detection",
+            "head_pose_tracking",
+            "simple_gaze_estimation",
+            "basic_emotion_recognition",
         ]
 
-    def _apply_custom_config(self, config: SystemConfiguration, custom_config: Dict[str, Any]):
+    def _apply_custom_config(
+        self, config: SystemConfiguration, custom_config: Dict[str, Any]
+    ):
         """사용자 정의 설정을 안전하게 적용"""
         # 저사양 시스템에서는 성능에 해로운 설정은 무시
-        safe_overrides = ['max_fps', 'detection_confidence', 'cache_size']
+        safe_overrides = ["max_fps", "detection_confidence", "cache_size"]
 
         for key, value in custom_config.items():
             if key in safe_overrides:
-                if key == 'max_fps' and value <= 20:  # FPS는 20 이하로 제한
+                if key == "max_fps" and value <= 20:  # FPS는 20 이하로 제한
                     config.performance_settings[key] = value
-                elif key == 'detection_confidence' and 0.4 <= value <= 0.8:
+                elif key == "detection_confidence" and 0.4 <= value <= 0.8:
                     config.quality_settings[key] = value
-                elif key == 'cache_size' and value <= 20:
+                elif key == "cache_size" and value <= 20:
                     config.performance_settings[key] = value
                 else:
-                    logger.warning(f"저사양 시스템에서 안전하지 않은 설정 무시: {key}={value}")
+                    logger.warning(
+                        f"저사양 시스템에서 안전하지 않은 설정 무시: {key}={value}"
+                    )
 
 
 class StandardSystemFactory(IAnalysisSystemFactory):
@@ -254,47 +271,49 @@ class StandardSystemFactory(IAnalysisSystemFactory):
     def get_system_configuration(self) -> SystemConfiguration:
         return SystemConfiguration(
             system_type=AnalysisSystemType.STANDARD,
-            enabled_processors=['face', 'pose', 'hand', 'object'],  # 모든 기본 프로세서
+            enabled_processors=["face", "pose", "hand", "object"],  # 모든 기본 프로세서
             fusion_config={
-                'fusion_method': 'attention_weighted',  # 어텐션 기반 융합
-                'enable_attention': True,               # 어텐션 메커니즘 활성화
-                'temporal_smoothing': True,             # 시간적 평활화 활성화
-                'confidence_weighting': True            # 신뢰도 기반 가중치
+                "fusion_method": "attention_weighted",  # 어텐션 기반 융합
+                "enable_attention": True,  # 어텐션 메커니즘 활성화
+                "temporal_smoothing": True,  # 시간적 평활화 활성화
+                "confidence_weighting": True,  # 신뢰도 기반 가중치
             },
             performance_settings={
-                'max_fps': 30,                          # 표준 프레임레이트
-                'parallel_processing': True,            # 병렬 처리 활성화
-                'cache_size': 50,                      # 적당한 캐시 크기
-                'optimization_level': 'balanced',       # 균형잡힌 최적화
-                'adaptive_quality': True               # 적응형 품질 조절
+                "max_fps": 30,  # 표준 프레임레이트
+                "parallel_processing": True,  # 병렬 처리 활성화
+                "cache_size": 50,  # 적당한 캐시 크기
+                "optimization_level": "balanced",  # 균형잡힌 최적화
+                "adaptive_quality": True,  # 적응형 품질 조절
             },
             timeout_settings={
-                'face': 0.12,    # 120ms 타임아웃
-                'pose': 0.08,    # 80ms 타임아웃
-                'hand': 0.10,    # 100ms 타임아웃
-                'object': 0.06,  # 60ms 타임아웃
-                'total': 0.25    # 전체 250ms 제한
+                "face": 0.12,  # 120ms 타임아웃
+                "pose": 0.08,  # 80ms 타임아웃
+                "hand": 0.10,  # 100ms 타임아웃
+                "object": 0.06,  # 60ms 타임아웃
+                "total": 0.25,  # 전체 250ms 제한
             },
             quality_settings={
-                'max_resolution': 720,               # HD 해상도
-                'detection_confidence': 0.7,        # 표준 신뢰도
-                'landmark_smoothing': True,         # 랜드마크 평활화
-                'temporal_consistency': True        # 시간적 일관성 유지
+                "max_resolution": 720,  # HD 해상도
+                "detection_confidence": 0.7,  # 표준 신뢰도
+                "landmark_smoothing": True,  # 랜드마크 평활화
+                "temporal_consistency": True,  # 시간적 일관성 유지
             },
-            experimental_features=[                 # 일부 실험 기능
-                'basic_rppg', 'simple_saccade_analysis', 'attention_modeling'
+            experimental_features=[  # 일부 실험 기능
+                "basic_rppg",
+                "simple_saccade_analysis",
+                "attention_modeling",
             ],
             resource_limits={
-                'max_memory_mb': 800,               # 800MB 메모리 한계
-                'max_cpu_percent': 75,              # CPU 75% 제한
-                'max_gpu_memory_mb': 500            # GPU 메모리 500MB 제한
-            }
+                "max_memory_mb": 800,  # 800MB 메모리 한계
+                "max_cpu_percent": 75,  # CPU 75% 제한
+                "max_gpu_memory_mb": 500,  # GPU 메모리 500MB 제한
+            },
         )
 
     def create_system(
         self,
         metrics_updater: IMetricsUpdater,
-        custom_config: Optional[Dict[str, Any]] = None
+        custom_config: Optional[Dict[str, Any]] = None,
     ) -> AnalysisOrchestrator:
         """표준 성능의 분석 시스템 생성"""
 
@@ -345,18 +364,20 @@ class StandardSystemFactory(IAnalysisSystemFactory):
 
     def get_supported_features(self) -> List[str]:
         return [
-            'advanced_drowsiness_detection',
-            'multi_level_distraction_detection',
-            'precise_head_pose_tracking',
-            'gaze_zone_classification',
-            'emotion_recognition',
-            'basic_behavior_prediction',
-            'driver_identification',
-            'attention_modeling',
-            'basic_vital_signs_monitoring'
+            "advanced_drowsiness_detection",
+            "multi_level_distraction_detection",
+            "precise_head_pose_tracking",
+            "gaze_zone_classification",
+            "emotion_recognition",
+            "basic_behavior_prediction",
+            "driver_identification",
+            "attention_modeling",
+            "basic_vital_signs_monitoring",
         ]
 
-    def _apply_custom_config(self, config: SystemConfiguration, custom_config: Dict[str, Any]):
+    def _apply_custom_config(
+        self, config: SystemConfiguration, custom_config: Dict[str, Any]
+    ):
         """표준 시스템용 설정 적용 - 더 유연함"""
         # 표준 시스템에서는 대부분의 설정 변경 허용
         for key, value in custom_config.items():
@@ -390,56 +411,67 @@ class HighPerformanceSystemFactory(IAnalysisSystemFactory):
     def get_system_configuration(self) -> SystemConfiguration:
         return SystemConfiguration(
             system_type=AnalysisSystemType.HIGH_PERFORMANCE,
-            enabled_processors=['face', 'pose', 'hand', 'object', 'environment'],  # 모든 프로세서
+            enabled_processors=[
+                "face",
+                "pose",
+                "hand",
+                "object",
+                "environment",
+            ],  # 모든 프로세서
             fusion_config={
-                'fusion_method': 'neural_attention',    # 신경망 기반 융합
-                'enable_attention': True,
-                'temporal_smoothing': True,
-                'confidence_weighting': True,
-                'multimodal_correlation': True,         # 모달리티간 상관관계 분석
-                'uncertainty_quantification': True     # 불확실성 정량화
+                "fusion_method": "neural_attention",  # 신경망 기반 융합
+                "enable_attention": True,
+                "temporal_smoothing": True,
+                "confidence_weighting": True,
+                "multimodal_correlation": True,  # 모달리티간 상관관계 분석
+                "uncertainty_quantification": True,  # 불확실성 정량화
             },
             performance_settings={
-                'max_fps': 60,                          # 고프레임레이트
-                'parallel_processing': True,
-                'cache_size': 200,                     # 대용량 캐시
-                'optimization_level': 'accuracy',      # 정확도 우선 최적화
-                'adaptive_quality': True,
-                'predictive_resource_management': True  # 예측적 리소스 관리
+                "max_fps": 60,  # 고프레임레이트
+                "parallel_processing": True,
+                "cache_size": 200,  # 대용량 캐시
+                "optimization_level": "accuracy",  # 정확도 우선 최적화
+                "adaptive_quality": True,
+                "predictive_resource_management": True,  # 예측적 리소스 관리
             },
             timeout_settings={
-                'face': 0.15,    # 더 긴 타임아웃으로 정확도 향상
-                'pose': 0.12,
-                'hand': 0.15,
-                'object': 0.10,
-                'environment': 0.08,
-                'total': 0.40    # 전체 400ms 허용
+                "face": 0.15,  # 더 긴 타임아웃으로 정확도 향상
+                "pose": 0.12,
+                "hand": 0.15,
+                "object": 0.10,
+                "environment": 0.08,
+                "total": 0.40,  # 전체 400ms 허용
             },
             quality_settings={
-                'max_resolution': 1080,              # Full HD 해상도
-                'detection_confidence': 0.8,        # 높은 신뢰도 요구
-                'landmark_smoothing': True,
-                'temporal_consistency': True,
-                'sub_pixel_accuracy': True,          # 서브픽셀 정확도
-                'multi_scale_analysis': True         # 다중 스케일 분석
+                "max_resolution": 1080,  # Full HD 해상도
+                "detection_confidence": 0.8,  # 높은 신뢰도 요구
+                "landmark_smoothing": True,
+                "temporal_consistency": True,
+                "sub_pixel_accuracy": True,  # 서브픽셀 정확도
+                "multi_scale_analysis": True,  # 다중 스케일 분석
             },
-            experimental_features=[                  # 모든 실험 기능 활성화
-                'advanced_rppg', 'full_saccade_analysis', 'pupil_dynamics',
-                'stress_detection', 'cognitive_load_estimation',
-                'behavior_prediction', 'personality_profiling',
-                'micro_expression_analysis', 'breathing_pattern_analysis'
+            experimental_features=[  # 모든 실험 기능 활성화
+                "advanced_rppg",
+                "full_saccade_analysis",
+                "pupil_dynamics",
+                "stress_detection",
+                "cognitive_load_estimation",
+                "behavior_prediction",
+                "personality_profiling",
+                "micro_expression_analysis",
+                "breathing_pattern_analysis",
             ],
             resource_limits={
-                'max_memory_mb': 2000,              # 2GB 메모리
-                'max_cpu_percent': 90,              # CPU 90% 사용 가능
-                'max_gpu_memory_mb': 1500           # GPU 메모리 1.5GB
-            }
+                "max_memory_mb": 2000,  # 2GB 메모리
+                "max_cpu_percent": 90,  # CPU 90% 사용 가능
+                "max_gpu_memory_mb": 1500,  # GPU 메모리 1.5GB
+            },
         )
 
     def create_system(
         self,
         metrics_updater: IMetricsUpdater,
-        custom_config: Optional[Dict[str, Any]] = None
+        custom_config: Optional[Dict[str, Any]] = None,
     ) -> AnalysisOrchestrator:
         """최고 성능의 분석 시스템 생성"""
 
@@ -490,26 +522,27 @@ class HighPerformanceSystemFactory(IAnalysisSystemFactory):
 
     def get_supported_features(self) -> List[str]:
         return [
-            'advanced_drowsiness_detection',
-            'multi_modal_distraction_detection',
-            'precision_head_pose_tracking',
-            'advanced_gaze_analysis',
-            'comprehensive_emotion_recognition',
-            'behavioral_pattern_analysis',
-            'predictive_risk_assessment',
-            'driver_profiling',
-            'advanced_attention_modeling',
-            'vital_signs_monitoring',
-            'stress_level_detection',
-            'cognitive_load_estimation',
-            'micro_expression_analysis',
-            'breathing_pattern_analysis'
-            'personality_assessment',
-            'fatigue_prediction',
-            'distraction_prediction'
+            "advanced_drowsiness_detection",
+            "multi_modal_distraction_detection",
+            "precision_head_pose_tracking",
+            "advanced_gaze_analysis",
+            "comprehensive_emotion_recognition",
+            "behavioral_pattern_analysis",
+            "predictive_risk_assessment",
+            "driver_profiling",
+            "advanced_attention_modeling",
+            "vital_signs_monitoring",
+            "stress_level_detection",
+            "cognitive_load_estimation",
+            "micro_expression_analysis",
+            "breathing_pattern_analysispersonality_assessment",
+            "fatigue_prediction",
+            "distraction_prediction",
         ]
 
-    def _apply_custom_config(self, config: SystemConfiguration, custom_config: Dict[str, Any]):
+    def _apply_custom_config(
+        self, config: SystemConfiguration, custom_config: Dict[str, Any]
+    ):
         """고성능 시스템용 설정 - 모든 설정 허용"""
         # 고성능 시스템에서는 거의 모든 설정 변경 허용
         for key, value in custom_config.items():
@@ -547,65 +580,80 @@ class ResearchSystemFactory(IAnalysisSystemFactory):
     def get_system_configuration(self) -> SystemConfiguration:
         return SystemConfiguration(
             system_type=AnalysisSystemType.RESEARCH,
-            enabled_processors=['face', 'pose', 'hand', 'object', 'environment', 'audio'],
+            enabled_processors=[
+                "face",
+                "pose",
+                "hand",
+                "object",
+                "environment",
+                "audio",
+            ],
             fusion_config={
-                'fusion_method': 'experimental_ensemble',  # 실험적 앙상블 방법
-                'enable_attention': True,
-                'temporal_smoothing': True,
-                'confidence_weighting': True,
-                'multimodal_correlation': True,
-                'uncertainty_quantification': True,
-                'causal_inference': True,               # 인과관계 추론
-                'bayesian_fusion': True                # 베이지안 융합
+                "fusion_method": "experimental_ensemble",  # 실험적 앙상블 방법
+                "enable_attention": True,
+                "temporal_smoothing": True,
+                "confidence_weighting": True,
+                "multimodal_correlation": True,
+                "uncertainty_quantification": True,
+                "causal_inference": True,  # 인과관계 추론
+                "bayesian_fusion": True,  # 베이지안 융합
             },
             performance_settings={
-                'max_fps': 120,                         # 극고속 프레임레이트
-                'parallel_processing': True,
-                'cache_size': 1000,                    # 초대용량 캐시
-                'optimization_level': 'experimental',   # 실험적 최적화
-                'adaptive_quality': True,
-                'predictive_resource_management': True,
-                'data_logging': True,                  # 모든 데이터 로깅
-                'algorithm_profiling': True            # 알고리즘 프로파일링
+                "max_fps": 120,  # 극고속 프레임레이트
+                "parallel_processing": True,
+                "cache_size": 1000,  # 초대용량 캐시
+                "optimization_level": "experimental",  # 실험적 최적화
+                "adaptive_quality": True,
+                "predictive_resource_management": True,
+                "data_logging": True,  # 모든 데이터 로깅
+                "algorithm_profiling": True,  # 알고리즘 프로파일링
             },
             timeout_settings={
-                'face': 0.30,    # 매우 긴 타임아웃으로 극한 정확도
-                'pose': 0.25,
-                'hand': 0.30,
-                'object': 0.20,
-                'environment': 0.15,
-                'audio': 0.10,
-                'total': 1.0     # 전체 1초 허용
+                "face": 0.30,  # 매우 긴 타임아웃으로 극한 정확도
+                "pose": 0.25,
+                "hand": 0.30,
+                "object": 0.20,
+                "environment": 0.15,
+                "audio": 0.10,
+                "total": 1.0,  # 전체 1초 허용
             },
             quality_settings={
-                'max_resolution': 2160,              # 4K 해상도
-                'detection_confidence': 0.9,        # 매우 높은 신뢰도
-                'landmark_smoothing': True,
-                'temporal_consistency': True,
-                'sub_pixel_accuracy': True,
-                'multi_scale_analysis': True,
-                'ensemble_validation': True          # 앙상블 검증
+                "max_resolution": 2160,  # 4K 해상도
+                "detection_confidence": 0.9,  # 매우 높은 신뢰도
+                "landmark_smoothing": True,
+                "temporal_consistency": True,
+                "sub_pixel_accuracy": True,
+                "multi_scale_analysis": True,
+                "ensemble_validation": True,  # 앙상블 검증
             },
-            experimental_features=[                  # 모든 실험 기능 + 추가 연구 기능
-                'advanced_rppg', 'full_saccade_analysis', 'pupil_dynamics',
-                'stress_detection', 'cognitive_load_estimation',
-                'behavior_prediction', 'personality_profiling',
-                'micro_expression_analysis', 'breathing_pattern_analysis',
-                'eeg_signal_processing', 'galvanic_skin_response',
-                'voice_stress_analysis', 'thermal_imaging_analysis',
-                'gait_analysis', 'social_signal_processing'
+            experimental_features=[  # 모든 실험 기능 + 추가 연구 기능
+                "advanced_rppg",
+                "full_saccade_analysis",
+                "pupil_dynamics",
+                "stress_detection",
+                "cognitive_load_estimation",
+                "behavior_prediction",
+                "personality_profiling",
+                "micro_expression_analysis",
+                "breathing_pattern_analysis",
+                "eeg_signal_processing",
+                "galvanic_skin_response",
+                "voice_stress_analysis",
+                "thermal_imaging_analysis",
+                "gait_analysis",
+                "social_signal_processing",
             ],
             resource_limits={
-                'max_memory_mb': 8000,              # 8GB 메모리
-                'max_cpu_percent': 95,              # CPU 95% 사용
-                'max_gpu_memory_mb': 4000           # GPU 메모리 4GB
-            }
+                "max_memory_mb": 8000,  # 8GB 메모리
+                "max_cpu_percent": 95,  # CPU 95% 사용
+                "max_gpu_memory_mb": 4000,  # GPU 메모리 4GB
+            },
         )
 
     def create_system(
         self,
         metrics_updater: IMetricsUpdater,
-        custom_config: Optional[Dict[str, Any]] = None
+        custom_config: Optional[Dict[str, Any]] = None,
     ) -> AnalysisOrchestrator:
         """연구용 최고사양 분석 시스템 생성"""
 
@@ -657,30 +705,41 @@ class ResearchSystemFactory(IAnalysisSystemFactory):
     def get_supported_features(self) -> List[str]:
         return [
             # 모든 기존 기능 + 실험적 기능들
-            'advanced_drowsiness_detection', 'multi_modal_distraction_detection',
-            'precision_head_pose_tracking', 'advanced_gaze_analysis',
-            'comprehensive_emotion_recognition', 'behavioral_pattern_analysis',
-            'predictive_risk_assessment',
-            'driver_profiling',
-            'advanced_attention_modeling',
-            'vital_signs_monitoring',
-            'stress_level_detection',
-            'cognitive_load_estimation',
-            'micro_expression_analysis',
-            'breathing_pattern_analysis',
-            'personality_assessment',
-            'fatigue_prediction',
-            'distraction_prediction',
+            "advanced_drowsiness_detection",
+            "multi_modal_distraction_detection",
+            "precision_head_pose_tracking",
+            "advanced_gaze_analysis",
+            "comprehensive_emotion_recognition",
+            "behavioral_pattern_analysis",
+            "predictive_risk_assessment",
+            "driver_profiling",
+            "advanced_attention_modeling",
+            "vital_signs_monitoring",
+            "stress_level_detection",
+            "cognitive_load_estimation",
+            "micro_expression_analysis",
+            "breathing_pattern_analysis",
+            "personality_assessment",
+            "fatigue_prediction",
+            "distraction_prediction",
             # 연구 전용 기능들
-            'eeg_signal_analysis', 'galvanic_skin_response_analysis',
-            'voice_stress_analysis', 'thermal_imaging_analysis',
-            'gait_pattern_analysis', 'social_signal_processing',
-            'multimodal_biometric_fusion', 'real_time_algorithm_switching',
-            'continuous_learning', 'transfer_learning',
-            'few_shot_adaptation', 'meta_learning'
+            "eeg_signal_analysis",
+            "galvanic_skin_response_analysis",
+            "voice_stress_analysis",
+            "thermal_imaging_analysis",
+            "gait_pattern_analysis",
+            "social_signal_processing",
+            "multimodal_biometric_fusion",
+            "real_time_algorithm_switching",
+            "continuous_learning",
+            "transfer_learning",
+            "few_shot_adaptation",
+            "meta_learning",
         ]
 
-    def _apply_custom_config(self, config: SystemConfiguration, custom_config: Dict[str, Any]):
+    def _apply_custom_config(
+        self, config: SystemConfiguration, custom_config: Dict[str, Any]
+    ):
         """연구용 시스템 - 모든 설정 허용 및 동적 변경 지원"""
         # 연구 시스템에서는 모든 설정 변경 허용, 심지어 런타임 변경도 가능
         for key, value in custom_config.items():
@@ -690,7 +749,7 @@ class ResearchSystemFactory(IAnalysisSystemFactory):
                     logger.info(f"연구용 시스템 설정 변경: {key}={value}")
                 else:
                     # 새로운 실험적 설정도 허용
-                    if not hasattr(config, 'experimental_settings'):
+                    if not hasattr(config, "experimental_settings"):
                         config.experimental_settings = {}
                     config.experimental_settings[key] = value
                     logger.info(f"실험적 설정 추가: {key}={value}")
@@ -712,7 +771,7 @@ _FACTORY_REGISTRY: Dict[AnalysisSystemType, Type[IAnalysisSystemFactory]] = {
 def create_analysis_system(
     system_type: AnalysisSystemType,
     metrics_updater: IMetricsUpdater,
-    custom_config: Optional[Dict[str, Any]] = None
+    custom_config: Optional[Dict[str, Any]] = None,
 ) -> AnalysisOrchestrator:
     """
     지정된 타입의 분석 시스템을 생성합니다.
@@ -737,13 +796,17 @@ def create_analysis_system(
     factory_class = _FACTORY_REGISTRY.get(system_type)
     if factory_class is None:
         available_types = list(_FACTORY_REGISTRY.keys())
-        raise ValueError(f"지원하지 않는 시스템 타입: {system_type}. 사용 가능한 타입: {available_types}")
+        raise ValueError(
+            f"지원하지 않는 시스템 타입: {system_type}. 사용 가능한 타입: {available_types}"
+        )
 
     # 팩토리 인스턴스 생성 및 시스템 생성
     factory = factory_class()
 
     logger.info(f"DMS 분석 시스템 생성 시작: {system_type.value}")
-    logger.info(f"지원 기능: {', '.join(factory.get_supported_features()[:5])}...")  # 처음 5개만 표시
+    logger.info(
+        f"지원 기능: {', '.join(factory.get_supported_features()[:5])}..."
+    )  # 처음 5개만 표시
 
     try:
         system = factory.create_system(metrics_updater, custom_config)
@@ -752,16 +815,16 @@ def create_analysis_system(
 
     except (AttributeError, TypeError, ValueError) as e:
         # 폴백도 실패하면 시스템 전체 안전 모드 진입
+        global safe_mode  # 전체 except 블록에서 한 번만 선언
+
         if system_type != AnalysisSystemType.LOW_RESOURCE:
             fallback_factory = LowResourceSystemFactory()
             try:
                 return fallback_factory.create_system(metrics_updater, None)
             except Exception:
-                global safe_mode
                 safe_mode = True  # 시스템 전체 안전 모드 진입
                 raise RuntimeError("DMS 시스템 생성 완전 실패: 안전 모드 진입")
         else:
-            global safe_mode
             safe_mode = True  # 시스템 전체 안전 모드 진입
             raise RuntimeError("DMS 시스템 생성 완전 실패: 안전 모드 진입")
 
@@ -788,15 +851,17 @@ def get_system_info(system_type: AnalysisSystemType) -> Dict[str, Any]:
         "description": _get_system_description(system_type),
         "configuration": {
             "enabled_processors": config.enabled_processors,
-            "max_fps": config.performance_settings.get('max_fps', 'N/A'),
-            "max_resolution": config.quality_settings.get('max_resolution', 'N/A'),
-            "parallel_processing": config.performance_settings.get('parallel_processing', False),
-            "experimental_features_count": len(config.experimental_features)
+            "max_fps": config.performance_settings.get("max_fps", "N/A"),
+            "max_resolution": config.quality_settings.get("max_resolution", "N/A"),
+            "parallel_processing": config.performance_settings.get(
+                "parallel_processing", False
+            ),
+            "experimental_features_count": len(config.experimental_features),
         },
         "resource_requirements": config.resource_limits,
         "supported_features": features,
         "use_cases": _get_use_cases(system_type),
-        "performance_profile": _get_performance_profile(system_type)
+        "performance_profile": _get_performance_profile(system_type),
     }
 
 
@@ -806,7 +871,7 @@ def _get_system_description(system_type: AnalysisSystemType) -> str:
         AnalysisSystemType.LOW_RESOURCE: "저사양 하드웨어를 위한 효율성 중심 시스템. 기본적인 안전 기능을 저전력으로 제공합니다.",
         AnalysisSystemType.STANDARD: "일반적인 상용 환경을 위한 균형잡힌 시스템. 성능과 효율성을 적절히 조화시켰습니다.",
         AnalysisSystemType.HIGH_PERFORMANCE: "최고 성능을 요구하는 환경을 위한 프리미엄 시스템. 모든 고급 기능과 최대 정확도를 제공합니다.",
-        AnalysisSystemType.RESEARCH: "연구개발을 위한 실험적 시스템. 최신 알고리즘과 데이터 수집 기능을 포함합니다."
+        AnalysisSystemType.RESEARCH: "연구개발을 위한 실험적 시스템. 최신 알고리즘과 데이터 수집 기능을 포함합니다.",
     }
     return descriptions.get(system_type, "설명이 없습니다.")
 
@@ -816,20 +881,28 @@ def _get_use_cases(system_type: AnalysisSystemType) -> List[str]:
     use_cases = {
         AnalysisSystemType.LOW_RESOURCE: [
             "임베디드 시스템 (라즈베리파이, NVIDIA Jetson Nano)",
-            "저사양 차량용 컴퓨터", "배터리 구동 장치", "IoT 디바이스"
+            "저사양 차량용 컴퓨터",
+            "배터리 구동 장치",
+            "IoT 디바이스",
         ],
         AnalysisSystemType.STANDARD: [
-            "일반 승용차 안전 시스템", "상용 운전자 모니터링",
-            "플릿 관리 시스템", "운전 교육 시스템"
+            "일반 승용차 안전 시스템",
+            "상용 운전자 모니터링",
+            "플릿 관리 시스템",
+            "운전 교육 시스템",
         ],
         AnalysisSystemType.HIGH_PERFORMANCE: [
-            "자율주행 차량", "프리미엄 안전 시스템",
-            "실시간 테스트 환경", "고급 운전자 지원 시스템"
+            "자율주행 차량",
+            "프리미엄 안전 시스템",
+            "실시간 테스트 환경",
+            "고급 운전자 지원 시스템",
         ],
         AnalysisSystemType.RESEARCH: [
-            "대학 연구실", "자동차 회사 R&D 부서",
-            "알고리즘 개발 및 검증", "데이터 수집 및 분석"
-        ]
+            "대학 연구실",
+            "자동차 회사 R&D 부서",
+            "알고리즘 개발 및 검증",
+            "데이터 수집 및 분석",
+        ],
     }
     return use_cases.get(system_type, [])
 
@@ -838,21 +911,29 @@ def _get_performance_profile(system_type: AnalysisSystemType) -> Dict[str, str]:
     """시스템 타입별 성능 프로필"""
     profiles = {
         AnalysisSystemType.LOW_RESOURCE: {
-            "처리속도": "빠름 (단순 알고리즘)", "정확도": "기본",
-            "메모리사용": "낮음", "전력소모": "낮음"
+            "처리속도": "빠름 (단순 알고리즘)",
+            "정확도": "기본",
+            "메모리사용": "낮음",
+            "전력소모": "낮음",
         },
         AnalysisSystemType.STANDARD: {
-            "처리속도": "보통", "정확도": "높음",
-            "메모리사용": "보통", "전력소모": "보통"
+            "처리속도": "보통",
+            "정확도": "높음",
+            "메모리사용": "보통",
+            "전력소모": "보통",
         },
         AnalysisSystemType.HIGH_PERFORMANCE: {
-            "처리속도": "빠름 (병렬처리)", "정확도": "매우 높음",
-            "메모리사용": "높음", "전력소모": "높음"
+            "처리속도": "빠름 (병렬처리)",
+            "정확도": "매우 높음",
+            "메모리사용": "높음",
+            "전력소모": "높음",
         },
         AnalysisSystemType.RESEARCH: {
-            "처리속도": "가변 (실험적)", "정확도": "최고",
-            "메모리사용": "매우 높음", "전력소모": "매우 높음"
-        }
+            "처리속도": "가변 (실험적)",
+            "정확도": "최고",
+            "메모리사용": "매우 높음",
+            "전력소모": "매우 높음",
+        },
     }
     return profiles.get(system_type, {})
 

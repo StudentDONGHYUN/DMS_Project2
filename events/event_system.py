@@ -16,19 +16,24 @@ from collections import deque, defaultdict
 import logging
 from abc import ABC, abstractmethod
 
+# 전역 안전 모드 플래그
+safe_mode = False
+
 logger = logging.getLogger(__name__)
 
 
 class EventPriority(IntEnum):
     """이벤트 우선순위"""
-    CRITICAL = 1    # 즉시 처리 필요 (안전 관련)
-    HIGH = 2        # 높은 우선순위 (위험 감지)
-    NORMAL = 3      # 일반 우선순위 (상태 업데이트)
-    LOW = 4         # 낮은 우선순위 (로깅, 통계)
+
+    CRITICAL = 1  # 즉시 처리 필요 (안전 관련)
+    HIGH = 2  # 높은 우선순위 (위험 감지)
+    NORMAL = 3  # 일반 우선순위 (상태 업데이트)
+    LOW = 4  # 낮은 우선순위 (로깅, 통계)
 
 
 class EventType(Enum):
     """이벤트 타입 분류"""
+
     # 안전 관련 이벤트 (최고 우선순위)
     EMERGENCY_STOP = "emergency_stop"
     CRITICAL_DROWSINESS = "critical_drowsiness"
@@ -62,13 +67,14 @@ class EventType(Enum):
 @dataclass
 class Event:
     """이벤트 데이터 클래스"""
+
     event_type: EventType
     source: str  # 이벤트 발생원
     data: Dict[str, Any]
     timestamp: float = field(default_factory=time.time)
     priority: EventPriority = EventPriority.NORMAL
     correlation_id: Optional[str] = None  # 관련 이벤트들을 그룹화
-    expires_at: Optional[float] = None    # 이벤트 만료 시간
+    expires_at: Optional[float] = None  # 이벤트 만료 시간
 
     def is_expired(self) -> bool:
         """이벤트 만료 여부 확인"""
@@ -108,6 +114,7 @@ class IEventHandler(ABC):
 @dataclass
 class EventSubscription:
     """이벤트 구독 정보"""
+
     handler: IEventHandler
     event_types: Set[EventType]
     priority_filter: Optional[Set[EventPriority]] = None
@@ -164,7 +171,7 @@ class EventBus:
         event_types: Optional[Set[EventType]] = None,
         priority_filter: Optional[Set[EventPriority]] = None,
         condition_filter: Optional[Callable[[Event], bool]] = None,
-        max_age_seconds: Optional[float] = None
+        max_age_seconds: Optional[float] = None,
     ):
         """이벤트 구독"""
         if event_types is None:
@@ -175,17 +182,18 @@ class EventBus:
             event_types=event_types,
             priority_filter=priority_filter,
             condition_filter=condition_filter,
-            max_age_seconds=max_age_seconds
+            max_age_seconds=max_age_seconds,
         )
 
         self.subscriptions.append(subscription)
-        logger.info(f"이벤트 구독 추가: {handler.get_handler_name()} -> {len(event_types)}개 이벤트 타입")
+        logger.info(
+            f"이벤트 구독 추가: {handler.get_handler_name()} -> {len(event_types)}개 이벤트 타입"
+        )
 
     def unsubscribe(self, handler: IEventHandler):
         """이벤트 구독 해제"""
         self.subscriptions = [
-            sub for sub in self.subscriptions
-            if sub.handler != handler
+            sub for sub in self.subscriptions if sub.handler != handler
         ]
         logger.info(f"이벤트 구독 해제: {handler.get_handler_name()}")
 
@@ -202,7 +210,9 @@ class EventBus:
         # 통계 업데이트
         self.event_stats[event.event_type] += 1
 
-        logger.debug(f"이벤트 발행: {event.event_type.value} (우선순위: {event.priority.name})")
+        logger.debug(
+            f"이벤트 발행: {event.event_type.value} (우선순위: {event.priority.name})"
+        )
 
     async def publish_immediate(self, event: Event):
         """즉시 처리 이벤트 발행 (큐를 우회)"""
@@ -234,7 +244,7 @@ class EventBus:
                 break
             except Exception as e:
                 self.failed_events += 1
-                if not hasattr(self, '_process_events_fail_count'):
+                if not hasattr(self, "_process_events_fail_count"):
                     self._process_events_fail_count = 0
                 self._process_events_fail_count += 1
                 if self._process_events_fail_count >= 3:
@@ -264,11 +274,17 @@ class EventBus:
             return False
 
         # 우선순위 필터 확인
-        if subscription.priority_filter and event.priority not in subscription.priority_filter:
+        if (
+            subscription.priority_filter
+            and event.priority not in subscription.priority_filter
+        ):
             return False
 
         # 나이 필터 확인
-        if subscription.max_age_seconds and event.get_age() > subscription.max_age_seconds:
+        if (
+            subscription.max_age_seconds
+            and event.get_age() > subscription.max_age_seconds
+        ):
             return False
 
         # 조건 필터 확인
@@ -284,7 +300,9 @@ class EventBus:
         except asyncio.TimeoutError:
             logger.warning(f"핸들러 타임아웃: {handler.get_handler_name()}")
         except Exception as e:
-            logger.error(f"핸들러 오류 {handler.get_handler_name()}: {e}", exc_info=True)
+            logger.error(
+                f"핸들러 오류 {handler.get_handler_name()}: {e}", exc_info=True
+            )
 
     def _update_performance_metrics(self, processing_time: float):
         """성능 메트릭 업데이트"""
@@ -299,28 +317,31 @@ class EventBus:
     def get_event_statistics(self) -> Dict[str, Any]:
         """이벤트 통계 조회"""
         return {
-            'total_processed': self.total_events_processed,
-            'failed_events': self.failed_events,
-            'avg_processing_time_ms': self.avg_processing_time * 1000,
-            'queue_size': self.event_queue.qsize(),
-            'subscription_count': len(self.subscriptions),
-            'event_type_stats': dict(self.event_stats),
-            'success_rate': (
-                (self.total_events_processed - self.failed_events) /
-                max(1, self.total_events_processed)
-            )
+            "total_processed": self.total_events_processed,
+            "failed_events": self.failed_events,
+            "avg_processing_time_ms": self.avg_processing_time * 1000,
+            "queue_size": self.event_queue.qsize(),
+            "subscription_count": len(self.subscriptions),
+            "event_type_stats": dict(self.event_stats),
+            "success_rate": (
+                (self.total_events_processed - self.failed_events)
+                / max(1, self.total_events_processed)
+            ),
         }
 
-    def analyze_event_patterns(self, time_window_seconds: float = 60.0) -> Dict[str, Any]:
+    def analyze_event_patterns(
+        self, time_window_seconds: float = 60.0
+    ) -> Dict[str, Any]:
         """이벤트 패턴 분석"""
         current_time = time.time()
         recent_events = [
-            event for event in self.event_history
+            event
+            for event in self.event_history
             if current_time - event.timestamp <= time_window_seconds
         ]
 
         if not recent_events:
-            return {'pattern': 'no_activity', 'event_count': 0}
+            return {"pattern": "no_activity", "event_count": 0}
 
         # 이벤트 빈도 분석
         event_frequencies = defaultdict(int)
@@ -329,34 +350,34 @@ class EventBus:
 
         # 위험 이벤트 비율
         risk_events = [
-            event for event in recent_events
-            if event.event_type in [
+            event
+            for event in recent_events
+            if event.event_type
+            in [
                 EventType.DROWSINESS_DETECTED,
                 EventType.DISTRACTION_DETECTED,
-                EventType.CRITICAL_DROWSINESS
+                EventType.CRITICAL_DROWSINESS,
             ]
         ]
         risk_ratio = len(risk_events) / len(recent_events)
 
         # 패턴 분류
         if risk_ratio > 0.5:
-            pattern = 'high_risk_activity'
+            pattern = "high_risk_activity"
         elif risk_ratio > 0.2:
-            pattern = 'moderate_risk_activity'
+            pattern = "moderate_risk_activity"
         elif len(recent_events) > 50:
-            pattern = 'high_activity'
+            pattern = "high_activity"
         else:
-            pattern = 'normal_activity'
+            pattern = "normal_activity"
 
         return {
-            'pattern': pattern,
-            'event_count': len(recent_events),
-            'risk_ratio': risk_ratio,
-            'most_frequent_events': sorted(
-                event_frequencies.items(),
-                key=lambda x: x[1],
-                reverse=True
-            )[:5]
+            "pattern": pattern,
+            "event_count": len(recent_events),
+            "risk_ratio": risk_ratio,
+            "most_frequent_events": sorted(
+                event_frequencies.items(), key=lambda x: x[1], reverse=True
+            )[:5],
         }
 
 
@@ -373,7 +394,7 @@ class SafetyEventHandler(IEventHandler):
         self.emergency_protocols = {
             EventType.CRITICAL_DROWSINESS: self._handle_critical_drowsiness,
             EventType.IMMEDIATE_DANGER: self._handle_immediate_danger,
-            EventType.EMERGENCY_STOP: self._handle_emergency_stop
+            EventType.EMERGENCY_STOP: self._handle_emergency_stop,
         }
 
     async def handle_event(self, event: Event) -> bool:
@@ -402,7 +423,7 @@ class SafetyEventHandler(IEventHandler):
             EventType.IMMEDIATE_DANGER,
             EventType.EMERGENCY_STOP,
             EventType.DROWSINESS_DETECTED,
-            EventType.DISTRACTION_DETECTED
+            EventType.DISTRACTION_DETECTED,
         }
 
     def get_handler_name(self) -> str:
@@ -415,7 +436,7 @@ class SafetyEventHandler(IEventHandler):
         # 즉각적인 경고 발생
         await self.alert_system.trigger_emergency_alert(
             "운전자가 심각한 졸음 상태입니다. 즉시 안전한 곳에 정차하세요!",
-            alert_type="critical_drowsiness"
+            alert_type="critical_drowsiness",
         )
 
         # 자동 대응 시스템이 있다면 활성화
@@ -425,10 +446,9 @@ class SafetyEventHandler(IEventHandler):
         """즉각적 위험 상황 처리"""
         logger.critical("즉각적 위험 상황 감지")
 
-        danger_type = event.data.get('danger_type', 'unknown')
+        danger_type = event.data.get("danger_type", "unknown")
         await self.alert_system.trigger_emergency_alert(
-            f"위험 상황 감지: {danger_type}",
-            alert_type="immediate_danger"
+            f"위험 상황 감지: {danger_type}", alert_type="immediate_danger"
         )
 
     async def _handle_emergency_stop(self, event: Event):
@@ -443,8 +463,7 @@ class SafetyEventHandler(IEventHandler):
         logger.warning(f"중요 이벤트 처리: {event.event_type.value}")
 
         await self.alert_system.trigger_warning_alert(
-            f"주의: {event.event_type.value}",
-            data=event.data
+            f"주의: {event.event_type.value}", data=event.data
         )
 
 
@@ -468,25 +487,29 @@ class AnalyticsEventHandler(IEventHandler):
             if event.event_type in [
                 EventType.GAZE_ZONE_CHANGED,
                 EventType.EMOTION_STATE_CHANGED,
-                EventType.DRIVER_STATE_CHANGED
+                EventType.DRIVER_STATE_CHANGED,
             ]:
-                self.behavior_patterns.append({
-                    'timestamp': event.timestamp,
-                    'event_type': event.event_type,
-                    'data': event.data
-                })
+                self.behavior_patterns.append(
+                    {
+                        "timestamp": event.timestamp,
+                        "event_type": event.event_type,
+                        "data": event.data,
+                    }
+                )
                 await self._analyze_behavior_patterns()
 
             # 시스템 성능 분석
             if event.event_type in [
                 EventType.PROCESSOR_PERFORMANCE_CHANGED,
-                EventType.FUSION_CONFIDENCE_CHANGED
+                EventType.FUSION_CONFIDENCE_CHANGED,
             ]:
-                self.performance_metrics.append({
-                    'timestamp': event.timestamp,
-                    'event_type': event.event_type,
-                    'data': event.data
-                })
+                self.performance_metrics.append(
+                    {
+                        "timestamp": event.timestamp,
+                        "event_type": event.event_type,
+                        "data": event.data,
+                    }
+                )
                 await self._analyze_system_performance()
 
             return True
@@ -502,7 +525,7 @@ class AnalyticsEventHandler(IEventHandler):
             EventType.DRIVER_STATE_CHANGED,
             EventType.PROCESSOR_PERFORMANCE_CHANGED,
             EventType.FUSION_CONFIDENCE_CHANGED,
-            EventType.FRAME_ANALYSIS_COMPLETE
+            EventType.FRAME_ANALYSIS_COMPLETE,
         }
 
     def get_handler_name(self) -> str:
@@ -519,7 +542,7 @@ class AnalyticsEventHandler(IEventHandler):
         # 패턴 감지 (예: 반복적인 주의산만 행동)
         pattern_analysis = await self.analytics_engine.analyze_patterns(recent_patterns)
 
-        if pattern_analysis.get('needs_intervention'):
+        if pattern_analysis.get("needs_intervention"):
             # 개입이 필요한 패턴 감지시 이벤트 발행
             logger.info("행동 패턴 분석: 개입 필요한 패턴 감지")
 
@@ -533,7 +556,7 @@ class AnalyticsEventHandler(IEventHandler):
             list(self.performance_metrics)
         )
 
-        if performance_analysis.get('degradation_detected'):
+        if performance_analysis.get("degradation_detected"):
             logger.warning("시스템 성능 저하 감지")
 
 
@@ -559,23 +582,21 @@ def get_event_bus() -> EventBus:
 
 
 # 편의 함수들
-async def publish_safety_event(event_type: EventType, data: Dict[str, Any], source: str = "system"):
+async def publish_safety_event(
+    event_type: EventType, data: Dict[str, Any], source: str = "system"
+):
     """안전 이벤트 발행 편의 함수"""
     event = Event(
-        event_type=event_type,
-        source=source,
-        data=data,
-        priority=EventPriority.CRITICAL
+        event_type=event_type, source=source, data=data, priority=EventPriority.CRITICAL
     )
     await global_event_bus.publish(event)
 
 
-async def publish_analysis_event(event_type: EventType, data: Dict[str, Any], source: str = "analysis"):
+async def publish_analysis_event(
+    event_type: EventType, data: Dict[str, Any], source: str = "analysis"
+):
     """분석 이벤트 발행 편의 함수"""
     event = Event(
-        event_type=event_type,
-        source=source,
-        data=data,
-        priority=EventPriority.NORMAL
+        event_type=event_type, source=source, data=data, priority=EventPriority.NORMAL
     )
     await global_event_bus.publish(event)

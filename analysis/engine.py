@@ -10,6 +10,9 @@ from mediapipe import solutions
 import math
 from enum import Enum
 
+# 전역 안전 모드 플래그
+safe_mode = False
+
 from core.definitions import (
     CameraPosition,
     AdvancedMetrics,
@@ -283,7 +286,7 @@ class EnhancedAnalysisEngine:
             await asyncio.gather(face_task, pose_task, return_exceptions=True)
 
         except (asyncio.CancelledError, AttributeError, TypeError, ValueError) as e:
-            if not hasattr(self, '_process_fail_count'):
+            if not hasattr(self, "_process_fail_count"):
                 self._process_fail_count = 0
             self._process_fail_count += 1
             if self._process_fail_count >= 3:

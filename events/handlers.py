@@ -27,6 +27,9 @@ from enum import Enum
 from config.settings import get_config
 from core.constants import AnalysisConstants
 
+# 전역 안전 모드 플래그
+safe_mode = False
+
 logger = logging.getLogger(__name__)
 
 
@@ -201,7 +204,7 @@ class SafetyEventHandler(IEventHandler):
             return success
         except Exception as e:
             # 예외가 반복적으로 발생하면 시스템을 안전 모드로 전환
-            if not hasattr(self, 'failure_count'):
+            if not hasattr(self, "failure_count"):
                 self.failure_count = 0
             self.failure_count += 1
             if self.failure_count >= 3:
@@ -277,7 +280,7 @@ class SafetyEventHandler(IEventHandler):
             return response_success
 
         except Exception as e:
-            if not hasattr(self, '_safety_response_fail_count'):
+            if not hasattr(self, "_safety_response_fail_count"):
                 self._safety_response_fail_count = 0
             self._safety_response_fail_count += 1
             if self._safety_response_fail_count >= 3:

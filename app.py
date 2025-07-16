@@ -128,8 +128,14 @@ class IntegratedCallbackAdapter:
                 raise
         except asyncio.TimeoutError:
             logger.warning(f"Lock 획득 타임아웃 - {result_type} 결과 무시됨 (ts: {ts})")
+        except (AttributeError, TypeError, ValueError, KeyError) as e:
+            logger.error(f"_on_result 처리 중 데이터 오류: {e}", exc_info=True)
+        except (asyncio.CancelledError, asyncio.TimeoutError):
+            logger.warning(f"_on_result 비동기 작업 취소/타임아웃 - {result_type}")
+            raise  # 비동기 예외는 상위로 전달
         except Exception as e:
-            logger.error(f"_on_result 처리 중 오류: {e}", exc_info=True)
+            logger.critical(f"_on_result 치명적 예외: {e}", exc_info=True)
+            raise  # 치명적 예외는 상위로 전달
 
     async def _process_results(self, timestamp):
         if timestamp <= self.last_processed_timestamp:
@@ -337,11 +343,19 @@ class DMSApp:
             if not self.video_input_manager.initialize():
                 logger.error("비디오 입력 초기화 실패")
                 return False
-            from events.event_bus import initialize_event_system
+            from events.event_bus import (
+                initialize_event_system,
+                initialize_event_system_sync,
+            )
 
             try:
-                initialize_event_system()  # 기존 동기 호출
-                logger.info("✅ 이벤트 시스템 초기화 완료")
+                # Bug fix #18: Use sync version for initial setup, then async start
+                if initialize_event_system_sync():
+                    # 비동기 환경에서 실제 시작
+                    await initialize_event_system()
+                    logger.info("✅ 이벤트 시스템 초기화 완료")
+                else:
+                    logger.warning("동기 이벤트 시스템 초기화 실패, 계속 진행")
             except Exception as e:
                 logger.error(f"❌ 이벤트 시스템 초기화 실패: {e}")
                 logger.warning("이벤트 시스템 없이 안전 모드로 계속 진행")
@@ -365,8 +379,16 @@ class DMSApp:
             logger.info("[수정] S-Class DMS 시스템 초기화 완료")
             self.initialization_completed = True
             return True
+        except (ImportError, ModuleNotFoundError) as e:
+            logger.critical(f"S-Class DMS 필수 모듈 누락: {e}")
+            return False
+        except (AttributeError, TypeError) as e:
+            logger.error(f"S-Class DMS 설정 오류: {e}", exc_info=True)
+            return False
         except Exception as e:
-            logger.error(f"S-Class DMS 시스템 초기화 실패: {e}", exc_info=True)
+            logger.critical(
+                f"S-Class DMS 시스템 초기화 치명적 실패: {e}", exc_info=True
+            )
             return False
 
     def run(self):
@@ -457,10 +479,21 @@ class DMSApp:
             consecutive_errors = 0
             max_consecutive_errors = 5
 
-            # 성능 모니터링 변수
+            # 성능 모니터링 변수 (최적화된 크기)
             from collections import deque
 
-            frame_processing_times = deque(maxlen=100)
+            frame_processing_times = deque(maxlen=50)  # 메모리 최적화: 100 -> 50
+
+            # 성능 최적화 변수들
+            skip_frame_counter = 0
+            performance_mode = "normal"  # normal, optimized, emergency
+            last_fps_check = time.time()
+            target_fps = 30
+            min_fps = 15
+
+            # 동적 프레임 스킵핑 설정
+            frame_skip_ratio = 1  # 1 = 모든 프레임 처리, 2 = 1프레임 건너뛰기
+            last_performance_optimization = time.time()
 
             logger.info("비동기 프레임 처리 루프 시작")
 
@@ -476,6 +509,59 @@ class DMSApp:
                             continue
 
                         frame_count += 1
+                        skip_frame_counter += 1
+
+                        # === 성능 최적화: 동적 프레임 스킵핑 ===
+                        current_time = time.time()
+
+                        # 성능 모드 동적 조정 (10초마다)
+                        if current_time - last_performance_optimization > 10.0:
+                            if frame_processing_times:
+                                avg_fps = len(frame_processing_times) / sum(
+                                    frame_processing_times
+                                )
+
+                                if (
+                                    avg_fps < min_fps
+                                    and performance_mode != "emergency"
+                                ):
+                                    performance_mode = "emergency"
+                                    frame_skip_ratio = 3  # 2프레임 건너뛰기
+                                    logger.warning(
+                                        f"성능 최적화: 긴급 모드 ({avg_fps:.1f} FPS)"
+                                    )
+                                elif (
+                                    avg_fps < target_fps * 0.8
+                                    and performance_mode == "normal"
+                                ):
+                                    performance_mode = "optimized"
+                                    frame_skip_ratio = 2  # 1프레임 건너뛰기
+                                    logger.info(
+                                        f"성능 최적화: 최적화 모드 ({avg_fps:.1f} FPS)"
+                                    )
+                                elif (
+                                    avg_fps > target_fps * 0.9
+                                    and performance_mode != "normal"
+                                ):
+                                    performance_mode = "normal"
+                                    frame_skip_ratio = 1  # 모든 프레임 처리
+                                    logger.info(
+                                        f"성능 복구: 정상 모드 ({avg_fps:.1f} FPS)"
+                                    )
+
+                            last_performance_optimization = current_time
+
+                        # 프레임 스킵핑 적용
+                        if skip_frame_counter % frame_skip_ratio != 0:
+                            # 프레임을 건너뛰고 이전 프레임 재사용
+                            if (
+                                hasattr(self, "_last_annotated_frame")
+                                and self._last_annotated_frame is not None
+                            ):
+                                await self._async_enqueue_frame(
+                                    self._last_annotated_frame
+                                )
+                            continue
 
                         # === 2. 프레임 처리 (완전 비동기) ===
                         annotated_frame = (
@@ -484,6 +570,9 @@ class DMSApp:
                             )
                         )
 
+                        # 마지막 처리된 프레임 저장 (재사용용)
+                        self._last_annotated_frame = annotated_frame
+
                         # === 3. 프레임 큐에 추가 (비블로킹) ===
                         await self._async_enqueue_frame(annotated_frame)
 
@@ -491,8 +580,14 @@ class DMSApp:
                         frame_time = time.time() - loop_start_time
                         frame_processing_times.append(frame_time)
 
-                        # 30프레임마다 성능 로깅 및 최적화
-                        if frame_count % 30 == 0:
+                        # 성능 모드에 따른 적응형 최적화 주기
+                        optimization_interval = {
+                            "normal": 60,  # 60프레임마다 (2초)
+                            "optimized": 30,  # 30프레임마다 (1초)
+                            "emergency": 15,  # 15프레임마다 (0.5초)
+                        }.get(performance_mode, 30)
+
+                        if frame_count % optimization_interval == 0:
                             await self._async_performance_optimization(
                                 frame_processing_times
                             )
@@ -817,38 +912,58 @@ class DMSApp:
 
     async def _async_performance_optimization(self, frame_processing_times):
         """
-        ✅ 비동기 성능 최적화
+        ✅ 비동기 성능 최적화 - 메모리 및 처리 효율성 개선
         """
         try:
-            # 평균 프레임 처리 시간 계산
-            import numpy as np
+            if not frame_processing_times:
+                return
 
-            avg_processing_time = (
-                np.mean(frame_processing_times) if frame_processing_times else 0.0
+            # 평균 프레임 처리 시간 계산 (numpy 사용 안함으로 메모리 절약)
+            avg_processing_time = sum(frame_processing_times) / len(
+                frame_processing_times
             )
             current_fps = 1.0 / avg_processing_time if avg_processing_time > 0 else 0.0
 
-            # 성능 통계 로깅
-            logger.info(
-                f"성능 통계 - FPS: {current_fps:.1f}, 평균 처리시간: {avg_processing_time * 1000:.1f}ms"
+            # 성능 통계 로깅 (간소화)
+            logger.debug(
+                f"성능: FPS {current_fps:.1f}, 처리시간 {avg_processing_time * 1000:.1f}ms"
             )
 
-            # MediaPipe 리소스 동적 조정
+            # MediaPipe 리소스 동적 조정 (성능 모드에 따라)
             if hasattr(self, "mediapipe_manager"):
-                self.mediapipe_manager.adjust_dynamic_resources()
+                try:
+                    # 성능 모드에 따른 리소스 조정
+                    if current_fps < 15:  # 긴급 모드
+                        if hasattr(self.mediapipe_manager, "reduce_quality"):
+                            self.mediapipe_manager.reduce_quality()
+                    elif current_fps > 25:  # 정상 모드
+                        if hasattr(self.mediapipe_manager, "restore_quality"):
+                            self.mediapipe_manager.restore_quality()
 
-            # 메모리 정리 (executor에서 실행)
-            loop = asyncio.get_running_loop()
-            await loop.run_in_executor(None, self._perform_memory_cleanup)
+                    if hasattr(self.mediapipe_manager, "adjust_dynamic_resources"):
+                        self.mediapipe_manager.adjust_dynamic_resources()
+                except AttributeError:
+                    pass  # MediaPipe 관련 메서드가 없으면 스킵
 
-            # 성능 모니터 업데이트
+            # 메모리 정리 (선택적 실행으로 성능 향상)
+            current_memory = self._get_memory_usage()
+            if current_memory > 600:  # 600MB 이상 시에만 정리
+                loop = asyncio.get_running_loop()
+                await loop.run_in_executor(None, self._perform_memory_cleanup)
+
+            # 성능 모니터 업데이트 (최적화)
             if hasattr(self, "performance_monitor") and self.performance_monitor:
-                self.performance_monitor.log_performance(
-                    avg_processing_time, current_fps
-                )
+                try:
+                    self.performance_monitor.log_performance(
+                        avg_processing_time, current_fps
+                    )
+                except AttributeError:
+                    pass  # 성능 모니터 메서드가 없으면 스킵
 
         except (AttributeError, TypeError, ValueError) as e:
-            logger.warning(f"성능 최적화 실패: {e}")
+            logger.debug(f"성능 최적화 일반 오류: {e}")  # warning -> debug로 변경
+        except Exception as e:
+            logger.warning(f"성능 최적화 중 예외: {e}")  # 치명적 예외만 warning
 
     async def _async_error_recovery(self):
         """
@@ -868,10 +983,10 @@ class DMSApp:
             # 2. 통합 시스템 상태 점검
             if hasattr(self, "integrated_system"):
                 try:
-                    # 이벤트 시스템 재초기화 시도
+                    # Bug fix #18: 이벤트 시스템 재초기화 시도 (비동기 버전)
                     from events.event_bus import initialize_event_system
 
-                    initialize_event_system()
+                    await initialize_event_system()
                     logger.info("이벤트 시스템 재초기화 완료")
                 except Exception as e:
                     logger.warning(f"이벤트 시스템 재초기화 실패: {e}")
@@ -965,10 +1080,15 @@ class DMSApp:
                     if hasattr(self, "mediapipe_manager"):
                         perf_stats = self.mediapipe_manager.get_performance_stats()
 
-                    annotated_frame = self._create_basic_info_overlay(frame, frame_count, perf_stats)
+                    annotated_frame = self._create_basic_info_overlay(
+                        frame, frame_count, perf_stats
+                    )
 
                     # 시스템 상태가 error면 화면에 에러 표시
-                    if self.safe_mode or analysis_results.get("system_health") == "error":
+                    if (
+                        self.safe_mode
+                        or analysis_results.get("system_health") == "error"
+                    ):
                         annotated_frame = OpenCVSafeHandler.safe_frame_annotation(
                             annotated_frame,
                             "SYSTEM ERROR: 안전 모드 전환",
@@ -1007,8 +1127,39 @@ class DMSApp:
 
             return annotated_frame
 
+        except (cv2.error, ValueError, TypeError) as e:
+            logger.warning(f"프레임 처리 일반 오류: {e}")
+            # 일반적인 처리 오류는 원본 프레임 반환
+            return (
+                frame
+                if frame is not None
+                else OpenCVSafeHandler.create_fallback_frame()
+            )
+
+        except (AttributeError, KeyError) as e:
+            logger.error(f"프레임 처리 데이터 오류: {e}")
+            # 데이터 구조 오류 시 기본 오버레이 생성
+            try:
+                return safe_create_basic_info_overlay(frame, frame_count, None)
+            except Exception:
+                return (
+                    frame
+                    if frame is not None
+                    else OpenCVSafeHandler.create_fallback_frame()
+                )
+
         except Exception as e:
-            logger.error(f"프레임 처리 중 치명적 오류: {e}", exc_info=True)
+            logger.critical(f"프레임 처리 중 치명적 오류: {e}", exc_info=True)
+
+            # 치명적 오류 시 시스템 안전 모드 진입
+            self.safe_mode = True
+            self.error_count += 1
+
+            # 연속 오류가 많으면 시스템 종료 신호
+            if self.error_count > 10:
+                logger.critical("연속 치명적 오류 발생 - 시스템 종료 권장")
+                if hasattr(self, "stop_event"):
+                    self.stop_event.set()
 
             # 최종 폴백: 기본 정보 오버레이 생성
             try:
@@ -1032,7 +1183,7 @@ class DMSApp:
                 return error_frame
 
             except Exception as final_e:
-                logger.error(f"최종 폴백도 실패: {final_e}")
+                logger.critical(f"최종 폴백도 실패: {final_e}")
                 # 최종 폴백: 원본 프레임 또는 검은 화면
                 if frame is not None:
                     return frame
