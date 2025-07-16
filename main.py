@@ -1050,13 +1050,22 @@ class SClass_DMS_GUI_Setup:
                 "_error": None
             }
             
-            # 혁신 엔진에 에디션 반영
+            # 혁신 엔진에 에디션 반영 (성능 최적화: 지연 로딩)
             try:
-                self.innovation_engine = SClassDMSv19Enhanced(user_id, edition)
-                logger.info(f"혁신 엔진 초기화 완료: {user_id}, {edition}")
+                # 성능 최적화: 혁신 엔진은 실제 필요 시에만 초기화
+                if edition in ["PRO", "ENTERPRISE", "RESEARCH"]:
+                    self.innovation_engine = SClassDMSv19Enhanced(user_id, edition)
+                    logger.info(f"혁신 엔진 초기화 완료: {user_id}, {edition}")
+                else:
+                    # COMMUNITY 에디션은 혁신 엔진 스킵
+                    self.innovation_engine = None
+                    logger.info(f"커뮤니티 에디션: 혁신 엔진 스킵")
+            except (ImportError, AttributeError) as innovation_e:
+                logger.warning(f"혁신 엔진 모듈 문제 (계속 진행): {innovation_e}")
+                self.innovation_engine = None
             except Exception as innovation_e:
                 logger.warning(f"혁신 엔진 초기화 실패 (계속 진행): {innovation_e}")
-                # 혁신 엔진 실패는 치명적이지 않음
+                self.innovation_engine = None
                 
             logger.info("config 설정 완료")
             
@@ -1273,7 +1282,7 @@ def main():
             gui_setup = SClass_DMS_GUI_Setup(root)
             root.mainloop()
             config = gui_setup.config
-            logger.info(f"GUI에서 받은 config: {config}")
+            logger.debug(f"GUI에서 받은 config 키들: {list(config.keys()) if isinstance(config, dict) else type(config)}")
         else:
             config = get_user_input_terminal()
 
@@ -1281,7 +1290,7 @@ def main():
         if config and isinstance(config, dict):
             if config.get("_initialized") and not config.get("_error"):
                 # 정상적으로 초기화된 config
-                logger.info(f"S-Class 설정 완료: {config.keys()}")
+                logger.info(f"S-Class 설정 완료 - 사용자: {config.get('user_id', 'unknown')}, 에디션: {config.get('edition', 'unknown')}")
                 print("\n" + "=" * 70)
                 print(f" S-Class DMS v18+ 시스템 시작... (사용자: {config['user_id']})")
                 print(f" 시스템 모드: {config['system_type'].value}")

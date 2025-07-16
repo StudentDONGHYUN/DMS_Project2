@@ -228,6 +228,42 @@ cat performance_logs/summary_*.json
 
 - **Bug #20**: Missing Synchronous Event System Initialization 문제 해결. 동기 환경에서 호출할 수 있는 initialize_event_system_sync() 함수 추가로 초기화 호환성 개선.
 
+### Performance Optimizations (2025-01-17)
+
+#### **성능 최적화 #1: 동적 프레임 스킵핑**
+- **개선**: 실시간 FPS 모니터링을 통한 적응형 프레임 처리
+- **기능**: 성능에 따라 normal(전체) → optimized(50%) → emergency(33%) 모드 자동 전환
+- **효과**: 저사양 시스템에서 최대 3배 성능 향상 예상
+
+#### **성능 최적화 #2: 메모리 사용량 최적화**
+- **개선**: 프레임 처리 히스토리 버퍼 크기 100 → 50으로 감소
+- **개선**: 선택적 메모리 정리 (600MB 이상 시에만 실행)
+- **개선**: numpy 의존성 제거로 메모리 사용량 감소
+
+#### **성능 최적화 #3: 적응형 최적화 주기**
+- **개선**: 성능 모드에 따른 최적화 주기 조정 (정상:60프레임, 최적화:30프레임, 긴급:15프레임)
+- **개선**: 불필요한 로깅 수준 조정 (info → debug)
+
+#### **성능 최적화 #4: 지연 로딩 및 조건부 초기화**
+- **개선**: 혁신 엔진을 에디션에 따라 조건부 로딩 (COMMUNITY는 스킵)
+- **개선**: MediaPipe 품질 동적 조정 기능 추가
+
+### Exception Handling Improvements (2025-01-17)
+
+#### **예외 처리 개선 #1: 구체적 예외 분류**
+- **개선**: IntegratedCallbackAdapter에서 구체적 예외 타입별 처리
+- **분류**: 데이터 오류(AttributeError, TypeError 등) vs 비동기 오류(TimeoutError 등) vs 치명적 오류
+- **효과**: 디버깅 정보 향상 및 시스템 안정성 증대
+
+#### **예외 처리 개선 #2: 시스템 초기화 예외 세분화**
+- **개선**: DMSApp.initialize()에서 모듈 누락, 설정 오류, 치명적 오류 구분
+- **효과**: 문제 원인 파악 용이성 및 복구 가능성 향상
+
+#### **예외 처리 개선 #3: 프레임 처리 복원력 강화**
+- **개선**: 일반 오류 vs 데이터 오류 vs 치명적 오류 3단계 처리
+- **안전장치**: 연속 치명적 오류 10회 시 자동 종료 신호
+- **복구**: 안전 모드 자동 진입 및 오류 카운터 관리
+
 ### Newly Discovered Issues (2025-07-15)
 
 #### **Bug #17: Broad Exception Handling Remains in Event System**
