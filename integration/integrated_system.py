@@ -21,6 +21,7 @@ import logging
 import time
 import cv2
 from typing import Dict, Any, Optional
+import numpy as np
 
 # === 새로운 시스템 컴포넌트들 ===
 from analysis.factory.analysis_factory import create_analysis_system, AnalysisSystemType
@@ -289,33 +290,89 @@ class IntegratedDMSSystem:
                 analysis_results, driver_state
             )
 
-            # 6. 시각화 프레임 생성 (이중 파이프라인 지원)
+            # 6. 시각화 프레임 생성 (이중 파이프라인 지원) - 완전 수정
             annotated_frame = None
             try:
-                # 프레임 데이터 분리
-                frame_numpy = frame_data.get("image") or frame_data.get("frame")
-                frame_umat = frame_data.get("visualization_frame")
+                # 프레임 데이터 안전한 추출
+                frame_numpy = None
+                frame_umat = None
 
-                if frame_numpy is not None:
-                    # UMat 변환 (GPU 가속)
-                    if frame_umat is None:
-                        try:
-                            frame_umat = cv2.UMat(frame_numpy)
-                        except Exception as e:
-                            logger.warning(f"UMat 변환 실패: {e}")
-                            frame_umat = frame_numpy
+                # 여러 키에서 프레임 데이터 시도
+                for key in ["image", "frame", "visualization_frame"]:
+                    if key in validated_data and validated_data[key] is not None:
+                        frame_candidate = validated_data[key]
 
-                    # 안전한 시각화 생성
-                    annotated_frame = self._create_safe_visualization_dual_pipeline(
-                        frame_umat, frame_numpy, formatted_results
-                    )
+                        # numpy 배열인지 확인
+                        if isinstance(frame_candidate, np.ndarray):
+                            if frame_numpy is None:
+                                frame_numpy = frame_candidate
+                        # UMat인지 확인
+                        elif isinstance(frame_candidate, cv2.UMat):
+                            if frame_umat is None:
+                                frame_umat = frame_candidate
 
-            except Exception as viz_e:
-                logger.warning(f"시각화 프레임 생성 실패: {viz_e}")
+                # 프레임이 있는 경우 시각화 생성
+                if frame_numpy is not None or frame_umat is not None:
+                    try:
+                        # UMat 변환 시도 (GPU 가속용)
+                        if frame_umat is None and frame_numpy is not None:
+                            try:
+                                # ✅ FIXED: 안전한 UMat 변환
+                                if (
+                                    frame_numpy.ndim == 3
+                                    and frame_numpy.shape[2] == 3
+                                    and frame_numpy.dtype == np.uint8
+                                ):
+                                    frame_umat = cv2.UMat(frame_numpy)
+                                else:
+                                    logger.debug(
+                                        f"UMat 변환 건너뛰기: shape={frame_numpy.shape}, dtype={frame_numpy.dtype}"
+                                    )
+                                    frame_umat = frame_numpy
+                            except Exception as umat_e:
+                                logger.debug(f"UMat 변환 실패: {umat_e}")
+                                frame_umat = frame_numpy
+
+                        # 안전한 시각화 생성 시도
+                        annotated_frame = self._create_safe_visualization_dual_pipeline(
+                            frame_umat, frame_numpy, formatted_results
+                        )
+
+                    except Exception as viz_e:
+                        logger.warning(f"이중 파이프라인 시각화 실패: {viz_e}")
+
+                        # 폴백: 기본 numpy 시각화
+                        if frame_numpy is not None:
+                            try:
+                                annotated_frame = (
+                                    self._create_basic_numpy_visualization(
+                                        frame_numpy, formatted_results
+                                    )
+                                )
+                            except Exception as basic_e:
+                                logger.warning(f"기본 시각화도 실패: {basic_e}")
+                                annotated_frame = frame_numpy
+                else:
+                    logger.warning("시각화용 프레임 데이터가 없음")
+
+            except Exception as viz_error:
+                logger.error(f"시각화 프레임 생성 중 오류: {viz_error}")
+                # 시각화 실패해도 계속 진행
                 annotated_frame = None
 
+            # 결과에 시각화 프레임 추가 (있는 경우만)
             if annotated_frame is not None:
-                formatted_results["visualization"] = annotated_frame
+                # ✅ FIXED: 안전한 프레임 추가
+                try:
+                    # UMat을 numpy로 변환해서 호환성 보장
+                    if isinstance(annotated_frame, cv2.UMat):
+                        annotated_frame = annotated_frame.get()
+
+                    formatted_results["visualization"] = annotated_frame
+                    formatted_results["frame"] = annotated_frame  # 호환성 위한 별칭
+
+                except Exception as add_e:
+                    logger.warning(f"결과에 시각화 프레임 추가 실패: {add_e}")
 
             # 7. 성능 메트릭 업데이트
             processing_time = time.time() - processing_start
@@ -352,84 +409,137 @@ class IntegratedDMSSystem:
     def _create_safe_visualization_dual_pipeline(
         self, frame_umat, frame_numpy, results
     ):
-        """이중 파이프라인 안전한 시각화 생성"""
+        """이중 파이프라인 안전한 시각화 생성 (완전 수정)"""
         try:
-            # UI 매니저 초기화
+            # UI 매니저 초기화 (lazy loading)
             if not hasattr(self, "_ui_manager") or self._ui_manager is None:
-                from io_handler.ui import SClassAdvancedUIManager
+                try:
+                    from io_handler.ui import SClassAdvancedUIManager
 
-                self._ui_manager = SClassAdvancedUIManager()
+                    self._ui_manager = SClassAdvancedUIManager()
+                except Exception as ui_e:
+                    logger.warning(f"고급 UI 매니저 로드 실패: {ui_e}")
+                    self._ui_manager = None
 
-            # UMat 우선 시각화 시도
-            try:
-                return self._ui_manager.draw_enhanced_results_umat_safe(
-                    frame_umat,
-                    results,
-                    self.state_manager.get_current_state()
-                    if hasattr(self, "state_manager")
-                    else None,
-                )
-            except Exception as e:
-                logger.warning(f"UMat 시각화 실패: {e}")
+            # 고급 UI 매니저를 사용할 수 있는 경우
+            if self._ui_manager is not None:
+                try:
+                    # UMat 우선 시각화 시도
+                    if frame_umat is not None:
+                        result_frame = self._ui_manager.draw_enhanced_results_umat_safe(
+                            frame_umat,
+                            results,
+                            self.state_manager.get_current_state()
+                            if hasattr(self, "state_manager")
+                            else None,
+                        )
+                        if result_frame is not None:
+                            return result_frame
 
-                # 폴백: numpy 배열 시각화
-                if frame_numpy is not None:
-                    return self._create_basic_numpy_visualization(frame_numpy, results)
+                except Exception as adv_e:
+                    logger.debug(f"고급 UI 시각화 실패: {adv_e}")
 
-                return None
+            # 폴백: 기본 numpy 시각화
+            if frame_numpy is not None:
+                return self._create_basic_numpy_visualization(frame_numpy, results)
+            elif frame_umat is not None:
+                # UMat을 numpy로 변환해서 시도
+                try:
+                    frame_numpy_converted = (
+                        frame_umat.get()
+                        if isinstance(frame_umat, cv2.UMat)
+                        else frame_umat
+                    )
+                    return self._create_basic_numpy_visualization(
+                        frame_numpy_converted, results
+                    )
+                except Exception as conv_e:
+                    logger.warning(f"UMat→numpy 변환 실패: {conv_e}")
 
-        except Exception as e:
-            logger.error(f"이중 파이프라인 시각화 실패: {e}")
             return None
 
+        except Exception as e:
+            logger.error(f"이중 파이프라인 시각화 완전 실패: {e}")
+            return frame_numpy if frame_numpy is not None else frame_umat
+
     def _create_basic_numpy_visualization(self, frame_numpy, results):
-        """기본 numpy 시각화 생성"""
+        """기본 numpy 시각화 생성 (numpy 배열 조건문 오류 수정)"""
         try:
-            annotated_frame = frame_numpy.copy()
+            # ✅ FIXED: 안전한 numpy 배열 복사
+            if frame_numpy is None:
+                return None
 
-            # 기본 정보 표시
-            system_health = results.get("system_health", "unknown")
-            cv2.putText(
-                annotated_frame,
-                f"System: {system_health}",
-                (10, 30),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                0.7,
-                (0, 255, 0),
-                2,
-            )
+            # 프레임 유효성 검사
+            if not isinstance(frame_numpy, np.ndarray):
+                logger.warning(f"numpy 배열이 아닌 타입: {type(frame_numpy)}")
+                return frame_numpy
 
-            fatigue_score = results.get("fatigue_risk_score", 0.0)
-            distraction_score = results.get("distraction_risk_score", 0.0)
+            if frame_numpy.size == 0:
+                logger.warning("빈 numpy 배열")
+                return frame_numpy
 
-            cv2.putText(
-                annotated_frame,
-                f"Fatigue: {fatigue_score:.2f}",
-                (10, 60),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                0.6,
-                (255, 255, 0),
-                2,
-            )
-            cv2.putText(
-                annotated_frame,
-                f"Distraction: {distraction_score:.2f}",
-                (10, 90),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                0.6,
-                (255, 255, 0),
-                2,
-            )
-
-            # UMat으로 변환해서 반환
+            # 안전한 복사 (조건문 오류 방지)
             try:
-                return cv2.UMat(annotated_frame)
-            except Exception:
-                return annotated_frame
+                annotated_frame = frame_numpy.copy()
+            except Exception as copy_e:
+                logger.warning(f"프레임 복사 실패: {copy_e}")
+                annotated_frame = frame_numpy
+
+            # 기본 정보 표시 (안전한 처리)
+            try:
+                system_health = results.get("system_health", "unknown")
+                cv2.putText(
+                    annotated_frame,
+                    f"System: {system_health}",
+                    (10, 30),
+                    cv2.FONT_HERSHEY_SIMPLEX,
+                    0.7,
+                    (0, 255, 0) if system_health != "error" else (0, 0, 255),
+                    2,
+                )
+
+                fatigue_score = float(results.get("fatigue_risk_score", 0.0))
+                distraction_score = float(results.get("distraction_risk_score", 0.0))
+
+                cv2.putText(
+                    annotated_frame,
+                    f"Fatigue: {fatigue_score:.2f}",
+                    (10, 60),
+                    cv2.FONT_HERSHEY_SIMPLEX,
+                    0.6,
+                    (255, 255, 0),
+                    2,
+                )
+                cv2.putText(
+                    annotated_frame,
+                    f"Distraction: {distraction_score:.2f}",
+                    (10, 90),
+                    cv2.FONT_HERSHEY_SIMPLEX,
+                    0.6,
+                    (255, 255, 0),
+                    2,
+                )
+
+                # 추가 상태 정보
+                confidence = float(results.get("confidence_score", 0.0))
+                cv2.putText(
+                    annotated_frame,
+                    f"Confidence: {confidence:.2f}",
+                    (10, 120),
+                    cv2.FONT_HERSHEY_SIMPLEX,
+                    0.6,
+                    (128, 255, 128),
+                    2,
+                )
+
+            except Exception as text_e:
+                logger.warning(f"텍스트 오버레이 실패: {text_e}")
+
+            return annotated_frame
 
         except Exception as e:
             logger.error(f"기본 numpy 시각화 실패: {e}")
-            return frame_numpy
+            return frame_numpy  # 최소한 원본 프레임은 반환
 
     def _extract_driver_state(self, analysis_results: Dict[str, Any]) -> Dict[str, Any]:
         """분석 결과에서 운전자 상태 추출"""

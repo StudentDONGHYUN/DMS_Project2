@@ -171,3 +171,37 @@ cat performance_logs/summary_*.json
 #### **Bug #9: Thread Safety in Minor Utilities**
 - **문제**: 일부 유틸리티 함수에서 thread-unsafe 코드 가능성
 - **해결**: 필요시 락 추가, thread-safe 구조로 개선
+
+---
+
+### Newly Discovered Issues (2025-01-17)
+
+#### **Bug #10: Start Button Not Working**
+- **문제**: main.py의 GUI에서 시작 버튼 클릭 시 메인 프로그램이 실행되지 않음
+- **증상**: start_app() 호출 후 GUI만 닫히고 DMSApp이 시작되지 않음
+- **원인**: config 전달 문제 또는 DMSApp 초기화 실패 가능성
+
+#### **Bug #11: Missing Innovation System Modules**  
+- **문제**: main.py에서 import하는 혁신 시스템 모듈들이 존재하지 않을 가능성
+- **증상**: ImportError로 DMSApp 실행 전 크래시
+- **import 된 모듈들**: AIDrivingCoach, V2DHealthcareSystem, ARHUDSystem, EmotionalCareSystem, DigitalTwinPlatform
+
+#### **Bug #12: Missing UIMode and UIState Classes**
+- **문제**: io_handler/ui.py에서 import하는 UIMode, UIState가 models/data_structures.py에 정의되지 않음
+- **증상**: ImportError로 UI 초기화 실패
+- **필요 클래스**: UIMode, UIState, EmotionState
+
+#### **Bug #13: Missing numpy Import in IntegratedDMSSystem**
+- **문제**: integrated_system.py에서 numpy를 import하지 않았지만 np를 사용함
+- **증상**: NameError: name 'np' is not defined
+- **해결**: import numpy as np 추가 필요
+
+#### **Bug #14: Missing initialize_event_system Function**
+- **문제**: events/event_bus.py에 initialize_event_system 함수가 정의되지 않음
+- **증상**: ImportError 또는 AttributeError
+- **요구사항**: 이벤트 시스템 초기화 함수 구현 필요
+
+#### **Bug #15: Missing SystemConstants Class**
+- **문제**: core/constants.py가 없거나 SystemConstants 클래스가 정의되지 않음
+- **증상**: ImportError 또는 AttributeError
+- **요구사항**: 필수 모델 파일 목록을 포함한 상수 정의 필요
