@@ -284,7 +284,9 @@ class EventBus:
         - 관련 부서들에 즉시 통보
         """
         if not self._running:
-            logger.error("EventBus가 실행되지 않은 상태에서 이벤트 발행 시도")
+            logger.warning("EventBus가 아직 시작되지 않았습니다. 이벤트를 임시 저장합니다.")
+            # 임시로 이벤트 히스토리에 저장하여 나중에 처리할 수 있도록 함
+            self._event_history.append(event)
             return
 
         try:
@@ -539,7 +541,7 @@ async def initialize_event_system(max_queue_size: int = 10000) -> EventBus:
 
     if _global_event_bus is not None:
         # EventBus가 이미 생성되었지만 시작되지 않았을 수 있음
-        if not _global_event_bus.is_running:
+        if not _global_event_bus._running:
             await _global_event_bus.start()
             logger.info("기존 EventBus 인스턴스 시작 완료")
         else:
@@ -569,6 +571,11 @@ def get_event_bus() -> EventBus:
         raise RuntimeError(
             "이벤트 시스템이 초기화되지 않았습니다. initialize_event_system()을 먼저 호출하세요."
         )
+    
+    # EventBus가 시작되지 않은 상태일 때 경고 출력
+    if not _global_event_bus._running:
+        logger.warning("EventBus가 아직 시작되지 않았습니다. 이벤트가 큐에 대기 중입니다.")
+    
     return _global_event_bus
 
 
